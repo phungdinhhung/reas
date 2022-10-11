@@ -1,0 +1,163 @@
+*
+{
+  margin:auto;
+  padding:auto;
+  box-sizing: border-box;
+}
+
+.container{
+    margin-top: 50px;
+}
+.card-header {
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 !important; 
+    text-align: center;
+    border-bottom: none !important;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    margin: 0;
+}
+.avatar{
+    height: 300px;
+    border: 1px solid #000;
+}
+.avatar img {
+    height: 100%;
+    width: 100%;
+}
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+}
+.form-update-avt {
+    margin-top: 20px;
+    text-align: center;
+}
+.btn-update-avt {
+    font-size: 20px;
+    border-radius: 3px;
+}
+.btn-update-content {
+    margin: 4px 5px;
+    
+}
+.card-footer {
+    height: 6rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: none !important;
+    text-align: center;
+}
+
+.title-info-1{
+    background: #055699;
+    line-height: 30px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.title-info-2{
+    text-align: center;
+    background: #055699;
+    line-height: 30px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.blueborline {
+    border-bottom: 2px solid #055699;
+    background-color: #D4EBFD;
+    font-weight: bold;
+    color: #055699;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+.manager{
+    margin-top: 60px;
+}
+.info-name{
+    margin: 20px auto;
+    text-align: center;
+}
+
+.col-md-8 {
+    margin: 0;
+}
+.manager-info-title{
+    width: 100%;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #e8e8e8;
+}
+
+.manager-posts-link{
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+}
+.manager-posts-link:hover{
+    color: red;
+    text-decoration: none;
+
+}
+.information {
+}
+.infor-item {
+    display:flex;
+    margin-bottom: 16px;
+}
+.infor-item h3 {
+    margin: 0;
+    padding: 0;
+}
+.infor-label {
+}
+.infor-content {
+}
+.infor-label,
+.infor-item {
+    font-size: 18px;
+    line-height: 2;
+}
+.email {
+    margin-left: 150px;
+}
+.fullName {
+    margin-left: 65px;
+}
+.phoneNumber {
+    margin-left: 89px;
+}
+
+.btn-update {
+
+    margin-right: 16px;
+    min-width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    background: #57b846;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    font-weight: bold;
+}
+.btn-update:hover {
+    opacity: 0.8;
+}
+.form-group .form-control {
+    font-size: 1.6rem;
+    height: 4rem;
+}

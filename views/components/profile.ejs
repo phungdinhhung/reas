@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+</head>
+<body>
+    <%- include('../layouts/header')%>
+   <div class="container">
+        <div class="main">
+                <div class="row ">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="title-info-1">Picture</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="avatar">
+                                    <img src="<%=userInfor[0].avatar%>" alt="Hình ảnh đại diện">
+                                </div>
+                                <form method="post" action="/profile/avatar" enctype="multipart/form-data" class="form-update-avt">
+                                    <div class="form-group">
+                                      <input type="file" name="file" class="form-control" id="customFile"/>
+                                    </div>
+                                    
+                                  </form>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-update-avt btn-outline-success" type="submit">
+                                    <div class="btn-update-content">Cập nhật</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="title-info-2">Thông tin cá nhân</h2>
+                            </div>
+                            <div class="card-body">
+                                    <ul class="information">
+                                        <li class="infor-item">
+                                            <h3 class="infor-label">Email</h3>
+                                            <div class="email infor-content"><%=userInfor[0].email%> </div>
+                                        </li>
+                                        <li class="infor-item">
+                                            <h3 class="infor-label">Vai trò</h3>
+                                            <div class="role infor-content"><%=userInfor[0].role%> </div>
+                                        </li>
+                                        
+                                        <li class="infor-item">
+                                            <h3 class="infor-label">Tên người dùng</h3>
+                                            <div class="fullName infor-content"><%=userInfor[0].fullname%> </div>
+                                        </li>
+                                        
+                                        <li class="infor-item">
+                                            <h3 class="infor-label">Số điện thoại</h3>
+                                            <div class="phoneNumber infor-content"><%=userInfor[0].phonenumber%> </div>
+                                        </li>
+                                    </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-update">Chỉnh sửa</button>
+                                <button class="btn-update">Đổi mật khẩu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+   </div>
+</body>
+</html>
