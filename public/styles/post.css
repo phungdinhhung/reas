@@ -1,0 +1,20 @@
+body {
+    background-color: var(--background-color);
+}
+.container {
+
+}
+.main {
+    margin-top: 10rem;
+    height: 100vh;
+    border: solid 1px rgba(0,0,0, 0.1);
+    border-radius: 7px;
+    box-shadow: 2px;
+    background-color: #fff;
+    
+}
+
+.post-address {
+    padding-left: 3rem;
+    margin-top: 2rem;
+}

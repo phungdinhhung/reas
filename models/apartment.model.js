@@ -1,17 +1,9 @@
 const mongoose = require("mongoose");
 const apartment = new mongoose.Schema(
   {
-    type: {
-      type: String,
-      default: ""
-    },
     price: {
       type: String,
       default: ""
-    },
-    acreage: {
-      type: Number,
-      default: 0
     },
     region: {
         type: String,
@@ -29,7 +21,7 @@ const apartment = new mongoose.Schema(
       type: String,
       default: "",
     },
-    address: {
+    beach: {
         type: String,
         default: "",
       },
@@ -41,17 +33,9 @@ const apartment = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    username: {
-      type: String,
-      default: "",
-    },
     userId: {
       type: Object,
       default: "",
-    },
-    isAccept: {
-      type: Boolean,
-      default: false,
     },
     images: [image]
   },
