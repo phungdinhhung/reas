@@ -1,0 +1,116 @@
+* {
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+  }
+  
+  .wrapper {
+    width: 600px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .header {
+    background-color: aqua;
+    width: 100%;
+    height: 50px;
+  }
+  
+  .title {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .banner {
+    width: 90%;
+    height: 100%;
+    margin-top: 20px;
+  }
+  .img-banner {
+    width: 100%;
+  }
+  .slide {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    height: 100px;
+  }
+  .slide-1 {
+    width: 30%;
+    height: 100px;
+  }
+  .slide-2 {
+    width: 30%;
+    height: 100px;
+  }
+  .slide-3 {
+    width: 30%;
+    height: 100%;
+  }
+  
+  .line {
+    margin-top: 20px;
+    height: 5px;
+    width: 100%;
+    background-color: #333;
+    opacity: 0.3;
+    border-radius: 5px;
+  }
+  
+  .infor {
+
+    height: 100%;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .infor-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+  }
+  .infor-address {
+    display: block;
+  }
+  .infor-price {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .care {
+    padding: 10px;
+    margin: 0px 30px;
+    display: inline-flex;
+    justify-content: center;
+    /* height: 35px; */
+    align-items: center;
+    background-color: aqua;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .comment {
+    padding: 10px;
+    margin: 0px 30px;
+    display: inline-flex;
+    justify-content: center;
+    /* height: 35px; */
+    align-items: center;
+    background-color: aqua;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .infor-full {
+    margin-top: 20px;
+  }
+  

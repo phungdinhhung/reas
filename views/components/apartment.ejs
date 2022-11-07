@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/apartment.css"/>
+    <link rel="stylesheet" href="/styles/base.css"/>
+    <title>Apartment Detail</title>
+  </head>
+  <body>
+    <div class="grid wide">
+      <div class="header">
+        <div class="title">Thong Tin Can Ho</div>
+      </div>
+      <div class="body">
+        <div class="banner">
+          <%for(let i =0; i <apartment.images.length; i++) { %>
+          <img
+            src="<%=apartment.images[i].url%>"
+            alt=""
+            class="img-banner"
+          />
+          <%}%>
+        </div>
+        <div class="slide">
+          <img src="./img/slide1.jpg" alt="" class="slide-1" />
+          <img src="./img/slide2.jpg" alt="" class="slide-2" />
+          <img src="./img/slide4.jpg" alt="" class="slide-3" />
+        </div>
+        <div class="line"></div>
+        <div class="infor">
+          <h2 class="infor-title"><%=apartment.heading%></h2>
+          <div class="infor-address">
+            <div><%=apartment.address%></div>
+          </div>
+          <div class="infor-price">
+            <div><%=apartment.price%></div>
+          </div>
+          <div class="button">
+            <button class="care">Quan Tam</button>
+            <button class="comment">Binh Luan</button>
+          </div>
+          <div class="infor-full">
+            <p>
+              <div><%=apartment.description%></div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

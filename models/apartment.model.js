@@ -1,4 +1,16 @@
 const mongoose = require("mongoose");
+const image = new mongoose.Schema({
+  url: {
+    type: String,
+    default: "",
+  }
+});
+const like = new mongoose.Schema({
+  userId: {
+    type: Object,
+    default: "",
+  }
+})
 const apartment = new mongoose.Schema(
   {
     price: {
@@ -21,31 +33,31 @@ const apartment = new mongoose.Schema(
       type: String,
       default: "",
     },
+    address: {
+      type: String,
+      default: "",
+    },
     beach: {
         type: String,
         default: "",
       },
-    description: {
+    heading: {
       type: String,
       default: "",
     },
-    state: {
-      type: Boolean,
-      default: true,
+    description: {
+      type: String,
+      default: "",
     },
     userId: {
       type: Object,
       default: "",
     },
+    listLike: [like],
     images: [image]
   },
   { timestamps: true }
   );
-const image = new mongoose.Schema({
-  url: {
-    type: String,
-    default: "",
-  }
-});
+
 
 module.exports = mongoose.model("Apartment", apartment);

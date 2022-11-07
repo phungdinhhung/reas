@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="styles/header.css"/>
+<link rel="stylesheet" href="/styles/header.css"/>
 <!-- <link rel="stylesheet" href="styles/base.css"> -->
 <header class="site-header">
         <div class="site-identity">
@@ -9,17 +9,21 @@
         </div>
         <div class="site-navigation">
             <ul class="nav-header">
+                <%if(user) { %>
                 <li><a href="/">TRANG CHỦ</a></li>
-                <li><a href="/post">ĐĂNG TIN</a></li>
-                <li><a href="/innkeeper/myRoom/all">QUẢN LÝ BÀI ĐĂNG</a></li>
                 <li><a href="/favoriteList/rooms">DANH SÁCH YÊU THÍCH</a></li>
-                <li><a href="/profile">THÔNG TIN CÁ NHÂN</a></li>                
+                <li><a href="/profile">THÔNG TIN CÁ NHÂN</a></li>
+                <% } %>
             </ul>
         </div>
         <div class="site-log">
-            <li><a href="/login" class="nav-link">Đăng nhập</a></li>
-            <li class="separate"></li>
-            <li><a href="/register" class="nav-link">Đăng ký</a></li>
-        </div>
+            <%if(user) { %>
+                <li><a href="/logout" class="nav-link">Đăng xuất</a></li>     
+                <% } else { %>
+                <li><a href="/login" class="nav-link">Đăng nhập</a></li>
+                <li class="separate"></li>
+                <li><a href="/register" class="nav-link">Đăng ký</a></li>
+                <% } %>
+            </div>
         
 </header>

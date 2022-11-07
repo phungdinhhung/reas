@@ -23,20 +23,20 @@
                             </div>
                             <div class="card-body">
                                 <div class="avatar">
-                                    <img src="<%=userInfor[0].avatar%>" alt="Hình ảnh đại diện">
+                                    <img src="<%=user.avatar%>" alt="Hình ảnh đại diện">
                                 </div>
-                                <form method="post" action="/profile/avatar" enctype="multipart/form-data" class="form-update-avt">
+                                <form method="POST" action="profile/avatar" enctype="multipart/form-data" class="form-update-avt">
                                     <div class="form-group">
                                       <input type="file" name="file" class="form-control" id="customFile"/>
                                     </div>
-                                    
-                                  </form>
+                                  
                             </div>
                             <div class="card-footer">
                                 <button class="btn-update-avt btn-outline-success" type="submit">
-                                    <div class="btn-update-content">Cập nhật</div>
+                                    Cập nhật
                                 </button>
                             </div>
+                        </form>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -48,12 +48,12 @@
                                     <ul class="information">
                                         <li class="infor-item">
                                             <h3 class="infor-label">Email</h3>
-                                            <div class="email infor-content"><%=userInfor[0].email%> </div>
+                                            <div class="email infor-content"><%=user.email%> </div>
                                         </li>
                                         
                                         <li class="infor-item">
                                             <h3 class="infor-label">Tên người dùng</h3>
-                                            <div class="fullName infor-content"><%=userInfor[0].fullname%> </div>
+                                            <div class="fullName infor-content"><%=user.fullname%> </div>
                                         </li>
                                         <li class="infor-item">
                                             <h3 class="infor-label">Giới tính</h3>
@@ -65,7 +65,7 @@
                                         </li>
                                         <li class="infor-item">
                                             <h3 class="infor-label">Số điện thoại</h3>
-                                            <div class="phoneNumber infor-content"><%=userInfor[0].phonenumber%> </div>
+                                            <div class="phoneNumber infor-content"><%=user.phonenumber%> </div>
                                         </li>
                                     </ul>
                             </div>

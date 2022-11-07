@@ -33,19 +33,18 @@
             <div class="northern space">
                 <div class="region__heading">
                     <h3 class="region__name">Miền Bắc</h3>
-                    <a href="" class="region__link">Tất cả</a>
                 </div>
                 <div class="list-apartment">
                     <div class="row">
-
+                        <%for(let i = 0; i < listRegion1.length; i++) {%>
                         <div class="col l-3">
                             <div class="apartment-item">
                                 <div class="apartment-image">
-                                    <img src="https://media-e1.s3.amazonaws.com/brt/styles/large/s3/snippets/snip_6.png" alt="">
+                                    <img src="<%=listRegion1[i].images[0].url%>" alt="">
                                 </div>
                                 <div class="info">
-                                    <div class="infor-header">Tên khu nghỉ dưỡng</div>
-                                    <div class="infor-beach">Tên Bãi biển </div>
+                                    <div class="infor-header"><%=listRegion1[i].heading%></div>
+                                    <div class="infor-beach"><%=listRegion1[i].city%></div>
                                     <div class="infor-font">
                                         <i class="infor-icon fa-solid fa-house">
                                             <span>0M</span>
@@ -60,69 +59,17 @@
                                     <div class="infor-address">
                                         <i class="fa-solid fa-location-dot"></i>
                                         Quận - Phường - Thành Phố</div>
-                                    <a href="" class="apartment-detail">Xem chi tiết</a>
+                                    <a href="/detail/<%=listRegion1[i]._id%>" class="apartment-detail">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l-3">
-                            <div class="apartment-item">
-                                <div class="apartment-image">
-                                    <img src="https://media-e1.s3.amazonaws.com/brt/styles/large/s3/snippets/snip_6.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="infor-header">Tên khu nghỉ dưỡng</div>
-                                    <div class="infor-beach">Tên Bãi biển </div>
-                                    <div class="infor-font">
-                                        <i class="infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
-                                    <div class="infor-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
-                                    <a href="" class="apartment-detail">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l-3">
-                            <div class="apartment-item">
-                                <div class="apartment-image">
-                                    <img src="https://media-e1.s3.amazonaws.com/brt/styles/large/s3/snippets/snip_6.png" alt="">
-                                </div>
-                                <div class="info">
-                                    <div class="infor-header">Tên khu nghỉ dưỡng</div>
-                                    <div class="infor-beach">Tên Bãi biển </div>
-                                    <div class="infor-font">
-                                        <i class="infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
-                                    <div class="infor-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
-                                    <a href="" class="apartment-detail">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
             <div class="central space">
                 <div class="region__heading">
                     <h3 class="region__name">Miền Trung</h3>
-                    <a href="" class="region__link">Tất cả</a>
                 </div>
                 <div class="list-apartment">
                     <div class="row">
@@ -185,7 +132,6 @@
             <div class="southern space">
                 <div class="region__heading">
                     <h3 class="region__name">Miền Nam</h3>
-                    <a href="" class="region__link">Tất cả</a>
                 </div>
                 <div class="list-apartment">
                     <div class="row">

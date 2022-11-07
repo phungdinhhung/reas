@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/post.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <title>Post Apartment</title>
+</head>
+<body>
+    <div class="grid wide container">
+        <div class="main">
+            <form action="/dashboard/upload/post" method="POST" enctype="multipart/form-data">
+            <h2>Đăng tải thông tin căn hộ</h2>
+            <h2 style="margin-top: 10px"> Khu Vực </h2>
+            <div class="inputBox">
+                <select name="region" id="">
+                    <option value="" disabled hidden selected>Vùng</option>
+                    <option value="Miền Bắc">Miền Bắc</option>
+                    <option value="Miền Trung">Miền Trung</option>
+                    <option value="Miền Nam">Miền Nam</option>
+                </select>
+                <div class="inputBox" id="select-city">
+                    <input type="Thành phố" name="city" placeholder="Thành phố" id="">
+                </div>
+                <div class="inputBox" id="select-district">
+                    <input type="" name="district" placeholder="Quận/Huyện" id="">
+                </div>
+                <div class="inputBox" id="select-ward">
+                    <input type="" name="ward" placeholder="Phường/Xã" id="">
+                </div>
+                <div class="inputBox" id="select-beach">
+                    <input type="" name="beach" placeholder="Bãi biển" id="">
+                </div>
+            </div>
+            <div class="inputBox" style="padding-bottom: 10px">
+                <input type="Địa Chỉ" name="address" placeholder="Số nhà, tên đường" id="">
+            </div>
+            <div style="margin-top: 20px">
+                <h2>
+                    Thông tin mô tả
+                </h2>
+                <div>
+                    <div class="inputBox" style="padding-bottom: 10px">
+                        <input type="Tiêu đề" name="heading" placeholder="Tiêu đề" id="">
+                    </div>
+                    <h6 style="margin-left: 5px">
+                        Tiêu đề ngắn gọn, dễ hiểu, không dài quá 100 kí tự.
+                    </h6>
+                </div>
+                <div>
+                    <div class="inputBox" style="padding-bottom: 10px">
+                        <label>Mô tả</label>
+                        <textarea type="Nội dung mô tả" name="description" placeholder="Nội dung mô tả" id="" rows="10" cols="80" style="font-size:14px; border: 1px solid black; padding: 10px;"></textarea>
+                    </div>
+                    <h6 style="margin-left: 5px">
+                        Nội dung mô tả phải có ít nhất 150 kí tự và không được dài quá 5000 kí tự.
+                    </h6>
+                </div>
+                <div>
+                    <h2 style="padding-top: 10px">
+                        Giá căn hộ
+                    </h2>
+                    <div class="inputBox" style="padding-bottom: 10px">
+
+                        <input type="text" name="price" placeholder="Nhập giá" id="price" value="">
+
+                        <span class="input-group-text" id="basic-addon1">VND</span>
+                    </select>
+                    </div>
+                </div>
+                <div>
+                    <h2 style="padding-top: 10px">
+                        Diện tích căn hộ
+                    </h2>
+                    <div class="inputBox" style="padding-bottom: 10px">
+                        <input type="Nhập diện tích" name="acreage" placeholder="Nhập diện tích" id="">
+                        <span class="input-group-text" id="basic-addon1">m2</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formFileMultiple" class="form-label">Chọn ảnh phòng</label>
+                    <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
+                  </div>
+            </div>
+            <div class="buttons-container">
+
+                <input type="button" value="Hủy bỏ" class="btn" style="font-size: 20px">
+                <input type="submit" value="Đăng Tải" class="btn" style="font-size: 20px">
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
