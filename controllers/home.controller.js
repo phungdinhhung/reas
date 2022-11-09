@@ -1,15 +1,14 @@
 const roleModel = require('../models/role.model');
 const apartmentModel = require('../models/apartment.model');
 
-const homeController = { 
-    getHomePage: async(req, res) => {
+    const getHomePage = async(req, res) => {
         try {
         const user = req.cookies.user;
         let userId="", role="";
         if(user) {
             userId = req.cookies.user.user_id;
             role = await roleModel.findOne({userId: userId});
-            role = role.name;
+
         }
         const listRegion1 = await apartmentModel.find({
             region: "Miền Bắc",
@@ -26,6 +25,5 @@ const homeController = {
         res.status(500).json(e);
     }
 }
-}
 
-module.exports = homeController
+module.exports = { getHomePage }

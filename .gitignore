@@ -2,3 +2,5 @@
 /node_modules
 # font
 /public/fonts
+# env
+/.env
