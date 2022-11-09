@@ -19,6 +19,10 @@ const upload = multer({ storage: storage });
 
 router.get("/", adminController.renderdashboardPage);
 
+router.get("/users", adminController.getAllUsers)
+
+router.get("/viewApartment", adminController.getAllPosts);
+
 router.get("/upload", adminController.getUploadPage);
-router.post("/upload/post", upload.array("files", 4), adminController.PostUpload);
+router.post("/upload/post", upload.array("files", 4), adminController.postUpload);
 module.exports = router;

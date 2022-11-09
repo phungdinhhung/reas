@@ -1,0 +1,229 @@
+
+    <!-- CONTENT  -->
+    <section class="content">
+      <div class="content-header"></div>
+      <div class="content__body active ">
+        <div class="card">
+          <div class="card-header bg-primary ">
+            <h4>Quản lý tài khoản</h4>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Email</th>
+                  <th>Sdt</th>
+                  <th>Name</th>
+                  <th class="center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <th>1</th>
+                <td>minhdz142001@gmail.com</td>
+                <td>0565758488</td>
+                <td>Minh</td>
+                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+         <!-- DELETE modal  -->
+          <!-- Modal -->
+          <div class="modal fade" id="deleModalAcoount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete upload</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Tài khoản</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <th>1</th>
+                      <td>minhdz142001@gmail.com</td>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- Quan li Đăng tin -->
+      <div class="content__body ">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header bg-primary">
+                <h4>Đăng thông tin</h4>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                    <h5>Khu vực</h5>
+                    <h6 for="">Vùng</h6>
+                    <select class="form-control">
+                      <option value="1">Bắc</option>
+                      <option value="2">Trung</option>
+                      <option value="3">Nam</option>
+                    </select>
+                    <input class="form-control" type="text" placeholder="Thành phố">
+                    <input class="form-control" type="text" placeholder="Quận/Huyện">
+                    <input class="form-control" type="text" placeholder="Phường xã">
+                    <input class="form-control" type="text" placeholder="Số nhà">
+                  </div>
+                  <div class="form-group">
+                    <h6 for="">Thông tin mô tả</h6>
+                    <textarea class="form-control" name="noi_dung" id="" cols="30" rows="5"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <h6 for="">Giá căn hộ</h6>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <h6 for="">Diện tích căn hộ</h6>
+                    <input class="form-control" type="text">
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer text-right">
+                <button class="btn btn-primary "> Đăng tải</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDIT Modal -->
+          <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary text-center align-center">
+                  <h5 class="modal-title " id="exampleModalLabel">Edit upload</h5>
+                  <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <h5>Khu vực</h5>
+                      <label for="">Vùng</label>
+                      <select name="region" class="form-control">
+                        <option value="Miền Bắc">Miền Bắc</option>
+                        <option value="Miền Trung">Miền Trung</option>
+                        <option value="Miền Nam">Miền Nam</option>
+                      </select>
+                      <input class="form-control" name="city" type="text" placeholder="Thành phố">
+                      <input class="form-control" name="district" type="text" placeholder="Quận/Huyện">
+                      <input class="form-control" name="ward" type="text" placeholder="Phường xã">
+                      <input class="form-control" name="address" type="text" placeholder="Số nhà">
+                      <input class="form-control" name="beach" type="text" placeholder="Bãi Biển">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tiêu đề</label>
+                      <input class="form-control" name="heading" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Thông tin mô tả</label>
+                      <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Giá căn hộ</label>
+                      <input class="form-control" name="price" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Diện tích căn hộ</label>
+                      <input class="form-control" name="acreage" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="formFileMultiple" class="form-label">Chọn ảnh phòng</label>
+                      <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- DELETE modal  -->
+          <!-- Modal -->
+          <div class="modal fade" id="deleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete upload</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Khu vực</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <th>1</th>
+                      <td>Bắc</td>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CONTENT  -->
+
+
+  <script>
+    const $ = document.querySelector.bind(document)
+    const $$ = document.querySelectorAll.bind(document)
+
+    const navs = $$(".list__nameNav");
+    const content__bodys = $$(".content__body");
+
+    const contentActive = $(".content__body.active");
+
+    navs.forEach((nav, index) => {
+      const content = content__bodys[index];
+      nav.onclick = function () {
+        $(".list__nameNav.active").classList.remove("active");
+        $(".content__body.active").classList.remove("active");
+
+        this.classList.add("active")
+        content.classList.add("active")
+      }
+
+    });
+
+
+  </script>
+
+
+

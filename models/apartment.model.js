@@ -14,8 +14,8 @@ const like = new mongoose.Schema({
 const apartment = new mongoose.Schema(
   {
     price: {
-      type: String,
-      default: ""
+      type: Number,
+      default: 0,
     },
     region: {
         type: String,
@@ -53,6 +53,11 @@ const apartment = new mongoose.Schema(
       type: Object,
       default: "",
     },
+    priceMonth: {
+      type: Number,
+      default: 0,
+    },
+    phase: [String],
     listLike: [like],
     images: [image]
   },

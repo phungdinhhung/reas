@@ -2,9 +2,43 @@ const userModel = require("../models/user.model");
 const roleModel = require("../models/role.model");
 const apartmentModel = require("../models/apartment.model");
 const adminController = {
-    renderdashboardPage: (req, res) => {
-        res.render("../views/admin/dashboard", { title: "Dash Board" });
+    renderdashboardPage: async (req, res) => {
+      const renderUsers = await userModel.find({ deleted: false });
+      const post = await apartmentModel.find();
+      const numOfUser = renderUsers.length;
+      const numOfPost = post.length;
+        res.render("admin/cover", {
+          title: "Dashboard Admin",
+          content: "../admin/dashboard",
+          numOfUser,
+          numOfPost
+        });
 },
+  getAllUsers: async(req,res) => {
+    const renderUsers = await userModel.find();
+  // renderUsers.forEach((item, index) => {
+  //   if(item.username === "admin1") renderUsers.splice(index, 1);
+  // })
+  const roleUserId = await roleModel.find();
+  res.render("admin/cover", {
+    title: "Dashboard Admin",
+    content: "../admin/users",
+    renderUsers,
+    roleUserId,
+  });
+  },
+   getAllPosts: async(req, res) => {
+    try {
+      const post = await apartmentModel.find();
+      res.render("admin/cover", {
+        title: "Dashboard Admin",
+        content: "../admin/viewApartment",
+        post
+      });
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  },
     getUploadPage: async (req, res) => {
     try {
     const user = req.cookies.user;
@@ -15,12 +49,18 @@ const adminController = {
       role = await roleModel.findOne({ userId: userId });
       role = role.name;
     }
-    res.render("../views/admin/post", { user, role, userId});
+    res.render("admin/cover", { 
+      title: "Dashboard Admin",
+      content: "../admin/upload",
+        user,
+        role,
+        userId
+      });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
 },
-    PostUpload: async (req, res) => {
+    postUpload: async (req, res) => {
         try {
             const apartment = req.body;
             const address =
