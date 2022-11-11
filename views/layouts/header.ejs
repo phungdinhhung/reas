@@ -1,14 +1,14 @@
 
 <link rel="stylesheet" href="/styles/header.css"/>
 <!-- <link rel="stylesheet" href="styles/base.css"> -->
-<header class="site-header">
-        <div class="site-identity">
+<header class="header__site-header">
+        <div class="header__site-identity">
             <a href="#">
-                <div class="logo-name">REAS</div>
+                <div class="header__logo-name">REAS</div>
             </a>
         </div>
-        <div class="site-navigation">
-            <ul class="nav-header">
+        <div class="header__site-navigation">
+            <ul class="header__nav-header">
                 <%if(user) { %>
                 <li><a href="/">TRANG CHỦ</a></li>
                 <li><a href="/favoriteList/rooms">DANH SÁCH YÊU THÍCH</a></li>
@@ -16,13 +16,13 @@
                 <% } %>
             </ul>
         </div>
-        <div class="site-log">
+        <div class="header__site-log">
             <%if(user) { %>
-                <li><a href="/logout" class="nav-link">Đăng xuất</a></li>     
+                <li><a href="/logout" class="header__nav-link">Đăng xuất</a></li>     
                 <% } else { %>
-                <li><a href="/login" class="nav-link">Đăng nhập</a></li>
-                <li class="separate"></li>
-                <li><a href="/register" class="nav-link">Đăng ký</a></li>
+                <li><a href="/login" class="header__nav-link">Đăng nhập</a></li>
+                <li class="header__separate"></li>
+                <li><a href="/register" class="header__nav-link">Đăng ký</a></li>
                 <% } %>
             </div>
         

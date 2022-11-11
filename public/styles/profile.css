@@ -1,14 +1,9 @@
-*
-{
-  margin:auto;
-  padding:auto;
-  box-sizing: border-box;
-}
 
-.container{
+
+.profile__main {
     margin-top: 50px;
 }
-.card-header {
+.profile__card-header {
     margin-bottom: 0;
     background-color: rgba(0,0,0,.03);
     margin: 0 auto;
@@ -17,38 +12,38 @@
     text-align: center;
     border-bottom: none !important;
 }
-.card-body {
+.profile__card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
     margin: 0;
 }
-.avatar{
+.profile__avatar{
     height: 300px;
     border: 1px solid #000;
 }
-.avatar img {
+.profile__avatar img {
     height: 100%;
     width: 100%;
 }
-.form-group {
+.profile__form-group {
     margin-bottom: 1rem;
     display: flex;
 }
-.form-update-avt {
+.profile__form-update-avt {
     margin-top: 20px;
     text-align: center;
 }
-.btn-update-avt {
+.profile__btn-update-avt {
     font-size: 20px;
     border-radius: 3px;
 }
-.btn-update-content {
+.profile__btn-update-content {
     margin: 4px 5px;
     
 }
-.card-footer {
+.profile__card-footer {
     height: 6rem;
     padding: 0.75rem 1.25rem;
     background-color: rgba(0,0,0,.03);
@@ -56,7 +51,7 @@
     text-align: center;
 }
 
-.title-info-1{
+.profile__title-info-1{
     background: #055699;
     line-height: 30px;
     width: 100%;
@@ -64,7 +59,7 @@
     font-weight: bold;
     text-transform: uppercase;
 }
-.title-info-2{
+.profile__title-info-2{
     text-align: center;
     background: #055699;
     line-height: 30px;
@@ -73,7 +68,7 @@
     font-weight: bold;
     text-transform: uppercase;
 }
-.blueborline {
+.profile__blueborline {
     border-bottom: 2px solid #055699;
     background-color: #D4EBFD;
     font-weight: bold;
@@ -81,18 +76,18 @@
     padding: 5px 10px;
     margin-bottom: 10px;
 }
-.manager{
+.profile__manager{
     margin-top: 60px;
 }
-.info-name{
+.profile__info-name{
     margin: 20px auto;
     text-align: center;
 }
 
-.col-md-8 {
+.profile__col-md-8 {
     margin: 0;
 }
-.manager-info-title{
+.profile__manager-info-title{
     width: 100%;
     color: #666;
     font-size: 14px;
@@ -101,46 +96,46 @@
     background-color: #e8e8e8;
 }
 
-.manager-posts-link{
+.profile__manager-posts-link{
     font-size: 12px;
     color: black;
     text-decoration: none;
 }
-.manager-posts-link:hover{
+.profile__manager-posts-link:hover{
     color: red;
     text-decoration: none;
 
 }
-.information {
+.profile__information {
 }
-.infor-item {
+.profile__infor-item {
     display:flex;
     margin-bottom: 16px;
 }
-.infor-item h3 {
+.profile__infor-item h3 {
     margin: 0;
     padding: 0;
 }
-.infor-label {
+.profile__infor-label {
 }
-.infor-content {
+.profile__infor-content {
 }
-.infor-label,
-.infor-item {
+.profile__infor-label,
+.profile__infor-item {
     font-size: 18px;
     line-height: 2;
 }
-.email {
+.profile__email {
     margin-left: 150px;
 }
-.fullName {
+.profile__fullName {
     margin-left: 65px;
 }
-.phoneNumber {
+.profile__phoneNumber {
     margin-left: 89px;
 }
 
-.btn-update {
+.profile__btn-update {
 
     margin-right: 16px;
     min-width: 100px;
@@ -154,10 +149,10 @@
     border: 0;
     font-weight: bold;
 }
-.btn-update:hover {
+.profile__btn-update:hover {
     opacity: 0.8;
 }
-.form-group .form-control {
+.profile__form-group .profile__form-control {
     font-size: 1.6rem;
     height: 4rem;
 }

@@ -13,26 +13,26 @@
 </head>
 <body>
     <%- include('../layouts/header')%>
-   <div class="container">
-        <div class="main">
-                <div class="row ">
+   <div class="profile__container grid wide">
+        <div class="profile__main">
+                <div class="row">
                     <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="title-info-1">Picture</h2>
+                        <div class="profile__card">
+                            <div class="profile__card-header">
+                                <h2 class="profile__title-info-1">Picture</h2>
                             </div>
-                            <div class="card-body">
-                                <div class="avatar">
+                            <div class="profile__card-body">
+                                <div class="profile__avatar">
                                     <img src="<%=user.avatar%>" alt="Hình ảnh đại diện">
                                 </div>
-                                <form method="POST" action="profile/avatar" enctype="multipart/form-data" class="form-update-avt">
-                                    <div class="form-group">
-                                      <input type="file" name="file" class="form-control" id="customFile"/>
+                                <form method="POST" action="profile/avatar" enctype="multipart/form-data" class="profile__form-update-avt">
+                                    <div class="profile__form-group">
+                                      <input type="file" name="file" class="profile__form-control" id="customFile"/>
                                     </div>
                                   
                             </div>
-                            <div class="card-footer">
-                                <button class="btn-update-avt btn-outline-success" type="submit">
+                            <div class="profile__card-footer">
+                                <button class="profile__btn-update-avt btn-outline-success" type="submit">
                                     Cập nhật
                                 </button>
                             </div>
@@ -40,38 +40,38 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2 class="title-info-2">Thông tin cá nhân</h2>
+                        <div class="profile__card">
+                            <div class="profile__card-header">
+                                <h2 class="profile__title-info-2">Thông tin cá nhân</h2>
                             </div>
-                            <div class="card-body">
-                                    <ul class="information">
-                                        <li class="infor-item">
-                                            <h3 class="infor-label">Email</h3>
-                                            <div class="email infor-content"><%=user.email%> </div>
+                            <div class="profile__card-body">
+                                    <ul class="profile__information">
+                                        <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Email</h3>
+                                            <div class="profile__email infor-content"><%=user.email%> </div>
                                         </li>
                                         
-                                        <li class="infor-item">
-                                            <h3 class="infor-label">Tên người dùng</h3>
-                                            <div class="fullName infor-content"><%=user.fullname%> </div>
+                                        <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Tên người dùng</h3>
+                                            <div class="profile__fullName infor-content"><%=user.fullname%> </div>
                                         </li>
-                                        <li class="infor-item">
-                                            <h3 class="infor-label">Giới tính</h3>
-                                            <div class="phoneNumber infor-content">Nam</div>
+                                        <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Giới tính</h3>
+                                            <div class="profile__phoneNumber infor-content">Nam</div>
                                         </li>
-                                        <li class="infor-item">
-                                            <h3 class="infor-label">Địa chỉ</h3>
-                                            <div class="phoneNumber infor-content"></div>
+                                        <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Địa chỉ</h3>
+                                            <div class="profile__phoneNumber infor-content"></div>
                                         </li>
-                                        <li class="infor-item">
-                                            <h3 class="infor-label">Số điện thoại</h3>
-                                            <div class="phoneNumber infor-content"><%=user.phonenumber%> </div>
+                                        <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Số điện thoại</h3>
+                                            <div class="profile__phoneNumber infor-content"><%=user.phonenumber%> </div>
                                         </li>
                                     </ul>
                             </div>
-                            <div class="card-footer">
-                                <button class="btn-update">Chỉnh sửa</button>
-                                <button class="btn-update">Đổi mật khẩu</button>
+                            <div class="profile__card-footer">
+                                <button class="profile__btn-update">Chỉnh sửa</button>
+                                <button class="profile__btn-update">Đổi mật khẩu</button>
                             </div>
                         </div>
                     </div>
