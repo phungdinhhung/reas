@@ -204,3 +204,116 @@ body {
     font-size: 2rem;
 }
 
+
+
+
+.bannerMain{
+    width: 100%;
+    height: 100%;
+}
+
+.bannerCover{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+   
+}
+.banner__backgroud{
+    width: 100%;
+    height: 100%;
+}
+.bannerInnerCover{
+    position: absolute;
+    padding: 180px;
+}
+.bannerTitle{
+    width: 100%;
+    height: 100%;
+    margin: 0px 0 70px 0;
+}
+
+.titleLarge{
+    font-size: 36px;
+    margin: 50px 0;
+    width: 50%;
+}
+
+.titleSmall{
+    display: block;
+    font-size: 24px;
+    width: 80%
+}
+
+.bannerSearchCard{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.inputAdress{
+    display: flex;
+    padding: 18px;
+    
+}
+.inputAdress__inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15px;
+}
+.iconAdress{
+    font-size: 24px;
+    padding:  18px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    background: #EBFCFF ;
+}
+
+.nameAdress{
+    font-size: 20px;
+    max-width: 3px 0;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.inputNameAdress{
+    padding: 5px 5px 5px 0;
+    font-size: 16px;
+    margin-top: 3px;
+}
+
+.inputPrice{
+    font-size: 24px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.inputType{
+    font-size: 24px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+}
+.banner__btnSearch{
+    border: none;
+    background: transparent;
+}
+.banner__btnSearch i{
+    display: flex;
+    color: white;
+    width: 100%;
+    font-size: 33px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background: black;
+    border-radius: 20px;
+    cursor: pointer;
+}

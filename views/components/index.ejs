@@ -11,7 +11,58 @@
 </head>
 <body>
     <%- include('../layouts/header')%>
-        <img src="https://img.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fstatic-christiesrealestate-cms-production.gtsstatic.net%2Fresources%2Fv_4_19_0_324%2Fsiteresources%2Fmy%20folder%2Fresponsive%2Flifestyles%2Fbeach%2Fchelston10.jpg&option=N&permitphotoenlargement=false&w=1200&fallbackimageurl=https%3A%2F%2Fstatic-christiesrealestate-cms-production.gtsstatic.net%2Fresources%2Fv_4_19_0_324%2Flayouts%2Fcommon%2Fimages%2Fno-photo.jpg" alt="" class="home__img-header">
+    <section class="bannerSection">
+        <div class="bannerMain">
+            <div class="bannerCover">
+                <img src="http://cdn.reatimes.vn/mediav2/media_old/upload/VFpE5EwP2SxNQ4uNTsAsNw/files/2020/02/emagazine/Nghi%20duong%202020/Western%20Premier%20Sapphire%20Ha%20Long%204.jpg" alt="" class="banner__backgroud">
+                <div class="bannerInnerCover">
+                    <div class="bannerTitle">
+                        <div class="titleLarge">
+                            <h1>Discover a place you will love it to live </h1>
+                        </div>
+                        <span class="titleSmall">
+                                Connect with more than 75 million renter looking for new homes using for our comprehensive marketing platform
+                        </span>
+                    </div>
+                    <div class="bannerSearchCard grid">
+                        <div class="inputAdress">
+                            <div class="iconAdress">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="inputAdress__inner">
+                                <span class="nameAdress">Location</span>
+                                <input class="inputNameAdress" type="text" placeholder="Bali bali Indonesia" >
+                            </div>
+                        </div>
+        
+                        <div class="inputPrice">
+                            <div class="iconAdress">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                            </div>
+                            <div class="inputAdress__inner">
+                                <span class="nameAdress">Price</span>
+                                <input class="inputNameAdress" type="number" placeholder="$5000-$20000" >
+                            </div>
+                        </div>
+        
+                        <div class="inputType">
+                            <div class="iconAdress">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div class="inputAdress__inner">
+                                <span class="nameAdress">Area</span>
+                                <input class="inputNameAdress" type="text" placeholder="200m2" >
+                            </div>
+                        </div>
+
+                        <button class="banner__btnSearch">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
     <div class="grid wide home__container">
         <section class="home__intro row">
             <div class="col l-6">
@@ -27,7 +78,6 @@
                 </div>
             </div>
         </section>
-        <%- include('../layouts/search')%>
         <section class="home__regions">
 
             <div class="home__northern space">

@@ -56,27 +56,108 @@
                                             <div class="profile__fullName infor-content"><%=user.fullname%> </div>
                                         </li>
                                         <li class="profile__infor-item">
-                                            <h3 class="profile__infor-label">Giới tính</h3>
-                                            <div class="profile__phoneNumber infor-content">Nam</div>
-                                        </li>
-                                        <li class="profile__infor-item">
-                                            <h3 class="profile__infor-label">Địa chỉ</h3>
-                                            <div class="profile__phoneNumber infor-content"></div>
-                                        </li>
-                                        <li class="profile__infor-item">
                                             <h3 class="profile__infor-label">Số điện thoại</h3>
                                             <div class="profile__phoneNumber infor-content"><%=user.phonenumber%> </div>
                                         </li>
                                     </ul>
                             </div>
                             <div class="profile__card-footer">
-                                <button class="profile__btn-update">Chỉnh sửa</button>
-                                <button class="profile__btn-update">Đổi mật khẩu</button>
+                                <button class="profile__btn-update" id="myBtn">Chỉnh sửa</button>
+                                <button class="profile__btn-update" id="myBtn__password">Đổi mật khẩu</button>
+                                <!-- Trigger/Open The Modal -->    
+                                        <!-- The Modal -->
+                                <div id="myModal" class="modal">
+                                    <!-- Modal content -->
+                                        <div class="modal--content">
+                                           <span class="close">&times;</span>
+                                            <h1>Thay Đổi Thông Tin</h1>
+                                            <div class="row">
+                                                <div class="col l-6">
+                                                    <h3 class="profile__infor-label">Tên người dùng:</h3>
+                                                    <h3 class="profile__infor-label">Số điện thoại:</h3>
+                                                </div>
+                                                <div class="col l-6">
+                                                    <div class="edit__profile">
+                                                        <form action="/profile" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="user_id" value="<%=user._id%>">
+                                                            <input type="text" name="fullname" value="<%=user.fullname%>" placeholder="Nhập tên" class="input__update">
+                                                            <input type="text" name="phonenumber" value="<%=user.phonenumber%>" placeholder="Nhập Số điện thoại" class="input__update">
+                                                        <button type="submit" value="Submit" class="profile__btn-update">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       </div>
+                                       <div id="myModal__password" class="modal__password">
+                                        <!-- Modal content -->
+                                            <div class="modal--content">
+                                               <span class="close__password">&times;</span>
+                                                <h1>Thay Đổi Thông Tin</h1>
+                                                <div class="row">
+                                                    <div class="col l-6">
+                                                        <h3 class="profile__infor-label">Mật khẩu cũ:</h3>
+                                                        <h3 class="profile__infor-label">Mật khẩu mới:</h3>
+                                                        <h3 class="profile__infor-label">Nhập lại mật khẩu</h3>
+                                                    </div>
+                                                    <div class="col l-6">
+                                                        <div class="edit__profile">
+                                                            <form action="/profile" method="POST" enctype="multipart/form-data">
+                                                                <input type="text" name="fullname" value="<%=user.fullname%>" placeholder="Nhập tên" class="input__update">
+                                                                <input type="text" name="phonenumber" value="<%=user.phonenumber%>" placeholder="Nhập Số điện thoại" class="input__update">
+                                                            <button type="submit" value="Submit" class="profile__btn-update">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           </div>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
    </div>
+   <script>
+    // Get the modal
+var modal = document.getElementById("myModal");
+var modalpass = document.getElementById("myModal__password");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btnpass = document.getElementById("myBtn__password");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var spanpass = document.getElementsByClassName("close__password");
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+btnpass.onclick = function() {
+  modalpass.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+spanpass.onclick = function() {
+  modalpass.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+window.onclick = function(event) {
+  if (event.target == modalpass) {
+    modalpass.style.display = "none";
+  }
+}
+   </script>
 </body>
 </html>

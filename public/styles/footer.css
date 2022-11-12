@@ -1,100 +1,134 @@
-.footer {
-    width: 100%;
-    height: 120px;
-    background-color: black;
-    text-align: center;
-    box-shadow: 0 0 10px cyan;
-  }
-  .team {
-    width: 10%;
-    height: 150px;
-    float: left;
-  }
-  .team a {
-    width: 10%;
-    height: 150px;
-    text-align: center;
-    font-size: 30px;
-    float: left;
-    color: aqua;
-    text-decoration: none;
-    animation: neon2 1.5s ease-in-out infinite alternate;
-  }
-  
-  .contact {
-    width: 45%;
-    height: 150px;
-    text-align: left;
-    float: left;
-  }
-  .contact .p1 {
-    color: white;
-    font-size: 15px;
-    padding-top: 20px;
-    padding-left: 5px;
-  }
-  .contact .p {
-    color: white;
-    font-size: 15px;
-    padding-top: 10px;
-    padding-left: 5px;
-  }
-  .mxh {
-    width: 45%;
-    height: 150px;
-    float: left;
-    text-align: center;
-    display: inline-block;
-  }
-  .mxh .p1 {
-    color: white;
-    font-size: 15px;
-    padding-top: 20px;
-    padding-left: 15px;
-  }
-  .mxh .p {
-    color: white;
-    font-size: 15px;
-    padding-top: 10px;
-    padding-left: 5px;
-  }
-  
-  .bx {
-    font-size: 20px;
-    color: aqua;
-    padding-right: 5px;
-  }
-  
-  @keyframes neon1 {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
-        0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
-        0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
-    }
-  }
-  
-  @keyframes neon2 {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228dff,
-        0 0 70px #228dff, 0 0 80px #228dff, 0 0 100px #228dff, 0 0 150px #228dff;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228dff,
-        0 0 35px #228dff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
-    }
-  }
-  
-  @keyframes neon3 {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
-        0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
-        0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
-    }
-  }
-  
+
+
+.footer{
+  display: flex;
+  width: 100%;
+  height: 300px;
+  background: #1B1D32;
+}
+
+.card{
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 20px;
+}
+
+.secContent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contentLeft{
+  display: flex;
+  /* justify-content: center; */
+  width: 30%;
+  height: 100%;
+  flex-direction: column;
+  padding: 20px 100px 0px 100px;
+}
+
+.logo{
+  font-size: 3rem;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.contentLeft__text{
+  width: 100%;
+  height: 100%;
+}
+
+.address{
+  margin: 5px 0;
+}
+.address i{
+  font-size: 16px;
+  margin-right: 10px;
+}
+.address span{
+  font-size: 15px;
+}
+
+.phone{
+  margin: 10px 0;
+}
+
+.phone i{
+  font-size: 16px;
+  margin-right: 10px;
+}
+.phone span{
+  font-size: 15px;
+}
+
+.contact{
+  margin-top: 20px;
+  font-size: 18px;
+  display: flex;
+}
+.contact__icon{
+  padding: 5px 20px;
+}
+.contact__icon:hover{
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.contentRight{
+    display: flex;
+    margin: 0px 50px 0 10px ;
+}
+.contentRight h6{
+  font-weight: 400;
+  font-size: 20px;
+}
+.contentRight li{
+  margin: 10px 0;
+  font-size: 14px;
+}
+.contentRight li:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.contentRight_2{
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 20px 10px ;
+  height: 20px;
+
+}
+.contentRight_2 h6{
+
+}
+.inputDiv{
+  margin-top: 30px;
+  padding: 5px 10px;
+  border: 1px solid #D1D1D1;
+  border-radius:10px ;
+}
+
+.inputDiv input{
+  font-size: 18px;
+}
+.send_icon{
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+  background-color: red;
+  border-radius: 4px;
+  border: none;
+}
+
+.coppy{
+
+}

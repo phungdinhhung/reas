@@ -1,29 +1,35 @@
 
 <link rel="stylesheet" href="/styles/header.css"/>
 <!-- <link rel="stylesheet" href="styles/base.css"> -->
-<header class="header__site-header">
-        <div class="header__site-identity">
+<div class="header__header-main ">
+    <div class="site-header  ">
+        <div class="site-identity">
             <a href="#">
-                <div class="header__logo-name">REAS</div>
+                <!-- <div class="logo-icon">
+                <i class="fa-solid fa-plane-departure"></i>
+            </div> -->
+                <div class="logo-name">REAS</div>
             </a>
         </div>
-        <div class="header__site-navigation">
-            <ul class="header__nav-header">
+        <div class="site-navigation">
+            <ul class="nav-header">
                 <%if(user) { %>
-                <li><a href="/">TRANG CHỦ</a></li>
-                <li><a href="/favoriteList/rooms">DANH SÁCH YÊU THÍCH</a></li>
-                <li><a href="/profile">THÔNG TIN CÁ NHÂN</a></li>
-                <% } %>
+                    <li class="nav-header_item "><a class="" href="/">Trang chủ</a></li>
+                    <li class="nav-header_item"><a href="/favoriteList/rooms">Danh sách yêu thích</a></li>
+                    <li class="nav-header_item"><a href="/profile">Thông tin cá nhân</a></li>
+                    <% } %>
             </ul>
         </div>
-        <div class="header__site-log">
+        <div class="site-log">
             <%if(user) { %>
-                <li><a href="/logout" class="header__nav-link">Đăng xuất</a></li>     
+                <li><a href="/logout" class="nav-link">Đăng xuất</a></li>
                 <% } else { %>
-                <li><a href="/login" class="header__nav-link">Đăng nhập</a></li>
-                <li class="header__separate"></li>
-                <li><a href="/register" class="header__nav-link">Đăng ký</a></li>
-                <% } %>
-            </div>
+                    <li><a href="/login" class="nav-link">Đăng nhập</a></li>
+                    <li class="separate"></li>
+                    <li><a href="/register" class="nav-link">Đăng ký</a></li>
+                    <% } %>
+        </div>
+
         
-</header>
+    </div>
+</div>

@@ -44,7 +44,24 @@ const profileController = {
     }
 },
     updateInfor: async (req, res) => { 
-        
+        try {
+            const userId = req.cookies.user.user_id;
+            const filter = {_id: userId};
+            console.log(userId);
+            const userData = await UserModel.findOneAndUpdate(filter, {$set:{fullname: req.body.fullname, phonenumber: req.body.phonenumber}}, {new: true});
+            // const userInfor = await UserModel.find({_id: userId});
+            await userData.save();
+            console.log(userData);
+            console.log(userData._id);
+            console.log(userData.fullname);
+            console.log(userData.phonenumber);
+            res.redirect("/profile")
+        }catch(err) {
+            console.log(err.message);
+        }
+    },
+    changePassword: async (req, res) => {
+
     }
 }
 

@@ -276,7 +276,6 @@ td {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   color: #222;
-  text-align: center;
 }
 
 .student {
@@ -504,4 +503,4 @@ td {
 .image-room img {
   width: 100%;
   height: 100%;
-}
+} 
