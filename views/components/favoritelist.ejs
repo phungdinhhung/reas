@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/favoritelist.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include('../layouts/header') %>
+    <section>
+        <div class="favorite__main grid wide">
+            <div class="favorite__container">
+                <div class="card mt-3">
+                    <div class="row ">
+                            <div class="col-md-9 ">
+                                <h5 class="align-middle ml-3 mt-1">Ban co <span class="text-danger">3</span> bds yeu thich</h5>
+                            </div>
+                            <div class="col-md-3 text-right " >
+                                <button class="btn btn-primary mr-2">Xoa het</buttonc>
+                            </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="./assets/img/1.jpg" alt="" class="img-thumbnail">
+                        </div>
+                        <div class="col-md-8 ">
+                            <h6 >CĂN HỘ 2PN FULL NỘI THẤT XỊN MƯỜNG THANH VIỄN TRIỀU - 1.4 TỶ</h6>
+                            <div class="content__inner__card pt-3">
+                                <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info">1.4 ty</span>
+                                <span class="p-1 border border-secondary rounded ml-4 bg-gradient-info" >58m2</span>
+                                <ul class="d-flex mt-3 mb-1">
+                                    <li class="mr-3"><i class="fa-solid fa-book"></i> Nha chung cu</li>
+                                    <li class="mr-3"><i class="fa-solid fa-bed"></i> 2 </li>
+                                    <li class="mr-3"><i class="fa-solid fa-sink"></i> 2</li>
+                                </ul>
+                                <div class="content__address">
+                                    <i class="fa-solid fa-location-dot mr-1"></i>Mường Thanh Viễn Triều, P.Vĩnh Phước, Tp.Nha Trang, KH
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2 mt-3   ">
+                            <div class="date text-center">
+                                11/11/2022
+                            </div>
+                            <div class="favorite__container__card__inner text-center mt-2">
+                                <img src="./assets/img/2.jpg" alt="" class="favorite__container__card__inner_avatar">
+                            </div>
+                            <div class="name text-center mt-1">
+                                Duan
+                            </div>
+                            <!-- <div class="text-right">
+                                <button class="btn btn-primary  ">
+                                    <i class="fa-solid fa-arrow-down-wide-short "></i>
+                                </button>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="./assets/img/1.jpg" alt="" class="img-thumbnail">
+                        </div>
+                        <div class="col-md-8 ">
+                            <h6 >CĂN HỘ 2PN FULL NỘI THẤT XỊN MƯỜNG THANH VIỄN TRIỀU - 1.4 TỶ</h6>
+                            <div class="content__inner__card pt-3">
+                                <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info">1.4 ty</span>
+                                <span class="p-1 border border-secondary rounded ml-4 bg-gradient-info" >58m2</span>
+                                <ul class="d-flex mt-3 mb-1">
+                                    <li class="mr-3"><i class="fa-solid fa-book"></i> Nha chung cu</li>
+                                    <li class="mr-3"><i class="fa-solid fa-bed"></i> 2 </li>
+                                    <li class="mr-3"><i class="fa-solid fa-sink"></i> 2</li>
+                                </ul>
+                                <div class="content__address">
+                                    <i class="fa-solid fa-location-dot mr-1"></i>Mường Thanh Viễn Triều, P.Vĩnh Phước, Tp.Nha Trang, KH
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2 mt-3   ">
+                            <div class="date text-center">
+                                11/11/2022
+                            </div>
+                            <div class="favorite__container__card__inner text-center mt-2">
+                                <img src="./assets/img/2.jpg" alt="" class="favorite__container__card__inner_avatar">
+                            </div>
+                            <div class="name text-center mt-1">
+                                Duan
+                            </div>
+                            <!-- <div class="text-right">
+                                <button class="btn btn-primary  ">
+                                    <i class="fa-solid fa-arrow-down-wide-short "></i>
+                                </button>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('../layouts/footer') %>
+
+  </body>
+</html>

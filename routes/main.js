@@ -5,6 +5,7 @@ const profileRouter = require('./profile');
 const logOutRouter = require('./logOut');
 const adminRouter = require('./admin');
 const apartmentRouter = require('./apartment');
+const favoriteRouter = require('./favoritelist');
 function route(app) {
     app.use("/", homeRouter);
     app.use("/login", authRouter);
@@ -13,6 +14,7 @@ function route(app) {
     app.use("/logout", logOutRouter);
     app.use("/dashboard", adminRouter);
     app.use("/detail", apartmentRouter);
+    app.use("/favorite", favoriteRouter);
 }
 
 module.exports = route;

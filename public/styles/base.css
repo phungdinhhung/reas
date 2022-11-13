@@ -24,6 +24,11 @@ html {
     display: none;
 }
 
+input {
+    border: none;
+    outline: none;
+  }
+
 
 
 /* Modal */

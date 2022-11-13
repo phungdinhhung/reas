@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model")
+const RoleModel = require("../models/role.model")
 const bcrypt = require("bcrypt");
 
 const profileController = {
@@ -61,7 +62,25 @@ const profileController = {
         }
     },
     changePassword: async (req, res) => {
-
+        try {
+            const userId = req.cookies.user.user_id;
+            if(userId) {
+                user = req.cookies.user.user_id;
+            }
+            const userInfor = await UserModel.find({_id: userId});
+            const oldPassword = req.body.oldPassword;
+            const validPassword = await bcrypt.compare(
+                oldPassword,
+                userInfor.password
+            );
+            if(!validPassword) {
+                res.redirect("/profile");
+            } else {
+                res.redirect("/profile");
+            }
+        } catch(error) {
+            console.log(error);
+        }
     }
 }
 

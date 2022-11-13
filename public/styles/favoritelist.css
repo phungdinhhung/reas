@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+  
+  .favorite__main {
+    margin: 5rem 0;
+  }
+  .favorite__container {
+    padding: 0 10rem;
+  }
+  
+  .favorite__container__card__inner_avatar {
+    border-radius: 50%;
+    width: 50px;
+  }
+  
