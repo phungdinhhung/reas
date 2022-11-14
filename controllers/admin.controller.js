@@ -30,19 +30,18 @@ const adminController = {
   }
 },
   deleteUsers: async(req,res) => {
-      const renderUsers = await UserModel.find();
       await UserModel.deleteOne({ _id: req.query.id })
       .then(() => {
-        res.redirect("../admin/users")
-      });
+        res.redirect("/dashboard/users")
+      })
       // res.render("admin/cover", {
       //   title: "Dashboard Admin",
       //   content: "../admin/users",
       //   renderUsers,
       // });
-     .catch(err) => {
+     .catch((err) => {
       res.status(500).send(err);
-    };
+    });
 },
 //  End Management Users Page
 
@@ -61,21 +60,13 @@ const adminController = {
     }
 },
   deleteApartment: async(req, res) => {
-    try {
-      const apartmentId = req.query.id;
-      const renderApartment = await apartmentModel.find();
-      await apartmentModel.deleteOne({
-         _id: apartmentId,
-        })
-
-      res.render("admin/cover", {
-        title: "Dashboard Admin",
-        content: "../admin/viewApartment",
-        renderApartment,
-      });
-    }catch(err) {
-      console.log(err)
-    }
+      await apartmentModel.deleteOne({_id: req.query.id})
+      .then(() => {
+        res.redirect("/dashboard/viewApartment")
+      })
+      .catch((err) => {
+        res.status(505).send(err)
+      })
 },
 //  End Management Apartment Page
 
@@ -142,7 +133,7 @@ const adminController = {
                         // res.status(200).render("manageapartment", {title: "Dream Boarding House", listapartment, current: page, pages: Math.ceil(count / perPage), user, role, listapartment, showSearch, numberNotification})
                     })
                 });
-                res.status(200).json({msg: "Success"})
+                res.redirect("/dashboard/viewApartment")
           } catch (error) {
             console.log(error);
             res.status(500).json({ msg: error });
