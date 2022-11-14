@@ -10,7 +10,7 @@ const apartmentController = {
             const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
             const userInfor = await userModel.findOne({ _id: apartment.userId });
             // const listCmt = await Comment.find({roomId: roomId.id});
-            const phoneNumber = userInfor.phoneNumber;
+            const phoneNumber = userInfor.phonenumber;
             let userId;
             if (user) {
               userId = req.cookies.user.user_id;

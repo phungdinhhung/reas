@@ -18,85 +18,26 @@
                   <th class="center">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
-              <tbody>
-                <th>1</th>
-                <td>minhdz142001@gmail.com</td>
-                <td>0565758488</td>
-                <td>Minh</td>
-                <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleModalAcoount">Delete</button></td>
-              </tbody>
+              <% renderUsers.forEach((user, index) => { %>
+                <% if(user.email !== 'phungdinhhung1002@gmail.com') {%>
+                <tbody>
+                  <th><%= index %></th>
+                  <td><%= user.email %></td>
+                  <td><%= user.phonenumber %></td>
+                  <td><%= user.fullname %></td>
+                  <td>
+                    <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
+                  </td>
+                  </tbody>
+                <% } %>
+              <% })%>
             </table>
           </div>
           
         </div>
          <!-- DELETE modal  -->
           <!-- Modal -->
-          <div class="modal fade" id="deleModalAcoount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header bg-primary">
-                  <h5 class="modal-title" id="exampleModalLabel">Delete upload</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>STT</th>
-                        <th>Tài khoản</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <th>1</th>
-                      <td>minhdz142001@gmail.com</td>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
       </div>
 
   <script>

@@ -1,9 +1,9 @@
-const userModel = require("../models/user.model");
+const UserModel = require("../models/user.model");
 const roleModel = require("../models/role.model");
 const apartmentModel = require("../models/apartment.model");
 const adminController = {
     renderdashboardPage: async (req, res) => {
-      const renderUsers = await userModel.find({ deleted: false });
+      const renderUsers = await UserModel.find({ deleted: false });
       const post = await apartmentModel.find();
       const numOfUser = renderUsers.length;
       const numOfPost = post.length;
@@ -14,31 +14,73 @@ const adminController = {
           numOfPost
         });
 },
+
+
+//  Start Management Users Page
   getAllUsers: async(req,res) => {
-    const renderUsers = await userModel.find();
-  // renderUsers.forEach((item, index) => {
-  //   if(item.username === "admin1") renderUsers.splice(index, 1);
-  // })
-  const roleUserId = await roleModel.find();
-  res.render("admin/cover", {
-    title: "Dashboard Admin",
-    content: "../admin/users",
-    renderUsers,
-    roleUserId,
-  });
-  },
+  try {
+    const renderUsers = await UserModel.find();
+    res.render("admin/cover", {
+      title: "Dashboard Admin",
+      content: "../admin/users",
+      renderUsers,
+    });
+  }catch(err) {
+    console.log(err)
+  }
+},
+  deleteUsers: async(req,res) => {
+      const renderUsers = await UserModel.find();
+      await UserModel.deleteOne({ _id: req.query.id })
+      .then(() => {
+        res.redirect("../admin/users")
+      });
+      // res.render("admin/cover", {
+      //   title: "Dashboard Admin",
+      //   content: "../admin/users",
+      //   renderUsers,
+      // });
+     .catch(err) => {
+      res.status(500).send(err);
+    };
+},
+//  End Management Users Page
+
+
+// Start Management Apartment Page
    getAllPosts: async(req, res) => {
     try {
-      const post = await apartmentModel.find();
+      const renderApartment = await apartmentModel.find();
       res.render("admin/cover", {
         title: "Dashboard Admin",
         content: "../admin/viewApartment",
-        post
+        renderApartment
       });
     } catch (error) {
       console.log('error: ', error);
     }
-  },
+},
+  deleteApartment: async(req, res) => {
+    try {
+      const apartmentId = req.query.id;
+      const renderApartment = await apartmentModel.find();
+      await apartmentModel.deleteOne({
+         _id: apartmentId,
+        })
+
+      res.render("admin/cover", {
+        title: "Dashboard Admin",
+        content: "../admin/viewApartment",
+        renderApartment,
+      });
+    }catch(err) {
+      console.log(err)
+    }
+},
+//  End Management Apartment Page
+
+
+//  Start Management Posts Apartment Page
     getUploadPage: async (req, res) => {
     try {
     const user = req.cookies.user;
@@ -106,6 +148,10 @@ const adminController = {
             res.status(500).json({ msg: error });
           }
 },
+//  End Management Posts Apartment Page  
+
+
+
 }
 
 module.exports = adminController;

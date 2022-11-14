@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model")
+const RoleModel = require("../models/role.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -7,6 +8,11 @@ const authController = {
         const { email, password } = req.body;
         try {
             const user = await UserModel.findOne({email: email});
+            if(user) {
+              role = await RoleModel.findOne({
+                userId: user.id
+              })
+            }
             if(!user) {
                 return res.status(404).render("../views/layouts/login");
             }
@@ -57,7 +63,11 @@ const authController = {
                     httpOnly: true,
                     sameSite: "strict",
                   });
-                  res.redirect("/")
+                  if(role.name == "customer") {
+                    res.redirect("/")
+                  } else {
+                    res.redirect("/dashboard")
+                  }
             }
         } catch(err) {
             console.log(err);

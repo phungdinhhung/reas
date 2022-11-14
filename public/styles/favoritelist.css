@@ -8,7 +8,11 @@
     text-decoration: none;
     list-style: none;
   }
-  
+  input{
+    border: none;
+    outline: none;
+  }
+
   .favorite__main {
     margin: 5rem 0;
   }
@@ -19,5 +23,24 @@
   .favorite__container__card__inner_avatar {
     border-radius: 50%;
     width: 50px;
+  }
+  
+  .buttonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .button__delete_favorite {
+    color: #fff;
+    background: #dc3545;
+    border: none;
+    padding: 6px 20px;
+    border-radius: 7px;
+  }
+  .button__delete_favorite:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
   }
   
