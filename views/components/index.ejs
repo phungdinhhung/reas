@@ -14,7 +14,7 @@
     <section class="bannerSection">
         <div class="bannerMain">
             <div class="bannerCover">
-                <img src="http://cdn.reatimes.vn/mediav2/media_old/upload/VFpE5EwP2SxNQ4uNTsAsNw/files/2020/02/emagazine/Nghi%20duong%202020/Western%20Premier%20Sapphire%20Ha%20Long%204.jpg" alt="" class="banner__backgroud">
+                <img src="https://www.investopedia.com/thmb/IjOv1uJPKFinfi2Gj-v35-Zx_Ns=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/corner-of-an-apartment-building--dubai--uae-1088862160-3aeaa90992214854896ecee148258fb9.jpg" alt="" class="banner__backgroud">
                 <div class="bannerInnerCover">
                     <div class="bannerTitle">
                         <div class="titleLarge">
@@ -94,21 +94,10 @@
                                 </div>
                                 <div class="home__info">
                                     <div class="home__infor-header"><%=listRegion1[i].heading%></div>
-                                    <div class="home__infor-beach"><%=listRegion1[i].city%></div>
-                                    <div class="home__infor-font">
-                                        <i class="home__infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="home__infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="home__infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
+                                    <div class="home__infor-beach"> Bãi biển Bãi biển <%=listRegion1[i].beach%></div>
                                     <div class="home__infor-address">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
+                                        <%= listRegion1[i].address %></div>
                                     <a href="/detail/<%=listRegion1[i]._id%>" class="home__apartment-detail">Xem chi tiết</a>
                                 </div>
                             </div>
@@ -131,48 +120,11 @@
                                 </div>
                                 <div class="home__info">
                                     <div class="home__infor-header"><%=listRegion2[i].heading%></div>
-                                    <div class="home__infor-beach"><%=listRegion1[i].city%></div>
-                                    <div class="home__infor-font">
-                                        <i class="home__infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="home__infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="home__infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
+                                    <div class="home__infor-beach"> Bãi biển <%=listRegion2[i].beach%></div>
                                     <div class="home__infor-address">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
-                                    <a href="" class="home__apartment-detail">Xem chi tiết</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l-3">
-                            <div class="home__apartment-item">
-                                <div class="home__apartment-image">
-                                    <img src="https://media-e1.s3.amazonaws.com/brt/styles/large/s3/snippets/snip_6.png" alt="">
-                                </div>
-                                <div class="home__info">
-                                    <div class="home__infor-header">Tên khu nghỉ dưỡng</div>
-                                    <div class="home__infor-beach">Tên Bãi biển </div>
-                                    <div class="home__infor-font">
-                                        <i class="home__infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="home__infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="home__infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
-                                    <div class="home__infor-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
-                                    <a href="" class="home__apartment-detail">Xem chi tiết</a>
+                                        <%= listRegion2[i].address %></div>
+                                    <a href="/detail/<%=listRegion2[i]._id%>" class="home__apartment-detail">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>
@@ -186,33 +138,23 @@
                 </div>
                 <div class="home__list-apartment">
                     <div class="row">
-
+                        <%for(let i = 0; i < listRegion3.length; i++) {%>
                         <div class="col l-3">
                             <div class="home__apartment-item">
                                 <div class="home__apartment-image">
-                                    <img src="https://media-e1.s3.amazonaws.com/brt/styles/large/s3/snippets/snip_6.png" alt="">
+                                    <img src="<%= listRegion3[i].images[0].url %>" alt="">
                                 </div>
                                 <div class="home__info">
-                                    <div class="home__infor-header">Tên khu nghỉ dưỡng</div>
-                                    <div class="home__infor-beach">Tên Bãi biển </div>
-                                    <div class="home__infor-font">
-                                        <i class="home__infor-icon fa-solid fa-house">
-                                            <span>0M</span>
-                                        </i>   
-                                         <i class="home__infor-icon fa-solid fa-bed">
-                                            <span>0</span>
-                                         </i>
-                                         <i class="home__infor-icon fa-solid fa-bath">
-                                            <span>0</span>
-                                         </i>
-                                    </div>
+                                    <div class="home__infor-header"><%= listRegion3[i].heading %></div>
+                                    <div class="home__infor-beach"> Bãi biển <%= listRegion3[i].beach %></div>
                                     <div class="home__infor-address">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        Quận - Phường - Thành Phố</div>
-                                    <a href="" class="home__apartment-detail">Xem chi tiết</a>
+                                        <%= listRegion3[i].address %></div>
+                                    <a href="/detail/<%=listRegion3[i]._id%>" class="home__apartment-detail">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>
+                        <% } %>
                     </div>
                 </div>
         </div>   

@@ -3,7 +3,7 @@ const roleModel = require("../models/role.model");
 const apartmentModel = require("../models/apartment.model");
 const adminController = {
     renderdashboardPage: async (req, res) => {
-      const renderUsers = await UserModel.find({ deleted: false });
+      const renderUsers = await UserModel.find();
       const post = await apartmentModel.find();
       const numOfUser = renderUsers.length;
       const numOfPost = post.length;
@@ -97,8 +97,6 @@ const adminController = {
         try {
             const apartment = req.body;
             const address =
-              req.body.beach +
-              ", " +
               req.body.address +
               ", " +
               req.body.ward +
