@@ -5,7 +5,7 @@ const adminController = {
     renderdashboardPage: async (req, res) => {
       const renderUsers = await UserModel.find();
       const post = await apartmentModel.find();
-      const numOfUser = renderUsers.length;
+      const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
         res.render("admin/cover", {
           title: "Dashboard Admin",

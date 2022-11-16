@@ -170,7 +170,7 @@ body {
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
-  margin: 5px;
+  margin: 25px 5px;
   padding: 10px;
   background-color: white;
   color: black;
@@ -181,8 +181,8 @@ body {
   text-align: center;
   height: 50px;
   padding: 10px;
-  color: black;
-  background-color: #25fdff;
+  color: white;
+  background-color: black;
   margin: 4px;
 }
 
@@ -258,9 +258,9 @@ body {
   border: 1px dashed #6d5f5f;
 }
 .creat_commented {
-  width: 80%;
+  width: 110%;
   height: 60px;
-
+  padding-left: 100px;
   margin: 20px;
 }
 .avatar {
@@ -309,8 +309,6 @@ body {
   width: 70%;
   padding-bottom: 20px;
   float: left;
-}
-div.stars {
 }
 
 a.star {
@@ -372,17 +370,37 @@ a.star.vote-active {
 #chiTiet .noidung-profile {
   text-align: left;
   width: 85%;
-  height: 150px;
+  height: 260px;
   display: flex;
   display: inline-block;
   line-height: 1.5;
   padding: 15px;
   text-decoration: double;
   font-size: 15px;
-  border: 2px black dashed;
+  position: relative;
   border-radius: 15px;
   margin: 21px;
+  box-shadow: 0 0 10px black;
 }
+.twoBtn {
+  position: absolute;
+  width: 205px;
+  height: 50px;
+  left: 420px;
+  bottom: 32px;
+}
+.twoBtn button {
+  width: 80px;
+  height: auto;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  margin: 10px;
+  left: 40px;
+  bottom: -10px;
+  border-radius: 40px;
+}
+
 .noidung-profile .profile-left p {
   font-weight: bold;
 }
@@ -415,4 +433,100 @@ a.star.vote-active {
   to {
     opacity: 1;
   }
+}
+.write {
+  width: 103%;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 60px;
+  padding-right: 0px;
+  text-align: center;
+  padding-bottom: 60px;
+}
+.write_Comment {
+  padding-top: 11px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 86%;
+  padding-bottom: 20px;
+  float: left;
+}
+.send_Comment {
+  margin-left: 10px;
+  padding-top: 5px;
+  padding-left: 10px;
+  border-radius: 20px;
+  background-color: green;
+  color: white;
+  height: 40px;
+  float: left;
+  text-align: center;
+}
+.send_Comment:hover {
+  background-color: rgb(115, 213, 115);
+  cursor: pointer;
+}
+
+.commented {
+  display: flex;
+  width: 97%;
+  height: auto;
+  background-color: rgb(92, 92, 92);
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 15px;
+}
+
+.commented-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-size: auto;
+  float: left;
+}
+.name {
+  display: inline-block;
+  text-shadow: 1px 1px 5px aqua;
+  color: white;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+.commented-comment {
+  display: content;
+  height: auto;
+  width: 1040px;
+  padding-left: 15px;
+  color: white;
+  word-wrap: break-word;
+}
+
+.write .btn-primary {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.write .btn-primary:hover {
+  background-color: blue;
+}
+
+.twoBtn button:hover {
+  cursor: pointer;
+  background-color: red;
+}
+.twoBtn button:active {
+  cursor: pointer;
+  background-color: green;
+}
+.bxs-heart {
+  font-size: 20px;
+}
+.bxs-message-rounded-detail {
+  font-size: 20px;
 }

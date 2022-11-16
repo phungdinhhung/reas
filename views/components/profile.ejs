@@ -14,17 +14,14 @@
 <body>
     <%- include('../layouts/header')%>
    <div class="profile__container grid wide">
+    
         <div class="profile__main">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 md4">
                         <div class="profile__card">
-                            <div class="profile__card-header">
-                                <h2 class="profile__title-info-1">Picture</h2>
-                            </div>
                             <div class="profile__card-body">
-                                <div class="profile__avatar">
-                                    <img src="<%=user.avatar%>" alt="Hình ảnh đại diện">
-                                </div>
+                                    <img class="profile__avatar" src="<%=user.avatar%>" alt="Hình ảnh đại diện">
+                                
                                 <form method="POST" action="profile/avatar" enctype="multipart/form-data" class="profile__form-update-avt">
                                     <div class="profile__form-group">
                                       <input type="file" name="file" class="profile__form-control" id="customFile"/>
@@ -39,23 +36,24 @@
                         </form>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    
+                    <div class="col-md-8" style="padding-left: 70px;">
                         <div class="profile__card">
                             <div class="profile__card-header">
-                                <h2 class="profile__title-info-2">Thông tin cá nhân</h2>
+                                <h2 class="profile__title-info-2"></h2>
                             </div>
                             <div class="profile__card-body">
-                                    <ul class="profile__information">
-                                        <li class="profile__infor-item">
-                                            <h3 class="profile__infor-label">Email</h3>
-                                            <div class="profile__email infor-content"><%=user.email%> </div>
-                                        </li>
-                                        
+                                <ul class="profile__information">
                                         <li class="profile__infor-item">
                                             <h3 class="profile__infor-label">Tên người dùng</h3>
                                             <div class="profile__fullName infor-content"><%=user.fullname%> </div>
                                         </li>
                                         <li class="profile__infor-item">
+                                            <h3 class="profile__infor-label">Email</h3>
+                                            <div class="profile__email infor-content"><%=user.email%> </div>
+                                        </li>
+                                        
+                                        <li  class="profile__infor-item">
                                             <h3 class="profile__infor-label">Số điện thoại</h3>
                                             <div class="profile__phoneNumber infor-content"><%=user.phonenumber%> </div>
                                         </li>
@@ -70,8 +68,8 @@
                                     <!-- Modal content -->
                                         <div class="modal--content">
                                            <span class="close">&times;</span>
-                                            <h1>Thay Đổi Thông Tin</h1>
-                                            <div class="row">
+                                            <h1>Change Password</h1>
+                                            <div class="row1">
                                                 <div class="col l-6">
                                                     <h3 class="profile__infor-label">Tên người dùng:</h3>
                                                     <h3 class="profile__infor-label">Số điện thoại:</h3>
@@ -80,9 +78,9 @@
                                                     <div class="edit__profile">
                                                         <form action="/profile/update?_method=PUT" method="POST" enctype="multipart/form-data">
                                                             <input type="hidden" name="user_id" value="<%=user._id%>">
-                                                            <input type="text" name="fullname" value="<%=user.fullname%>" placeholder="Nhập tên" class="input__update">
-                                                            <input type="text" name="phonenumber" value="<%=user.phonenumber%>" placeholder="Nhập Số điện thoại" class="input__update">
-                                                        <button type="submit" value="Submit" class="profile__btn-update">Thay đổi</button>
+                                                            <input type="text" name="fullname" value="<%=user.fullname%>" placeholder="Nhập tên" class="input__update-name">
+                                                            <input type="text" name="phonenumber" value="<%=user.phonenumber%>" placeholder="Nhập Số điện thoại" class="input__update-phone">
+                                                        <button type="submit" value="Submit" class="profile__btn-update1">Thay đổi</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -91,21 +89,22 @@
                                        </div>
                                        <div id="myModal__password" class="modal__password">
                                         <!-- Modal content -->
-                                            <div class="modal--content">
+                                            <div class="modal--content2">
                                                <span class="close__password">&times;</span>
-                                                <h1>Thay Đổi Thông Tin</h1>
-                                                <div class="row">
+                                                <h1 style="padding-bottom:30px ;
+                                                ">Change Contact</h1>
+                                                <div class="row2">
                                                     <div class="col l-6">
                                                         <h3 class="profile__infor-label">Mật khẩu cũ:</h3>
                                                         <h3 class="profile__infor-label">Mật khẩu mới:</h3>
-                                                        <h3 class="profile__infor-label">Nhập lại mật khẩu</h3>
+                                                        <h3 class="profile__infor-label"></h3>
                                                     </div>
-                                                    <div class="col l-6">
-                                                        <div class="edit__profile">
+                                                    <div class="col l-6-2">
+                                                        <div class="edit__profile-2">
                                                             <form action="/profile/update?_method=PUT" method="POST" enctype="multipart/form-data">
-                                                                <input type="password" name="oldPassword" value="" placeholder="" class="input__update">
-                                                                <input type="password" name="newPassword" value="" placeholder="" class="input__update">
-                                                                <input type="password" name="reNewPassword" value="" placeholder="" class="input__update">
+                                                                <input type="password" name="oldPassword" value="" placeholder="Nhập mật khẩu cũ" class="input__update">
+                                                                <input type="password" name="newPassword" value="" placeholder="Nhập mật khẩu mới" class="input__update">
+                                                                <input type="password" name="reNewPassword" value="" placeholder="Nhập lại mật khẩu mới" class="input__update">
                                                             <button type="submit" value="Submit" class="profile__btn-update">Thay đổi</button>
                                                             </form>
                                                         </div>
