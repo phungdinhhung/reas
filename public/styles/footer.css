@@ -1,13 +1,12 @@
-
-
-.footer{
+.footer {
+  margin-top: 100px;
   display: flex;
   width: 100%;
   height: 300px;
-  background: #1B1D32;
+  background: #1b1d32;
 }
 
-.card{
+.card {
   width: 80%;
   height: 80%;
   background-color: white;
@@ -19,14 +18,14 @@
   border-radius: 20px;
 }
 
-.secContent{
+.secContent {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.contentLeft{
+.contentLeft {
   display: flex;
   /* justify-content: center; */
   width: 30%;
@@ -35,91 +34,91 @@
   padding: 20px 100px 0px 100px;
 }
 
-.logo{
+.logo {
   font-size: 3rem;
   margin-bottom: 10px;
   margin-left: 50px;
 }
 
-.contentLeft__text{
+.contentLeft__text {
   width: 100%;
   height: 100%;
 }
 
-.address{
+.address {
   margin: 5px 0;
 }
-.address i{
+.address i {
   font-size: 16px;
   margin-right: 10px;
 }
-.address span{
+.address span {
   font-size: 15px;
 }
 
-.phone{
+.phone {
   margin: 10px 0;
 }
 
-.phone i{
+.phone i {
   font-size: 16px;
   margin-right: 10px;
 }
-.phone span{
+.phone span {
   font-size: 15px;
 }
 
-.contact{
+.contact {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 21px;
   display: flex;
 }
-.contact__icon{
+.contact__icon {
   padding: 5px 20px;
 }
-.contact__icon:hover{
+.contact__icon:hover {
   cursor: pointer;
   opacity: 0.4;
 }
 
-.contentRight{
-    display: flex;
-    margin: 0px 50px 0 10px ;
+.contentRight {
+  display: flex;
+  margin: 0px 50px 0 10px;
 }
-.contentRight h6{
-  font-weight: 400;
-  font-size: 20px;
+.contentRight h6 {
+  font-weight: 500;
+  font-size: 17px;
 }
-.contentRight li{
+.contentRight li {
   margin: 10px 0;
   font-size: 14px;
+  transition: 0.1 ease-in;
 }
-.contentRight li:hover{
-  opacity: 0.7;
+.contentRight li:hover {
+  opacity: 0.9;
   cursor: pointer;
+  transform: translateX(5px);
 }
 
-.contentRight_2{
+.contentRight_2 {
   display: flex;
   flex-direction: column;
-  margin: 0px 0px 20px 10px ;
+  margin: 0px 0px 20px 10px;
   height: 20px;
-
 }
-.contentRight_2 h6{
-
+.contentRight_2 h6 {
 }
-.inputDiv{
+.inputDiv {
   margin-top: 30px;
   padding: 5px 10px;
-  border: 1px solid #D1D1D1;
-  border-radius:10px ;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
 }
 
-.inputDiv input{
+.inputDiv input {
   font-size: 18px;
 }
-.send_icon{
+.send_icon {
   font-size: 16px;
   cursor: pointer;
   padding: 5px 10px;
@@ -129,6 +128,5 @@
   border: none;
 }
 
-.coppy{
-
+.coppy {
 }

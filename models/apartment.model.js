@@ -17,6 +17,10 @@ const apartment = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    acreage: {
+      type: Number,
+      default: 0,
+    },
     region: {
         type: String,
         default: "",

@@ -1,7 +1,8 @@
 const roleModel = require('../models/role.model');
 const apartmentModel = require('../models/apartment.model');
 
-    const getHomePage = async(req, res) => {
+const homeController = {
+    getHomePage: async(req, res) => {
         try {
         const user = req.cookies.user;
         let userId="", role="";
@@ -24,6 +25,12 @@ const apartmentModel = require('../models/apartment.model');
         console.log(e);
         res.status(500).json(e);
     }
+},
+    getSearchPage: async(req, res) => {
+        res.redirect("/search")
+},
+
 }
 
-module.exports = { getHomePage }
+
+module.exports = homeController;

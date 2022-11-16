@@ -13,7 +13,6 @@
                 <th class="text-center align-middle">Miền</th>
                 <th class="text-center align-middle">Tên căn hộ</th>
                 <th class="text-center align-middle">Giá căn hộ</th>
-                <th class="text-center align-middle">Diện tích căn hộ</th>
                 <th class="text-center align-middle" class="col-span" colspan="2">Action</th>
               </tr>
             </thead>
@@ -24,7 +23,6 @@
                 <td class="text-center align-middle"><%= apartment.region %></td>
                 <td class="text-center align-middle"><%= apartment.heading%></td>
                 <td class="text-center align-middle"><%= apartment.price %></td>
-                <td class="text-center align-middle"><%= apartment.acreage %></td>
                 <td class="text-center align-middle">
                   <button class="btn btn-primary edit" data-toggle="modal" data-target="#editModal">Sửa</button>
                   <a href="/dashboard/delete?id=<%= apartment._id %>" class="btn btn-danger">Xóa</a>

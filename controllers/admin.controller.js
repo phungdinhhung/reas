@@ -7,7 +7,7 @@ const adminController = {
       const post = await apartmentModel.find();
       const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
-        res.render("admin/cover", {
+        res.render("admin.layouts/cover", {
           title: "Dashboard Admin",
           content: "../admin/dashboard",
           numOfUser,
@@ -20,7 +20,7 @@ const adminController = {
   getAllUsers: async(req,res) => {
   try {
     const renderUsers = await UserModel.find();
-    res.render("admin/cover", {
+    res.render("admin.layouts/cover", {
       title: "Dashboard Admin",
       content: "../admin/users",
       renderUsers,
@@ -34,7 +34,7 @@ const adminController = {
       .then(() => {
         res.redirect("/dashboard/users")
       })
-      // res.render("admin/cover", {
+      // res.render("admin.layouts/cover", {
       //   title: "Dashboard Admin",
       //   content: "../admin/users",
       //   renderUsers,
@@ -50,7 +50,7 @@ const adminController = {
    getAllPosts: async(req, res) => {
     try {
       const renderApartment = await apartmentModel.find();
-      res.render("admin/cover", {
+      res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/viewApartment",
         renderApartment
@@ -82,7 +82,7 @@ const adminController = {
       role = await roleModel.findOne({ userId: userId });
       role = role.name;
     }
-    res.render("admin/cover", { 
+    res.render("admin.layouts/cover", { 
       title: "Dashboard Admin",
       content: "../admin/upload",
         user,
@@ -139,7 +139,36 @@ const adminController = {
 },
 //  End Management Posts Apartment Page  
 
+// Start Management Comment Page
+  getCommentPage: async(req,res) => {
+    try {
+      const renderComment = await UserModel.find();
+      res.render("admin.layouts/cover", {
+        title: "Dashboard Admin",
+        content: "../admin/comment",
+        renderComment,
+      });
+    }catch(e) {
+      console.log(e);
+    }
+  },
+// End Management Comment Page
 
+// Start Management Notification Page
+  getNotificationPage: async(req,res) => { 
+    try {
+      const renderNotification = await UserModel.find();
+      res.render("admin.layouts/cover", {
+        title: "Dashboard Admin",
+        content: "../admin/notification",
+        renderNotification,
+      });
+    }catch(e) {
+      console.log(e);
+    }
+
+  },
+// End Management Notification Page
 
 }
 
