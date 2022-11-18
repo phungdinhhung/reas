@@ -1,1 +1,48 @@
-<h1>It's Show time</h1>
+
+    <!-- CONTENT  -->
+    <section class="content">
+        <div class="content-header"></div>
+        <div class="content__body  ">
+          <div class="card">
+            <div class="card-header bg-primary ">
+              <h4>Quản lý bình luận</h4>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center align-middle">STT</th>
+                    <th class="text-center align-middle text-nowrap">User name</th>
+                    <th class="text-center align-middle">Nội dung bình luận</th>
+                    <th class="text-center align-middle text-nowrap">Tên căn hộ </th>
+                    <th class="text-center align-middle" >Action</th>
+                  </tr>
+                </thead>
+               
+                <% renderComment.forEach((user, index) => { %>
+                  <tbody>
+                    <th class="text-center align-middle"><%= index +1 %></th>
+                    <td class="text-center align-middle text-nowrap"><%= user.userName %></td>
+                    <td class="text-center align-middle"><%= user.content %></td>
+                    <td class="text-center align-middle text-nowrap"><%= user.apartmentId %></td>
+                    <td class="text-center align-middle">
+                      <button class="btn btn-danger"> Xóa </button>
+                    </td>
+                  </tbody>
+                <% }) %>
+                  
+              </table>
+            </div>
+            
+          </div>
+           <!-- DELETE modal  -->
+            <!-- Modal -->
+            
+        </div>
+<script>
+            const $ = document.querySelector.bind(document)
+            $(".sidebar-menu_comment").classList.add("active");
+</script>
+  
+  
+  

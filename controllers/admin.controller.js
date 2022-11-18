@@ -1,6 +1,7 @@
 const UserModel = require("../models/user.model");
 const roleModel = require("../models/role.model");
 const apartmentModel = require("../models/apartment.model");
+const commentModel = require("../models/comment.model");
 const adminController = {
     renderdashboardPage: async (req, res) => {
       const renderUsers = await UserModel.find();
@@ -96,15 +97,6 @@ const adminController = {
     postUpload: async (req, res) => {
         try {
             const apartment = req.body;
-            const address =
-              req.body.address +
-              ", " +
-              req.body.ward +
-              ", " +
-              req.body.district +
-              ", " +
-              req.body.city;
-            apartment.address = address;
             apartment.userId = req.cookies.user.user_id;
             let files = req.files;
             let images = [];
@@ -142,7 +134,8 @@ const adminController = {
 // Start Management Comment Page
   getCommentPage: async(req,res) => {
     try {
-      const renderComment = await UserModel.find();
+      const renderComment = await commentModel.find();
+      
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/comment",

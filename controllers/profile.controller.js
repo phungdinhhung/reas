@@ -47,15 +47,17 @@ const profileController = {
     updateInfor: async (req, res) => { 
         try {
             const userId = req.cookies.user.user_id;
-            const filter = {_id: userId};
-            console.log(userId);
-            const userData = await UserModel.findOneAndUpdate(filter, {$set:{fullname: req.body.fullname, phonenumber: req.body.phonenumber}}, {new: true});
-            // const userInfor = await UserModel.find({_id: userId});
-            await userData.save();
-            console.log(userData);
-            console.log(userData._id);
-            console.log(userData.fullname);
-            console.log(userData.phonenumber);
+            const {fullname, phonenumber} = req.body;
+            const body = {
+                fullname: fullname,
+                phonenumber: phonenumber
+            }
+            await UserModel.where({_id: userId}).update(body);
+            // console.log(userId);
+            // const userData = await UserModel.findOneAndUpdate(filter, {$set:{fullname: req.body.fullname, phonenumber: req.body.phonenumber}}, {new: true});
+            // // const userInfor = await UserModel.find({_id: userId});
+            // await userData.save();
+            console.log(body);
             res.redirect("/profile")
         }catch(err) {
             console.log(err.message);
@@ -64,9 +66,6 @@ const profileController = {
     changePassword: async (req, res) => {
         try {
             const userId = req.cookies.user.user_id;
-            if(userId) {
-                user = req.cookies.user.user_id;
-            }
             const userInfor = await UserModel.find({_id: userId});
             const oldPassword = req.body.oldPassword;
             const validPassword = await bcrypt.compare(

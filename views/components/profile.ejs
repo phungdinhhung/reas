@@ -76,8 +76,7 @@
                                                 </div>
                                                 <div class="col l-6">
                                                     <div class="edit__profile">
-                                                        <form action="/profile/update?_method=PUT" method="POST" enctype="multipart/form-data">
-                                                            <input type="hidden" name="user_id" value="<%=user._id%>">
+                                                        <form action="/profile/update?_method=PUT" method="POST">
                                                             <input type="text" name="fullname" value="<%=user.fullname%>" placeholder="Nhập tên" class="input__update-name">
                                                             <input type="text" name="phonenumber" value="<%=user.phonenumber%>" placeholder="Nhập Số điện thoại" class="input__update-phone">
                                                         <button type="submit" value="Submit" class="profile__btn-update1">Thay đổi</button>
@@ -101,7 +100,7 @@
                                                     </div>
                                                     <div class="col l-6-2">
                                                         <div class="edit__profile-2">
-                                                            <form action="/profile/update?_method=PUT" method="POST" enctype="multipart/form-data">
+                                                            <form action="/profile/updatePass?_method=PUT" method="POST">
                                                                 <input type="password" name="oldPassword" value="" placeholder="Nhập mật khẩu cũ" class="input__update">
                                                                 <input type="password" name="newPassword" value="" placeholder="Nhập mật khẩu mới" class="input__update">
                                                                 <input type="password" name="reNewPassword" value="" placeholder="Nhập lại mật khẩu mới" class="input__update">

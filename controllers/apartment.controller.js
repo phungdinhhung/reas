@@ -1,5 +1,6 @@
 const userModel = require('../models/user.model');
 const roleModel = require('../models/role.model');
+const commentModel = require('../models/comment.model');
 const apartmentModel = require('../models/apartment.model');
 
 const apartmentController = {
@@ -9,7 +10,7 @@ const apartmentController = {
             const apartmentId = req.params;
             const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
             const userInfor = await userModel.findOne({ _id: apartment.userId });
-            // const listCmt = await Comment.find({roomId: roomId.id});
+            const listComment = await commentModel.find({apartmentId: apartmentId.id});
             let userId;
             if (user) {
               userId = req.cookies.user.user_id;
@@ -33,6 +34,7 @@ const apartmentController = {
                 apartment,
                 user,
                 userInfor,
+                listComment,
                 // showSearch,
                 // isLike,
                 // numberNotification,

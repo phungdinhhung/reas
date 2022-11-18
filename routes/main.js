@@ -6,6 +6,8 @@ const logOutRouter = require('./logOut');
 const adminRouter = require('./admin');
 const apartmentRouter = require('./apartment');
 const favoriteRouter = require('./favoritelist');
+const commentRouter = require('./comment');
+const analysisRouter = require('./analysis');
 function route(app) {
     app.use("/", homeRouter);
     app.use("/login", authRouter);
@@ -15,6 +17,8 @@ function route(app) {
     app.use("/dashboard", adminRouter);
     app.use("/detail", apartmentRouter);
     app.use("/favorite", favoriteRouter);
+    app.use("/comment", commentRouter);
+    app.use("/analysis", analysisRouter);
 }
 
 module.exports = route;

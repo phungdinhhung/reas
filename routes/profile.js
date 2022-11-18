@@ -20,5 +20,5 @@ const upload = multer({ storage: storage });
 router.get("/", profileController.userInformation);
 router.post('/avatar', upload.single("file"), profileController.updateAvatar);
 router.put('/update', profileController.updateInfor);
-router.put('/update', profileController.changePassword);
+router.put('/updatePass', profileController.changePassword);
 module.exports = router;

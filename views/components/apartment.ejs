@@ -21,18 +21,20 @@
   </head>
   <body>
     <%- include('../layouts/header')%>
-    <div class="grid wide">
+    <div class="grid wide container">
       <div class="header">
-        <div class="title"><label for="">GOLDEN-PAY</label></div>
+        <div class="title"><label for=""><%= apartment.heading %></label></div>
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
+          <%for(let i =0; i <apartment.images.length; i++) { %>
           <div class="swiper-slide">
             <img
-              src="http://bietthubienphuquoc.com.vn/wp-content/uploads/2016/08/vinpearl-phu-quoc-dau-tu-thanh-thoi-sinh-loi-vinh-vien.png"
+              src="<%= apartment.images[i].url %>"
               alt=""
             />
           </div>
+          <% } %>
           <div class="swiper-slide">
             <img
               src="https://katahome.com/wp-content/uploads/2018/06/Thiet-ke-mau-villa-dep-2-tang-nha-vuon-tai-ha-noi-BT-26012-01-4.jpg"
@@ -91,7 +93,7 @@
                     Giá -
                     <i style="color: yellow" class="bx bxs-dollar-circle"></i>
                     <label class="profile-text text-lable" for="">
-                      1.000.000</label
+                      <%= apartment.price %></label
                     >
                   </p>
                   <p>
@@ -104,7 +106,7 @@
                   <p>
                     Bãi biển - <i style="color: blue" class="bx bx-water"></i>
                     <label class="profile-text text-lable" for="">
-                      Mỹ Khê</label
+                      <%= apartment.beach %></label
                     >
                   </p>
                 </div>
@@ -133,8 +135,7 @@
                     Địa chỉ cụ thể -
                     <i style="color: rgb(53, 113, 255)" class="bx bxs-map"></i>
                     <label class="profile-text text-lable" for="">
-                      Cầu Thuận Phước nhảy xuống
-                      abcsadskfjhasfashjfjkasdfjkasjdfhjkadsfkjhasjdfjdas</label
+                      <%= apartment.address %></label
                     >
                   </p>
                 </div>
@@ -148,158 +149,68 @@
                 </div>
               </div>
               <h1 style="padding: 20px">NỘI DUNG</h1>
-              <p class="tab-text">Đây là căn hộ ....</p>
+              <p class="tab-text"><%= apartment.description %></p>
             </div>
-
-            <div id="imgg" class="NDtab-items" style="display: none">
-              <h1>- ẢNH VÀ VIDEO CĂN HỘ -</h1>
-              <img
-                class="imgVd"
-                src="https://cdn.cet.edu.vn/wp-content/uploads/2019/02/villa-khong-gian-sang-trong.jpg"
-                alt=""
-              />
-              <img
-                class="imgVd"
-                src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/3-8.png"
-                alt=""
-              />
-              <img
-                class="imgVd"
-                src="data:image/jpeg;base64,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"
-                alt=""
-              />
-              <img class="imgVd" src="/public/images/3.jpg" alt="" />
-              <img class="imgVd" src="/public/images/logo.jpg" alt="" />
-              <img class="imgVd" src="/public/images/search.jpg" alt="" />
-            </div>
-
             <div id="comment" class="NDtab-items" style="display: none">
               <div class="write">
-                <input
+                  <form action="/comment/post/<%=apartment.id%>" method="POST">
+                  <input
                   placeholder="Viết bình luận của bạn..."
                   type="text"
+                  name="content"
                   class="write_Comment"
                 />
                 <button class="btn btn-primary" type="submit">
                   <i class="bx bx-send"></i>
                 </button>
+              </form>
               </div>
 
+              <%for(let i = 0; i < listComment.length; i++) { %>
               <div class="commented">
-                <img
+                  <img
                   class="commented-img"
-                  src="https://tinthoidai.com/wp-content/uploads/2020/11/yua-mikami-a.jpg"
+                  src="<%= listComment[i].avatar %>"
                   alt=""
                 />
                 <div class="content">
                   <div class="commented-name">
-                    <label class="name" for=""
-                      >Nguyễn Thế Sơn -
-                      <label class="time" for="">
-                        25:26 PM ,
-                        <label class="date" for=""> 11-11-2011 </label></label
-                      ></label
-                    >
+                    <label class="name" for="" >
+                      <%= listComment[i].userName %>
+                    </label>
                   </div>
                   <div class="commented-comment">
-                    ádfffffffffffffffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffff
-                    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                    <%= listComment[i].content %>
                   </div>
                 </div>
               </div>
-              <div class="commented">
-                <img
-                  class="commented-img"
-                  src="https://tinthoidai.com/wp-content/uploads/2020/11/yua-mikami-a.jpg"
-                  alt=""
-                />
-                <div class="content">
-                  <div class="commented-name">
-                    <label class="name" for=""
-                      >Nguyễn Thế Sơn -
-                      <label class="time" for="">
-                        25:26 PM ,
-                        <label class="date" for=""> 11-11-2011 </label></label
-                      ></label
-                    >
-                  </div>
-                  <div class="commented-comment">
-                    ádfffffffffffffffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffff
-                    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                  </div>
-                </div>
-              </div>
-              <div class="commented">
-                <img
-                  class="commented-img"
-                  src="https://tinthoidai.com/wp-content/uploads/2020/11/yua-mikami-a.jpg"
-                  alt=""
-                />
-                <div class="content">
-                  <div class="commented-name">
-                    <label class="name" for=""
-                      >Nguyễn Thế Sơn -
-                      <label class="time" for="">
-                        25:26 PM ,
-                        <label class="date" for=""> 11-11-2011 </label></label
-                      ></label
-                    >
-                  </div>
-                  <div class="commented-comment">
-                    ádfffffffffffffffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffff
-                    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                  </div>
-                </div>
-              </div>
-              <div class="commented">
-                <img
-                  class="commented-img"
-                  src="https://tinthoidai.com/wp-content/uploads/2020/11/yua-mikami-a.jpg"
-                  alt=""
-                />
-                <div class="content">
-                  <div class="commented-name">
-                    <label class="name" for=""
-                      >Nguyễn Thế Sơn -
-                      <label class="time" for="">
-                        25:26 PM ,
-                        <label class="date" for=""> 11-11-2011 </label></label
-                      ></label
-                    >
-                  </div>
-                  <div class="commented-comment">
-                    ádfffffffffffffffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffff
-                    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                  </div>
-                </div>
-              </div>
-              <div class="commented">
-                <img
-                  class="commented-img"
-                  src="https://tinthoidai.com/wp-content/uploads/2020/11/yua-mikami-a.jpg"
-                  alt=""
-                />
-                <div class="content">
-                  <div class="commented-name">
-                    <label class="name" for=""
-                      >Nguyễn Thế Sơn -
-                      <label class="time" for="">
-                        25:26 PM ,
-                        <label class="date" for=""> 11-11-2011 </label></label
-                      ></label
-                    >
-                  </div>
-                  <div class="commented-comment">
-                    ádfffffffffffffffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffffffffffffffffffffffffffffffffasdfffffffffff
-                    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                  </div>
-                </div>
-              </div>
+              <% } %>
             </div>
-
             <div id="vote" class="NDtab-items" style="display: none">
-              <h1>Phân tích cụ thể</h1>
-              <p class="tab-text">Vì có địa thế ở bãi biển nên ....</p>
+              <h1 class="title">BẢNG PHÂN TÍCH
+              </h1>
+          
+              <form action="/analysis/<%= apartment._id %>" method="POST">
+                  <div class="row">
+                      <div class="col-sm-6">
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="">Tiến Độ Thanh Toán</label>
+                              <select name="type" class="form-control">
+                                  <option value="">Tiến độ</option>
+                                  <option value="normal">Tiến Độ Thường</option>
+                                  <option value="70">70%</option>
+                                  <option value="90">90%</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+          
+                  <div class="center">
+                      <button type="submit" class="btn btn-success">Kiểm Tra</button>
+                  </div>
+              </form>
             </div>
           </div>
         </div>

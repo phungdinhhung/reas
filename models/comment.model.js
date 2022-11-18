@@ -16,6 +16,10 @@ const comment = new mongoose.Schema(
     content: {
       type: String,
       default: ""
+    },
+    avatar: {
+      type: String,
+      default: ""
     }
   },
   { timestamps: true }

@@ -35,12 +35,14 @@
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
                 <div class="inputAdress__inner">
-                  <span class="nameAdress">Location</span>
-                  <input
-                    class="inputNameAdress"
-                    type="text"
-                    placeholder="Bali bali Indonesia"
-                  />
+                  <span class="nameAdress">Miền</span>
+                  <select name="" id="">
+                    <option value="">---</option>
+                    <option value="mienbac">Miền Bắc</option>
+                    <option value="mientrung">Miền Trung</option>
+                    <option value="miennam">Miền Nam</option>
+
+                  </select>
                 </div>
               </div>
 
@@ -49,12 +51,15 @@
                   <i class="fa-solid fa-money-bill-wave"></i>
                 </div>
                 <div class="inputAdress__inner">
-                  <span class="nameAdress">Price</span>
-                  <input
-                    class="inputNameAdress"
-                    type="number"
-                    placeholder="$5000-$20000"
-                  />
+                  <span class="nameAdress">Giá Tiền</span>
+                  <select name="price" id="">
+                    <option value="">---</option>
+                    <option value="1000">Dưới 1.000.000.000</option>
+                    <option value="2000">Dưới 2.000.000.000</option>
+                    <option value="3000">Dưới 3.000.000.000</option>
+                    <option value="5000">Dưới 5.000.000.000</option>
+                    <option value="10000">Dưới 10.000.000.000</option>
+                  </select>
                 </div>
               </div>
 
@@ -63,12 +68,15 @@
                   <i class="fa-solid fa-building"></i>
                 </div>
                 <div class="inputAdress__inner">
-                  <span class="nameAdress">Area</span>
-                  <input
-                    class="inputNameAdress"
-                    type="text"
-                    placeholder="200m2"
-                  />
+                  <span class="nameAdress">Diện Tích</span>
+                  <select name="acreage" id="">
+                    <option value="">---</option>
+                    <option value="20">Dưới 20m</option>
+                    <option value="30">Dưới 30m</option>
+                    <option value="50">Dưới 50m</option>
+                    <option value="70">Dưới 70m</option>
+
+                  </select>
                 </div>
               </div>
 
@@ -240,6 +248,30 @@
         </div>
       </section>
     </div>
-    <%- include('../layouts/message')%> <%- include('../layouts/footer')%>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+      <i class="fa-solid fa-caret-up"></i>
+    </button>
+ <script>
+  // Get the button:
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
+
+    <%- include('../layouts/footer')%>
   </body>
 </html>

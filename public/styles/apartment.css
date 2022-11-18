@@ -492,18 +492,20 @@ a.star.vote-active {
 }
 .name {
   display: inline-block;
-  text-shadow: 1px 1px 5px aqua;
+  /* text-shadow: 1px 1px 5px aqua; */
   color: white;
   padding-left: 15px;
   padding-bottom: 15px;
+  font-size: 17px;
+  font-weight: 600;
 }
 .commented-comment {
-  display: content;
   height: auto;
   width: 1040px;
   padding-left: 15px;
   color: white;
   word-wrap: break-word;
+  font-size: 18px;
 }
 
 .write .btn-primary {
