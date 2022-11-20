@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+  input {
+    border: none;
+    outline: none;
+  }
+  select {
+    border: none !important;
+    outline: none !important;
+  }
+  .favorite__main {
+    margin: 5rem 0;
+  }
+  .search {
+    border: none !important;
+    outline: none !important;
+  }
+  .favorite__container {
+    padding: 0 10rem;
+  }
+  .searchFunction {
+    justify-content: space-around;
+    margin-bottom: 30px;
+  }
+  .searchFunction_item span {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .searchFunction_item select {
+    font-size: 16px;
+  }
+  .title__description {
+    color: #c20000;
+  }
+  .searchResult__content {
+    border-top: 1px solid #b4b4b4;
+    padding-top: 25px;
+  }
+  .content__address {
+    font-size: 16px;
+  }
+  .content__address i {
+    font-size: 16px;
+    padding: 4px 4px 4px 0;
+  }
+  .content__description p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+  .favorite__container__card__inner_avatar {
+    border-radius: 50%;
+    width: 50px;
+  }
+  
+  .buttonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .button__delete_favorite {
+    color: #fff;
+    background: #dc3545;
+    border: none;
+    padding: 6px 20px;
+    border-radius: 7px;
+  }
+  .button__delete_favorite:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  .button_hearth {
+    border: 1px solid #969696;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .button_hearth:hover {
+    background: #c82333;
+    color: white;
+  }
+  
+  .searchBtn i {
+    font-size: 20px;
+  }
+  
+  .background_card {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    justify-content: space-around;
+  }
+  
+  .inputAdress {
+    display: flex;
+    padding: 18px;
+  }
+  .inputAdress__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15px;
+    border-bottom: 2px solid #000;
+  }
+  .iconAdress {
+    font-size: 24px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      background: #ebfcff;
+  }
+  
+  .nameAdress {
+    margin-left: 4px;
+      font-size: 14px;
+      max-width: 3px 0;
+      margin-bottom: 5px;
+      font-weight: 600;
+  }
+  .inputNameAdress {
+    padding: 5px 5px 5px 0;
+    font-size: 16px;
+    margin-top: 3px;
+  }
+  .inputAdress__inner select {
+    padding: 4px 4px 4px 0;
+    width: 200px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .inputPrice {
+    font-size: 24px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .inputType {
+    font-size: 24px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .banner__btnSearch {
+    border: none;
+    background: transparent;
+  }
+  .banner__btnSearch i {
+    color: white;
+      width: 100%;
+      font-size: 20px;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 18px;
+      background: #1b1d32;
+      border-radius: 8px;
+      cursor: pointer;
+  }
+  .banner__btnSearch i:hover{
+    transform: scale(1.02);
+    opacity: 0.9;
+  }

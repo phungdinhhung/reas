@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
-  --main-color: #2f32dd;
+  --main-color: #1b1d32;
   --color-dark: #1d2231;
-  --text-gray: #8390a2;
+  --text-gray: #838c97;
 }
 
 * {
@@ -205,25 +205,20 @@ main {
   padding: 2rem;
   border-radius: 5px;
   cursor: pointer;
+  color: var(--color-dark);
 }
 
-.card-single div:last-child span {
+.card-single span {
   font-size: 3rem;
-  color: var(--main-color);
+}
+.card-single div {
+  font-size: 20px;
 }
 
-.card-single div:first-child span {
-  color: var(--text-gray);
+.card-single:hover {
+  color:rgba(0, 0, 0, 0.5);
 }
 
-.card-single:last-child {
-  background: var(--main-color);
-}
-.card-single:last-child h1,
-.card-single:last-child div:first-child span,
-.card-single:last-child div:last-child span {
-  color: #fff;
-}
 
 .recent-grid {
   margin-top: 3.5rem;
@@ -243,11 +238,12 @@ main {
 }
 
 .card-header {
+  padding-left: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
-  cursor: pointer;
+  border-bottom: 3px solid var(--main-color);
+  background-color: var(--text-gray);
 }
 
 .card-header button {

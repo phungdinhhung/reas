@@ -80,14 +80,40 @@
             <a class="tab-item tab-button" onclick="openCity('comment')">
               Bình Luận
             </a>
-            <a class="tab-item tab-button" onclick="openCity('vote')">
-              Phân Tích
-            </a>
           </div>
 
           <div class="noidung">
             <div id="chiTiet" class="NDtab-items">
               <div class="noidung-profile">
+                <div class="profile-right">
+                  <p>
+                    Thành phố -
+                    <i style="color: green" class="bx bxs-buildings"></i>
+                    <label class="profile-text text-lable" for="">
+                      <%= apartment.city %></label
+                    >
+                  </p>
+                  <p>
+                    Quận - <i style="color: orange" class="bx bxs-city"></i>
+                    <label class="profile-text text-lable" for="">
+                      <%= apartment.district %></label
+                    >
+                  </p>
+                  <p>
+                    Phường -
+                    <i style="color: green" class="bx bx-buildings"></i>
+                    <label class="profile-text text-lable" for="">
+                     <%= apartment.ward %></label
+                    >
+                  </p>
+                  <p>
+                    Địa chỉ cụ thể -
+                    <i style="color: rgb(53, 113, 255)" class="bx bxs-map"></i>
+                    <label class="profile-text text-lable" for="">
+                      <%= apartment.address %></label
+                    >
+                  </p>
+                </div>
                 <div class="profile-left">
                   <p>
                     Giá -
@@ -100,7 +126,7 @@
                     Diện tích -
                     <i style="color: rgb(80, 51, 11)" class="bx bxs-home"></i>
                     <label class="profile-text text-lable" for="">
-                      25.000 m2</label
+                      <%= apartment.acreage %></label
                     >
                   </p>
                   <p>
@@ -110,47 +136,376 @@
                     >
                   </p>
                 </div>
-                <div class="profile-right">
-                  <p>
-                    Thành phố -
-                    <i style="color: green" class="bx bxs-buildings"></i>
-                    <label class="profile-text text-lable" for="">
-                      Đà Nẵng</label
-                    >
-                  </p>
-                  <p>
-                    Quận - <i style="color: orange" class="bx bxs-city"></i>
-                    <label class="profile-text text-lable" for="">
-                      Thanh Khê</label
-                    >
-                  </p>
-                  <p>
-                    Phường -
-                    <i style="color: green" class="bx bx-buildings"></i>
-                    <label class="profile-text text-lable" for="">
-                      Bình Hiên</label
-                    >
-                  </p>
-                  <p>
-                    Địa chỉ cụ thể -
-                    <i style="color: rgb(53, 113, 255)" class="bx bxs-map"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.address %></label
-                    >
-                  </p>
-                </div>
+                
                 <div class="twoBtn">
-                  <button>
+                  <button class="btn-bxs-heart">
                     <i class='bx bxs-heart'></i>
                   </button>
-                  <button>
+                  <button class="btn-bxs-message">
                     <i class='bx bxs-message-rounded-detail'></i>
                   </button>
                 </div>
               </div>
               <h1 style="padding: 20px">NỘI DUNG</h1>
               <p class="tab-text"><%= apartment.description %></p>
+            
+              <div class="form-ptich">
+                <div class="login-form">
+                  <h1>Bảng Phân Tích</h1>
+                  <div class="input-box">
+                      <i> Giá Trị Căn Hộ </i>
+                      <output class="input-box-outputPrice" type="number" placeholder="VND"><%= apartment.price %></output>
+                  </div>
+                  <div class="input-box">
+                      <label for="">Tiến Độ Thanh Toán</label>
+                      <select name="value" class="form-control">
+                    <option value="">Tiến độ</option>
+                    <option value="tdtt">Tiến Độ Thường</option>
+                    <option value="70">70%</option>
+                    <option value="90">90%</option>
+                    <option value="vnh">Vay Ngân Hàng</option>
+                </select>
+                      
+                
+              </div>
+              <div class="center">
+                <button type="submit" class="btn-success">Kiểm Tra</button>
             </div>
+          </div>
+              </div>
+              
+
+    <h2 class="title">Bảng Phân Tích Tài Chính</h2>
+    <div class="table1">
+        <table class="table">
+            <thead>
+                <tr class="kkkk">
+                    <th>DANH MỤC</th>
+                    <th>ĐƠN VỊ (%)</th>
+                    <th>ĐƠN VỊ (vnd)</th>
+                    <th>THUẾ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span> GIÁ NIÊM YẾT </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> CHÍNH SÁCH CHIẾT KHẤU THANH TOÁN </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> CÁC CHIẾT KHẤU KHÁC </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> TỔNG SỐ TIỀN CHIẾT KHẤU </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> TỔNG GIÁ TRỊ CHIẾT KHẤU </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <h2 class="title">Tiến Độ Thanh Toán</h2>
+    <div class="table1">
+        <table class="table">
+            <thead>
+                <tr class="kkkk">
+                    <th>TIẾN ĐỘ</th>
+                    <th>TỶ LỆ</th>
+                    <th>SỐ TIỀN THANH TOÁN</th>
+                    <th>THỜI HẠN THANH TOÁN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>  Đợt 1 </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>  Đợt 2 </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>  Đợt 1 </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                    <tr>
+                        <td>
+                            <span>  Đợt 1 </span>
+                        </td>
+                        <td>
+                            <div class="form-group mb-0 d-inline-block">
+                                <output type="text" name="percent" class="form-control form-inline">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb-0 d-inline-block">
+                                <output type="text" name="percent" class="form-control form-inline">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group mb-0 d-inline-block">
+                                <output type="text" name="percent" class="form-control form-inline">
+                            </div>
+                        </td>
+            </tbody>
+        </table>
+    </div>
+    <h2 class="title">Bảng Tính Lợi Nhuận</h2>
+    <div class="table1">
+        <table class="table">
+            <thead>
+                <tr class="kkkk">
+                    <th>CHI TIẾT</th>
+                    <th>TIỀN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span> TỈ LỆ FULL PHÒNG / THÁNG </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> GÍA CHO THUÊ PHÒNG </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>  QUY ĐỔI VOUCHER </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span> CHI PHÍ SỬA CHỮA </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <span> CHIA SẺ LỢI NHUẬN </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <span> LỢI NHUẬN THU VỀ TRÊN THÁNG </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <span>LỢI NHUẬN THU VỀ/THÁNG (Sau Khi Trừ Chi Phí) </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <span> LỢI NHUẬN THU VỀ TRÊN NĂM </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <span> LỢI NHUẬN THU VỀ SAU 10 NĂM </span>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0 d-inline-block">
+                            <output type="text" name="percent" class="form-control form-inline">
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+
+
+        </table>
+    </div>
+    
+  </div>
+                  
             <div id="comment" class="NDtab-items" style="display: none">
               <div class="write">
                   <form action="/comment/post/<%=apartment.id%>" method="POST">
@@ -176,7 +531,12 @@
                 <div class="content">
                   <div class="commented-name">
                     <label class="name" for="" >
-                      <%= listComment[i].userName %>
+                      <p>
+                        <%= listComment[i].userName %>
+                      </p>
+                      <p>
+                        <%= listComment[i].createdAt.toLocaleDateString() %>
+                      </p>
                     </label>
                   </div>
                   <div class="commented-comment">
@@ -185,32 +545,6 @@
                 </div>
               </div>
               <% } %>
-            </div>
-            <div id="vote" class="NDtab-items" style="display: none">
-              <h1 class="title">BẢNG PHÂN TÍCH
-              </h1>
-          
-              <form action="/analysis/<%= apartment._id %>" method="POST">
-                  <div class="row">
-                      <div class="col-sm-6">
-                      </div>
-                      <div class="col-sm-6">
-                          <div class="form-group">
-                              <label for="">Tiến Độ Thanh Toán</label>
-                              <select name="type" class="form-control">
-                                  <option value="">Tiến độ</option>
-                                  <option value="normal">Tiến Độ Thường</option>
-                                  <option value="70">70%</option>
-                                  <option value="90">90%</option>
-                              </select>
-                          </div>
-                      </div>
-                  </div>
-          
-                  <div class="center">
-                      <button type="submit" class="btn btn-success">Kiểm Tra</button>
-                  </div>
-              </form>
             </div>
           </div>
         </div>
@@ -246,6 +580,19 @@
         }
         document.getElementById(cityName).style.display = "block";
       }
+    </script>
+    <script>
+      var apartment_save = document.querySelector(".btn-bxs-heart")
+      var apartment_contact = document.querySelector(".btn-bxs-message")
+
+      function OpenSave() {
+        apartment_save.classList.add('open')
+      }
+      function OpenContact() {
+        apartment_contact.classList.add('open')
+      }
+      apartment_save.addEventListener("click" , OpenSave);
+      apartment_contact.addEventListener("click" , OpenContact);
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

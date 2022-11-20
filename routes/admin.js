@@ -29,6 +29,7 @@ router.get("/upload", adminController.getUploadPage);
 router.post("/upload/post", upload.array("files", 4), adminController.postUpload);
 
 router.get("/comment", adminController.getCommentPage);
+router.get("/deletecmt", adminController.deleteComment);
 
 router.get("/notification", adminController.getNotificationPage);
 module.exports = router;

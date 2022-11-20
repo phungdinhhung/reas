@@ -1,26 +1,43 @@
-const UserModel = require("../models/user.model");
+const userModel = require("../models/user.model");
 const roleModel = require("../models/role.model");
 const apartmentModel = require("../models/apartment.model");
 const commentModel = require("../models/comment.model");
+const notificationModel = require("../models/notifications.model")
 const adminController = {
     renderdashboardPage: async (req, res) => {
-      const renderUsers = await UserModel.find();
+      const renderUsers = await userModel.find();
       const post = await apartmentModel.find();
+      const comment = await commentModel.find();
+      // const notification = await notificationModel.find();
       const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
+      const numOfComment = comment.length;
+
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
+      role = await roleModel.findOne({ userId: userId });
+      
+      if (role.name == "admin") {
         res.render("admin.layouts/cover", {
           title: "Dashboard Admin",
           content: "../admin/dashboard",
           numOfUser,
-          numOfPost
+          numOfPost,
+          numOfComment,
         });
+      } else {
+        res.redirect("/")
+      }
+
+
+        
 },
 
 
 //  Start Management Users Page
   getAllUsers: async(req,res) => {
   try {
-    const renderUsers = await UserModel.find();
+    const renderUsers = await userModel.find();
     res.render("admin.layouts/cover", {
       title: "Dashboard Admin",
       content: "../admin/users",
@@ -31,7 +48,7 @@ const adminController = {
   }
 },
   deleteUsers: async(req,res) => {
-      await UserModel.deleteOne({ _id: req.query.id })
+      await userModel.deleteOne({ _id: req.query.id })
       .then(() => {
         res.redirect("/dashboard/users")
       })
@@ -135,22 +152,32 @@ const adminController = {
   getCommentPage: async(req,res) => {
     try {
       const renderComment = await commentModel.find();
-      
+      const apartment = await apartmentModel.find();
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/comment",
         renderComment,
+        apartment
       });
     }catch(e) {
       console.log(e);
     }
+  },
+  deleteComment: async(req,res) => {
+    await commentModel.deleteOne({_id: req.query.id})
+    .then(() => {
+      res.redirect("/dashboard/comment")
+    })
+    .catch(e => {
+      res.status(500);
+    })
   },
 // End Management Comment Page
 
 // Start Management Notification Page
   getNotificationPage: async(req,res) => { 
     try {
-      const renderNotification = await UserModel.find();
+      const renderNotification = await userModel.find();
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/notification",
