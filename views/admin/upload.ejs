@@ -1,7 +1,7 @@
 
 <div class="upload ">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 ">
       <form
         action="/dashboard/upload/post"
         method="POST"
@@ -114,16 +114,16 @@
                   id=""
                 />
               </div>
-              <div class="form-group">
-                <h6 style="padding-top: 10px">Phần trăm đóng theo đợt</h6>
+              <div class="form-group" id="show">
+                <h6 style="padding-top: 10px">% đóng theo đợt</h6>
                 <input
-                  class="form-control"
-                  type="phần trăm"
-                  name="phase"
-                  placeholder="Phần trăm của đợt 1"
-                  id=""
+                  class="bg-primary border-0 text-white p-1 rounded mt-1 mb-1"
+                  type="button"
+                  onclick="add()"
+                  value="Thêm đợt"
+                  id="action"
                 />
-              </div>
+                </div>
               <div class="form-group">
                 <h6 for="formFileMultiple" style="padding-top: 10px" >Chọn ảnh phòng</h6>
                 <input
@@ -158,4 +158,18 @@
 <script>
         const $ = document.querySelector.bind(document)
         $(".sidebar-menu_upload").classList.add("active");
+
+        function add() {
+      var htmlObj = document.getElementById("show");
+      htmlObj.innerHTML =
+      htmlObj.innerHTML +
+      "<input class ='form-control' type='phần trăm' name='phase' placeholder='Phần trăm của đợt 1' id='list_dot'/> " +
+      "  <input type='button' class='bg-danger p-1 border-0' value='xóa' onclick=dele() id='buttonDele' />";
+      }
+    function dele() {
+      const deleelemeent = document.getElementById("list_dot");
+      const buttonDele = document.getElementById("buttonDele");
+      buttonDele.remove();
+      deleelemeent.remove();
+    }
 </script>

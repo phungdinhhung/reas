@@ -37,12 +37,18 @@ const adminController = {
 //  Start Management Users Page
   getAllUsers: async(req,res) => {
   try {
-    const renderUsers = await userModel.find();
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
+      role = await roleModel.findOne({ userId: userId });
+      const renderUsers = await userModel.find();
+      
+    if (role.name == "admin") {
     res.render("admin.layouts/cover", {
       title: "Dashboard Admin",
       content: "../admin/users",
       renderUsers,
-    });
+    })
+    }
   }catch(err) {
     console.log(err)
   }
@@ -52,11 +58,6 @@ const adminController = {
       .then(() => {
         res.redirect("/dashboard/users")
       })
-      // res.render("admin.layouts/cover", {
-      //   title: "Dashboard Admin",
-      //   content: "../admin/users",
-      //   renderUsers,
-      // });
      .catch((err) => {
       res.status(500).send(err);
     });
@@ -67,12 +68,18 @@ const adminController = {
 // Start Management Apartment Page
    getAllPosts: async(req, res) => {
     try {
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
+      role = await roleModel.findOne({ userId: userId });
+      
       const renderApartment = await apartmentModel.find();
+      if (role.name == "admin") {
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/viewApartment",
         renderApartment
       });
+    }
     } catch (error) {
       console.log('error: ', error);
     }
@@ -92,14 +99,11 @@ const adminController = {
 //  Start Management Posts Apartment Page
     getUploadPage: async (req, res) => {
     try {
-    const user = req.cookies.user;
-    let userId = "",
-      role = "";
-    if (user) {
-      userId = req.cookies.user.user_id;
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
       role = await roleModel.findOne({ userId: userId });
-      role = role.name;
-    }
+      
+      if (role.name == "admin") {
     res.render("admin.layouts/cover", { 
       title: "Dashboard Admin",
       content: "../admin/upload",
@@ -107,6 +111,7 @@ const adminController = {
         role,
         userId
       });
+    }
   } catch (error) {
     res.status(500).json({ msg: error });
   }
@@ -115,6 +120,14 @@ const adminController = {
         try {
             const apartment = req.body;
             apartment.userId = req.cookies.user.user_id;
+            let phase = req.body.phase;
+            let phases = [];
+            for(let i = 0; i < phase.length; i++) {
+              phases.push({ percent: phase[i], moneyPhase: apartment.price * phase[i] / 100  });
+            }
+            apartment.phase = phases;
+
+
             let files = req.files;
             let images = [];
             for (let i = 0; i < files.length; i++) {
@@ -151,14 +164,20 @@ const adminController = {
 // Start Management Comment Page
   getCommentPage: async(req,res) => {
     try {
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
+      role = await roleModel.findOne({ userId: userId });
+      
       const renderComment = await commentModel.find();
       const apartment = await apartmentModel.find();
+      if (role.name == "admin") {
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/comment",
         renderComment,
         apartment
       });
+    }
     }catch(e) {
       console.log(e);
     }
@@ -177,12 +196,18 @@ const adminController = {
 // Start Management Notification Page
   getNotificationPage: async(req,res) => { 
     try {
+      const user = req.cookies.user;
+      const userId = req.cookies.user.user_id;
+      role = await roleModel.findOne({ userId: userId });
+      
       const renderNotification = await userModel.find();
+      if (role.name == "admin") {
       res.render("admin.layouts/cover", {
         title: "Dashboard Admin",
         content: "../admin/notification",
         renderNotification,
       });
+    }
     }catch(e) {
       console.log(e);
     }

@@ -363,9 +363,9 @@ a.star.vote-active {
 
 .swiper-slide img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 1200px;
+  height: 542px;
+  object-fit: fill
 }
 #chiTiet .noidung-profile {
   text-align: left;

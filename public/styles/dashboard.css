@@ -500,3 +500,19 @@ td {
   width: 100%;
   height: 100%;
 } 
+
+.home__page {
+  color:#25262c;
+}
+
+.home__page:hover {
+  color:#25262c;
+}
+
+.phase__click {
+  margin-bottom: 20px;
+}
+
+.phase__input {
+  margin-bottom: 20px;
+}

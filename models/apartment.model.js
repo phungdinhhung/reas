@@ -1,4 +1,14 @@
 const mongoose = require("mongoose");
+const phases = new mongoose.Schema({
+  percent: {
+    type: Number,
+    default: "",
+  },
+  moneyPhase: {
+    type: Number,
+    dafault: "",
+  }
+});
 const image = new mongoose.Schema({
   url: {
     type: String,
@@ -61,7 +71,7 @@ const apartment = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    phase: [String],
+    phase: [phases],
     listLike: [like],
     images: [image]
   },

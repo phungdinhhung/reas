@@ -11,6 +11,7 @@ const apartmentController = {
             const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
             const userInfor = await userModel.findOne({ _id: apartment.userId });
             const listComment = await commentModel.find({apartmentId: apartmentId.id});
+            const phase = apartment.phase;
             let userId;
             if (user) {
               userId = req.cookies.user.user_id;
@@ -35,6 +36,7 @@ const apartmentController = {
                 user,
                 userInfor,
                 listComment,
+                phase
                 // showSearch,
                 // isLike,
                 // numberNotification,
