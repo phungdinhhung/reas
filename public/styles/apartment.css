@@ -181,8 +181,8 @@ body {
   text-align: center;
   height: 50px;
   padding: 10px;
-  color: white;
-  background-color: black;
+  color: white !important;
+  background-color: black !important;
   margin: 4px;
 }
 
@@ -384,23 +384,28 @@ a.star.vote-active {
 }
 .twoBtn {
   position: absolute;
-  width: 205px;
-  height: 50px;
-  left: 420px;
-  bottom: 32px;
+    width: 205px;
+    height: 50px;
+    left: 482px;
+    bottom: 32px;
+    display: flex;
 }
 .twoBtn button {
   width: 80px;
   height: auto;
-  padding: 10px;
-  background-color: green;
-  color: white;
+  padding: 17px 0px;
+  /* background-color: green; */
+  color: black;
   margin: 10px;
-  left: 40px;
-  bottom: -10px;
   border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.twoBtn button {
+  color: black;
+  font-size: 18px;
+}
 .noidung-profile .profile-left p {
   font-weight: bold;
 }
@@ -547,22 +552,22 @@ a.star.vote-active {
 .input-box {
   margin-bottom: 10px;
 }
-
+.input-box label{
+  font-size: 14px;
+  font-weight: 400;
+}
 .input-box output {
-  padding: 15px 100px;
+  /* padding: 15px 100px; */
   width: 100%;
-  border: 1px solid #cccccc;
-  outline: auto;
-  word: spacing 5px;
   display: block;
 }
 
-.form-control {
+.form-control2 {
   display: block;
   width: 100%;
+  font-size: 1.4rem;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #0d0d0e;
@@ -581,7 +586,7 @@ a.star.vote-active {
 .table {
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid #000;
+  border: 1px solid #000 !important;
   color: #f6f8f9;
   border: center;
 }
@@ -596,11 +601,12 @@ a.star.vote-active {
 }
 
 .table td,
-.table th {
+.table th
+{ 
   white-space: nowrap;
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
   vertical-align: top;
-  border: 1px solid #000;
+  border: 1px solid #000 ;
 }
 
 .table thead tr th {
@@ -615,6 +621,8 @@ a.star.vote-active {
   font-size: 13px;
   font-weight: 400;
   vertical-align: middle;
+  padding: 10px;
+  max-height: 54px;
 }
 
 th {
@@ -638,7 +646,7 @@ th {
 
   height: 40px;
   padding: 0 15px;
-  background: #57b846;
+  background: #007aff !important;
   border-radius: 3px;
   font-size: 14px;
   color: #fff;
@@ -654,14 +662,15 @@ th {
   margin-bottom: 10px;
 }
 .input-box output {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: 15px;
 }
 .form-control {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  /* margin-top: 10px;
+  margin-bottom: 15px; */
 }
 .input-box-outputPrice {
+  font-weight: 600;
   font-size: 15px;
 }
 .btn-bxs-heart.open {
@@ -670,3 +679,4 @@ th {
 .btn-bxs-message.open {
   background-color: red;
 }
+
