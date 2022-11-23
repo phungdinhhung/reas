@@ -20,23 +20,20 @@
                   <div class="profile__card">
                      <div class="profile__card-body">
                         <img class="profile__avatar" src="<%=user.avatar%>" alt="Hình ảnh đại diện" />
-
-                        <form
-                           method="POST"
-                           action="profile/avatar"
-                           enctype="multipart/form-data"
-                           class="profile__form-update-avt"
-                        >
-                           <div class="profile__form-group">
-                              <input type="file" name="file" class="profile__form-control" id="customFile" />
-                           </div>
-                           <div class="profile__card-footer">
-                              <button class="profile__btn-update-avt btn-outline-success" type="submit">
-                                 Cập nhật
-                              </button>
-                           </div>
-                        </form>
                      </div>
+                     <form
+                        method="POST"
+                        action="profile/avatar"
+                        enctype="multipart/form-data"
+                        class="profile__form-update-avt"
+                     >
+                        <div class="profile__form-group">
+                           <input type="file" name="file" class="profile__form-control" id="customFile" />
+                        </div>
+                        <div class="profile__card-footer update__avatar">
+                           <button class="profile__btn-update-avt btn-outline-success" type="submit">Cập nhật</button>
+                        </div>
+                     </form>
                   </div>
                </div>
 
@@ -112,7 +109,7 @@
                                  <div class="col l-6">
                                     <h3 class="profile__infor-label">Mật khẩu cũ:</h3>
                                     <h3 class="profile__infor-label">Mật khẩu mới:</h3>
-                                    <h3 class="profile__infor-label"></h3>
+                                    <h3 class="profile__infor-label">Nhập lại:</h3>
                                  </div>
                                  <div class="col l-6-2">
                                     <div class="edit__profile-2">

@@ -43,7 +43,7 @@
 }
 .col.l-6 {
    float: left;
-   width: 100%;
+   width: 50%;
    height: 112px;
    margin-left: 78px;
 }
@@ -76,10 +76,11 @@
    position: relative;
 }
 .profile__avatar {
-   height: 112px;
+   height: 170px;
    position: absolute;
-   left: 35%;
-   width: 112px;
+   left: 28%;
+   top: -15%;
+   width: 170px;
    border: 0.5px solid #000;
    border-radius: 234px;
 }
@@ -101,7 +102,7 @@
 
 .profile__btn-update-avt {
    position: absolute;
-   bottom: 4px;
+   bottom: 0;
    left: 150px;
    background-color: #000;
    color: white !important;
@@ -192,13 +193,12 @@
 
 .profile__infor-label,
 .profile__infor-item {
-   width: 50%;
    font-size: 16px;
    line-height: 2.5;
    text-align: center;
 }
 .profile__email {
-   margin-left: 162px;
+   margin-left: 142px;
 }
 .profile__fullName {
    margin-left: 65px;
@@ -242,11 +242,10 @@
 .profile__btn-update:hover {
    opacity: 0.8;
 }
-.profile__form-group .profile__form-control {
-   font-size: -7.4rem;
-   height: 3rem;
-   left: 91px;
-   bottom: -111px;
+.profile__form-control {
+   font-size: 1.4rem;
+   left: 70px;
+   bottom: 50px;
    position: absolute;
 }
 
@@ -349,4 +348,9 @@ input.input__update {
    margin: 10px;
    padding-top: 5px;
    padding-bottom: 5px;
+}
+
+.update__avatar {
+}
+.profile__form-update-avt {
 }
