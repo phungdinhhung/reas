@@ -382,41 +382,12 @@ html {
    scroll-behavior: smooth;
 }
 
-.buttonToTop {
-}
-.to-top {
-   background: white;
-   position: fixed;
-   bottom: 44px;
-   right: 40px;
-   width: 50px;
-   height: 50px;
-   display: flex;
-   border-radius: 50%;
-   align-items: center;
-   justify-content: center;
-   font-size: 32px;
-   color: #1b1d32;
-   opacity: 0;
-   pointer-events: none;
-   transition: all 0.4s;
-}
-.to-top.activeTop {
-   bottom: 32px;
-   pointer-events: auto;
-   opacity: 1;
-}
-.to-top:hover {
-   background: #c5c5c5;
-   color: #1b1d32;
-}
-
 #myBtn {
    display: none;
    position: fixed;
-   bottom: 30px;
+   bottom: 100px;
    right: 30px;
-   z-index: 99;
+   z-index: 100;
    border: none;
    outline: none;
    background-color: rgba(0, 0, 0, 0.5);
@@ -425,12 +396,11 @@ html {
    padding: 15px;
    border-radius: 50%;
    font-size: 18px;
-   width: 60px;
-   height: 60px;
+   width: 56px;
+   height: 56px;
 }
 #myBtn i {
    font-size: 30px;
-   padding-top: 1px;
 }
 
 #myBtn:hover {

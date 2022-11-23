@@ -22,10 +22,12 @@ const analysisController = {
             apartment.phase = change;
          }
          const phase = apartment.phase;
+         console.log(type);
          res.render('../views/components/analysis', {
             apartment,
             user,
             phase,
+            type,
          });
       } catch (e) {
          console.log(e);

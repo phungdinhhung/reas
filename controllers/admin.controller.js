@@ -80,6 +80,27 @@ const adminController = {
          console.log('error: ', error);
       }
    },
+   updateApartment: async (req, res) => {
+      try {
+         const apartmentId = req.params.id;
+         const apartment = req.body;
+         apartment.address = address;
+         apartment.userId = req.cookies.user.user_id;
+         let files = req.files;
+         let images = [];
+         for (let i = 0; i < files.length; i++) {
+            images.push({ url: files[i].path });
+         }
+         apartment.images = images;
+         console.log('room id: ', apartmentId);
+         // await Room.updateOne({Id: roomId}, room);
+         await apartmentModel.where({ _id: apartmentId }).update(apartment);
+         res.redirect('/dashboard/viewApartment');
+      } catch (error) {
+         console.log(error);
+      }
+   },
+
    deleteApartment: async (req, res) => {
       await apartmentModel
          .deleteOne({ _id: req.query.id })

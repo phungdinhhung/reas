@@ -1,20 +1,42 @@
-<link rel="stylesheet" href="styles/message.css" />
-<div class="message-form">
-   <div class="message-form__header">
-      <h3 class="message-form__heading">Bạn vui lòng điền thông tin dưới đây và nội dung gửi</h3>
-   </div>
-   <div class="message-form__form">
-      <div class="message-form__group">
-         <input type="text" class="message-form__input" placeholder="Email" />
+
+   <head>
+      <meta charset="utf-8" />
+      <link rel="stylesheet" href="/styles/message.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   </head>
+
+      <div class="modal-submit">
+         <input type="checkbox" id="click" />
+         <label for="click" class="button__message">
+            <i class="fab fa-facebook-messenger"></i>
+            <i class="fas fa-times"></i>
+         </label>
+         <div class="wrapper">
+            <div class="head-text">Liên hệ với chúng tôi !</div>
+            <div class="chat-box">
+               <div class="desc-text">
+                  Bạn vui lòng điền vào biểu mẫu dưới đây và chúng tôi sẽ liên hệ lại với bạn ngay khi có thể..
+               </div>
+               <form action="">
+                  <div class="field">
+                     <input type="text" placeholder="Họ và tên " required />
+                  </div>
+                  <div class="field">
+                     <input type="email" placeholder="Địa chỉ Email " required />
+                  </div>
+                  <div class="field">
+                     <input type="phone" placeholder="Số điện thoại " required />
+                  </div>
+                  <div class="field textarea">
+                     <textarea cols="30" rows="10" placeholder="Nội dung liên hệ .." required></textarea>
+                  </div>
+                  <div class="field">
+                     <button type="submit"><i class="bx bx-send"></i>SEND</button>
+                  </div>
+               </form>
+            </div>
+         </div>
       </div>
-      <div class="message-form__group">
-         <input type="text" class="message-form__input" placeholder="Số điện thoại" />
-      </div>
-      <div class="message-form__group group__content">
-         <input type="text" class="message-form__input" placeholder="Nội dung" />
-      </div>
-   </div>
-   <div class="message-form__controls">
-      <button class="message-btn">Xác nhận</button>
-   </div>
-</div>
+</html>

@@ -23,6 +23,7 @@ router.get('/users', adminController.getAllUsers);
 router.get('/deleteUser', adminController.deleteUsers);
 
 router.get('/viewApartment', adminController.getAllPosts);
+router.post('/updateApartment', adminController.updateApartment);
 router.get('/delete', adminController.deleteApartment);
 
 router.get('/upload', adminController.getUploadPage);

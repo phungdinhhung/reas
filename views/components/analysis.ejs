@@ -57,7 +57,7 @@
                               <span> GIÁ NIÊM YẾT </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= apartment.price %></div>
+                              <div class="form-group mb-0 d-inline-block"><%= 100 %>%</div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block"><%= apartment.price %></div>
@@ -73,7 +73,11 @@
                               <span> CHÍNH SÁCH CHIẾT KHẤU THANH TOÁN </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= percentDiscount = 7 %>%</div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if(type == '70') { %> <%= percentDiscount = 10 %>% <% } else if(type == '90') { %>
+                                 <%= percentDiscount = 12 %>% <% } else if(type=='vnh'){ %> <%= percentDiscount = 0 %>%
+                                 <% }else { %> <%= percentDiscount = 7 %>% <% } %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -132,7 +136,9 @@
                               </div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= apartment.price - vatSum %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= newPrice =apartment.price - vatSum %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -175,20 +181,48 @@
                               </div>
                            </td>
                         </tr>
-                        <% for(let i = 0; i< phase.length; i++) { %>
                         <tr>
                            <td>
-                              <span> Đợt <%= i + 1 %> </span>
+                              <span> Đợt 1 </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= phase[0].percent %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi thanh toán đặt cọc) <br />(Số tiền thanh
+                                 toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc )
+                              </div>
+                           </td>
+                        </tr>
+                        <% a = 0 %> <% for(let i = 1; i< phase.length; i++) { %>
+                        <tr>
+                           <td>
+                              <span> Đợt <%= i +1 %> </span>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= phase[i].moneyPhase %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if(i == phase.length - 1) {%> <%= money = apartment.price * phase[i].percent / 100
+                                 %> <% } else {%> <%= money = newPrice * phase[i].percent / 100 %> <% } %> <% a += money
+                                 %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
+                                 <% if(i == phase.length -2) { %> Nhận bàn giao Villas theo thông báo của CĐT (Số tiền
+                                 thanh toán đã bao gồm thuế GTGT của đợt <%= i+1 %> và <%= i+2 %>) <% } else if(i ==
+                                 phase.length - 1) {%> Trong vòng 15 ngày kể từ ngày CĐT gửi văn bản thông báo bàn giao
+                                 Giấy Chứng Nhận Quyền Sở Hữu Căn Villas <br />(Số tiền thanh toán không bao gồm thuế
+                                 GTGT) <% } else { %> Ngay khi ký HĐMB (Trong vòng 30 ngày sau khi thanh toán đợt <%= i
+                                 %>) (Số tiền thanh toán đã bao gồm thuế GTGT) <% } %>
                               </div>
                            </td>
                         </tr>
@@ -198,10 +232,7 @@
                               <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <% a = 0 %> <%for(let i = 0; i < phase.length; i++) { %> <% a += phase[i].moneyPhase %>
-                                 <% } %> <%= a + sumDeposit %>
-                              </div>
+                              <div class="form-group mb-0 d-inline-block"><%= a + moneyOne + sumDeposit %></div>
                            </td>
                         </tr>
                      </tbody>
@@ -249,7 +280,7 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= profit = apartment.priceMonth*(30*full) %>
+                                 <%= profit = apartment.priceMonth*(30*full/100) %>
                               </div>
                            </td>
                         </tr>
@@ -313,256 +344,64 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td>
-                              <span>1</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
+                        <% loan = apartment.price * 70 / 100 %>
+                        <div class="loan">
+                           <tr>
+                              <td>
+                                 <span> 1 </span>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
+                              </td>
+                              <td>0</td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <div class="form-group mb-0 d-inline-block"><%= loan - year %></div>
+                                 </div>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <div class="form-group mb-0 d-inline-block"></div>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <span> 2 </span>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
+                              </td>
+                              <td><div class="form-group mb-0 d-inline-block"><%= one = loan * (6.5/100/2) %></div></td>
+                              <td>
                                  <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>2</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>3</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>4</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>5</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>6</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>7</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>8</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>9</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span>10</span>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
-                           </td>
-                        </tr>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <div class="form-group mb-0 d-inline-block"></div>
+                                 </div>
+                              </td>
+                           </tr>
+                           <% for(let i = 1; i < 10; i++) { %>
+                           <tr>
+                              <td>
+                                 <span> <%= i + 1 %> </span>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
+                              </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block"><%= loan * (6.5/100) %></div>
+                              </td>
+                              <td></td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <div class="form-group mb-0 d-inline-block"><%= loan * (6.5/100) %></div>
+                                 </div>
+                              </td>
+                           </tr>
+                           <% } %>
+                        </div>
                      </tbody>
                   </table>
                </div>
