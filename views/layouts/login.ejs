@@ -1,87 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-</head>
-<body>
-  <div class="main">
-    <h1 class="title"> Resort Real Estate Analysis </h1>
-    <div class="content-main">
-        <div class="content-left">
-          <h2 class="agileits1">Resort Real Estate Analysis </h2>
-          <p class="agileits2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div class="content-right">
-          <form action="#" method="post">
-              <div class="form-group">	
-                  <input type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">
-              </div>
-              <div class="form-group ">	
-                  <input type="password" class="lock" name="password" placeholder="Password" id="password" required="">
-              </div>	
-              <div class="form-group">
-                <button type="submit" class="login" value="Login">Đăng nhập</button>
-              </div>
-          </form>
-          
-              <button  class="f-pass js-forget-pass">Quên mật khẩu?</button>
-            <div class="content-footer">
-              Bạn chưa có tài khoản? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> ở đây
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Login</title>
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+      <link rel="stylesheet" href="styles/login.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+   </head>
+   <body>
+      <div class="main">
+         <h1 class="title">Resort Real Estate Analysis</h1>
+         <div class="content-main">
+            <div class="content-left">
+               <h2 class="agileits1">Resort Real Estate Analysis</h2>
+               <p class="agileits2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
-        </div>
-    </div>
-  </div>
+            <div class="content-right">
+               <form action="#" method="post">
+                  <div class="form-group">
+                     <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="mail@example.com"
+                        title="Please enter a valid email"
+                        required=""
+                     />
+                  </div>
+                  <div class="form-group">
+                     <input
+                        type="password"
+                        class="lock"
+                        name="password"
+                        placeholder="Password"
+                        id="password"
+                        required=""
+                     />
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" class="login" value="Login">Đăng nhập</button>
+                  </div>
+               </form>
 
-  <div class="modal-fpass">
-    <div class="modal-header">
-      <h4>Lấy lại mật khẩu</h4>
-      <i class="fa-solid fa-xmark closeModal"></i>
-    </div>
-    <div class="modal-body">
-      <div class="email-verificaion">
-        <i class="fa-regular fa-envelope"></i>
-        <input type="text" placeholder="email@example / Pnumber">
+               <button class="f-pass js-forget-pass">Quên mật khẩu?</button>
+               <div class="content-footer">
+                  Bạn chưa có tài khoản? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> ở
+                  đây
+               </div>
+            </div>
+         </div>
       </div>
 
-      <button class="btn-getpass">Lấy lại mật khẩu</button>
+      <div class="modal-fpass">
+         <div class="modal-header">
+            <h4>Lấy lại mật khẩu</h4>
+            <i class="fa-solid fa-xmark closeModal"></i>
+         </div>
+         <div class="modal-body">
+            <div class="email-verificaion">
+               <i class="fa-regular fa-envelope"></i>
+               <input type="text" placeholder="email@example / Pnumber" />
+            </div>
 
-    </div>
-    <div class="modal-footer">
-      Chưa là thành viên? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> tại đây
-    </div>
-  </div>
+            <button class="btn-getpass">Lấy lại mật khẩu</button>
+         </div>
+         <div class="modal-footer">
+            Chưa là thành viên? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> tại đây
+         </div>
+      </div>
 
+      <script>
+         const forgetBtn = document.querySelector('.js-forget-pass');
+         const modal = document.querySelector('.modal-fpass');
+         const closeModal = document.querySelector('.closeModal');
 
-    
-      
-
-    <script>
-        const forgetBtn = document.querySelector('.js-forget-pass');
-        const modal = document.querySelector('.modal-fpass');
-        const closeModal = document.querySelector('.closeModal')
-
-
-        // Ham hien thi form quên mật khẩu (them class open vao modal )
-        const showModalForgetPass = ()=>{
-          modal.classList.add('open')
-        }
+         // Ham hien thi form quên mật khẩu (them class open vao modal )
+         const showModalForgetPass = () => {
+            modal.classList.add('open');
+         };
          // Ham an form modal ẩn (an class open vao modal )
-        const removeModalForgetPass =()=>{
-          modal.classList.remove('open')
-        }
+         const removeModalForgetPass = () => {
+            modal.classList.remove('open');
+         };
 
-        forgetBtn.addEventListener('click',showModalForgetPass)
-        closeModal.addEventListener('click',removeModalForgetPass)
-
-    </script>
-</body>
-
+         forgetBtn.addEventListener('click', showModalForgetPass);
+         closeModal.addEventListener('click', removeModalForgetPass);
+      </script>
+   </body>
 </html>

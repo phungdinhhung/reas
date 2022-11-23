@@ -1,243 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0 ,minimum-scale=1, maximum-scale=1"
-    />
-    <link rel="stylesheet" href="/styles/apartment.css" />
-    <link rel="stylesheet" href="/styles/base.css" />
-    <title>Apartment Detail</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <%- include('../layouts/header')%>
-    <div class="grid wide container">
-      <div class="header">
-        <div class="title"><label for=""><%= apartment.heading %></label></div>
-      </div>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <%for(let i =0; i <apartment.images.length; i++) { %>
-          <div class="swiper-slide">
-            <img
-              src="<%= apartment.images[i].url %>"
-              alt=""
-            />
-          </div>
-          <% } %>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="body">
-        <!-- Code ở đây phần Tab UI -->
-        <div class="tab">
-          <div class="tab-ui">
-            <a class="tab-item tab-button" onclick="openCity('chiTiet')">
-              Thông Tin
-            </a>
-            <a class="tab-item tab-button" onclick="openCity('comment')">
-              Bình Luận
-            </a>
-          </div>
-
-          <div class="noidung">
-            <div id="chiTiet" class="NDtab-items">
-              <div class="noidung-profile">
-                <div class="profile-right">
-                  <p>
-                    Thành phố -
-                    <i style="color: green" class="bx bxs-buildings"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.city %></label
-                    >
-                  </p>
-                  <p>
-                    Quận - <i style="color: orange" class="bx bxs-city"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.district %></label
-                    >
-                  </p>
-                  <p>
-                    Phường -
-                    <i style="color: green" class="bx bx-buildings"></i>
-                    <label class="profile-text text-lable" for="">
-                     <%= apartment.ward %></label
-                    >
-                  </p>
-                  <p>
-                    Địa chỉ cụ thể -
-                    <i style="color: rgb(53, 113, 255)" class="bx bxs-map"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.address %></label
-                    >
-                  </p>
-                </div>
-                <div class="profile-left">
-                  <p>
-                    Giá -
-                    <i style="color: yellow" class="bx bxs-dollar-circle"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.price %></label
-                    >
-                  </p>
-                  <p>
-                    Diện tích -
-                    <i style="color: rgb(80, 51, 11)" class="bx bxs-home"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.acreage %></label
-                    >
-                  </p>
-                  <p>
-                    Bãi biển - <i style="color: blue" class="bx bx-water"></i>
-                    <label class="profile-text text-lable" for="">
-                      <%= apartment.beach %></label
-                    >
-                  </p>
-                </div>
-                
-                <div class="twoBtn">
-                  <button class="btn-bxs-heart">
-                    <i class='bx bxs-heart'></i>
-                  </button>
-                  <button class="btn-bxs-message">
-                    <i class='bx bxs-message-rounded-detail'></i>
-                  </button>
-                </div>
-              </div>
-              <h1 style="padding: 20px">NỘI DUNG</h1>
-              <p class="tab-text"><%= apartment.description %></p>
-            
-
-              <form action="/analysis/<%=apartment.id%>" method="POST">
-              <div class="form-ptich">
-                <div class="login-form">
-                  <h1>Bảng Phân Tích</h1>
-                  <div class="input-box">
-                      <span> Giá Trị Căn Hộ </span>
-                      <input class="input-box-outputPrice" type="number" value="<%= apartment.price %>" name="price"></input>
-                  </div>
-                  
-                  <div class="input-box">
-                      <label for="">Tiến Độ Thanh Toán</label>
-                      <select name="type" class="form-control">
-                    <option value="normal">Tiến Độ Thường</option>
-                    <option value="70">70%</option>
-                    <option value="90">90%</option>
-                    <option value="vnh">Vay Ngân Hàng</option>
-                </select>
-              </div>
-              <div class="center">
-                <button type="submit" class="btn-success">Kiểm Tra</button>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" href="/styles/apartment.css" />
+      <link rel="stylesheet" href="/styles/base.css" />
+      <title>Apartment Detail</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+      <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+   </head>
+   <body>
+      <%- include('../layouts/header')%>
+      <div class="grid wide container">
+         <div class="header">
+            <div class="title"><label for=""><%= apartment.heading %></label></div>
+         </div>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+               <!-- <% for(let i =0; i <apartment.images.length; i++) { %> -->
+               <div class="swiper-slide">
+                  <img src="<%= apartment.images[i].url %>" alt="" />
+               </div>
+               <!-- <% } %> -->
             </div>
-          </div>
-              </div>
-            </form>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+         </div>
+         <div class="body">
+            <!-- Code ở đây phần Tab UI -->
+            <div class="tab">
+               <div class="tab-ui">
+                  <a class="tab-item tab-button" onclick="openCity('chiTiet')"> Thông Tin </a>
+                  <a class="tab-item tab-button" onclick="openCity('comment')"> Bình Luận </a>
+               </div>
 
-  </div>
-                  
-            <div id="comment" class="NDtab-items" style="display: none">
-              <div class="write">
-                  <form action="/comment/post/<%=apartment.id%>" method="POST">
-                  <input
-                  placeholder="Viết bình luận của bạn..."
-                  type="text"
-                  name="content"
-                  class="write_Comment"
-                />
-                <button class="btn btn-primary" type="submit">
-                  <i class="bx bx-send"></i>
-                </button>
-              </form>
-              </div>
+               <div class="noidung">
+                  <div id="chiTiet" class="NDtab-items">
+                     <div class="noidung-profile">
+                        <div class="profile-right">
+                           <p>
+                              Thành phố -
+                              <i style="color: green" class="bx bxs-buildings"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.city %></label>
+                           </p>
+                           <p>
+                              Quận - <i style="color: orange" class="bx bxs-city"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.district %></label>
+                           </p>
+                           <p>
+                              Phường -
+                              <i style="color: green" class="bx bx-buildings"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.ward %></label>
+                           </p>
+                           <p>
+                              Địa chỉ cụ thể -
+                              <i style="color: rgb(53, 113, 255)" class="bx bxs-map"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.address %></label>
+                           </p>
+                        </div>
+                        <div class="profile-left">
+                           <p>
+                              Giá -
+                              <i style="color: yellow" class="bx bxs-dollar-circle"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.price %></label>
+                           </p>
+                           <p>
+                              Diện tích -
+                              <i style="color: rgb(80, 51, 11)" class="bx bxs-home"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.acreage %></label>
+                           </p>
+                           <p>
+                              Bãi biển - <i style="color: blue" class="bx bx-water"></i>
+                              <label class="profile-text text-lable" for=""> <%= apartment.beach %></label>
+                           </p>
+                        </div>
 
-              <%for(let i = 0; i < listComment.length; i++) { %>
-              <div class="commented">
-                  <img
-                  class="commented-img"
-                  src="<%= listComment[i].avatar %>"
-                  alt=""
-                />
-                <div class="content">
-                  <div class="commented-name">
-                    <label class="name" for="" >
-                      <p>
-                        <%= listComment[i].userName %>
-                      </p>
-                      <p>
-                        <%= listComment[i].createdAt.toLocaleDateString() %>
-                      </p>
-                    </label>
+                        <div class="twoBtn">
+                           <button class="btn-bxs-heart">
+                              <i class="bx bxs-heart"></i>
+                           </button>
+                           <button class="btn-bxs-message">
+                              <i class="bx bxs-message-rounded-detail"></i>
+                           </button>
+                        </div>
+                     </div>
+                     <h1 style="padding: 20px">NỘI DUNG</h1>
+                     <p class="tab-text"><%= apartment.description %></p>
+
+                     <form action="/analysis/<%=apartment.id%>" method="POST">
+                        <div class="form-ptich">
+                           <div class="login-form">
+                              <h1>Bảng Phân Tích</h1>
+                              <div class="input-box">
+                                 <span> Giá Trị Căn Hộ </span>
+                                 <input
+                                    class="input-box-outputPrice"
+                                    type="number"
+                                    value="<%= apartment.price %>"
+                                    name="price"
+                                 />
+                              </div>
+
+                              <div class="input-box">
+                                 <label for="">Tiến Độ Thanh Toán</label>
+                                 <select name="type" class="form-control">
+                                    <option value="normal">Tiến Độ Thường</option>
+                                    <option value="70">70%</option>
+                                    <option value="90">90%</option>
+                                    <option value="vnh">Vay Ngân Hàng</option>
+                                 </select>
+                              </div>
+                              <div class="center">
+                                 <button type="submit" class="btn-success">Kiểm Tra</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
                   </div>
-                  <div class="commented-comment">
-                    <%= listComment[i].content %>
+
+                  <div id="comment" class="NDtab-items" style="display: none">
+                     <div class="write">
+                        <form action="/comment/post/<%=apartment.id%>" method="POST">
+                           <input
+                              placeholder="Viết bình luận của bạn..."
+                              type="text"
+                              name="content"
+                              class="write_Comment"
+                           />
+                           <button class="btn btn-primary" type="submit">
+                              <i class="bx bx-send"></i>
+                           </button>
+                        </form>
+                     </div>
+
+                     <%for(let i = 0; i < listComment.length; i++) { %>
+                     <div class="commented">
+                        <img class="commented-img" src="<%= listComment[i].avatar %>" alt="" />
+                        <div class="content">
+                           <div class="commented-name">
+                              <label class="name" for="">
+                                 <p><%= listComment[i].userName %></p>
+                                 <p><%= listComment[i].createdAt.toLocaleDateString() %></p>
+                              </label>
+                           </div>
+                           <div class="commented-comment"><%= listComment[i].content %></div>
+                        </div>
+                     </div>
+                     <% } %>
                   </div>
-                </div>
-              </div>
-              <% } %>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
-      });
-    </script>
-    <script>
-      function openCity(cityName) {
-        var i;
-        var x = document.getElementsByClassName("NDtab-items");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        document.getElementById(cityName).style.display = "block";
-      }
-    </script>
-    <script>
-      var apartment_save = document.querySelector(".btn-bxs-heart")
-      var apartment_contact = document.querySelector(".btn-bxs-message")
+      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-      function OpenSave() {
-        apartment_save.classList.add('open')
-      }
-      function OpenContact() {
-        apartment_contact.classList.add('open')
-      }
-      apartment_save.addEventListener("click" , OpenSave);
-      apartment_contact.addEventListener("click" , OpenContact);
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <!-- Initialize Swiper -->
+      <script>
+         var swiper = new Swiper('.mySwiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+               delay: 2500,
+               disableOnInteraction: false,
+            },
+            pagination: {
+               el: '.swiper-pagination',
+               clickable: true,
+            },
+            navigation: {
+               nextEl: '.swiper-button-next',
+               prevEl: '.swiper-button-prev',
+            },
+         });
+      </script>
+      <script>
+         function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName('NDtab-items');
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = 'none';
+            }
+            document.getElementById(cityName).style.display = 'block';
+         }
+      </script>
+      <script>
+         var apartment_save = document.querySelector('.btn-bxs-heart');
+         var apartment_contact = document.querySelector('.btn-bxs-message');
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </body>
+         function OpenSave() {
+            apartment_save.classList.add('open');
+         }
+         function OpenContact() {
+            apartment_contact.classList.add('open');
+         }
+         apartment_save.addEventListener('click', OpenSave);
+         apartment_contact.addEventListener('click', OpenContact);
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   </body>
 </html>

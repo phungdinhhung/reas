@@ -1,682 +1,680 @@
 * {
-  margin: auto;
-  padding: auto;
-  box-sizing: border-box;
-  font-family: sans-serif;
+   margin: auto;
+   padding: auto;
+   box-sizing: border-box;
+   font-family: sans-serif;
 }
 
 .wrapper {
-  width: 600px;
-  margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
+   width: 600px;
+   margin: 0 auto;
+   font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
-  width: 100%;
-  height: 50px;
+   width: 100%;
+   height: 50px;
 }
 
 .title {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  height: 100%;
-  font-size: 28px;
-  font-weight: 400;
-  padding: 15px;
-  margin: 15px;
-  font-weight: bold;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   height: 100%;
+   font-size: 28px;
+   font-weight: 400;
+   padding: 15px;
+   margin: 15px;
+   font-weight: bold;
 }
 .banner {
-  width: 100%;
-  height: 50%;
-  text-align: center;
-  margin-top: 8px;
+   width: 100%;
+   height: 50%;
+   text-align: center;
+   margin-top: 8px;
 }
 .img-banner {
-  width: 40%;
-  background-size: auto;
+   width: 40%;
+   background-size: auto;
 }
 .slide {
-  width: 100%;
-  height: 1000px;
+   width: 100%;
+   height: 1000px;
 }
 .slide-1 {
-  width: 30%;
-  height: 100px;
+   width: 30%;
+   height: 100px;
 }
 .slide-2 {
-  width: 30%;
-  height: 100px;
+   width: 30%;
+   height: 100px;
 }
 .slide-3 {
-  width: 30%;
-  height: 100%;
+   width: 30%;
+   height: 100%;
 }
 
 .line {
-  margin-top: 20px;
-  height: 5px;
-  width: 100%;
-  background-color: #333;
-  opacity: 0.3;
-  border-radius: 5px;
+   margin-top: 20px;
+   height: 5px;
+   width: 100%;
+   background-color: #333;
+   opacity: 0.3;
+   border-radius: 5px;
 }
 
 .infor {
-  height: 100%;
-  margin-top: 10px;
-  justify-content: center;
+   height: 100%;
+   margin-top: 10px;
+   justify-content: center;
 }
 .infor-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 40px;
 }
 .infor-address {
-  display: block;
+   display: block;
 }
 .infor-price {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+   margin-top: 20px;
+   display: flex;
+   justify-content: center;
 }
 .button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
 }
 .care {
-  padding: 10px;
-  margin: 0px 30px;
-  display: inline-flex;
-  justify-content: center;
-  /* height: 35px; */
-  align-items: center;
-  background-color: aqua;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
+   padding: 10px;
+   margin: 0px 30px;
+   display: inline-flex;
+   justify-content: center;
+   /* height: 35px; */
+   align-items: center;
+   background-color: aqua;
+   border: none;
+   font-weight: 600;
+   cursor: pointer;
 }
 .comment {
-  padding: 10px;
-  margin: 0px 30px;
-  display: inline-flex;
-  justify-content: center;
-  /* height: 35px; */
-  align-items: center;
-  background-color: aqua;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
+   padding: 10px;
+   margin: 0px 30px;
+   display: inline-flex;
+   justify-content: center;
+   /* height: 35px; */
+   align-items: center;
+   background-color: aqua;
+   border: none;
+   font-weight: 600;
+   cursor: pointer;
 }
 .infor-full {
-  margin-top: 20px;
+   margin-top: 20px;
 }
 * {
-  padding: 0px;
-  margin: 0px;
-  font-family: sans-serif;
-  box-sizing: border-box;
+   padding: 0px;
+   margin: 0px;
+   font-family: sans-serif;
+   box-sizing: border-box;
 }
 body {
-  width: 100%;
-  height: 1500px;
+   width: 100%;
+   height: 1500px;
 }
 .container {
-  display: contents;
-  width: 100%;
-  height: 70px;
+   display: contents;
+   width: 100%;
+   height: 70px;
 }
 .input-find {
-  float: right;
-  margin-top: 9px;
-  margin-right: 5px;
+   float: right;
+   margin-top: 9px;
+   margin-right: 5px;
 }
 
 .find {
-  float: right;
+   float: right;
 }
 .find :hover {
-  background-color: azure;
+   background-color: azure;
 }
 .bx-search-alt-2 {
-  font-size: larger;
-  padding: 4px;
-  color: black;
-  margin-top: 10px;
-  margin-left: 5px;
-  color: black;
+   font-size: larger;
+   padding: 4px;
+   color: black;
+   margin-top: 10px;
+   margin-left: 5px;
+   color: black;
 }
 
 .tab {
-  float: left;
-  width: 100%;
-  height: 1500px;
-  display: block;
+   float: left;
+   width: 100%;
+   height: 1500px;
+   display: block;
 }
 .tab-text {
-  padding: 15px;
-  font-size: 17px;
+   padding: 15px;
+   font-size: 17px;
 }
 .tab-ui {
-  border-radius: 10px;
-  text-align: center;
-  float: left;
-  width: 100%;
-  height: 43px;
-  display: inline-block;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 25px 5px;
-  padding: 10px;
-  background-color: white;
-  color: black;
+   border-radius: 10px;
+   text-align: center;
+   float: left;
+   width: 100%;
+   height: 43px;
+   display: inline-block;
+   font-size: 20px;
+   cursor: pointer;
+   margin: 25px 5px;
+   padding: 10px;
+   background-color: white;
+   color: black;
 }
 .tab-button {
-  background-size: cover;
-  border-radius: 10px;
-  text-align: center;
-  height: 50px;
-  padding: 10px;
-  color: white !important;
-  background-color: black !important;
-  margin: 4px;
+   background-size: cover;
+   border-radius: 10px;
+   text-align: center;
+   height: 50px;
+   padding: 10px;
+   color: white !important;
+   background-color: black !important;
+   margin: 4px;
 }
 
 .tab-button:active {
-  padding: 13px;
+   padding: 13px;
 }
 .tab-button:hover {
-  background-color: rgb(15, 15, 227);
-  color: whitesmoke;
+   background-color: rgb(15, 15, 227);
+   color: whitesmoke;
 }
 #chiTiet {
-  text-align: center;
+   text-align: center;
 }
 .NDtab-items {
-  animation: modalFaceIn ease 2s;
-  text-align: center;
+   animation: modalFaceIn ease 2s;
+   text-align: center;
 }
 .noidung {
-  text-align: center;
-  height: 200px;
-  width: 100%;
-  float: left;
-  display: block;
+   text-align: center;
+   height: 200px;
+   width: 100%;
+   float: left;
+   display: block;
 }
 .img_villa {
-  width: 99%;
-  text-align: center;
-  height: 400px;
+   width: 99%;
+   text-align: center;
+   height: 400px;
 }
 .imgVd {
-  width: auto;
-  background-size: auto;
+   width: auto;
+   background-size: auto;
 }
 .write {
-  width: 99%;
-  padding: 20px;
-  text-align: center;
-  padding-bottom: 60px;
+   width: 99%;
+   padding: 20px;
+   text-align: center;
+   padding-bottom: 60px;
 }
 .write_Comment {
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 70%;
-  padding-bottom: 20px;
-  float: left;
+   padding-top: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border: 1px solid black;
+   border-radius: 20px;
+   width: 70%;
+   padding-bottom: 20px;
+   float: left;
 }
 .send_Comment {
-  margin-left: 10px;
-  padding-top: 5px;
-  padding-left: 10px;
-  border-radius: 20px;
-  background-color: green;
-  color: white;
-  height: 40px;
-  float: left;
-  text-align: center;
+   margin-left: 10px;
+   padding-top: 5px;
+   padding-left: 10px;
+   border-radius: 20px;
+   background-color: green;
+   color: white;
+   height: 40px;
+   float: left;
+   text-align: center;
 }
 .send_Comment:hover {
-  background-color: rgb(115, 213, 115);
-  cursor: pointer;
+   background-color: rgb(115, 213, 115);
+   cursor: pointer;
 }
 .bx-send {
-  font-size: 20px;
+   font-size: 20px;
 }
 .commented {
-  float: left;
-  text-align: left;
-  width: 100%;
-  height: auto;
-  border: 1px dashed #6d5f5f;
+   float: left;
+   text-align: left;
+   width: 100%;
+   height: auto;
+   border: 1px dashed #6d5f5f;
 }
 .creat_commented {
-  width: 110%;
-  height: 60px;
-  padding-left: 100px;
-  margin: 20px;
+   width: 110%;
+   height: 60px;
+   padding-left: 100px;
+   margin: 20px;
 }
 .avatar {
-  margin-top: 8px;
-  margin-right: 10px;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 1px solid black;
-  border-radius: 50px;
-  float: left;
+   margin-top: 8px;
+   margin-right: 10px;
+   display: inline-block;
+   width: 40px;
+   height: 40px;
+   border: 1px solid black;
+   border-radius: 50px;
+   float: left;
 }
 
 .nameTime {
-  display: inline-block;
-  width: 120px;
-  height: 40px;
-  float: left;
+   display: inline-block;
+   width: 120px;
+   height: 40px;
+   float: left;
 }
 
 .name {
-  width: 100%;
-  color: rgb(105, 24, 164);
+   width: 100%;
+   color: rgb(105, 24, 164);
 }
 .timee {
-  margin-top: 10px;
-  width: 150px;
-  color: rgb(15, 6, 94);
+   margin-top: 10px;
+   width: 150px;
+   color: rgb(15, 6, 94);
 }
 
 .iconn {
-  margin-top: 10px;
-  width: 50px;
-  text-align: center;
-  font-size: 30px;
-  float: left;
+   margin-top: 10px;
+   width: 50px;
+   text-align: center;
+   font-size: 30px;
+   float: left;
 }
 
 .user_comment {
-  margin-top: 8px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 70%;
-  padding-bottom: 20px;
-  float: left;
+   margin-top: 8px;
+   padding-top: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border: 1px solid black;
+   border-radius: 20px;
+   width: 70%;
+   padding-bottom: 20px;
+   float: left;
 }
 
 a.star {
-  font-size: 24px;
-  color: #f0f1f4;
-  cursor: pointer;
-  line-height: 1;
-  transition: all 0.1s ease;
+   font-size: 24px;
+   color: #f0f1f4;
+   cursor: pointer;
+   line-height: 1;
+   transition: all 0.1s ease;
 }
 
 a.star.vote-hover {
-  color: #96e2fb;
+   color: #96e2fb;
 }
 
 a.star:active {
-  color: #56ccf2;
+   color: #56ccf2;
 }
 
 a.star.vote-active {
-  color: #0faef1;
+   color: #0faef1;
 }
 
 .blue {
-  color: #0faef1;
+   color: #0faef1;
 }
 .swiper {
-  width: 100%;
-  max-height: 542px;
-  overflow: hidden;
-  background-size: auto;
+   width: 100%;
+   max-height: 542px;
+   overflow: hidden;
+   background-size: auto;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+   text-align: center;
+   font-size: 18px;
+   background: #fff;
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+   /* Center slide text vertically */
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-box-pack: center;
+   -ms-flex-pack: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   -webkit-align-items: center;
+   align-items: center;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 1200px;
-  height: 542px;
-  object-fit: fill
+   display: block;
+   width: 1200px;
+   height: 542px;
+   object-fit: fill;
 }
 #chiTiet .noidung-profile {
-  text-align: left;
-  width: 85%;
-  height: 260px;
-  display: flex;
-  display: inline-block;
-  line-height: 2.5;
-  padding: 20px;
-  text-decoration: double;
-  font-size: 16px;
-  position: relative;
-  border-radius: 15px;
-  margin: 34px;
-  box-shadow: 0 0 10px black;
+   text-align: left;
+   width: 85%;
+   height: 260px;
+   display: flex;
+   display: inline-block;
+   line-height: 2.5;
+   padding: 20px;
+   text-decoration: double;
+   font-size: 16px;
+   position: relative;
+   border-radius: 15px;
+   margin: 34px;
+   box-shadow: 0 0 10px black;
 }
 .twoBtn {
-  position: absolute;
-    width: 205px;
-    height: 50px;
-    left: 482px;
-    bottom: 32px;
-    display: flex;
+   position: absolute;
+   width: 205px;
+   height: 50px;
+   left: 482px;
+   bottom: 32px;
+   display: flex;
 }
 .twoBtn button {
-  width: 80px;
-  height: auto;
-  padding: 17px 0px;
-  /* background-color: green; */
-  color: black;
-  margin: 10px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   width: 80px;
+   height: auto;
+   padding: 17px 0px;
+   /* background-color: green; */
+   color: black;
+   margin: 10px;
+   border-radius: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 .twoBtn button {
-  color: black;
-  font-size: 18px;
+   color: black;
+   font-size: 18px;
 }
 .noidung-profile .profile-left p {
-  font-weight: bold;
+   font-weight: bold;
 }
 .noidung-profile .profile-right p {
-  font-weight: bold;
+   font-weight: bold;
 }
 .noidung-profile .profile-left p .profile-text {
-  padding-left: 5px;
-  font-weight: normal;
+   padding-left: 5px;
+   font-weight: normal;
 }
 .noidung-profile .profile-right p .profile-text {
-  padding-left: 5px;
-  font-weight: normal;
+   padding-left: 5px;
+   font-weight: normal;
 }
 .profile-left {
-  width: 49.9%;
-  float: left;
-  display: inline-block;
+   width: 49.9%;
+   float: left;
+   display: inline-block;
 }
 .profile-right {
-  width: 49.9%;
-  float: left;
-  display: inline-block;
+   width: 49.9%;
+   float: left;
+   display: inline-block;
 }
 
 @keyframes modalFaceIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
 }
 .write {
-  width: 103%;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-bottom: 60px;
-  padding-right: 0px;
-  text-align: center;
-  padding-bottom: 60px;
+   width: 103%;
+   padding-top: 20px;
+   padding-left: 20px;
+   padding-bottom: 60px;
+   padding-right: 0px;
+   text-align: center;
+   padding-bottom: 60px;
 }
 .write_Comment {
-  padding-top: 11px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 86%;
-  padding-bottom: 20px;
-  float: left;
+   padding-top: 11px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border: 1px solid black;
+   border-radius: 20px;
+   width: 86%;
+   padding-bottom: 20px;
+   float: left;
 }
 .send_Comment {
-  margin-left: 10px;
-  padding-top: 5px;
-  padding-left: 10px;
-  border-radius: 20px;
-  background-color: green;
-  color: white;
-  height: 40px;
-  float: left;
-  text-align: center;
+   margin-left: 10px;
+   padding-top: 5px;
+   padding-left: 10px;
+   border-radius: 20px;
+   background-color: green;
+   color: white;
+   height: 40px;
+   float: left;
+   text-align: center;
 }
 .send_Comment:hover {
-  background-color: rgb(115, 213, 115);
-  cursor: pointer;
+   background-color: rgb(115, 213, 115);
+   cursor: pointer;
 }
 
 .commented {
-  display: flex;
-  width: 97%;
-  height: auto;
-  background-color: rgb(92, 92, 92);
-  border-radius: 20px;
-  padding: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 15px;
+   display: flex;
+   width: 97%;
+   height: auto;
+   background-color: rgb(92, 92, 92);
+   border-radius: 20px;
+   padding: 15px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   margin-left: 15px;
+   margin-right: 15px;
+   font-size: 15px;
 }
 
 .commented-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  background-size: auto;
-  float: left;
+   width: 50px;
+   height: 50px;
+   border-radius: 50px;
+   background-size: auto;
+   float: left;
 }
 .name {
-  display: flex;
-  /* text-shadow: 1px 1px 5px aqua; */
-  color: white;
-  padding-left: 15px;
-  padding-bottom: 15px;
-  font-size: 17px;
-  font-weight: 600;
-  justify-content: space-between;
+   display: flex;
+   /* text-shadow: 1px 1px 5px aqua; */
+   color: white;
+   padding-left: 15px;
+   padding-bottom: 15px;
+   font-size: 17px;
+   font-weight: 600;
+   justify-content: space-between;
 }
 .commented-comment {
-  height: auto;
-  width: 1040px;
-  padding-left: 15px;
-  color: white;
-  word-wrap: break-word;
-  font-size: 18px;
+   height: auto;
+   width: 1040px;
+   padding-left: 15px;
+   color: white;
+   word-wrap: break-word;
+   font-size: 18px;
 }
 
 .write .btn-primary {
-  float: left;
-  margin-left: 10px;
-  cursor: pointer;
-  margin-top: 5px;
+   float: left;
+   margin-left: 10px;
+   cursor: pointer;
+   margin-top: 5px;
 }
 .write .btn-primary:hover {
-  background-color: blue;
+   background-color: blue;
 }
 
 .twoBtn button:hover {
-  cursor: pointer;
-  background-color: red;
+   cursor: pointer;
+   background-color: red;
 }
 .twoBtn button:active {
-  cursor: pointer;
-  background-color: green;
+   cursor: pointer;
+   background-color: green;
 }
 .bxs-heart {
-  font-size: 20px;
+   font-size: 20px;
 }
 .bxs-message-rounded-detail {
-  font-size: 20px;
+   font-size: 20px;
 }
 
 .login-form {
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
-  background-color: #ffffff;
-  padding: 15px;
-  border: 2px dotted #cccccc;
-  border-radius: 10px;
+   width: 100%;
+   max-width: 400px;
+   margin: 20px auto;
+   background-color: #ffffff;
+   padding: 15px;
+   border: 2px dotted #cccccc;
+   border-radius: 10px;
 }
 
 .input-box {
-  margin-bottom: 10px;
+   margin-bottom: 10px;
 }
-.input-box label{
-  font-size: 14px;
-  font-weight: 400;
+.input-box label {
+   font-size: 14px;
+   font-weight: 400;
 }
 .input-box output {
-  /* padding: 15px 100px; */
-  width: 100%;
-  display: block;
+   /* padding: 15px 100px; */
+   width: 100%;
+   display: block;
 }
 
 .form-control2 {
-  display: block;
-  width: 100%;
-  font-size: 1.4rem;
-  height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #0d0d0e;
-  background-color: #f1eeee;
-  background-clip: padding-box;
-  border: 1px solid #f6f5f5;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+   display: block;
+   width: 100%;
+   font-size: 1.4rem;
+   height: calc(1.5em + 0.75rem + 2px);
+   padding: 0.375rem 0.75rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #0d0d0e;
+   background-color: #f1eeee;
+   background-clip: padding-box;
+   border: 1px solid #f6f5f5;
+   border-radius: 0.25rem;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-inline {
-  display: inline-block;
-  width: auto;
+   display: inline-block;
+   width: auto;
 }
 
 .table {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #000 !important;
-  color: #f6f8f9;
-  border: center;
+   border-collapse: collapse;
+   width: 100%;
+   border: 1px solid #000 !important;
+   color: #f6f8f9;
+   border: center;
 }
 
 .table1 {
-  width: 70%;
-  margin: auto;
+   width: 70%;
+   margin: auto;
 }
 
 .kkkk {
-  background: #499fcb;
+   background: #499fcb;
 }
 
 .table td,
-.table th
-{ 
-  white-space: nowrap;
-  /* padding: 10px 15px; */
-  vertical-align: top;
-  border: 1px solid #000 ;
+.table th {
+   white-space: nowrap;
+   /* padding: 10px 15px; */
+   vertical-align: top;
+   border: 1px solid #000;
 }
 
 .table thead tr th {
-  font-weight: bold;
-  vertical-align: bottom;
-  padding: 10px 15px;
-  font-size: 13px;
+   font-weight: bold;
+   vertical-align: bottom;
+   padding: 10px 15px;
+   font-size: 13px;
 }
 
 .table tbody tr td {
-  color: #4c4c4c;
-  font-size: 13px;
-  font-weight: 400;
-  vertical-align: middle;
-  padding: 10px;
-  max-height: 54px;
+   color: #4c4c4c;
+   font-size: 13px;
+   font-weight: 400;
+   vertical-align: middle;
+   padding: 10px;
+   max-height: 54px;
 }
 
 th {
-  text-align: inherit;
+   text-align: inherit;
 }
 
 .form-group {
-  color: #0c0c0c;
-  margin-bottom: 20px;
-  font-size: 15px;
+   color: #0c0c0c;
+   margin-bottom: 20px;
+   font-size: 15px;
 }
 .center {
-  width: 100%;
-  height: 65px;
-  text-align: center;
-  display: flow-root;
+   width: 100%;
+   height: 65px;
+   text-align: center;
+   display: flow-root;
 }
 .btn-success {
-  margin-top: 20px;
-  display: flexbox;
+   margin-top: 20px;
+   display: flexbox;
 
-  height: 40px;
-  padding: 0 15px;
-  background: #007aff !important;
-  border-radius: 3px;
-  font-size: 14px;
-  color: #fff;
-  transition: all 0.2s ease-out, color 0.2s ease-out;
-  border: 0;
-  font-weight: bold;
-  cursor: pointer;
+   height: 40px;
+   padding: 0 15px;
+   background: #007aff !important;
+   border-radius: 3px;
+   font-size: 14px;
+   color: #fff;
+   transition: all 0.2s ease-out, color 0.2s ease-out;
+   border: 0;
+   font-weight: bold;
+   cursor: pointer;
 }
 .login-form h1 {
-  margin-bottom: 15px;
+   margin-bottom: 15px;
 }
 .input-box i {
-  margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 .input-box output {
-  /* margin-top: 10px; */
-  margin-bottom: 15px;
+   /* margin-top: 10px; */
+   margin-bottom: 15px;
 }
 .form-control {
-  /* margin-top: 10px;
+   /* margin-top: 10px;
   margin-bottom: 15px; */
 }
 .input-box-outputPrice {
-  font-weight: 600;
-  font-size: 15px;
+   font-weight: 600;
+   font-size: 15px;
 }
 .btn-bxs-heart.open {
-  background-color: red;
+   background-color: red;
 }
 .btn-bxs-message.open {
-  background-color: red;
+   background-color: red;
 }
-

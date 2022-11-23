@@ -4,3 +4,5 @@
 /public/fonts
 # env
 /.env
+# vscode
+/.vscode

@@ -1,121 +1,130 @@
-<div class="content__body ">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h4>Quản lý đăng tin</h4>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-center align-middle">STT</th>
-                <th class="text-center align-middle">Miền</th>
-                <th class="text-center align-middle">Tên căn hộ</th>
-                <th class="text-center align-middle">Giá căn hộ</th>
-                <th class="text-center align-middle" class="col-span" colspan="2">Action</th>
-              </tr>
-            </thead>
-            
-            <% renderApartment.forEach((apartment, index) => {%>
-              <tbody>
-                <th class="text-center align-middle"><%= index+1 %></th>
-                <td class="text-center align-middle"><%= apartment.region %></td>
-                <td class="text-center align-middle"><%= apartment.heading%></td>
-                <td class="text-center align-middle"><%= apartment.price %></td>
-                <td class="text-center align-middle">
-                  <button class="btn btn-primary edit" data-toggle="modal" data-target="#editModal">Sửa</button>
-                  <a href="/dashboard/delete?id=<%= apartment._id %>" class="btn btn-danger">Xóa</a>
-                </td>
-              </tbody>
-            <% }) %>
-          </table>
-        </div>
+<div class="content__body">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="card">
+            <div class="card-header">
+               <h4>Quản lý đăng tin</h4>
+            </div>
+            <div class="card-body">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th class="text-center align-middle">STT</th>
+                        <th class="text-center align-middle">Miền</th>
+                        <th class="text-center align-middle">Tên căn hộ</th>
+                        <th class="text-center align-middle">Giá căn hộ</th>
+                        <th class="text-center align-middle" class="col-span" colspan="2">Action</th>
+                     </tr>
+                  </thead>
+
+                  <% renderApartment.forEach((apartment, index) => {%>
+                  <tbody>
+                     <th class="text-center align-middle"><%= index+1 %></th>
+                     <td class="text-center align-middle"><%= apartment.region %></td>
+                     <td class="text-center align-middle"><%= apartment.heading%></td>
+                     <td class="text-center align-middle"><%= apartment.price %></td>
+                     <td class="text-center align-middle">
+                        <button class="btn btn-primary edit" data-toggle="modal" data-target="#editModal">Sửa</button>
+                        <a href="/dashboard/delete?id=<%= apartment._id %>" class="btn btn-danger">Xóa</a>
+                     </td>
+                  </tbody>
+                  <% }) %>
+               </table>
+            </div>
+         </div>
       </div>
-    </div>
-    <!-- EDIT Modal -->
-    <div class="modal fade" id="editModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center align-center">
-            <h5 class="modal-title " id="exampleModalLabel">Edit upload</h5>
-            <button type="button" class="close bg-danger p-2" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <h5>Khu vực</h5>
-                <label for="">Vùng</label>
-                <select name="region" class="form-control">
-                  <option value="Miền Bắc">Miền Bắc</option>
-                  <option value="Miền Trung">Miền Trung</option>
-                  <option value="Miền Nam">Miền Nam</option>
-                </select>
-                <input class="form-control" name="city" type="text" placeholder="Thành phố">
-                <input class="form-control" name="district" type="text" placeholder="Quận/Huyện">
-                <input class="form-control" name="ward" type="text" placeholder="Phường xã">
-                <input class="form-control" name="address" type="text" placeholder="Số nhà">
-                <input class="form-control" name="beach" type="text" placeholder="Bãi Biển">
-              </div>
-              <div class="form-group">
-                <label for="">Tiêu đề</label>
-                <input class="form-control" name="heading" type="text">
-              </div>
-              <div class="form-group">
-                <label for="">Thông tin mô tả</label>
-                <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="">Giá căn hộ</label>
-                <input class="form-control" name="price" type="text">
-              </div>
-              <div class="form-group">
-                <label for="">Diện tích căn hộ</label>
-                <input class="form-control" name="acreage" type="text">
-              </div>
-              <div class="form-group">
-                <label for="formFileMultiple" class="form-label">Chọn ảnh phòng</label>
-                <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
+      <!-- EDIT Modal -->
+      <div
+         class="modal fade"
+         id="editModal"
+         tabindex="1"
+         role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true"
+      >
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header text-center align-center">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit upload</h5>
+                  <button type="button" class="close bg-danger p-2" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <form>
+                     <div class="form-group">
+                        <h5>Khu vực</h5>
+                        <label for="">Vùng</label>
+                        <select name="region" class="form-control">
+                           <option value="Miền Bắc">Miền Bắc</option>
+                           <option value="Miền Trung">Miền Trung</option>
+                           <option value="Miền Nam">Miền Nam</option>
+                        </select>
+                        <input class="form-control" name="city" type="text" placeholder="Thành phố" />
+                        <input class="form-control" name="district" type="text" placeholder="Quận/Huyện" />
+                        <input class="form-control" name="ward" type="text" placeholder="Phường xã" />
+                        <input class="form-control" name="address" type="text" placeholder="Số nhà" />
+                        <input class="form-control" name="beach" type="text" placeholder="Bãi Biển" />
+                     </div>
+                     <div class="form-group">
+                        <label for="">Tiêu đề</label>
+                        <input class="form-control" name="heading" type="text" />
+                     </div>
+                     <div class="form-group">
+                        <label for="">Thông tin mô tả</label>
+                        <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Giá căn hộ</label>
+                        <input class="form-control" name="price" type="text" />
+                     </div>
+                     <div class="form-group">
+                        <label for="">Diện tích căn hộ</label>
+                        <input class="form-control" name="acreage" type="text" />
+                     </div>
+                     <div class="form-group">
+                        <label for="formFileMultiple" class="form-label">Chọn ảnh phòng</label>
+                        <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
+                     </div>
+                  </form>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-    <!-- DELETE modal  -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close bg-danger p-2" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
+      <!-- DELETE modal  -->
+      <!-- Modal -->
+      <div
+         class="modal fade"
+         id="exampleModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true"
+      >
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close bg-danger p-2" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">...</div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-    <!-- Modal -->
-    
-  </div>
+      <!-- Modal -->
+   </div>
 </div>
 <script>
-  const $ = document.querySelector.bind(document)
-  $(".sidebar-menu_apartment").classList.add("active");
+   const $ = document.querySelector.bind(document);
+   $('.sidebar-menu_apartment').classList.add('active');
 </script>

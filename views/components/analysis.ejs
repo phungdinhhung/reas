@@ -1,352 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/analysis.css">
-    <link rel="stylesheet" href="/styles/base.css">
-    <title>Document</title>
-</head>
-<body>
-    <%- include('../layouts/header') %>
-    <div class="grid wide container">
-        <form action="/analysis/<%=apartment.id%>" method="POST">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/styles/analysis.css" />
+      <link rel="stylesheet" href="/styles/base.css" />
+      <title>Document</title>
+   </head>
+   <body>
+      <%- include('../layouts/header') %>
+      <div class="grid wide container">
+         <div class="center1">
+            <a href="/detail/<%= apartment._id %>" type="submit" class="btn-success back_apart">Trở Lại</a>
+         </div>
+         <form action="/analysis/<%=apartment.id%>" method="POST">
             <div class="form-ptich">
-              <div class="login-form">
-                <h1>Bảng Phân Tích</h1>
-                <div class="input-box">
-                    <i> Giá Trị Căn Hộ </i>
-                    <input class="" type="number" placeholder="VND" name="price" value="<%= apartment.price%>">
-                </div>
-                
-                <div class="input-box">
-                    <label for="">Tiến Độ Thanh Toán</label>
-                    <select name="type" class="form-control">
-                  <option value="normal">Tiến Độ Thường</option>
-                  <option value="70">70%</option>
-                  <option value="90">90%</option>
-                  <option value="vnh">Vay Ngân Hàng</option>
-              </select>
+               <div class="login-form">
+                  <h1>Bảng Phân Tích</h1>
+                  <div class="input-box">
+                     <span> Giá Trị Căn Hộ </span>
+                     <input class="" type="number" placeholder="VND" name="price" value="<%= apartment.price%>" />
+                  </div>
+
+                  <div class="input-box">
+                     <label for="">Tiến Độ Thanh Toán</label>
+                     <select name="type" class="form-control">
+                        <option value="normal">Tiến Độ Thường</option>
+                        <option value="70">70%</option>
+                        <option value="90">90%</option>
+                        <option value="vnh">Vay Ngân Hàng</option>
+                     </select>
+                  </div>
+                  <div class="center">
+                     <button type="submit" class="btn-success">Kiểm Tra</button>
+                  </div>
+               </div>
             </div>
-            <div class="center">
-              <button type="submit" class="btn-success">Kiểm Tra</button>
-          </div>
-        </div>
+         </form>
+         <div class="analysis">
+            <div>
+               <h2 class="title">Bảng Phân Tích Tài Chính</h2>
+               <div class="table1">
+                  <table class="table">
+                     <thead>
+                        <tr class="kkkk">
+                           <th>DANH MỤC</th>
+                           <th>ĐƠN VỊ (%)</th>
+                           <th>ĐƠN VỊ (vnd)</th>
+                           <th>THUẾ</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span> GIÁ NIÊM YẾT </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= apartment.price %></div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= apartment.price %></div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> CHÍNH SÁCH CHIẾT KHẤU THANH TOÁN </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= percentDiscount = 7 %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= discount = apartment.price * percentDiscount / 100 %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= vatDis = discount-(discount * 10 / 100) %>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> CÁC CHIẾT KHẤU KHÁC </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= percentOther = 5 %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= other = vatDis * percentOther / 100 %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= vatOther = other-(other *10 / 100) %>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> TỔNG SỐ TIỀN CHIẾT KHẤU </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= vatSum = vatDis + vatOther %></div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> TỔNG GIÁ TRỊ CHIẾT KHẤU </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= apartment.price - vatSum %></div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
             </div>
-          </form>
-          <div class="analysis">
-            <h2 class="title">Bảng Phân Tích Tài Chính</h2>
-            <div class="table1">
-            <table class="table">
-            <thead>
-                <tr class="kkkk">
-                    <th>DANH MỤC</th>
-                    <th>ĐƠN VỊ (%)</th>
-                    <th>ĐƠN VỊ (vnd)</th>
-                    <th>THUẾ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span> GIÁ NIÊM YẾT </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= apartment.price %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= apartment.price %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> CHÍNH SÁCH CHIẾT KHẤU THANH TOÁN </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= percentDiscount = 7 %>%
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= discount = apartment.price * percentDiscount / 100 %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= vatDis = discount-(discount * 10 / 100) %>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> CÁC CHIẾT KHẤU KHÁC </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= percentOther = 5 %>%
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= other = vatDis * percentOther / 100 %>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= vatOther = other-(other *10 / 100) %>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> TỔNG SỐ TIỀN CHIẾT KHẤU </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= vatSum = vatDis + vatOther %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> TỔNG GIÁ TRỊ CHIẾT KHẤU </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= apartment.price - vatSum %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                </tr>
+            <div>
+               <h2 class="title">Tiến Độ Thanh Toán</h2>
+               <div class="table1">
+                  <table class="table">
+                     <thead>
+                        <tr class="kkkk">
+                           <th>TIẾN ĐỘ</th>
+                           <th>TỶ LỆ</th>
+                           <th>SỐ TIỀN THANH TOÁN</th>
+                           <th>THỜI HẠN THANH TOÁN</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span> Đặt cọc </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= deposit = 2.5 %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= sumDeposit = apartment.price * deposit / 100 %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 Đăng ký Phiếu giữ chỗ Căn biệt thự - Ký thỏa thuận đặt cọc
+                              </div>
+                           </td>
+                        </tr>
+                        <% for(let i = 0; i< phase.length; i++) { %>
+                        <tr>
+                           <td>
+                              <span> Đợt <%= i + 1 %> </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= phase[i].moneyPhase %></div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <% } %>
+                        <tr>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% a = 0 %> <%for(let i = 0; i < phase.length; i++) { %> <% a += phase[i].moneyPhase %>
+                                 <% } %> <%= a + sumDeposit %>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div>
+               <h2 class="title">Bảng Tính Lợi Nhuận</h2>
+               <div class="table1">
+                  <table class="table">
+                     <thead>
+                        <tr class="kkkk">
+                           <th>CHI TIẾT</th>
+                           <th>TIỀN</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span> TỈ LỆ FULL PHÒNG / THÁNG </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= full = 70 %>%</div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> GÍA CHO THUÊ PHÒNG </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= apartment.priceMonth %></div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> QUY ĐỔI VOUCHER </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= apartment.priceMonth * 2 %></div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> LỢI NHUẬN THU VỀ TRÊN THÁNG </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= profit = apartment.priceMonth*(30*full) %>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> CHI PHÍ SỬA CHỮA </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= fix = profit * 3 / 100 %></div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> CHIA SẺ LỢI NHUẬN </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= share = profit * 20 / 100 %></div>
+                           </td>
+                        </tr>
 
-            </tbody>
-        </table>
-    </div>
-    <h2 class="title">Tiến Độ Thanh Toán</h2>
-    <div class="table1">
-        <table class="table">
-            <thead>
-                <tr class="kkkk">
-                    <th>TIẾN ĐỘ</th>
-                    <th>TỶ LỆ</th>
-                    <th>SỐ TIỀN THANH TOÁN</th>
-                    <th>THỜI HẠN THANH TOÁN</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span> Đặt cọc </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= deposit = 2.5 %>%
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= sumDeposit = apartment.price * deposit / 100 %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            Đăng ký Phiếu giữ chỗ Căn biệt thự - Ký thỏa thuận đặt cọc
-                        </div>
-                    </td>
-                </tr>
-                <% for(let i = 0; i< phase.length; i++) { %>
-                <tr>
-                    <td>
-                        <span>  Đợt <%= i + 1 %> </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= phase[i].percent %>%
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= phase[i].moneyPhase %>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <output type="text" name="percent" class="form-control form-inline">
-                        </div>
-                    </td>
-                </tr>
-            <% } %>
-                <tr>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            Tổng tiền
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <% a = 0 %>
-                            <%for(let i = 0; i < phase.length; i++) { %>
-                                <% a += phase[i].moneyPhase  %>
-                                <% } %>
-                                <%= a + sumDeposit %>
-                        </div>
-                    </td>
-                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <h2 class="title">Bảng Tính Lợi Nhuận</h2>
-    <div class="table1">
-        <table class="table">
-            <thead>
-                <tr class="kkkk">
-                    <th>CHI TIẾT</th>
-                    <th>TIỀN</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span> TỈ LỆ FULL PHÒNG / THÁNG </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= full = 70 %>%
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> GÍA CHO THUÊ PHÒNG </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= apartment.priceMonth %>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span>  QUY ĐỔI VOUCHER </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= apartment.priceMonth * 2 %>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span> LỢI NHUẬN THU VỀ TRÊN THÁNG </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= profit = apartment.priceMonth*(30*full) %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <span> CHI PHÍ SỬA CHỮA </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= fix = profit * 3 / 100 %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <span> CHIA SẺ LỢI NHUẬN </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= share = profit * 20 / 100 %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                
-                <tr>
-                    <td>
-                        <span>LỢI NHUẬN THU VỀ/THÁNG (Sau Khi Trừ Chi Phí) </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= month = profit - share - fix %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <span> LỢI NHUẬN THU VỀ TRÊN NĂM </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= year = month * 12 %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <span> LỢI NHUẬN THU VỀ SAU 10 NĂM </span>
-                    </td>
-                    <td>
-                        <div class="form-group mb-0 d-inline-block">
-                            <%= end = year * 10 %>
-                        </div>
-                    </td>
-
-
-                </tr>
-                <tr>
-
-
-        </table>
-    </div>
-</div>
-</div>
-<%- include('../layouts/footer') %>
-</body>
+                        <tr>
+                           <td>
+                              <span>LỢI NHUẬN THU VỀ/THÁNG (Sau Khi Trừ Chi Phí) </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= month = profit - share - fix %></div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> LỢI NHUẬN THU VỀ TRÊN NĂM </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= year = month * 12 %></div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span> LỢI NHUẬN THU VỀ SAU 10 NĂM </span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= end = year * 10 %></div>
+                           </td>
+                        </tr>
+                        <tr></tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div>
+               <h3 class="title">Tiến Độ Thanh Toán Ngân Hàng</h3>
+               <div class="table2">
+                  <table class="table">
+                     <thead>
+                        <tr class="kkkk">
+                           <th>Năm</th>
+                           <th>Lợi Nhuận Đơn Vị Vận Hành Trả Về</th>
+                           <th>Lãi Suất</th>
+                           <th>Dư Nợ</th>
+                           <th>Lợi Nhuận Thu Về</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <span>1</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>2</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>3</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>4</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>5</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>6</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>7</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>8</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>9</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <span>10</span>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <div class="form-group mb-0 d-inline-block"></div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>

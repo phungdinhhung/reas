@@ -1,29 +1,28 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const comment = new mongoose.Schema(
-  {
-    userId: {
-      type: Object,
-      default: ""
-    },
-    apartmentId: {
-        type: Object,
-        default: ""
+   {
+      userId: {
+         type: Object,
+         default: '',
       },
-    userName: {
-    type: String,
-    default: ""
-    },
-    content: {
-      type: String,
-      default: ""
-    },
-    avatar: {
-      type: String,
-      default: ""
-    }
-  },
-  { timestamps: true }
+      apartmentId: {
+         type: Object,
+         default: '',
+      },
+      userName: {
+         type: String,
+         default: '',
+      },
+      content: {
+         type: String,
+         default: '',
+      },
+      avatar: {
+         type: String,
+         default: '',
+      },
+   },
+   { timestamps: true },
 );
 
-
-module.exports = mongoose.model("Comment", comment);
+module.exports = mongoose.model('Comment', comment);

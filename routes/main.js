@@ -10,22 +10,22 @@ const commentRouter = require('./comment');
 const analysisRouter = require('./analysis');
 const searchRouter = require('./search');
 function route(app) {
-    app.use("/", homeRouter);
-    app.use("/search", searchRouter);
-    
-    app.use("/login", authRouter);
-    app.use("/register", registerRouter);
-    app.use("/logout", logOutRouter);
+   app.use('/', homeRouter);
+   app.use('/search', searchRouter);
 
-    app.use("/profile", profileRouter);
-    
-    app.use("/dashboard", adminRouter);
-    
-    app.use("/detail", apartmentRouter);
-    app.use("/comment", commentRouter);
-    app.use("/analysis", analysisRouter);
-    
-    app.use("/favorite", favoriteRouter);
+   app.use('/login', authRouter);
+   app.use('/register', registerRouter);
+   app.use('/logout', logOutRouter);
+
+   app.use('/profile', profileRouter);
+
+   app.use('/dashboard', adminRouter);
+
+   app.use('/detail', apartmentRouter);
+   app.use('/comment', commentRouter);
+   app.use('/analysis', analysisRouter);
+
+   app.use('/favorite', favoriteRouter);
 }
 
 module.exports = route;

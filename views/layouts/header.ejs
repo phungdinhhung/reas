@@ -1,35 +1,32 @@
-
-<link rel="stylesheet" href="/styles/header.css"/>
+<link rel="stylesheet" href="/styles/header.css" />
 <!-- <link rel="stylesheet" href="styles/base.css"> -->
-<div class="header__header-main ">
-    <div class="site-header  ">
-        <div class="site-identity">
-            <a href="/">
-                <!-- <div class="logo-icon">
+<div class="header__header-main">
+   <div class="site-header">
+      <div class="site-identity">
+         <a href="/">
+            <!-- <div class="logo-icon">
                 <i class="fa-solid fa-plane-departure"></i>
             </div> -->
-                <div class="logo-name">REAS</div>
-            </a>
-        </div>
-        <div class="site-navigation">
-            <ul class="nav-header">
-                <%if(user) { %>
-                    <li class="nav-header_item "><a class="" href="/">Trang chủ</a></li>
-                    <li class="nav-header_item"><a href="/favorite">Danh sách yêu thích</a></li>
-                    <li class="nav-header_item"><a href="/profile">Thông tin cá nhân</a></li>
-                    <% } %>
-            </ul>
-        </div>
-        <div class="site-log">
+            <div class="logo-name">REAS</div>
+         </a>
+      </div>
+      <div class="site-navigation">
+         <ul class="nav-header">
             <%if(user) { %>
-                <li><a href="/logout" class="nav-link">Đăng xuất</a></li>
-                <% } else { %>
-                    <li><a href="/login" class="nav-link">Đăng nhập</a></li>
-                    <li class="separate"></li>
-                    <li><a href="/register" class="nav-link">Đăng ký</a></li>
-                    <% } %>
-        </div>
-
-        
-    </div>
+            <li class="nav-header_item"><a class="" href="/">Trang chủ</a></li>
+            <li class="nav-header_item"><a href="/favorite">Danh sách yêu thích</a></li>
+            <li class="nav-header_item"><a href="/profile">Thông tin cá nhân</a></li>
+            <% } %>
+         </ul>
+      </div>
+      <div class="site-log">
+         <%if(user) { %>
+         <li><a href="/logout" class="nav-link">Đăng xuất</a></li>
+         <% } else { %>
+         <li><a href="/login" class="nav-link">Đăng nhập</a></li>
+         <li class="separate"></li>
+         <li><a href="/register" class="nav-link">Đăng ký</a></li>
+         <% } %>
+      </div>
+   </div>
 </div>

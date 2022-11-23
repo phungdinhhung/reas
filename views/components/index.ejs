@@ -1,277 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/index.css" />
-    <link rel="stylesheet" href="styles/base.css" />
-    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <%- include('../layouts/header')%>
-    <section class="bannerSection">
-      <div class="bannerMain">
-        <div class="bannerCover">
-          <img
-            src="https://www.investopedia.com/thmb/IjOv1uJPKFinfi2Gj-v35-Zx_Ns=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/corner-of-an-apartment-building--dubai--uae-1088862160-3aeaa90992214854896ecee148258fb9.jpg"
-            alt=""
-            class="banner__backgroud"
-          />
-          <div class="bannerInnerCover">
-            <div class="bannerTitle">
-              <div class="titleLarge">
-                <h1>Discover a place you will love it to live</h1>
-              </div>
-              <span class="titleSmall">
-                Connect with more than 75 million renter looking for new homes
-                using for our comprehensive marketing platform
-              </span>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="styles/index.css" />
+      <link rel="stylesheet" href="styles/base.css" />
+      <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css" />
+      <title><%= title %></title>
+   </head>
+   <body>
+      <%- include('../layouts/header')%>
+      <section class="bannerSection">
+         <div class="bannerMain">
+            <div class="bannerCover">
+               <img
+                  src="https://www.investopedia.com/thmb/IjOv1uJPKFinfi2Gj-v35-Zx_Ns=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/corner-of-an-apartment-building--dubai--uae-1088862160-3aeaa90992214854896ecee148258fb9.jpg"
+                  alt=""
+                  class="banner__backgroud"
+               />
+               <div class="bannerInnerCover">
+                  <div class="bannerTitle">
+                     <div class="titleLarge">
+                        <h1>Discover a place you will love it to live</h1>
+                     </div>
+                     <span class="titleSmall">
+                        Connect with more than 75 million renter looking for new homes using for our comprehensive
+                        marketing platform
+                     </span>
+                  </div>
+                  <div class="bannerSearchCard">
+                     <form action="/search" method="POST">
+                        <div class="background_card">
+                           <div class="inputAdress">
+                              <div class="iconAdress">
+                                 <i class="fa-solid fa-location-dot"></i>
+                              </div>
+                              <div class="inputAdress__inner">
+                                 <select name="region" id="">
+                                    <option value="">Miền</option>
+                                    <option value="Miền Bắc">Miền Bắc</option>
+                                    <option value="Miền Trung">Miền Trung</option>
+                                    <option value="Miền Nam">Miền Nam</option>
+                                 </select>
+                              </div>
+                           </div>
+
+                           <div class="inputPrice">
+                              <div class="iconAdress">
+                                 <i class="fa-solid fa-money-bill-wave"></i>
+                              </div>
+                              <div class="inputAdress__inner">
+                                 <select name="price" id="">
+                                    <option value="">Giá tiền</option>
+                                    <option value="1000000000">Dưới 1.000.000.000</option>
+                                    <option value="2000000000">Dưới 2.000.000.000</option>
+                                    <option value="3000000000">Dưới 3.000.000.000</option>
+                                    <option value="5000000000">Dưới 5.000.000.000</option>
+                                    <option value="10000000000">Dưới 10.000.000.000</option>
+                                 </select>
+                              </div>
+                           </div>
+
+                           <div class="inputType">
+                              <div class="iconAdress">
+                                 <i class="fa-solid fa-building"></i>
+                              </div>
+                              <div class="inputAdress__inner">
+                                 <select name="acreage" id="">
+                                    <option value="">Diện tích</option>
+                                    <option value="20">Dưới 20m</option>
+                                    <option value="30">Dưới 30m</option>
+                                    <option value="50">Dưới 50m</option>
+                                    <option value="70">Dưới 70m</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <button class="banner__btnSearch" type="submit">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
             </div>
-            <div class="bannerSearchCard">
-              <form action="/search" method="POST">
-              <div class="background_card">
-                <div class="inputAdress">
-                  <div class="iconAdress">
-                    <i class="fa-solid fa-location-dot"></i>
-                  </div>
-                  <div class="inputAdress__inner">
-                    <select name="region" id="">
-                      <option value="">Miền</option>
-                      <option value="Miền Bắc">Miền Bắc</option>
-                      <option value="Miền Trung">Miền Trung</option>
-                      <option value="Miền Nam">Miền Nam</option>
-  
-                    </select>
-                  </div>
-                </div>
-  
-                <div class="inputPrice">
-                  <div class="iconAdress">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                  </div>
-                  <div class="inputAdress__inner">
-                    <select name="price" id="">
-                      <option value="">Giá tiền</option>
-                      <option value="1000000000">Dưới 1.000.000.000</option>
-                      <option value="2000000000">Dưới 2.000.000.000</option>
-                      <option value="3000000000">Dưới 3.000.000.000</option>
-                      <option value="5000000000">Dưới 5.000.000.000</option>
-                      <option value="10000000000">Dưới 10.000.000.000</option>
-                    </select>
-                  </div>
-                </div>
-  
-                <div class="inputType">
-                  <div class="iconAdress">
-                    <i class="fa-solid fa-building"></i>
-                  </div>
-                  <div class="inputAdress__inner">
-                    <select name="acreage" id="">
-                      <option value="">Diện tích</option>
-                      <option value="20">Dưới 20m</option>
-                      <option value="30">Dưới 30m</option>
-                      <option value="50">Dưới 50m</option>
-                      <option value="70">Dưới 70m</option>
-  
-                    </select>
-                  </div>
-                </div>
-                <button class="banner__btnSearch" type="submit">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-            </form>
+         </div>
+      </section>
+      <div class="grid wide home__container">
+         <section class="home__intro row">
+            <div class="col l-6">
+               <img src="https://m.media-amazon.com/images/I/71uqnElo1+L.jpg" alt="" class="home__intro-img" />
             </div>
-          </div>
-        </div>
+            <div class="col l-6">
+               <div class="home__intro__group">
+                  <h2 class="home__intro-title">Giới thiệu</h2>
+                  <h3 class="home__intro-text">
+                     Bất động sản nghỉ dưỡng là mô hình bất động sản được xây dựng tại khu nghỉ dưỡng, khu du lịch, bao
+                     gồm biệt thự trên đồi, biệt thự biển, căn hộ khách sạn, mini hotel, shophouse…. sau đó bán lại cho
+                     những cá nhân, tổ chức có nhu cầu đầu tư. Bất động sản nghỉ dưỡng được xây dựng nên với mục đích
+                     phục vụ khách du lịch, cung cấp dịch vụ lưu trú, thương mại… mang đến những trải nghiệm thú vị và
+                     tiện ích hấp dẫn cho du khách.
+                  </h3>
+                  <div class="home__intro__secondary">
+                     <img
+                        src="https://cdn.homedsgn.com/wp-content/uploads/2013/06/Beach-House-17-0-800x529.jpg"
+                        alt=""
+                        class="home__intro__secondary-img"
+                     />
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section class="home__regions">
+            <div class="home__northern space">
+               <div class="home__region__heading">
+                  <h3 class="home__region__name">Miền Bắc</h3>
+               </div>
+               <div class="home__list-apartment">
+                  <div class="row">
+                     <%for(let i = 0; i < listRegion1.length; i++) {%>
+                     <div class="bottom__list col l-3">
+                        <a href="/detail/<%=listRegion1[i]._id %>">
+                           <div class="home__apartment-item">
+                              <div class="home__apartment-image">
+                                 <img src="<%=listRegion1[i].images[0].url%>" alt="" />
+                              </div>
+                              <div class="home__info">
+                                 <div class="home__infor-header">
+                                    <h4 class="home__infor-header_title"><%=listRegion1[i].heading%></h4>
+                                 </div>
+                                 <div class="home__infor-beach">Bãi biển <%=listRegion1[i].beach%></div>
+                                 <div class="home__infor-address">
+                                    <i class="fa-solid fa-location-dot home__infor-address__icon"></i>
+                                    <p>Thành phố <%= listRegion1[i].city %></p>
+                                 </div>
+                                 <div class="home__infor-icon">
+                                    <span class="home__infor-icon_price"><%= listRegion1[i].price %> VNĐ</span>
+                                    <i class="fa-regular fa-heart icon_hearth"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <% } %>
+                  </div>
+               </div>
+            </div>
+            <div class="home__central space">
+               <div class="home__region__heading">
+                  <h3 class="home__region__name">Miền Trung</h3>
+               </div>
+               <div class="home__list-apartment">
+                  <div class="row">
+                     <%for(let i = 0; i < listRegion2.length; i++) {%>
+                     <div class="bottom__list col l-3">
+                        <a href="/detail/<%=listRegion2[i]._id %>">
+                           <div class="home__apartment-item">
+                              <div class="home__apartment-image">
+                                 <img src="<%=listRegion2[i].images[0].url%>" alt="" />
+                              </div>
+                              <div class="home__info">
+                                 <div class="home__infor-header">
+                                    <h4 class="home__infor-header_title"><%=listRegion2[i].heading%></h4>
+                                 </div>
+                                 <div class="home__infor-beach">Bãi biển <%=listRegion2[i].beach%></div>
+                                 <div class="home__infor-address">
+                                    <i class="fa-solid fa-location-dot home__infor-address__icon"></i>
+                                    <p>Thành phố <%= listRegion2[i].city %></p>
+                                 </div>
+                                 <div class="home__infor-icon">
+                                    <span class="home__infor-icon_price"><%= listRegion2[i].price %> VNĐ</span>
+                                    <i class="fa-regular fa-heart icon_hearth"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <% } %>
+                  </div>
+               </div>
+            </div>
+            <div class="home__southern space">
+               <div class="home__region__heading">
+                  <h3 class="home__region__name">Miền Nam</h3>
+               </div>
+               <div class="home__list-apartment">
+                  <div class="row">
+                     <%for(let i = 0; i < listRegion3.length; i++) {%>
+                     <div class="bottom__list col l-3">
+                        <a href="/detail/<%=listRegion3[i]._id %>">
+                           <div class="home__apartment-item">
+                              <div class="home__apartment-image">
+                                 <img src="<%=listRegion3[i].images[0].url%>" alt="" />
+                              </div>
+                              <div class="home__info">
+                                 <div class="home__infor-header">
+                                    <h4 class="home__infor-header_title"><%=listRegion3[i].heading%></h4>
+                                 </div>
+                                 <div class="home__infor-beach">Bãi biển <%=listRegion3[i].beach%></div>
+                                 <div class="home__infor-address">
+                                    <i class="fa-solid fa-location-dot home__infor-address__icon"></i>
+                                    <p>Thành phố <%= listRegion3[i].city %></p>
+                                 </div>
+                                 <div class="home__infor-icon">
+                                    <span class="home__infor-icon_price"><%= listRegion3[i].price %> VNĐ</span>
+                                    <i class="fa-regular fa-heart icon_hearth"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <% } %>
+                  </div>
+               </div>
+            </div>
+         </section>
       </div>
-    </section>
-    <div class="grid wide home__container">
-      <section class="home__intro row">
-        <div class="col l-6">
-          <img
-            src="https://m.media-amazon.com/images/I/71uqnElo1+L.jpg"
-            alt=""
-            class="home__intro-img"
-          />
-        </div>
-        <div class="col l-6">
-          <div class="home__intro__group">
-            <h2 class="home__intro-title">Giới thiệu</h2>
-            <h3 class="home__intro-text">
-              Bất động sản nghỉ dưỡng là mô hình bất động sản được xây dựng tại
-              khu nghỉ dưỡng, khu du lịch, bao gồm biệt thự trên đồi, biệt thự
-              biển, căn hộ khách sạn, mini hotel, shophouse…. sau đó bán lại cho
-              những cá nhân, tổ chức có nhu cầu đầu tư. Bất động sản nghỉ dưỡng
-              được xây dựng nên với mục đích phục vụ khách du lịch, cung cấp
-              dịch vụ lưu trú, thương mại… mang đến những trải nghiệm thú vị và
-              tiện ích hấp dẫn cho du khách.
-            </h3>
-            <div class="home__intro__secondary">
-              <img
-                src="https://cdn.homedsgn.com/wp-content/uploads/2013/06/Beach-House-17-0-800x529.jpg"
-                alt=""
-                class="home__intro__secondary-img"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="home__regions">
-        <div class="home__northern space">
-          <div class="home__region__heading">
-            <h3 class="home__region__name">Miền Bắc</h3>
-          </div>
-          <div class="home__list-apartment">
-            <div class="row">
-              <%for(let i = 0; i < listRegion1.length; i++) {%>
-              <div class="bottom__list col l-3">
-                <a href="/detail/<%=listRegion1[i]._id %>">
-                <div class="home__apartment-item">
-                  <div class="home__apartment-image">
-                    <img src="<%=listRegion1[i].images[0].url%>" alt="" />
-                  </div>
-                  <div class="home__info">
-                    <div class="home__infor-header">
-                        <h4 class="home__infor-header_title"> 
-                          <%=listRegion1[i].heading%>
-                        </h4>
-                    </div>
-                    <div class="home__infor-beach">
-                      Bãi biển <%=listRegion1[i].beach%>
-                    </div>
-                    <div class="home__infor-address">
-                      <i
-                        class="fa-solid fa-location-dot home__infor-address__icon"
-                      ></i>
-                      <p>Thành phố <%= listRegion1[i].city %></p>
-                    </div>
-                    <div class="home__infor-icon">
-                      <span class="home__infor-icon_price"
-                        ><%= listRegion1[i].price %> VNĐ</span
-                      >
-                      <i class="fa-regular fa-heart icon_hearth"></i>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <div class="home__central space">
-          <div class="home__region__heading">
-            <h3 class="home__region__name">Miền Trung</h3>
-          </div>
-          <div class="home__list-apartment">
-            <div class="row">
-              <%for(let i = 0; i < listRegion2.length; i++) {%>
-              <div class="bottom__list col l-3">
-                <a href="/detail/<%=listRegion2[i]._id %>">
-                <div class="home__apartment-item">
-                  <div class="home__apartment-image">
-                    <img src="<%=listRegion2[i].images[0].url%>" alt="" />
-                  </div>
-                  <div class="home__info">
-                    <div class="home__infor-header">
-                        <h4 class="home__infor-header_title"> 
-                          <%=listRegion2[i].heading%>
-                        </h4>
-                    </div>
-                    <div class="home__infor-beach">
-                      Bãi biển <%=listRegion2[i].beach%>
-                    </div>
-                    <div class="home__infor-address">
-                      <i
-                        class="fa-solid fa-location-dot home__infor-address__icon"
-                      ></i>
-                      <p>Thành phố <%= listRegion2[i].city %></p>
-                    </div>
-                    <div class="home__infor-icon">
-                      <span class="home__infor-icon_price"
-                        ><%= listRegion2[i].price %> VNĐ</span
-                      >
-                      <i class="fa-regular fa-heart icon_hearth"></i>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              </div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <div class="home__southern space">
-          <div class="home__region__heading">
-            <h3 class="home__region__name">Miền Nam</h3>
-          </div>
-          <div class="home__list-apartment">
-            <div class="row">
-              <%for(let i = 0; i < listRegion3.length; i++) {%>
-              <div class="bottom__list col l-3">
-                <a href="/detail/<%=listRegion3[i]._id %>">
-                <div class="home__apartment-item">
-                  <div class="home__apartment-image">
-                    <img src="<%=listRegion3[i].images[0].url%>" alt="" />
-                  </div>
-                  <div class="home__info">
-                    <div class="home__infor-header">
-                        <h4 class="home__infor-header_title"> 
-                          <%=listRegion3[i].heading%>
-                        </h4>
-                    </div>
-                    <div class="home__infor-beach">
-                      Bãi biển <%=listRegion3[i].beach%>
-                    </div>
-                    <div class="home__infor-address">
-                      <i
-                        class="fa-solid fa-location-dot home__infor-address__icon"
-                      ></i>
-                      <p>Thành phố <%= listRegion3[i].city %></p>
-                    </div>
-                    <div class="home__infor-icon">
-                      <span class="home__infor-icon_price"
-                        ><%= listRegion3[i].price %> VNĐ</span
-                      >
-                      <i class="fa-regular fa-heart icon_hearth"></i>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
-      <i class="fa-solid fa-caret-up"></i>
-    </button>
- <script>
-  // Get the button:
-let mybutton = document.getElementById("myBtn");
+      <button onclick="topFunction()" id="myBtn" title="Go to top">
+         <i class="fa-solid fa-caret-up"></i>
+      </button>
+      <script>
+         // Get the button:
+         let mybutton = document.getElementById('myBtn');
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+         // When the user scrolls down 20px from the top of the document, show the button
+         window.onscroll = function () {
+            scrollFunction();
+         };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+         function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+               mybutton.style.display = 'block';
+            } else {
+               mybutton.style.display = 'none';
+            }
+         }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-</script>
+         // When the user clicks on the button, scroll to the top of the document
+         function topFunction() {
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+         }
+      </script>
 
-    <%- include('../layouts/footer')%>
-  </body>
+      <%- include('../layouts/footer')%>
+   </body>
 </html>

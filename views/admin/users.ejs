@@ -1,69 +1,59 @@
-
-    <!-- CONTENT  -->
-    <section class="content">
-      <div class="content-header"></div>
-      <div class="content__body active ">
-        <div class="card">
-          <div class="card-header">
+<!-- CONTENT  -->
+<section class="content">
+   <div class="content-header"></div>
+   <div class="content__body active">
+      <div class="card">
+         <div class="card-header">
             <h4>Quản lý tài khoản</h4>
-          </div>
-          <div class="card-body">
+         </div>
+         <div class="card-body">
             <table class="table">
-              <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Email</th>
-                  <th>Sdt</th>
-                  <th>Name</th>
-                  <th class="center">Action</th>
-                </tr>
-              </thead>
-              <% renderUsers.forEach((user, index) => { %>
-                <% if(user.email !== 'phungdinhhung1002@gmail.com') {%>
-                <tbody>
+               <thead>
+                  <tr>
+                     <th>STT</th>
+                     <th>Email</th>
+                     <th>Sdt</th>
+                     <th>Name</th>
+                     <th class="center">Action</th>
+                  </tr>
+               </thead>
+               <% renderUsers.forEach((user, index) => { %> <% if(user.email !== 'phungdinhhung1002@gmail.com') {%>
+               <tbody>
                   <th><%= index %></th>
                   <td><%= user.email %></td>
                   <td><%= user.phonenumber %></td>
                   <td><%= user.fullname %></td>
                   <td>
-                    <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
+                     <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
                   </td>
-                  </tbody>
-                <% } %>
-              <% })%>
+               </tbody>
+               <% } %> <% })%>
             </table>
-          </div>
-          
-        </div>
-         <!-- DELETE modal  -->
-          <!-- Modal -->
-          
+         </div>
       </div>
+      <!-- DELETE modal  -->
+      <!-- Modal -->
+   </div>
 
-  <script>
-    const $ = document.querySelector.bind(document)
-    const $$ = document.querySelectorAll.bind(document)
+   <script>
+      const $ = document.querySelector.bind(document);
+      const $$ = document.querySelectorAll.bind(document);
 
-    const navs = $$(".list__nameNav");
-    const content__bodys = $$(".content__body");
+      const navs = $$('.list__nameNav');
+      const content__bodys = $$('.content__body');
 
-    const contentActive = $(".content__body.active");
+      const contentActive = $('.content__body.active');
 
-    navs.forEach((nav, index) => {
-      const content = content__bodys[index];
-      nav.onclick = function () {
-        $(".list__nameNav.active").classList.remove("active");
-        $(".content__body.active").classList.remove("active");
+      navs.forEach((nav, index) => {
+         const content = content__bodys[index];
+         nav.onclick = function () {
+            $('.list__nameNav.active').classList.remove('active');
+            $('.content__body.active').classList.remove('active');
 
-        this.classList.add("active")
-        content.classList.add("active")
-      }
-
-    });
-      $(".sidebar-menu_user").classList.add("active");
-
-
-  </script>
-
-
-
+            this.classList.add('active');
+            content.classList.add('active');
+         };
+      });
+      $('.sidebar-menu_user').classList.add('active');
+   </script>
+</section>

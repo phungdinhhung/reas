@@ -1,175 +1,140 @@
-
-<div class="upload ">
-  <div class="row">
-    <div class="col-md-12 ">
-      <form
-        action="/dashboard/upload/post"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <div class="card mb-3">
-          <div class="card-header ">
-            <h4>Đăng tin</h4>
-          </div>
-          <div class="card-body">
-            <h4 style="margin-top: 10px">Khu Vực</h4>
-            <div class="form-group ">
-              <h6>Miền</h6>
-              <select name="region" id="" class="form-control">
-                <option value="" disabled hidden selected>Miền</option>
-                <option value="Miền Bắc">Miền Bắc</option>
-                <option value="Miền Trung">Miền Trung</option>
-                <option value="Miền Nam">Miền Nam</option>
-              </select>
-              <div class="form-group mt-2" id="select-city">
-                  <h6  for="">Thành phố</h6>
-                <input
-                  type="Thành phố"
-                  name="city"
-                  placeholder="Thành phố"
-                  id=""
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group mt-2 " id="select-district">
-                  <h6 for="">Quận / Huyện</h6>
-                <input class="form-control" type="" name="district" placeholder="Quận/Huyện" id="" />
-              </div>
-              <div class="form-group mt-2"  id="select-ward">
-                  <h6 for="">Phường / Xã</h6>
-                <input class="form-control" type="" name="ward" placeholder="Phường/Xã" id="" />
-              </div>
-              <div class="form-group mt-2"  id="select-beach">
-                  <h6 for="">Bãi biển</h6>
-                <input class="form-control" type="" name="beach" placeholder="Bãi biển" id="" />
-              </div>
+<div class="upload">
+   <div class="row">
+      <div class="col-md-12">
+         <form action="/dashboard/upload/post" method="POST" enctype="multipart/form-data">
+            <div class="card mb-3">
+               <div class="card-header">
+                  <h4>Đăng tin</h4>
+               </div>
+               <div class="card-body">
+                  <h4 style="margin-top: 10px">Khu Vực</h4>
+                  <div class="form-group">
+                     <h6>Miền</h6>
+                     <select name="region" id="" class="form-control">
+                        <option value="" disabled hidden selected>Miền</option>
+                        <option value="Miền Bắc">Miền Bắc</option>
+                        <option value="Miền Trung">Miền Trung</option>
+                        <option value="Miền Nam">Miền Nam</option>
+                     </select>
+                     <div class="form-group mt-2" id="select-city">
+                        <h6 for="">Thành phố</h6>
+                        <input type="Thành phố" name="city" placeholder="Thành phố" id="" class="form-control" />
+                     </div>
+                     <div class="form-group mt-2" id="select-district">
+                        <h6 for="">Quận / Huyện</h6>
+                        <input class="form-control" type="" name="district" placeholder="Quận/Huyện" id="" />
+                     </div>
+                     <div class="form-group mt-2" id="select-ward">
+                        <h6 for="">Phường / Xã</h6>
+                        <input class="form-control" type="" name="ward" placeholder="Phường/Xã" id="" />
+                     </div>
+                     <div class="form-group mt-2" id="select-beach">
+                        <h6 for="">Bãi biển</h6>
+                        <input class="form-control" type="" name="beach" placeholder="Bãi biển" id="" />
+                     </div>
+                  </div>
+                  <div class="form-group mt-2">
+                     <h6 for="">Số nhà</h6>
+                     <input type="Địa Chỉ" name="address" placeholder="Số nhà, tên đường" id="" class="form-control" />
+                  </div>
+                  <div style="margin-top: 20px">
+                     <h4 class="">Thông tin mô tả</h4>
+                     <div class="form-group" style="padding-top: 10px">
+                        <h6>Tiêu đề</h6>
+                        <input
+                           class="form-control"
+                           type="Tiêu đề"
+                           name="heading"
+                           placeholder="Tiêu đề ngắn gọn, dễ hiểu, không dài quá 100 kí tự."
+                           id=""
+                        />
+                     </div>
+                     <div class="form-group" style="padding-top: 10px">
+                        <h6>Mô tả</h6>
+                        <textarea
+                           class="form-control"
+                           type="Nội dung mô tả"
+                           name="description"
+                           placeholder="Nội dung mô tả phải có ít nhất 150 kí tự và không được dài quá 5000 kí tự."
+                           id=""
+                           rows="10"
+                           cols="80"
+                           style="font-size: 14px; border: 1px solid black; padding: 10px"
+                        ></textarea>
+                     </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Giá căn hộ</h6>
+                        <input
+                           class="form-control"
+                           type="number"
+                           name="price"
+                           placeholder="Nhập giá (đơn vị: VNĐ)"
+                           id="price"
+                           value=""
+                        />
+                     </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Diện tích căn hộ</h6>
+                        <input
+                           class="form-control"
+                           type="Nhập diện tích"
+                           name="acreage"
+                           placeholder="Nhập diện tích (m2)"
+                           id=""
+                        />
+                     </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Thu nhập hằng tháng</h6>
+                        <input
+                           class="form-control"
+                           type="number"
+                           name="priceMonth"
+                           placeholder="Nhập giá thu nhập"
+                           id=""
+                        />
+                     </div>
+                     <div class="form-group" id="show">
+                        <h6 style="padding-top: 10px">% đóng theo đợt</h6>
+                        <input
+                           class="bg-primary border-0 text-white p-1 rounded mt-1 mb-1"
+                           type="button"
+                           onclick="add()"
+                           value="Thêm đợt"
+                           id="action"
+                        />
+                     </div>
+                     <div class="form-group">
+                        <h6 for="formFileMultiple" style="padding-top: 10px">Chọn ảnh phòng</h6>
+                        <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
+                     </div>
+                  </div>
+               </div>
+               <div class="card-footer">
+                  <div class="buttons-container form-group">
+                     <input type="button" value="Hủy bỏ" class="btn btn-danger font-size: 20px" />
+                     <input type="submit" value="Đăng Tải" class="btn btn-primary font-size: 20px" />
+                  </div>
+               </div>
             </div>
-            <div class="form-group mt-2" >
-              <h6 for="">Số nhà</h6>
-              <input
-                type="Địa Chỉ"
-                name="address"
-                placeholder="Số nhà, tên đường"
-                id=""
-                class="form-control"
-              />
-            </div>
-            <div style="margin-top: 20px">
-              <h4 class="">Thông tin mô tả</h4>
-              <div class="form-group" style="padding-top: 10px">
-                <h6>Tiêu đề</h6>
-                <input
-                  class="form-control"
-                  type="Tiêu đề"
-                  name="heading"
-                  placeholder="Tiêu đề ngắn gọn, dễ hiểu, không dài quá 100 kí tự."
-                  id=""
-                />
-              </div>
-              <div class="form-group" style="padding-top: 10px">
-                <h6>Mô tả</h6>
-                <textarea
-                  class="form-control"
-                  type="Nội dung mô tả"
-                  name="description"
-                  placeholder="Nội dung mô tả phải có ít nhất 150 kí tự và không được dài quá 5000 kí tự."
-                  id=""
-                  rows="10"
-                  cols="80"
-                  style="
-                    font-size: 14px;
-                    border: 1px solid black;
-                    padding: 10px;
-                  "
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <h6 style="padding-top: 10px">Giá căn hộ</h6>
-                <input
-                  class="form-control"
-                  type="number"
-                  name="price"
-                  placeholder="Nhập giá (đơn vị: VNĐ)"
-                  id="price"
-                  value=""
-                />
-              </div>
-              <div class="form-group">
-                <h6 style="padding-top: 10px">Diện tích căn hộ</h6>
-                <input
-                  class="form-control"
-                  type="Nhập diện tích"
-                  name="acreage"
-                  placeholder="Nhập diện tích (m2)"
-                  id=""
-                />
-              </div>
-              <div class="form-group">
-                <h6 style="padding-top: 10px">Thu nhập hằng tháng</h6>
-                <input
-                  class="form-control"
-                  type="number"
-                  name="priceMonth"
-                  placeholder="Nhập giá thu nhập"
-                  id=""
-                />
-              </div>
-              <div class="form-group" id="show">
-                <h6 style="padding-top: 10px">% đóng theo đợt</h6>
-                <input
-                  class="bg-primary border-0 text-white p-1 rounded mt-1 mb-1"
-                  type="button"
-                  onclick="add()"
-                  value="Thêm đợt"
-                  id="action"
-                />
-                </div>
-              <div class="form-group">
-                <h6 for="formFileMultiple" style="padding-top: 10px" >Chọn ảnh phòng</h6>
-                <input
-                  class="form-control"
-                  name="files"
-                  type="file"
-                  id="formFileMultiple"
-                  multiple
-                />
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="buttons-container form-group">
-              <input
-                type="button"
-                value="Hủy bỏ"
-                class="btn btn-danger font-size: 20px"
-              />
-              <input
-                type="submit"
-                value="Đăng Tải"
-                class="btn btn-primary font-size: 20px"
-              />
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-        </div>
+         </form>
       </div>
+   </div>
+</div>
 <script>
-        const $ = document.querySelector.bind(document)
-        $(".sidebar-menu_upload").classList.add("active");
+   const $ = document.querySelector.bind(document);
+   $('.sidebar-menu_upload').classList.add('active');
 
-        function add() {
-      var htmlObj = document.getElementById("show");
+   function add() {
+      var htmlObj = document.getElementById('show');
       htmlObj.innerHTML =
-      htmlObj.innerHTML +
-      "<input class ='form-control' type='phần trăm' name='phase' placeholder='Phần trăm của đợt 1' id='list_dot'/> " +
-      "  <input type='button' class='bg-danger p-1 border-0 rounded text-white mt-1 mb-1' value='xóa' onclick=dele() id='buttonDele' />";
-      }
-    function dele() {
-      const deleelemeent = document.getElementById("list_dot");
-      const buttonDele = document.getElementById("buttonDele");
+         htmlObj.innerHTML +
+         "<input class ='form-control' type='phần trăm' name='phase' placeholder='Phần trăm của đợt 1' id='list_dot'/> " +
+         "  <input type='button' class='bg-danger p-1 border-0 rounded text-white mt-1 mb-1' value='xóa' onclick=dele() id='buttonDele' />";
+   }
+   function dele() {
+      const deleelemeent = document.getElementById('list_dot');
+      const buttonDele = document.getElementById('buttonDele');
       buttonDele.remove();
       deleelemeent.remove();
-    }
+   }
 </script>
