@@ -37,6 +37,21 @@
 .input-box label {
    font-size: 14px;
    font-weight: 400;
+   padding: 5px 0;
+   display: flex;
+   justify-content: center;
+}
+.input-box input {
+   font-size: 16px;
+   font-weight: 600;
+   margin-top: 10px;
+   margin-left: 110px;
+}
+.input-box select {
+   margin: 10px 0;
+   padding: 5px 4px;
+   border-radius: 10px;
+   font-size: 16px;
 }
 .input-box output {
    /* padding: 15px 100px; */
@@ -111,8 +126,11 @@ th {
 
 .form-group {
    color: #0c0c0c;
-   margin-bottom: 20px;
+   padding: 10px;
    font-size: 15px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 .center {
    width: 100%;
@@ -141,6 +159,7 @@ th {
 }
 .login-form h1 {
    margin-bottom: 15px;
+   font-size: 24px;
 }
 .input-box i {
    margin-bottom: 10px;
@@ -156,4 +175,11 @@ th {
 .input-box-outputPrice {
    font-weight: 600;
    font-size: 15px;
+}
+tbody tr td span {
+   font-size: 14px;
+   font-weight: 500;
+   justify-content: center;
+   align-items: center;
+   display: flex;
 }

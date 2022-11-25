@@ -2,7 +2,7 @@ const userModel = require('../models/user.model');
 const roleModel = require('../models/role.model');
 const commentModel = require('../models/comment.model');
 const apartmentModel = require('../models/apartment.model');
-
+const contactModel = require('../models/contact.model');
 const apartmentController = {
    renderApartmentPage: async (req, res) => {
       try {
@@ -18,16 +18,10 @@ const apartmentController = {
             role = role.name;
          }
          // let showSearch = "no";
-         // let numberNotification = await NotificationService.getNumberNotification(userId);
          // const roomLike = await FavoriteRoom.findOne({userId: userId, roomId: roomId.id});
          // let isLike = false;
          // if(roomLike) {
          //     isLike = true;
-         // }
-         // const isSelectRoom = await ChooseRoom.findOne({userId: userId, roomId: roomId.id});
-         // let isChoose = false;
-         // if(isSelectRoom) {
-         //   isChoose = true;
          // }
          res.status(200).render('../views/components/apartment', {
             apartment,
@@ -43,6 +37,22 @@ const apartmentController = {
       } catch (error) {
          console.log(error);
          res.status(500).json({ msg: error });
+      }
+   },
+   contactApartment: async (req, res) => {
+      try {
+         const userId = req.cookies.user.user_id;
+         const apartmentId = req.params.id;
+         console.log(userId);
+         console.log(apartmentId);
+         // const user = await userModel.findOne({ _id: userId });
+         // const apartment = await apartmentModel.findOne({ _id: apartmentId });
+         contactModel.create({
+            userId: userId,
+            apartmentId: apartmentId,
+         });
+      } catch (e) {
+         console.log(e);
       }
    },
 };

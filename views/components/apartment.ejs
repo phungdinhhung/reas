@@ -81,9 +81,11 @@
                            <button class="btn-bxs-heart">
                               <i class="bx bxs-heart"></i>
                            </button>
-                           <button class="btn-bxs-message">
-                              <i class="bx bxs-message-rounded-detail"></i>
-                           </button>
+                           <form action="post/<%=apartment.id %>" method="POST">
+                              <button type="submit" class="btn-bxs-message">
+                                 <i class="bx bxs-message-rounded-detail"></i>
+                              </button>
+                           </form>
                         </div>
                      </div>
                      <h1 style="padding: 20px">NỘI DUNG</h1>
@@ -94,7 +96,7 @@
                            <div class="login-form">
                               <h1>Bảng Phân Tích</h1>
                               <div class="input-box">
-                                 <span> Giá Trị Căn Hộ </span>
+                                 <label> Giá Trị Căn Hộ </label>
                                  <input
                                     class="input-box-outputPrice"
                                     type="number"
@@ -104,7 +106,7 @@
                               </div>
 
                               <div class="input-box">
-                                 <label for="">Tiến Độ Thanh Toán</label>
+                                 <label>Tiến Độ Thanh Toán</label>
                                  <select name="type" class="form-control">
                                     <option value="normal">Tiến Độ Thường</option>
                                     <option value="70">70%</option>

@@ -23,7 +23,8 @@ router.get('/users', adminController.getAllUsers);
 router.get('/deleteUser', adminController.deleteUsers);
 
 router.get('/viewApartment', adminController.getAllPosts);
-router.post('/updateApartment', adminController.updateApartment);
+router.get('/updateApartment/:id', adminController.updateApartment);
+router.post('/update/:id', upload.array('files', 10), adminController.update);
 router.get('/delete', adminController.deleteApartment);
 
 router.get('/upload', adminController.getUploadPage);
@@ -32,5 +33,9 @@ router.post('/upload/post', upload.array('files', 10), adminController.postUploa
 router.get('/comment', adminController.getCommentPage);
 router.get('/deletecmt', adminController.deleteComment);
 
-router.get('/notification', adminController.getNotificationPage);
+router.get('/message', adminController.getMessagePage);
+router.get('/deletemess', adminController.deleteMessage);
+
+router.get('/contact', adminController.getContactPage);
+
 module.exports = router;

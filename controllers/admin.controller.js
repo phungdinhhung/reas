@@ -2,16 +2,19 @@ const userModel = require('../models/user.model');
 const roleModel = require('../models/role.model');
 const apartmentModel = require('../models/apartment.model');
 const commentModel = require('../models/comment.model');
-const notificationModel = require('../models/notifications.model');
+const messageModel = require('../models/message.model');
+const contactModel = require('../models/contact.model');
 const adminController = {
    renderdashboardPage: async (req, res) => {
       const renderUsers = await userModel.find();
       const post = await apartmentModel.find();
       const comment = await commentModel.find();
-      // const notification = await notificationModel.find();
+      const message = await messageModel.find();
+      // const contact = await contactModel.find();
       const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
       const numOfComment = comment.length;
+      const numOfMessage = message.length;
 
       const user = req.cookies.user;
       const userId = req.cookies.user.user_id;
@@ -24,6 +27,7 @@ const adminController = {
             numOfUser,
             numOfPost,
             numOfComment,
+            numOfMessage,
          });
       } else {
          res.redirect('/');
@@ -83,21 +87,48 @@ const adminController = {
    updateApartment: async (req, res) => {
       try {
          const apartmentId = req.params.id;
+         const userId = req.cookies.user.user_id;
+         role = await roleModel.findOne({ userId: userId });
+
+         // await Room.updateOne({Id: roomId}, room);
+         // await apartmentModel.where({ _id: apartmentId }).update(apartment);
+         const apartment = await apartmentModel.findOne({ _id: apartmentId });
+         const phases = apartment.phase;
+         if (role.name == 'admin') {
+            res.render('admin.layouts/cover', {
+               title: 'Dashboard Admin',
+               content: '../admin/update',
+               apartment,
+               phases,
+            });
+         }
+      } catch (error) {
+         console.log(error);
+      }
+   },
+   update: async (req, res) => {
+      try {
          const apartment = req.body;
-         apartment.address = address;
+         const apartmentId = req.params.id;
          apartment.userId = req.cookies.user.user_id;
+
+         let phase = req.body.phase;
+         let phases = [];
+         for (let i = 0; i < phase.length; i++) {
+            phases.push({ percent: phase[i], moneyPhase: (apartment.price * phase[i]) / 100 });
+         }
+         apartment.phase = phases;
+
          let files = req.files;
          let images = [];
          for (let i = 0; i < files.length; i++) {
             images.push({ url: files[i].path });
          }
          apartment.images = images;
-         console.log('room id: ', apartmentId);
-         // await Room.updateOne({Id: roomId}, room);
-         await apartmentModel.where({ _id: apartmentId }).update(apartment);
+         await apartmentModel.updateOne({ _id: apartmentId }, apartment);
          res.redirect('/dashboard/viewApartment');
-      } catch (error) {
-         console.log(error);
+      } catch (err) {
+         console.log(err);
       }
    },
 
@@ -214,26 +245,68 @@ const adminController = {
    },
    // End Management Comment Page
 
-   // Start Management Notification Page
-   getNotificationPage: async (req, res) => {
+   // Start Management Message Page
+   getMessagePage: async (req, res) => {
       try {
          const user = req.cookies.user;
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
+         const message = await messageModel.find();
 
-         const renderNotification = await userModel.find();
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
-               content: '../admin/notification',
-               renderNotification,
+               content: '../admin/message',
+               message,
             });
          }
       } catch (e) {
          console.log(e);
       }
    },
-   // End Management Notification Page
+   deleteMessage: async (req, res) => {
+      await messageModel
+         .deleteOne({ _id: req.query.id })
+         .then(() => {
+            res.redirect('/dashboard/message');
+         })
+         .catch((err) => {
+            res.status(505).send(err);
+         });
+   },
+   // End Management Message Page
+
+   // Start Management Contact Page
+   getContactPage: async (req, res) => {
+      try {
+         const userId = req.cookies.user.user_id;
+         role = await roleModel.findOne({ userId: userId });
+         //       const contactId = await contactModel.find();
+
+         //       const listContactUser = [];
+         //       const listContactApart = [];
+
+         //       for (let i = 0; i < contactId.length; i++) {
+         //          const contactUser = await userModel.findOne({ _id: contactId[i].userId });
+         //          const contactApart = await apartmentModel.findOne({ _id: contactId[i].apartmentId });
+         //          listContactUser.push(contactUser);
+         //          listContactApart.push(contactApart);
+         //       }
+         //       console.log(listContactUser);
+         //       console.log(listContactApart);
+         if (role.name == 'admin') {
+            res.render('admin.layouts/cover', {
+               title: 'Dashboard Admin',
+               content: '../admin/contact',
+               //             listContactUser,
+               //             listContactApart,
+            });
+         }
+      } catch (e) {
+         console.log(e);
+      }
+   },
+   // End Management Contact Page
 };
 
 module.exports = adminController;

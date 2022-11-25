@@ -555,11 +555,27 @@ a.star.vote-active {
 .input-box label {
    font-size: 14px;
    font-weight: 400;
+   padding: 5px 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.input-box input {
+   font-size: 16px;
+   font-weight: 600;
+   margin-top: 10px;
+   margin-left: 110px;
 }
 .input-box output {
    /* padding: 15px 100px; */
    width: 100%;
    display: block;
+}
+.input-box select {
+   margin: 10px 0;
+   padding: 5px 4px;
+   border-radius: 10px;
+   font-size: 16px;
 }
 
 .form-control2 {

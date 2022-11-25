@@ -9,6 +9,7 @@ const favoriteRouter = require('./favoritelist');
 const commentRouter = require('./comment');
 const analysisRouter = require('./analysis');
 const searchRouter = require('./search');
+const messageRouter = require('./message');
 function route(app) {
    app.use('/', homeRouter);
    app.use('/search', searchRouter);
@@ -26,6 +27,8 @@ function route(app) {
    app.use('/analysis', analysisRouter);
 
    app.use('/favorite', favoriteRouter);
+
+   app.use('/message', messageRouter);
 }
 
 module.exports = route;
