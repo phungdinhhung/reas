@@ -43,64 +43,66 @@
                <div class="search card">
                   <div class="row">
                      <div class="col-md-12">
-                        <form action="/search" method="POST">
-                           <div class="background_card">
-                              <div class="inputAdress">
-                                 <div class="iconAdress">
-                                    <i class="fa-solid fa-location-dot"></i>
+                        <div class="bannerSearchCard">
+                           <form action="/search" method="POST">
+                              <div class="background_card">
+                                 <div class="inputAdress">
+                                    <div class="iconAdress">
+                                       <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div class="inputAdress__inner">
+                                       <select name="region" id="">
+                                          <option value="">Miền</option>
+                                          <option value="Miền Bắc">Miền Bắc</option>
+                                          <option value="Miền Trung">Miền Trung</option>
+                                          <option value="Miền Nam">Miền Nam</option>
+                                       </select>
+                                    </div>
                                  </div>
-                                 <div class="inputAdress__inner">
-                                    <select name="region" id="">
-                                       <option value="">Miền</option>
-                                       <option value="Miền Bắc">Miền Bắc</option>
-                                       <option value="Miền Trung">Miền Trung</option>
-                                       <option value="Miền Nam">Miền Nam</option>
-                                    </select>
-                                 </div>
-                              </div>
 
-                              <div class="inputPrice">
-                                 <div class="iconAdress">
-                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                 <div class="inputPrice">
+                                    <div class="iconAdress">
+                                       <i class="fa-solid fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="inputAdress__inner">
+                                       <select name="price" id="">
+                                          <option value="">Giá tiền</option>
+                                          <option value="1000000000">Dưới 1.000.000.000</option>
+                                          <option value="2000000000">Dưới 2.000.000.000</option>
+                                          <option value="3000000000">Dưới 3.000.000.000</option>
+                                          <option value="5000000000">Dưới 5.000.000.000</option>
+                                          <option value="10000000000">Dưới 10.000.000.000</option>
+                                       </select>
+                                    </div>
                                  </div>
-                                 <div class="inputAdress__inner">
-                                    <select name="price" id="">
-                                       <option value="">Giá tiền</option>
-                                       <option value="1000000000">Dưới 1.000.000.000</option>
-                                       <option value="2000000000">Dưới 2.000.000.000</option>
-                                       <option value="3000000000">Dưới 3.000.000.000</option>
-                                       <option value="5000000000">Dưới 5.000.000.000</option>
-                                       <option value="10000000000">Dưới 10.000.000.000</option>
-                                    </select>
-                                 </div>
-                              </div>
 
-                              <div class="inputType">
-                                 <div class="iconAdress">
-                                    <i class="fa-solid fa-building"></i>
+                                 <div class="inputType">
+                                    <div class="iconAdress">
+                                       <i class="fa-solid fa-building"></i>
+                                    </div>
+                                    <div class="inputAdress__inner">
+                                       <select name="acreage" id="">
+                                          <option value="">Diện tích</option>
+                                          <option value="20">Dưới 20m</option>
+                                          <option value="30">Dưới 30m</option>
+                                          <option value="50">Dưới 50m</option>
+                                          <option value="70">Dưới 70m</option>
+                                       </select>
+                                    </div>
                                  </div>
-                                 <div class="inputAdress__inner">
-                                    <select name="acreage" id="">
-                                       <option value="">Diện tích</option>
-                                       <option value="20">Dưới 20m</option>
-                                       <option value="30">Dưới 30m</option>
-                                       <option value="50">Dưới 50m</option>
-                                       <option value="70">Dưới 70m</option>
-                                    </select>
-                                 </div>
+                                 <button class="banner__btnSearch" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                 </button>
                               </div>
-                              <button class="banner__btnSearch" type="submit">
-                                 <i class="fa-solid fa-magnifying-glass"></i>
-                              </button>
-                           </div>
-                        </form>
+                           </form>
+                        </div>
                      </div>
                   </div>
                </div>
                <h3>Có <%=listRoom.length%> kết quả được tìm thấy</h3>
                <div class="searchResult__content">
                   <% for(let i = 0; i < listRoom.length; i++) {%>
-                  <div class="row">
+                  <div class="render__apartment row">
                      <div class="col-md-3">
                         <img src="<%= listRoom[i].images[0].url %>" alt="" class="img-thumbnail" />
                      </div>
@@ -117,7 +119,8 @@
                            >
                            <div class="content__address mt-3 mb-3">
                               <i class="fa-solid fa-location-dot mr-1"></i>
-                              <%= listRoom[i].ward %>, <%= listRoom[i].district %>, <%= listRoom[i].city %>
+                              Bãi biển <%= listRoom[i].beach %>, <%= listRoom[i].ward %>, <%= listRoom[i].district %>,
+                              <%= listRoom[i].city %>
                            </div>
                            <div class="content__description mt-3 mb-3">
                               <p><%= listRoom[i].description %></p>

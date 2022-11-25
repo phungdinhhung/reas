@@ -144,7 +144,10 @@
                            <div class="commented-name">
                               <label class="name" for="">
                                  <p><%= listComment[i].userName %></p>
-                                 <p><%= listComment[i].createdAt.toLocaleDateString() %></p>
+                                 <p>
+                                    <%= listComment[i].createdAt.toLocaleTimeString() %> <%=
+                                    listComment[i].createdAt.toLocaleDateString() %>
+                                 </p>
                               </label>
                            </div>
                            <div class="commented-comment"><%= listComment[i].content %></div>

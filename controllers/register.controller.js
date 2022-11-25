@@ -1,5 +1,5 @@
-const UserModel = require('../models/user.model');
-const RoleModel = require('../models/role.model');
+const userModel = require('../models/user.model');
+const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 
 const registerController = {
@@ -16,25 +16,28 @@ const registerController = {
       let password = hashed;
       let role = req.body.role;
       errs = [];
-      UserModel.findOne({
-         email: email,
-      }).then((data) => {
-         if (data) {
-            errs.push('Email already exist!');
-         }
-      });
-      UserModel.create({
-         email: email,
-         fullname: fullname,
-         phonenumber: phonenumber,
-         password: password,
-      })
+      userModel
+         .findOne({
+            email: email,
+         })
+         .then((data) => {
+            if (data) {
+               errs.push('Email already exist!');
+            }
+         });
+      userModel
+         .create({
+            email: email,
+            fullname: fullname,
+            phonenumber: phonenumber,
+            password: password,
+         })
          .then((data) => {
             const roleBody = {
                userId: data._id.valueOf(),
                name: role,
             };
-            const newUser = RoleModel(roleBody);
+            const newUser = roleModel(roleBody);
             newUser.save();
             // res.json('tao tai khoan thanh cong')
             res.redirect('/login');

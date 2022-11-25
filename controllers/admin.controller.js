@@ -10,11 +10,13 @@ const adminController = {
       const post = await apartmentModel.find();
       const comment = await commentModel.find();
       const message = await messageModel.find();
+      const contact = await contactModel.find();
       // const contact = await contactModel.find();
       const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
       const numOfComment = comment.length;
       const numOfMessage = message.length;
+      const numOfContact = contact.length;
 
       const user = req.cookies.user;
       const userId = req.cookies.user.user_id;
@@ -28,6 +30,7 @@ const adminController = {
             numOfPost,
             numOfComment,
             numOfMessage,
+            numOfContact,
          });
       } else {
          res.redirect('/');
@@ -37,10 +40,18 @@ const adminController = {
    //  Start Management Users Page
    getAllUsers: async (req, res) => {
       try {
-         const user = req.cookies.user;
+         var search = '';
+         if (req.query.search) {
+            search = req.query.search;
+         }
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
-         const renderUsers = await userModel.find();
+         const renderUsers = await userModel.find({
+            $or: [
+               { email: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
+            ],
+         });
 
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
@@ -68,11 +79,19 @@ const adminController = {
    // Start Management Apartment Page
    getAllPosts: async (req, res) => {
       try {
-         const user = req.cookies.user;
+         var search = '';
+         if (req.query.search) {
+            search = req.query.search;
+         }
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
 
-         const renderApartment = await apartmentModel.find();
+         const renderApartment = await apartmentModel.find({
+            $or: [
+               { region: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { heading: { $regex: '.*' + search + '.*', $options: 'i' } },
+            ],
+         });
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
@@ -215,18 +234,24 @@ const adminController = {
    // Start Management Comment Page
    getCommentPage: async (req, res) => {
       try {
-         const user = req.cookies.user;
+         var search = '';
+         if (req.query.search) {
+            search = req.query.search;
+         }
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
 
-         const renderComment = await commentModel.find();
-         const apartment = await apartmentModel.find();
+         const renderComment = await commentModel.find({
+            $or: [
+               { content: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { userName: { $regex: '.*' + search + '.*', $options: 'i' } },
+            ],
+         });
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/comment',
                renderComment,
-               apartment,
             });
          }
       } catch (e) {
@@ -248,10 +273,21 @@ const adminController = {
    // Start Management Message Page
    getMessagePage: async (req, res) => {
       try {
+         var search = '';
+         if (req.query.search) {
+            search = req.query.search;
+         }
          const user = req.cookies.user;
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
-         const message = await messageModel.find();
+         const message = await messageModel.find({
+            $or: [
+               { username: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { email: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { content: { $regex: '.*' + search + '.*', $options: 'i' } },
+            ],
+         });
 
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
@@ -281,30 +317,28 @@ const adminController = {
       try {
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
-         //       const contactId = await contactModel.find();
+         const contact = await contactModel.find();
 
-         //       const listContactUser = [];
-         //       const listContactApart = [];
-
-         //       for (let i = 0; i < contactId.length; i++) {
-         //          const contactUser = await userModel.findOne({ _id: contactId[i].userId });
-         //          const contactApart = await apartmentModel.findOne({ _id: contactId[i].apartmentId });
-         //          listContactUser.push(contactUser);
-         //          listContactApart.push(contactApart);
-         //       }
-         //       console.log(listContactUser);
-         //       console.log(listContactApart);
          if (role.name == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/contact',
-               //             listContactUser,
-               //             listContactApart,
+               contact,
             });
          }
       } catch (e) {
          console.log(e);
       }
+   },
+   deleteContact: async (req, res) => {
+      await contactModel
+         .deleteOne({ _id: req.query.id })
+         .then(() => {
+            res.redirect('/dashboard/contact');
+         })
+         .catch((err) => {
+            res.status(505).send(err);
+         });
    },
    // End Management Contact Page
 };

@@ -5,6 +5,11 @@
       <div class="card">
          <div class="card-header">
             <h4>Quản lý bình luận</h4>
+            <form>
+               <div class="search-wrapper">
+                  <input type="text" placeholder="Tìm kiếm" name="search" />
+               </div>
+            </form>
          </div>
          <div class="card-body">
             <table class="table table-bordered">
@@ -13,6 +18,7 @@
                      <th class="text-center align-middle">STT</th>
                      <th class="text-center align-middle text-nowrap">Tên người dùng</th>
                      <th class="text-center align-middle">Nội dung bình luận</th>
+                     <th class="text-center align-middle">Thời gian</th>
                      <th class="text-center align-middle">Action</th>
                   </tr>
                </thead>
@@ -22,6 +28,9 @@
                   <th class="text-center align-middle"><%= index +1 %></th>
                   <td class="text-center align-middle text-nowrap"><%= user.userName %></td>
                   <td class="text-center align-middle"><%= user.content %></td>
+                  <td class="text-center align-middle text-nowrap">
+                     <%= user.createdAt.toLocaleTimeString() %><br /><%= user.createdAt.toLocaleDateString() %>
+                  </td>
                   <td class="text-center align-middle">
                      <a href="/dashboard/deletecmt?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
                   </td>

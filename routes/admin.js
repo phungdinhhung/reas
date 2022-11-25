@@ -37,5 +37,6 @@ router.get('/message', adminController.getMessagePage);
 router.get('/deletemess', adminController.deleteMessage);
 
 router.get('/contact', adminController.getContactPage);
+router.get('/deletecontact', adminController.deleteContact);
 
 module.exports = router;

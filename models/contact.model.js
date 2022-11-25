@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
 const contact = new mongoose.Schema(
    {
-      userId: {
+      fullname: {
          type: String,
          default: '',
       },
-      apartmentId: {
+      phonenumber: {
+         type: Number,
+         default: 0,
+      },
+      email: {
+         type: String,
+         default: '',
+      },
+      apartmentname: {
          type: String,
          default: '',
       },

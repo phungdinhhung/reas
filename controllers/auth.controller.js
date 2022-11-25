@@ -1,5 +1,5 @@
-const UserModel = require('../models/user.model');
-const RoleModel = require('../models/role.model');
+const userModel = require('../models/user.model');
+const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -7,9 +7,9 @@ const authController = {
    loginUser: async (req, res) => {
       const { email, password } = req.body;
       try {
-         const user = await UserModel.findOne({ email: email });
+         const user = await userModel.findOne({ email: email });
          if (user) {
-            role = await RoleModel.findOne({
+            role = await roleModel.findOne({
                userId: user.id,
             });
          }

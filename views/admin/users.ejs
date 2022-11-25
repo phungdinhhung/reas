@@ -5,6 +5,11 @@
       <div class="card">
          <div class="card-header">
             <h4>Quản lý tài khoản</h4>
+            <form>
+               <div class="search-wrapper">
+                  <input type="text" placeholder="Tìm kiếm" name="search" />
+               </div>
+            </form>
          </div>
          <div class="card-body">
             <table class="table">
@@ -17,22 +22,22 @@
                      <th class="center">Action</th>
                   </tr>
                </thead>
-               <% renderUsers.forEach((user, index) => { %> <% if(user.email !== 'phungdinhhung1002@gmail.com') {%>
+               <% renderUsers.forEach((user, index) => { %>
                <tbody>
-                  <th><%= index %></th>
+                  <th><%= index +1 %></th>
                   <td><%= user.email %></td>
                   <td><%= user.phonenumber %></td>
                   <td><%= user.fullname %></td>
                   <td>
+                     <% if(user.email !== 'phungdinhhung1002@gmail.com') {%>
                      <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
+                     <% } %>
                   </td>
                </tbody>
-               <% } %> <% })%>
+               <% })%>
             </table>
          </div>
       </div>
-      <!-- DELETE modal  -->
-      <!-- Modal -->
    </div>
 
    <script>

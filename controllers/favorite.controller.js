@@ -1,4 +1,4 @@
-const ApartmentModel = require('../models/apartment.model');
+const apartmentModel = require('../models/apartment.model');
 const favoriteModel = require('../models/favorite.model');
 const UserModel = require('../models/user.model');
 
@@ -14,7 +14,7 @@ const favoriteList = {
          const listApartmentId = await favoriteModel.find({ userId: userId });
          const listFavorite = [];
          for (let i = 0; i < listApartmentId.length; i++) {
-            const myFavorite = await ApartmentModel.findOne({ _id: listApartmentId[i].ApartmentId });
+            const myFavorite = await apartmentModel.findOne({ _id: listApartmentId[i].ApartmentId });
             if (myFavorite) {
                listFavorite.push(myFavorite);
             }

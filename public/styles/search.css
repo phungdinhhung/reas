@@ -16,8 +16,17 @@ select {
    border: none !important;
    outline: none !important;
 }
+.bannerSearchCard {
+   background: #1b1d32;
+   padding: 20px;
+   border-radius: 20px;
+   margin-bottom: 40px;
+}
+.render__apartment {
+   margin-bottom: 20px;
+}
 .favorite__main {
-   margin: 5rem 0;
+   margin: 2rem 0;
 }
 .search {
    border: none !important;

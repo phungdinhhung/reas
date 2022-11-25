@@ -41,16 +41,22 @@ const apartmentController = {
    },
    contactApartment: async (req, res) => {
       try {
-         const userId = req.cookies.user.user_id;
          const apartmentId = req.params.id;
-         console.log(userId);
-         console.log(apartmentId);
-         // const user = await userModel.findOne({ _id: userId });
-         // const apartment = await apartmentModel.findOne({ _id: apartmentId });
-         contactModel.create({
-            userId: userId,
-            apartmentId: apartmentId,
-         });
+
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            const user = await userModel.findOne({ _id: userId });
+            const apartment = await apartmentModel.findOne({ _id: apartmentId });
+            contactModel.create({
+               fullname: user.fullname,
+               email: user.email,
+               phonenumber: user.phonenumber,
+               apartmentname: apartment.heading,
+            });
+            res.redirect(`/detail/${apartmentId}`);
+         } else {
+            res.redirect('/login');
+         }
       } catch (e) {
          console.log(e);
       }
