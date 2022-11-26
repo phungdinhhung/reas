@@ -28,6 +28,7 @@ const apartmentController = {
             user,
             userInfor,
             listComment,
+            alert: req.flash('success'),
             // showSearch,
             // isLike,
             // numberNotification,
@@ -53,6 +54,7 @@ const apartmentController = {
                phonenumber: user.phonenumber,
                apartmentname: apartment.heading,
             });
+            req.flash('success', 'Yêu cầu tư vấn căn hộ');
             res.redirect(`/detail/${apartmentId}`);
          } else {
             res.redirect('/login');

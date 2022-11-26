@@ -2,6 +2,15 @@
 <html lang="en">
    <%- include ('header')%>
    <body>
+      <% if (alert.length > 0) { %>
+      <div class="alert__success">
+         <i class="las la-check-circle"></i>
+         <div class="alert__content">
+            <h6>Thành Công!</h6>
+            <h7><%= alert%></h7>
+         </div>
+      </div>
+      <% } %>
       <!-- sidebar -->
       <%- include('sidebar')%>
       <!-- sidebar -->

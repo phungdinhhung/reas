@@ -5,6 +5,7 @@ const commentModel = require('../models/comment.model');
 const messageModel = require('../models/message.model');
 const contactModel = require('../models/contact.model');
 const adminController = {
+   // Dashboard Management
    renderdashboardPage: async (req, res) => {
       const renderUsers = await userModel.find();
       const post = await apartmentModel.find();
@@ -17,23 +18,26 @@ const adminController = {
       const numOfComment = comment.length;
       const numOfMessage = message.length;
       const numOfContact = contact.length;
+      if (req.cookies.user) {
+         const userId = req.cookies.user.user_id;
+         role = await roleModel.findOne({ userId: userId });
 
-      const user = req.cookies.user;
-      const userId = req.cookies.user.user_id;
-      role = await roleModel.findOne({ userId: userId });
-
-      if (role.name == 'admin') {
-         res.render('admin.layouts/cover', {
-            title: 'Dashboard Admin',
-            content: '../admin/dashboard',
-            numOfUser,
-            numOfPost,
-            numOfComment,
-            numOfMessage,
-            numOfContact,
-         });
+         if (role.name == 'admin') {
+            res.render('admin.layouts/cover', {
+               title: 'Dashboard Admin',
+               content: '../admin/dashboard',
+               numOfUser,
+               numOfPost,
+               numOfComment,
+               numOfMessage,
+               numOfContact,
+               alert: req.flash('empty'),
+            });
+         } else {
+            res.redirect('/error');
+         }
       } else {
-         res.redirect('/');
+         res.redirect('/login');
       }
    },
 
@@ -44,21 +48,28 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
+
          const renderUsers = await userModel.find({
             $or: [
                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
                { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
-
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/users',
-               renderUsers,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/users',
+                  renderUsers,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (err) {
          console.log(err);
@@ -68,6 +79,7 @@ const adminController = {
       await userModel
          .deleteOne({ _id: req.query.id })
          .then(() => {
+            req.flash('success', 'Xóa người dùng thành công');
             res.redirect('/dashboard/users');
          })
          .catch((err) => {
@@ -83,8 +95,6 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
 
          const renderApartment = await apartmentModel.find({
             $or: [
@@ -92,12 +102,21 @@ const adminController = {
                { heading: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/viewApartment',
-               renderApartment,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/viewApartment',
+                  renderApartment,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (error) {
          console.log('error: ', error);
@@ -109,8 +128,6 @@ const adminController = {
          const userId = req.cookies.user.user_id;
          role = await roleModel.findOne({ userId: userId });
 
-         // await Room.updateOne({Id: roomId}, room);
-         // await apartmentModel.where({ _id: apartmentId }).update(apartment);
          const apartment = await apartmentModel.findOne({ _id: apartmentId });
          const phases = apartment.phase;
          if (role.name == 'admin') {
@@ -119,6 +136,7 @@ const adminController = {
                content: '../admin/update',
                apartment,
                phases,
+               alert: req.flash('success'),
             });
          }
       } catch (error) {
@@ -144,8 +162,11 @@ const adminController = {
             images.push({ url: files[i].path });
          }
          apartment.images = images;
-         await apartmentModel.updateOne({ _id: apartmentId }, apartment);
-         res.redirect('/dashboard/viewApartment');
+         const update = await apartmentModel.updateOne({ _id: apartmentId }, apartment);
+         if (update) {
+            req.flash('success', 'Cập nhật thành công');
+            res.redirect('/dashboard/viewApartment');
+         }
       } catch (err) {
          console.log(err);
       }
@@ -155,6 +176,7 @@ const adminController = {
       await apartmentModel
          .deleteOne({ _id: req.query.id })
          .then(() => {
+            req.flash('success', 'Xóa căn hộ thành công');
             res.redirect('/dashboard/viewApartment');
          })
          .catch((err) => {
@@ -166,18 +188,20 @@ const adminController = {
    //  Start Management Posts Apartment Page
    getUploadPage: async (req, res) => {
       try {
-         const user = req.cookies.user;
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
-
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/upload',
-               user,
-               role,
-               userId,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/upload',
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (error) {
          res.status(500).json({ msg: error });
@@ -223,6 +247,7 @@ const adminController = {
                   // res.status(200).render("manageapartment", {title: "Dream Boarding House", listapartment, current: page, pages: Math.ceil(count / perPage), user, role, listapartment, showSearch, numberNotification})
                });
             });
+         req.flash('success', 'Đăng căn hộ thành công');
          res.redirect('/dashboard/viewApartment');
       } catch (error) {
          console.log(error);
@@ -238,8 +263,6 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
 
          const renderComment = await commentModel.find({
             $or: [
@@ -247,12 +270,21 @@ const adminController = {
                { userName: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/comment',
-               renderComment,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/comment',
+                  renderComment,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (e) {
          console.log(e);
@@ -262,6 +294,7 @@ const adminController = {
       await commentModel
          .deleteOne({ _id: req.query.id })
          .then(() => {
+            req.flash('success', 'Xóa bình luận thành công');
             res.redirect('/dashboard/comment');
          })
          .catch((e) => {
@@ -277,9 +310,6 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
-         const user = req.cookies.user;
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
          const message = await messageModel.find({
             $or: [
                { username: { $regex: '.*' + search + '.*', $options: 'i' } },
@@ -289,12 +319,21 @@ const adminController = {
             ],
          });
 
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/message',
-               message,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/message',
+                  message,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (e) {
          console.log(e);
@@ -304,6 +343,7 @@ const adminController = {
       await messageModel
          .deleteOne({ _id: req.query.id })
          .then(() => {
+            req.flash('success', 'Xóa tin nhắn thành công');
             res.redirect('/dashboard/message');
          })
          .catch((err) => {
@@ -315,16 +355,23 @@ const adminController = {
    // Start Management Contact Page
    getContactPage: async (req, res) => {
       try {
-         const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
          const contact = await contactModel.find();
 
-         if (role.name == 'admin') {
-            res.render('admin.layouts/cover', {
-               title: 'Dashboard Admin',
-               content: '../admin/contact',
-               contact,
-            });
+         if (req.cookies.user) {
+            const userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/contact',
+                  contact,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
          }
       } catch (e) {
          console.log(e);
@@ -334,6 +381,7 @@ const adminController = {
       await contactModel
          .deleteOne({ _id: req.query.id })
          .then(() => {
+            req.flash('success', 'Xóa thông tin thành công');
             res.redirect('/dashboard/contact');
          })
          .catch((err) => {

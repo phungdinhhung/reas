@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const route = require('./routes/main');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 const app = express();
 dotenv.config();
@@ -24,7 +26,16 @@ app.set('view engine', 'ejs');
 
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser('secret'));
+app.use(flash());
+app.use(
+   session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: true,
+      cookie: { maxAge: 60000 },
+   }),
+);
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));

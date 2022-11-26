@@ -7,19 +7,11 @@ const profileController = {
       try {
          let userId = req.cookies.user.user_id;
          const userData = await userModel.findById({ _id: userId });
-
-         // let userId = req.cookies.user.user_id;
-         // let user;
-         // if(userId) {
-         //     user = req.cookies.user.user_id;
-         // }
-         // if(user) {
-         //     userId = req.cookies.user.user_id;
-         // }
-         // const userInfor = await userModel.find({_id: userId});
-         let msg1 = '';
-         res.status(200).render('components/profile', { title: 'Profile', user: userData });
-         // , userInfor, user
+         res.status(200).render('components/profile', {
+            title: 'Profile',
+            user: userData,
+            alert: req.flash('success'),
+         });
       } catch (e) {
          console.log(e);
       }
@@ -33,12 +25,7 @@ const profileController = {
             avatar: file.path,
          };
          await userModel.where({ _id: userId }).update(userAvt);
-         console.log(file);
-         let user;
-         if (userId) {
-            user = req.cookies.user.user_id;
-         }
-         const userInfor = await userModel.find({ _id: userId });
+         req.flash('success', 'Cập nhật thành công');
          res.redirect('/profile');
       } catch (error) {
          console.log(error);
@@ -53,11 +40,7 @@ const profileController = {
             phonenumber: phonenumber,
          };
          await userModel.where({ _id: userId }).update(body);
-         // console.log(userId);
-         // const userData = await userModel.findOneAndUpdate(filter, {$set:{fullname: req.body.fullname, phonenumber: req.body.phonenumber}}, {new: true});
-         // // const userInfor = await userModel.find({_id: userId});
-         // await userData.save();
-         console.log(body);
+         req.flash('success', 'Cập nhật thành công');
          res.redirect('/profile');
       } catch (err) {
          console.log(err.message);
@@ -82,6 +65,7 @@ const profileController = {
                   },
                );
             }
+            req.flash('success', 'Cập nhật thành công');
             res.redirect('/profile');
          } else {
             res.status(200).send({ success: false });

@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const registerController = {
    renderRegisterPage: (req, res) => {
-      res.render('../views/layouts/register', { title: 'Register page' });
+      res.render('../views/layouts/register', { title: 'Register page', alert: req.flash('success') });
    },
 
    userRegister: async (req, res) => {
@@ -39,8 +39,8 @@ const registerController = {
             };
             const newUser = roleModel(roleBody);
             newUser.save();
-            // res.json('tao tai khoan thanh cong')
-            res.redirect('/login');
+            req.flash('success', 'Tạo tài khoản thành công');
+            res.redirect('/register');
          })
          .catch((error) => {
             console.log(error);

@@ -291,3 +291,39 @@ p.agileits2 {
       padding: 0 15px 15px;
    }
 }
+
+.alert__success {
+   position: fixed;
+   display: flex;
+   top: 7px;
+   right: 21px;
+   height: 70px;
+   width: 300px;
+   background-color: #3bdc60;
+   border-radius: 14px;
+   color: white;
+   z-index: 1000;
+}
+.alert__success i {
+   font-size: 38px;
+   text-align: center;
+   padding-top: 15px;
+   width: 24%;
+   height: 100%;
+}
+
+.alert__content {
+   line-height: 17px;
+}
+.alert__content .success__first {
+   padding-top: 13px;
+   font-size: 18px;
+   font-weight: 600;
+   margin-bottom: 0;
+}
+
+.alert__content .success__second {
+   padding-top: 9px;
+   font-size: 16px;
+   font-weight: 500;
+}

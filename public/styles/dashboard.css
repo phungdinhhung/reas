@@ -521,3 +521,47 @@ td {
 .phase__input {
    margin-bottom: 20px;
 }
+
+.alert__success {
+   position: fixed;
+   display: flex;
+   top: 7px;
+   right: 21px;
+   height: 70px;
+   width: 300px;
+   background-color: #3bdc60;
+   border-radius: 14px;
+   color: white;
+   z-index: 1000;
+}
+.alert__success i {
+   font-size: 38px;
+   text-align: center;
+   padding-top: 15px;
+   width: 24%;
+   height: 100%;
+}
+
+.alert__content {
+   line-height: 17px;
+}
+.alert__content h6 {
+   padding-top: 13px;
+}
+
+/* The close button */
+.closebtn {
+   margin-left: 15px;
+   color: white;
+   font-weight: bold;
+   float: right;
+   font-size: 22px;
+   line-height: 20px;
+   cursor: pointer;
+   transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+   color: black;
+}

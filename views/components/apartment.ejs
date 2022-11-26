@@ -9,6 +9,10 @@
       <title>Apartment Detail</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
       <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+      <link
+         rel="stylesheet"
+         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      />
    </head>
    <body>
       <%- include('../layouts/header')%>
@@ -159,7 +163,21 @@
             </div>
          </div>
       </div>
-      <%- include('../layouts/message') %>
+      <% if (alert.length > 0) { %>
+      <div class="alert__success">
+         <i class="las la-check-circle"></i>
+         <div class="alert__content">
+            <p class="success__first">Thành Công!</p>
+            <p class="success__second"><%= alert%></p>
+         </div>
+      </div>
+      <% } %> <%- include('../layouts/message') %>
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function ($) {
+            $('.alert__success').delay(3000).fadeOut('slow');
+         });
+      </script>
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
       <!-- Initialize Swiper -->

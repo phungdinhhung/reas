@@ -21,7 +21,7 @@ const commentController = {
 
          const newComment = new commentModel(commentBody);
          await newComment.save();
-
+         req.flash('success', 'Bình luận thành công');
          res.redirect(`/detail/${apartmentId}`);
       } catch (e) {
          console.log(e);

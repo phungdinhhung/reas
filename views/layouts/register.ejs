@@ -9,6 +9,10 @@
       <link rel="stylesheet" href="styles/register.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      />
    </head>
    <body>
       <div class="main">
@@ -79,5 +83,20 @@
             </div>
          </div>
       </div>
+      <% if (alert.length > 0) { %>
+      <div class="alert__success">
+         <i class="las la-check-circle"></i>
+         <div class="alert__content">
+            <p class="success__first">Thành Công!</p>
+            <p class="success__second"><%= alert%></p>
+         </div>
+      </div>
+      <% } %>
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function ($) {
+            $('.alert__success').delay(3000).fadeOut('slow');
+         });
+      </script>
    </body>
 </html>

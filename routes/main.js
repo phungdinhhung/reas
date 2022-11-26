@@ -10,6 +10,7 @@ const commentRouter = require('./comment');
 const analysisRouter = require('./analysis');
 const searchRouter = require('./search');
 const messageRouter = require('./message');
+const errorRouter = require('./error');
 function route(app) {
    app.use('/', homeRouter);
    app.use('/search', searchRouter);
@@ -21,6 +22,7 @@ function route(app) {
    app.use('/profile', profileRouter);
 
    app.use('/dashboard', adminRouter);
+   app.use('/error', errorRouter);
 
    app.use('/detail', apartmentRouter);
    app.use('/comment', commentRouter);

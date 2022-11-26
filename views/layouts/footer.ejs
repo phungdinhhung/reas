@@ -82,10 +82,12 @@
                <div class="contentRight_2">
                   <h6>Đăng ký nhận tin</h6>
                   <div class="inputDiv">
-                     <input type="text" name="" id="" placeholder="Nhập mail của bạn" />
-                     <button class="send_icon">
-                        <i class="fa-solid fa-paper-plane"></i>
-                     </button>
+                     <form action="message" method="POST">
+                        <input type="email" name="email" id="" placeholder="Nhập mail của bạn" />
+                        <button type="submit" class="send_icon">
+                           <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                     </form>
                   </div>
                </div>
             </div>
