@@ -3,6 +3,7 @@ const roleModel = require('../models/role.model');
 const commentModel = require('../models/comment.model');
 const apartmentModel = require('../models/apartment.model');
 const contactModel = require('../models/contact.model');
+const favoriteModel = require('../models/favorite.model');
 const apartmentController = {
    renderApartmentPage: async (req, res) => {
       try {
@@ -17,23 +18,18 @@ const apartmentController = {
             role = await roleModel.findOne({ userId: userId });
             role = role.name;
          }
-         // let showSearch = "no";
-         // const roomLike = await FavoriteRoom.findOne({userId: userId, roomId: roomId.id});
-         // let isLike = false;
-         // if(roomLike) {
-         //     isLike = true;
-         // }
+         const like = await favoriteModel.findOne({ userId: userId, apartmentId: apartmentId.id });
+         let isLike = false;
+         if (like) {
+            isLike = true;
+         }
          res.status(200).render('../views/components/apartment', {
             apartment,
             user,
             userInfor,
             listComment,
             alert: req.flash('success'),
-            // showSearch,
-            // isLike,
-            // numberNotification,
-            // listCmt,
-            // isChoose,
+            isLike,
          });
       } catch (error) {
          console.log(error);

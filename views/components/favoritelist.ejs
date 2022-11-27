@@ -6,7 +6,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <link rel="stylesheet" href="/styles/favoritelist.css" />
-
+      <link
+         rel="stylesheet"
+         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      />
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -35,6 +38,12 @@
          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
          crossorigin="anonymous"
       ></script>
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function ($) {
+            $('.alert__success').delay(3000).fadeOut('slow');
+         });
+      </script>
    </head>
    <body>
       <%- include('../layouts/header') %>
@@ -45,37 +54,58 @@
                   <div class="row">
                      <div class="col-md-9">
                         <h5 class="align-middle ml-3 mt-1">
-                           Bạn có <span class="text-danger">3</span> BẤT ĐỘNG SẢN yêu thích
+                           Bạn có <span class="text-danger"><%= listFavorite.length %></span> BẤT ĐỘNG SẢN yêu thích
                         </h5>
                      </div>
                   </div>
                </div>
+               <% for(let i = 0; i< listFavorite.length; i++) { %>
                <div class="card mt-3">
                   <div class="row">
                      <div class="col-md-2">
-                        <img src="./assets/img/1.jpg" alt="" class="img-thumbnail" />
+                        <img src="<%= listFavorite[i].images[0].url %>" alt="" class="img-thumbnail" />
                      </div>
                      <div class="col-md-8 mt-3">
-                        <h6>CĂN HỘ 2PN FULL NỘI THẤT XỊN MƯỜNG THANH VIỄN TRIỀU - 1.4 TỶ</h6>
+                        <h6><%= listFavorite[i].heading %></h6>
                         <div class="content__inner__card pt-3">
-                           <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info">1.4 ty</span>
-                           <span class="p-1 border border-secondary rounded ml-4 bg-gradient-info">58m2</span>
+                           <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info"
+                              ><%= listFavorite[i].price %> VNĐ</span
+                           >
+                           <span class="p-1 border border-secondary rounded ml-4 bg-gradient-info"
+                              ><%= listFavorite[i].acreage %>m2</span
+                           >
                            <div class="content__address mt-3 mb-3">
-                              <i class="fa-solid fa-location-dot mr-1"></i>Mường Thanh Viễn Triều, P.Vĩnh Phước, Tp.Nha
-                              Trang, KH
+                              <i class="fa-solid fa-location-dot mr-1"></i><%= listFavorite[i].city %>
                            </div>
                         </div>
                      </div>
 
                      <div class="col-md-2 d-flex">
                         <div class="buttonDiv">
-                           <button class="button__delete_favorite">Delete</button>
+                           <a class="btn-view-detail btn-outline-success" href="/detail/<%=listFavorite[i]._id%>"
+                              >Xem chi tiết</a
+                           >
+                           <form action="/favorite/unlike/<%=listFavorite[i]._id%>" id="form-delete">
+                              <button type="submit" class="button__delete_favorite" data-id="<%=listFavorite[i]._id%>">
+                                 Bỏ yêu thích
+                              </button>
+                           </form>
                         </div>
                      </div>
                   </div>
                </div>
+               <%} %>
             </div>
          </div>
+         <% if (alert.length > 0) { %>
+         <div class="alert__success">
+            <i class="las la-check-circle"></i>
+            <div class="alert__content">
+               <h6>Thành Công!</h6>
+               <h7><%= alert%></h7>
+            </div>
+         </div>
+         <% } %>
       </section>
    </body>
 </html>

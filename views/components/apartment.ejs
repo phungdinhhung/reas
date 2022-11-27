@@ -82,9 +82,22 @@
                         </div>
 
                         <div class="twoBtn">
-                           <button class="btn-bxs-heart">
+                           <% if(!isLike) { %>
+                           <button type="button" class="btn-bxs-heart" id="like" data-id="<%=apartment.id%>">
                               <i class="bx bxs-heart"></i>
                            </button>
+                           <% } else { %>
+                           <button
+                              type="button"
+                              class="btn-bxs-heart"
+                              id="like"
+                              data-id="<%=apartment.id%>"
+                              style="background-color: rgb(67, 222, 88)"
+                           >
+                              <i class="bx bxs-heart"></i>
+                           </button>
+                           <% } %>
+
                            <form action="post/<%=apartment.id %>" method="POST">
                               <button type="submit" class="btn-bxs-message">
                                  <i class="bx bxs-message-rounded-detail"></i>
@@ -211,17 +224,23 @@
       </script>
       <script>
          var apartment_save = document.querySelector('.btn-bxs-heart');
-         var apartment_contact = document.querySelector('.btn-bxs-message');
 
          function OpenSave() {
             apartment_save.classList.add('open');
          }
-         function OpenContact() {
-            apartment_contact.classList.add('open');
-         }
          apartment_save.addEventListener('click', OpenSave);
-         apartment_contact.addEventListener('click', OpenContact);
       </script>
+      <script>
+         const like = document.getElementById('like');
+         like.addEventListener('click', () => {
+            const apartmentId = like.getAttribute('data-id');
+            $.ajax({
+               url: `/favorite/like/${apartmentId}`,
+               type: 'POST',
+            });
+         });
+      </script>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
       <!-- Latest compiled JavaScript -->

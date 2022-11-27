@@ -160,6 +160,9 @@
                            <th>TỶ LỆ</th>
                            <th>SỐ TIỀN THANH TOÁN</th>
                            <th>THỜI HẠN THANH TOÁN</th>
+                           <% if(type.includes('vnh')) { %>
+                           <th>GHI CHÚ</th>
+                           <% }%>
                         </tr>
                      </thead>
                      <tbody>
@@ -180,7 +183,13 @@
                                  Đăng ký Phiếu giữ chỗ Căn biệt thự - Ký thỏa thuận đặt cọc
                               </div>
                            </td>
+                           <% if(type.includes('vnh')) { %>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">Khách hàng thanh toán bằng vốn tự có</div>
+                           </td>
+                           <% } %>
                         </tr>
+                        <% if(!type.includes('vnh')) { %>
                         <tr>
                            <td>
                               <span> Đợt 1 </span>
@@ -231,10 +240,74 @@
                            <td>
                               <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
                            </td>
-                           <td>
+                           <td colspan="3">
                               <div class="form-group mb-0 d-inline-block"><%= a + moneyOne + sumDeposit %></div>
                            </td>
                         </tr>
+                        <% } else { %> <% a = 0, b = 0 %> <% for(let i = 0; i< phase.length; i++) { %>
+                        <tr>
+                           <td>
+                              <% if((i+1) % 2) { %>
+                              <span> Đợt <%= (i+1) %> </span>
+                              <%}%>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if(phase[i] == phase[0]) {%> <%= moneyOne = newPrice * phase[0].percent / 100 -
+                                 sumDeposit %> <% } else { %> <%= money = apartment.price * phase[i].percent / 100 %> <%
+                                 a += money %> <% } %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if(phase[i] == phase[0]) {%> Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi Đặt cọc)
+                                 <br />(Số tiền thanh toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc)<% } else
+                                 if(phase[i] == phase[2]) { %> Nhận bàn giao Villas theo thông báo của CĐT <br />(Số
+                                 tiền thanh toán đã bao gồm VAT của đợt 2 và đợt 3) <% } else if(phase[i] == phase[4]) {
+                                 %> Trong vòng 15 ngày kể từ ngày CĐT gửi văn bản thông báo bàn giao giấy <br />Giấy
+                                 Chứng Nhận Quyền Sở Hữu Căn Villas (Số tiền thanh toán không bao gồm thuế GTGT) <% } %>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if((i+1) % 2) { %> Khách hàng thanh toán bằng vốn tự có <%} else { %> Ngân hàng giải
+                                 ngân (Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 18 tháng) <%} %>
+                              </div>
+                           </td>
+                        </tr>
+                        <% } %>
+                        <tr>
+                           <td colspan="3">
+                              <div class="form-group mb-0 d-inline-block">Tổng tiền khách bỏ ra</div>
+                           </td>
+                           <td colspan="2">
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= customer = (a + moneyOne + sumDeposit) * 30 / 100 %>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="3">
+                              <div class="form-group mb-0 d-inline-block">Tổng tiền ngân hàng hỗ trợ</div>
+                           </td>
+                           <td colspan="2">
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= totalLoan = (a + moneyOne + sumDeposit) - customer %>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="3">
+                              <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
+                           </td>
+                           <td colspan="2">
+                              <div class="form-group mb-0 d-inline-block"><%=a + moneyOne + sumDeposit %></div>
+                           </td>
+                        </tr>
+                        <% } %>
                      </tbody>
                   </table>
                </div>
@@ -330,6 +403,7 @@
                   </table>
                </div>
             </div>
+            <% if(type.includes('vnh')) { %>
             <div>
                <h3 class="title">Tiến Độ Thanh Toán Ngân Hàng</h3>
                <div class="table2">
@@ -344,7 +418,6 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <% loan = apartment.price * 70 / 100 %>
                         <div class="loan">
                            <tr>
                               <td>
@@ -356,33 +429,14 @@
                               <td>0</td>
                               <td>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <div class="form-group mb-0 d-inline-block"><%= loan - year %></div>
+                                    <div class="form-group mb-0 d-inline-block"><%= totalLoan - year %></div>
                                  </div>
                               </td>
                               <td>
-                                 <div class="form-group mb-0 d-inline-block">
-                                    <div class="form-group mb-0 d-inline-block"></div>
-                                 </div>
+                                 <div class="form-group mb-0 d-inline-block">0</div>
                               </td>
                            </tr>
-                           <tr>
-                              <td>
-                                 <span> 2 </span>
-                              </td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
-                              </td>
-                              <td><div class="form-group mb-0 d-inline-block"><%= one = loan * (6.5/100/2) %></div></td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block">
-                                    <div class="form-group mb-0 d-inline-block"></div>
-                                 </div>
-                              </td>
-                           </tr>
-                           <% for(let i = 1; i < 10; i++) { %>
+                           <% x = 10 %> <% for(let i = 1; i < x; i++) { %>
                            <tr>
                               <td>
                                  <span> <%= i + 1 %> </span>
@@ -391,7 +445,7 @@
                                  <div class="form-group mb-0 d-inline-block"><%= year %></div>
                               </td>
                               <td>
-                                 <div class="form-group mb-0 d-inline-block"><%= loan * (6.5/100) %></div>
+                                 <div class="form-group mb-0 d-inline-block"></div>
                               </td>
                               <td></td>
                               <td>
@@ -406,6 +460,7 @@
                   </table>
                </div>
             </div>
+            <% } %>
          </div>
       </div>
    </body>

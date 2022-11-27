@@ -12,23 +12,23 @@
             </form>
          </div>
          <div class="card-body">
-            <table class="table">
+            <table class="table table-bordered">
                <thead>
                   <tr>
-                     <th>STT</th>
-                     <th>Email</th>
-                     <th>Sdt</th>
-                     <th>Name</th>
-                     <th class="center">Action</th>
+                     <th class="text-center align-middle">STT</th>
+                     <th class="text-center align-middle">Email</th>
+                     <th class="text-center align-middle">Số điện thoại</th>
+                     <th class="text-center align-middle">Tên người dùng</th>
+                     <th class="text-center align-middle" class="center">Action</th>
                   </tr>
                </thead>
                <% renderUsers.forEach((user, index) => { %>
                <tbody>
-                  <th><%= index +1 %></th>
-                  <td><%= user.email %></td>
-                  <td><%= user.phonenumber %></td>
-                  <td><%= user.fullname %></td>
-                  <td>
+                  <th class="text-center align-middle"><%= index +1 %></th>
+                  <td class="text-center align-middle"><%= user.email %></td>
+                  <td class="text-center align-middle"><%= user.phonenumber %></td>
+                  <td class="text-center align-middle"><%= user.fullname %></td>
+                  <td class="text-center align-middle">
                      <% if(user.email !== 'admin') {%>
                      <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
                      <% } %>

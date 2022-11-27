@@ -154,7 +154,7 @@ body {
 .tab {
    float: left;
    width: 100%;
-   height: 1500px;
+   height: 1000px;
    display: block;
 }
 .tab-text {
@@ -526,7 +526,10 @@ a.star.vote-active {
 
 .twoBtn button:hover {
    cursor: pointer;
-   background-color: red;
+   opacity: 0.8;
+}
+.btn-bxs-heart.open {
+   background-color: rgb(67, 222, 88);
 }
 .twoBtn button:active {
    cursor: pointer;
@@ -687,10 +690,4 @@ th {
 .input-box-outputPrice {
    font-weight: 600;
    font-size: 15px;
-}
-.btn-bxs-heart.open {
-   background-color: red;
-}
-.btn-bxs-message.open {
-   background-color: red;
 }
