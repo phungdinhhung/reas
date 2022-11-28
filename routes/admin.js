@@ -22,6 +22,9 @@ router.get('/', adminController.renderdashboardPage);
 router.get('/users', adminController.getAllUsers);
 router.get('/deleteUser', adminController.deleteUsers);
 
+router.get('/roles', adminController.getRolesPage);
+router.get('/roles/update', adminController.updateRoles);
+
 router.get('/viewApartment', adminController.getAllPosts);
 router.get('/updateApartment/:id', adminController.updateApartment);
 router.post('/update/:id', upload.array('files', 10), adminController.update);

@@ -548,3 +548,10 @@ td {
 .alert__content h6 {
    padding-top: 13px;
 }
+#selectBox {
+   margin-bottom: 20px;
+}
+
+.form-control {
+   margin-bottom: 20px;
+}

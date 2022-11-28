@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 
 const profileController = {

@@ -1,7 +1,6 @@
 const apartmentModel = require('../models/apartment.model');
 const favoriteModel = require('../models/favorite.model');
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 
 const favoriteList = {
    getFavoritePage: async (req, res) => {
@@ -10,7 +9,6 @@ const favoriteList = {
          const user = req.cookies.user;
          if (user) {
             userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
          }
 
          const listApartmentId = await favoriteModel.find({ userId: userId });

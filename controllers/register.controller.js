@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 
 const registerController = {
@@ -14,7 +13,6 @@ const registerController = {
       let email = req.body.email;
       let phonenumber = req.body.phonenumber;
       let password = hashed;
-      let role = req.body.role;
       errs = [];
       userModel
          .findOne({
@@ -32,13 +30,7 @@ const registerController = {
             phonenumber: phonenumber,
             password: password,
          })
-         .then((data) => {
-            const roleBody = {
-               userId: data._id.valueOf(),
-               name: role,
-            };
-            const newUser = roleModel(roleBody);
-            newUser.save();
+         .then(() => {
             req.flash('success', 'Tạo tài khoản thành công');
             res.redirect('/register');
          })

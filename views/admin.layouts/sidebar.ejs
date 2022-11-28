@@ -13,12 +13,22 @@
                <span>Trang chủ</span>
             </a>
          </li>
+         <% if(user.role == 'admin') { %>
+
          <li class="">
             <a href="/dashboard/users" class="sidebar-menu_user">
                <span class="las la-desktop"></span>
                <span>Người Dùng</span>
             </a>
          </li>
+         <% } %>
+
+         <!-- <li class="">
+            <a href="/dashboard/roles" class="sidebar-menu_user">
+               <span class="las la-desktop"></span>
+               <span>Vai trò</span>
+            </a>
+         </li> -->
          <li class="">
             <a href="/dashboard/viewApartment" class="sidebar-menu_apartment">
                <span class="las la-umbrella-beach"></span>

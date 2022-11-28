@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 const apartmentModel = require('../models/apartment.model');
 const commentModel = require('../models/comment.model');
 const messageModel = require('../models/message.model');
@@ -20,9 +19,10 @@ const adminController = {
       const numOfContact = contact.length;
       if (req.cookies.user) {
          const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
-
-         if (role.name == 'admin') {
+         console.log(userId);
+         user = await userModel.findOne({ _id: userId });
+         console.log(user);
+         if (user.role == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/dashboard',
@@ -57,8 +57,8 @@ const adminController = {
          });
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/users',
@@ -87,6 +87,40 @@ const adminController = {
          });
    },
    //  End Management Users Page
+   // Start management Roles Page
+   getRolesPage: async (req, res) => {
+      try {
+         if (req.cookies.user) {
+            const users = await userModel.find();
+            const userId = req.cookies.user.user_id;
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
+               res.render('admin.layouts/cover', {
+                  title: 'Dashboard Admin',
+                  content: '../admin/roles',
+                  users,
+                  alert: req.flash('success'),
+               });
+            } else {
+               res.redirect('/error');
+            }
+         } else {
+            res.redirect('/login');
+         }
+      } catch (e) {
+         console.log(e);
+      }
+   },
+   updateRoles: async (req, res) => {
+      try {
+         const userId = req.query.id;
+         res.redirect('/dashboard/roles');
+      } catch (e) {
+         console.log(e);
+      }
+   },
+
+   // End management Roles Page
 
    // Start Management Apartment Page
    getAllPosts: async (req, res) => {
@@ -104,8 +138,8 @@ const adminController = {
          });
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/viewApartment',
@@ -126,11 +160,11 @@ const adminController = {
       try {
          const apartmentId = req.params.id;
          const userId = req.cookies.user.user_id;
-         role = await roleModel.findOne({ userId: userId });
 
          const apartment = await apartmentModel.findOne({ _id: apartmentId });
          const phases = apartment.phase;
-         if (role.name == 'admin') {
+         user = await userModel.findOne({ _id: userId });
+         if (user.role == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/update',
@@ -190,8 +224,8 @@ const adminController = {
       try {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/upload',
@@ -226,27 +260,7 @@ const adminController = {
          apartment.images = images;
          const newApartment = new apartmentModel(apartment);
          await newApartment.save();
-         const user = req.cookies.user;
-         let userId,
-            role,
-            showSearch = 'no';
-         if (user) {
-            userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            role = role.name;
-         }
-         let perPage = 4;
-         let page = req.params.page || 1;
-         await apartmentModel
-            .find({ userId: userId })
-            .skip(perPage * page - perPage)
-            .limit(perPage)
-            .exec((err, listapartment) => {
-               apartmentModel.countDocuments((err, count) => {
-                  if (err) return next(err);
-                  // res.status(200).render("manageapartment", {title: "Dream Boarding House", listapartment, current: page, pages: Math.ceil(count / perPage), user, role, listapartment, showSearch, numberNotification})
-               });
-            });
+         user = req.cookies.user;
          req.flash('success', 'Đăng căn hộ thành công');
          res.redirect('/dashboard/viewApartment');
       } catch (error) {
@@ -272,8 +286,8 @@ const adminController = {
          });
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/comment',
@@ -321,8 +335,8 @@ const adminController = {
 
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/message',
@@ -359,8 +373,8 @@ const adminController = {
 
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            if (role.name == 'admin') {
+            user = await userModel.findOne({ _id: userId });
+            if (user.role == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/contact',

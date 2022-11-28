@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 const commentModel = require('../models/comment.model');
 const apartmentModel = require('../models/apartment.model');
 const contactModel = require('../models/contact.model');
@@ -15,8 +14,6 @@ const apartmentController = {
          let userId;
          if (user) {
             userId = req.cookies.user.user_id;
-            role = await roleModel.findOne({ userId: userId });
-            role = role.name;
          }
          const like = await favoriteModel.findOne({ userId: userId, apartmentId: apartmentId.id });
          let isLike = false;

@@ -1,5 +1,4 @@
 const userModel = require('../models/user.model');
-const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -8,11 +7,6 @@ const authController = {
       const { email, password } = req.body;
       try {
          const user = await userModel.findOne({ email: email });
-         if (user) {
-            role = await roleModel.findOne({
-               userId: user.id,
-            });
-         }
          if (!user) {
             return res.status(404).render('../views/layouts/login');
          }
@@ -21,7 +15,6 @@ const authController = {
             return res.status(404).render('../views/layouts/login');
          }
          if (user && validPassword) {
-            // res.status(200).json(user);
             const accessToken = jwt.sign(
                {
                   user_id: user._id,
@@ -59,7 +52,7 @@ const authController = {
                httpOnly: true,
                sameSite: 'strict',
             });
-            if (role.name == 'customer') {
+            if (user.role == 'customer') {
                res.redirect('/');
             } else {
                res.redirect('/dashboard');
