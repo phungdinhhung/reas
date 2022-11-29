@@ -176,21 +176,8 @@
             </div>
          </div>
       </div>
-      <%- include('../layouts/footer')%> <% if (alert.length > 0) { %>
-      <div class="alert__success">
-         <i class="las la-check-circle"></i>
-         <div class="alert__content">
-            <p class="success__first">Thành Công!</p>
-            <p class="success__second"><%= alert%></p>
-         </div>
-      </div>
-      <% } %> <%- include('../layouts/message') %>
-      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-      <script type="text/javascript">
-         jQuery(document).ready(function ($) {
-            $('.alert__success').delay(3000).fadeOut('slow');
-         });
-      </script>
+      <%- include('../layouts/footer')%> <%- include('../layouts/message') %>
+
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
       <!-- Initialize Swiper -->

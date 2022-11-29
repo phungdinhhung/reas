@@ -26,6 +26,7 @@ const apartmentController = {
             userInfor,
             listComment,
             alert: req.flash('success'),
+            fail: req.flash('fail'),
             isLike,
          });
       } catch (error) {

@@ -99,39 +99,37 @@
                      </div>
                   </div>
                </div>
-               <h3>Có <%=listRoom.length%> kết quả được tìm thấy</h3>
+               <h3>Có <%=listApartment.length%> kết quả được tìm thấy</h3>
                <div class="searchResult__content">
-                  <% for(let i = 0; i < listRoom.length; i++) {%>
+                  <% for(let i = 0; i < listApartment.length; i++) {%>
                   <div class="render__apartment row">
                      <div class="col-md-3">
-                        <img src="<%= listRoom[i].images[0].url %>" alt="" class="img-thumbnail" />
+                        <img src="<%= listApartment[i].images[0].url %>" alt="" class="img-thumbnail" />
                      </div>
                      <div class="col-md-8 mt-3">
-                        <a href="/detail/<%=listRoom[i]._id %>" class="">
-                           <h6 class="title__description"><%= listRoom[i].heading %></h6>
+                        <a href="/detail/<%=listApartment[i]._id %>" class="">
+                           <h6 class="title__description"><%= listApartment[i].heading %></h6>
                         </a>
                         <div class="content__inner__card pt-3">
                            <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info">
-                              <%= listRoom[i].price %> VNĐ</span
+                              <%= listApartment[i].price %> VNĐ</span
                            >
                            <span class="p-1 border border-secondary rounded ml-4 bg-gradient-info"
-                              ><%= listRoom[i].acreage %></span
+                              ><%= listApartment[i].acreage %></span
                            >
                            <div class="content__address mt-3 mb-3">
                               <i class="fa-solid fa-location-dot mr-1"></i>
-                              Bãi biển <%= listRoom[i].beach %>, <%= listRoom[i].ward %>, <%= listRoom[i].district %>,
-                              <%= listRoom[i].city %>
+                              Bãi biển <%= listApartment[i].beach %>, <%= listApartment[i].ward %>, <%=
+                              listApartment[i].district %>, <%= listApartment[i].city %>
                            </div>
                            <div class="content__description mt-3 mb-3">
-                              <p><%= listRoom[i].description %></p>
+                              <p><%= listApartment[i].description %></p>
                            </div>
                         </div>
                      </div>
                      <div class="col-md-1 d-flex">
                         <div class="buttonDiv">
-                           <button class="button_hearth">
-                              <i class="fa-regular fa-heart"></i>
-                           </button>
+                           <a href="/detail/<%=listApartment[i].id %>" class="button_hearth">Xem Chi tiết</a>
                         </div>
                      </div>
                   </div>

@@ -30,3 +30,18 @@
       </div>
    </div>
 </div>
+<% if (alert.length > 0) { %>
+<div class="alert__success">
+   <i class="las la-check-circle"></i>
+   <div class="alert__content">
+      <h6>Thành Công!</h6>
+      <h7><%= alert%></h7>
+   </div>
+</div>
+<% } %>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+   jQuery(document).ready(function ($) {
+      $('.alert__success').delay(3000).fadeOut('slow');
+   });
+</script>

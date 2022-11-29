@@ -388,7 +388,7 @@ a.star.vote-active {
 }
 .twoBtn button {
    width: 80px;
-   height: auto;
+   height: 39px;
    padding: 17px 0px;
    /* background-color: green; */
    color: black;
@@ -525,11 +525,11 @@ a.star.vote-active {
    opacity: 0.8;
 }
 .btn-bxs-heart.open {
-   background-color: rgb(67, 222, 88);
+   background-color: rgb(255, 0, 0);
 }
 .twoBtn button:active {
    cursor: pointer;
-   background-color: green;
+   background-color: rgb(255, 0, 0);
 }
 .bxs-heart {
    font-size: 20px;

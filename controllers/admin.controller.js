@@ -19,9 +19,7 @@ const adminController = {
       const numOfContact = contact.length;
       if (req.cookies.user) {
          const userId = req.cookies.user.user_id;
-         console.log(userId);
          user = await userModel.findOne({ _id: userId });
-         console.log(user);
          if (user.role == 'admin') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',

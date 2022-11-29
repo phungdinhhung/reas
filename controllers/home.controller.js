@@ -1,9 +1,11 @@
 const apartmentModel = require('../models/apartment.model');
 const userModel = require('../models/user.model');
+const favoriteModel = require('../models/favorite.model');
 const homeController = {
    getHomePage: async (req, res) => {
       try {
          const user = req.cookies.user;
+
          let userId = '';
          if (user) {
             userId = req.cookies.user.user_id;
@@ -17,7 +19,14 @@ const homeController = {
          const listRegion3 = await apartmentModel.find({
             region: 'Miền Nam',
          });
-         res.render('./components/index', { title: 'REAS', user, listRegion1, listRegion2, listRegion3 });
+         res.render('./components/index', {
+            title: 'REAS',
+            user,
+            listRegion1,
+            listRegion2,
+            listRegion3,
+            alert: req.flash('sucess'),
+         });
       } catch (e) {
          console.log(e);
          res.status(500).json(e);

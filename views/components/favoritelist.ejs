@@ -52,7 +52,7 @@
             <div class="favorite__container">
                <div class="card mt-3">
                   <div class="row">
-                     <div class="col-md-9">
+                     <div class="col-md-8">
                         <h5 class="align-middle ml-3 mt-1">
                            Bạn có <span class="text-danger"><%= listFavorite.length %></span> BẤT ĐỘNG SẢN yêu thích
                         </h5>
@@ -65,7 +65,7 @@
                      <div class="col-md-2">
                         <img src="<%= listFavorite[i].images[0].url %>" alt="" class="img-thumbnail" />
                      </div>
-                     <div class="col-md-8 mt-3">
+                     <div class="col-md-7 mt-3">
                         <h6><%= listFavorite[i].heading %></h6>
                         <div class="content__inner__card pt-3">
                            <span class="p-1 border border-secondary rounded ml-5 bg-gradient-info"
@@ -80,11 +80,9 @@
                         </div>
                      </div>
 
-                     <div class="col-md-2 d-flex">
+                     <div class="col-md-3 d-flex">
                         <div class="buttonDiv">
-                           <a class="btn-view-detail btn-outline-success" href="/detail/<%=listFavorite[i]._id%>"
-                              >Xem chi tiết</a
-                           >
+                           <a class="btn-view-detail" href="/detail/<%=listFavorite[i]._id%>">Xem chi tiết</a>
                            <form action="/favorite/unlike/<%=listFavorite[i]._id%>" id="form-delete">
                               <button type="submit" class="button__delete_favorite" data-id="<%=listFavorite[i]._id%>">
                                  Bỏ yêu thích
