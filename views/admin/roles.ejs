@@ -29,7 +29,12 @@
                   <td class="text-center align-middle"><%= user.phonenumber %></td>
                   <td class="text-center align-middle"><%= user.fullname %></td>
                   <% if(user.role !== 'admin') { %>
-                  <td class="text-center align-middle"></td>
+                  <td class="text-center align-middle">
+                     <% if(user.role !== customer) %>
+                     <div>Customer</div>
+                     <div>Manager</div>
+                     <div>Marketing</div>
+                  </td>
                   <% } %>
                </tbody>
                <% })%>

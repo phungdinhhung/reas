@@ -14,7 +14,7 @@
          <div class="center1">
             <a href="/detail/<%= apartment._id %>" type="submit" class="btn-success back_apart">Trở Lại</a>
          </div>
-         <form action="/analysis/<%=apartment.id%>" method="POST">
+         <form action="/analysis/<%=apartment.id%>" method="POST" class="area__table">
             <div class="form-ptich">
                <div class="login-form">
                   <h1>Bảng Phân Tích</h1>
@@ -25,12 +25,13 @@
 
                   <div class="input-box">
                      <label>Tiến Độ Thanh Toán</label>
-                     <select name="type" class="form-control">
+                     <select name="type" class="form-control" onChange="yearVnh(this.value)" id="getYear">
                         <option value="normal">Tiến Độ Thường</option>
                         <option value="70">70%</option>
                         <option value="90">90%</option>
                         <option value="vnh">Vay Ngân Hàng</option>
                      </select>
+                     <div class="show-option"></div>
                   </div>
                   <div class="center">
                      <button type="submit" class="btn-success">Kiểm Tra</button>
@@ -38,8 +39,8 @@
                </div>
             </div>
          </form>
-         <div class="analysis">
-            <div>
+         <div>
+            <div class="area__table">
                <h2 class="title">Bảng Phân Tích Tài Chính</h2>
                <div class="table1">
                   <table class="table">
@@ -150,7 +151,7 @@
                   </table>
                </div>
             </div>
-            <div>
+            <div class="area__table">
                <h2 class="title">Tiến Độ Thanh Toán</h2>
                <div class="table1">
                   <table class="table">
@@ -255,27 +256,40 @@
                               <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
                            </td>
                            <td>
+                              <% if(phase[i] == phase[0]) {%>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% if(phase[i] == phase[0]) {%> <%= moneyOne = newPrice * phase[0].percent / 100 -
-                                 sumDeposit %> <% } else { %> <%= money = apartment.price * phase[i].percent / 100 %> <%
-                                 a += money %> <% } %>
+                                 <%= moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %>
+                              </div>
+                              <% } else { %>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= money = apartment.price * phase[i].percent / 100 %> <% a += money %> <% } %>
                               </div>
                            </td>
                            <td>
+                              <% if(phase[i] == phase[0]) {%>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% if(phase[i] == phase[0]) {%> Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi Đặt cọc)
-                                 <br />(Số tiền thanh toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc)<% } else
-                                 if(phase[i] == phase[2]) { %> Nhận bàn giao Villas theo thông báo của CĐT <br />(Số
-                                 tiền thanh toán đã bao gồm VAT của đợt 2 và đợt 3) <% } else if(phase[i] == phase[4]) {
-                                 %> Trong vòng 15 ngày kể từ ngày CĐT gửi văn bản thông báo bàn giao giấy <br />Giấy
-                                 Chứng Nhận Quyền Sở Hữu Căn Villas (Số tiền thanh toán không bao gồm thuế GTGT) <% } %>
+                                 Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi Đặt cọc)
+                                 <br />(Số tiền thanh toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc)
+                              </div>
+                              <% } else if(phase[i] == phase[2]) { %>
+                              <div class="form-group mb-0 d-inline-block">
+                                 Nhận bàn giao Villas theo thông báo của CĐT <br />(Số tiền thanh toán đã bao gồm VAT
+                                 của đợt 2 và đợt 3)
+                              </div>
+                              <% } else if(phase[i] == phase[4] ) { %>
+                              <div class="form-group mb-0 d-inline-block" style="color: red">
+                                 Trong vòng 15 ngày kể từ ngày CĐT gửi văn bản thông báo bàn giao giấy <br />Giấy Chứng
+                                 Nhận Quyền Sở Hữu Căn Villas (Số tiền thanh toán không bao gồm thuế GTGT) <% } %>
                               </div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <% if((i+1) % 2) { %> Khách hàng thanh toán bằng vốn tự có <%} else { %> Ngân hàng giải
-                                 ngân (Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 18 tháng) <%} %>
+                              <% if((i+2) % 2 || phase[i] == phase[4]) { %>
+                              <div class="form-group mb-0 d-inline-block" style="color: red">
+                                 Ngân hàng giải ngân (Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 18 tháng)
                               </div>
+                              <%} else { %>
+                              <div class="form-group mb-0 d-inline-block">Khách hàng thanh toán bằng vốn tự có</div>
+                              <%} %>
                            </td>
                         </tr>
                         <% } %>
@@ -312,7 +326,7 @@
                   </table>
                </div>
             </div>
-            <div>
+            <div class="area__table">
                <h2 class="title">Bảng Tính Lợi Nhuận</h2>
                <div class="table1">
                   <table class="table">
@@ -404,7 +418,7 @@
                </div>
             </div>
             <% if(type.includes('vnh')) { %>
-            <div>
+            <div class="area__table">
                <h3 class="title">Tiến Độ Thanh Toán Ngân Hàng</h3>
                <div class="table2">
                   <table class="table">
@@ -419,24 +433,7 @@
                      </thead>
                      <tbody>
                         <div class="loan">
-                           <tr>
-                              <td>
-                                 <span> 1 </span>
-                              </td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
-                              </td>
-                              <td>0</td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block">
-                                    <div class="form-group mb-0 d-inline-block"><%= totalLoan - year %></div>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div class="form-group mb-0 d-inline-block">0</div>
-                              </td>
-                           </tr>
-                           <% x = 10 %> <% for(let i = 1; i < x; i++) { %>
+                           <% for(let i = 0; i < yearVnh; i++) { %>
                            <tr>
                               <td>
                                  <span> <%= i + 1 %> </span>
@@ -445,13 +442,37 @@
                                  <div class="form-group mb-0 d-inline-block"><%= year %></div>
                               </td>
                               <td>
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </td>
-                              <td></td>
-                              <td>
+                                 <% if(i == 1) { %>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <div class="form-group mb-0 d-inline-block"><%= loan * (6.5/100) %></div>
+                                    <%= interest[i] = totalLoan * (6.5/100/2) %>
                                  </div>
+                                 <% }else if(i==0) { %>
+                                 <div class="form-group mb-0 d-inline-block">0</div>
+                                 <% } else { %>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <% interest[i] = debt[i-1] * (6.5/100) %> <%= Math.ceil(interest[i]) %>
+                                 </div>
+                                 <%} %>
+                              </td>
+                              <td>
+                                 <% debt[i] = debt[i-1] - (year- interest[i]) %> <% if(i == 0) { %>
+                                 <div class="form-group mb-0 d-inline-block"><%= debt[i] = totalLoan - year %></div>
+                                 <% } else if(debt[i] < 0){%>
+                                 <div class="form-group mb-0 d-inline-block"><%= debt[i] = 0 %></div>
+                                 <% } else { %>
+                                 <div class="form-group mb-0 d-inline-block"><%= Math.ceil(debt[i]) %></div>
+
+                                 <% }%>
+                              </td>
+                              <td>
+                                 <%if(debt[i] > 0){ %>
+                                 <div class="form-group mb-0 d-inline-block"><%= earned[i] = 0%></div>
+                                 <% } else { %>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <% earned[i] = year - interest[i] - debt[i-1] + earned[i-1] %> <%=
+                                    Math.ceil(earned[i]) %>
+                                 </div>
+                                 <%} %>
                               </td>
                            </tr>
                            <% } %>
@@ -465,3 +486,21 @@
       </div>
    </body>
 </html>
+<script>
+   function deleOption() {
+      var htmlObj = $('.show-option');
+      htmlObj.innerHTML = '';
+   }
+   const $ = document.querySelector.bind(document);
+   function yearVnh(value) {
+      if (value) {
+         deleOption();
+      }
+      if (value == 'vnh') {
+         var htmlObj = $('.show-option');
+         htmlObj.innerHTML =
+            htmlObj.innerHTML +
+            " <select type='number' name='yearVnh'> <option value='' disabled hidden>0</option> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select> ";
+      }
+   }
+</script>

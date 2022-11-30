@@ -183,3 +183,6 @@ tbody tr td span {
    align-items: center;
    display: flex;
 }
+.area__table {
+   margin-bottom: 100px;
+}

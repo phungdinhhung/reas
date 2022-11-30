@@ -6,7 +6,10 @@ const analysisController = {
          const user = req.cookies.user;
          const apartmentId = req.params;
          const apartmentRender = req.params.id;
-         const { price } = req.body;
+         const { price, yearVnh } = req.body;
+         const interest = [];
+         const debt = [];
+         const earned = [];
          const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
          const max = apartment.price + (apartment.price * 10) / 100;
          if (price >= apartment.price && price <= max) {
@@ -43,6 +46,10 @@ const analysisController = {
             user,
             phase,
             type,
+            yearVnh,
+            interest,
+            debt,
+            earned,
             alert: req.flash('success'),
          });
       } catch (e) {

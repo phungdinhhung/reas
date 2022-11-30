@@ -124,12 +124,13 @@
 
                               <div class="input-box">
                                  <label>Tiến Độ Thanh Toán</label>
-                                 <select name="type" class="form-control">
+                                 <select name="type" class="form-control" onChange="yearVnh(this.value)" id="getYear">
                                     <option value="normal">Tiến Độ Thường</option>
                                     <option value="70">70%</option>
                                     <option value="90">90%</option>
                                     <option value="vnh">Vay Ngân Hàng</option>
                                  </select>
+                                 <div class="show-option"></div>
                               </div>
                               <div class="center">
                                  <button type="submit" class="btn-success">Kiểm Tra</button>
@@ -176,7 +177,7 @@
             </div>
          </div>
       </div>
-      <%- include('../layouts/footer')%> <%- include('../layouts/message') %>
+      <%- include('../layouts/message') %>
 
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -232,5 +233,23 @@
 
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script>
+         function deleOption() {
+            var htmlObj = $('.show-option');
+            htmlObj.innerHTML = '';
+         }
+         const $ = document.querySelector.bind(document);
+         function yearVnh(value) {
+            if (value) {
+               deleOption();
+            }
+            if (value == 'vnh') {
+               var htmlObj = $('.show-option');
+               htmlObj.innerHTML =
+                  htmlObj.innerHTML +
+                  " <select type='number' name='yearVnh'> <option value='' disabled hidden>0</option> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select> ";
+            }
+         }
+      </script>
    </body>
 </html>
