@@ -125,32 +125,55 @@
                            value="<%= apartment.priceMonth %>"
                         />
                      </div>
-                     <div class="form-group" id="show">
-                        <h6 style="padding-top: 10px">% đóng theo đợt</h6>
-                        <input
-                           class="bg-primary border-0 text-white p-1 rounded mt-1 mb-1"
-                           type="button"
-                           onclick="add()"
-                           value="Thêm đợt"
-                           id="action"
-                        />
-                        <%for(let i = 0; i< phases.length; i++) {%>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Phần trăm chính sách chiết khấu thanh toán</h6>
                         <input
                            class="form-control"
-                           type="phần trăm"
-                           name="phase"
-                           placeholder="Phần trăm của đợt 1"
-                           id="list_dot"
-                           value="<%= phases[i].percent %>"
+                           type="number"
+                           name="percentDiscount"
+                           placeholder="Nhập phần trăm"
+                           value="7"
+                           id=""
                         />
+                     </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Phần trăm các chiết khấu khác</h6>
                         <input
-                           type="button"
-                           class="bg-danger p-1 border-0 rounded text-white mt-1 mb-1"
-                           value="xóa"
-                           onclick="dele()"
-                           id="buttonDele"
+                           class="form-control"
+                           type="number"
+                           name="percentOther"
+                           placeholder="Nhập phần trăm chiết khấu khác"
+                           value="5"
                         />
-                        <% } %>
+                     </div>
+                     <div class="form-group" id="show">
+                        <h6 style="padding-top: 10px">Phần trăm đóng theo đợt</h6>
+                        <% value = phases.length %>
+                        <select id="selectBox" onchange="changeFunc(value);">
+                           <option class="option" hidden selected><%= phases.length %></option>
+                           <option class="option" value="1">1</option>
+                           <option class="option" value="2">2</option>
+                           <option class="option" value="3">3</option>
+                           <option class="option" value="4">4</option>
+                           <option class="option" value="5">5</option>
+                           <option class="option" value="6">6</option>
+                           <option class="option" value="7">7</option>
+                           <option class="option" value="8">8</option>
+                           <option class="option" value="9">9</option>
+                           <option class="option" value="10">10</option>
+                        </select>
+                        <div class="show-option">
+                           <%for(let i = 0; i < phases.length; i++) {%>
+                           <div>Phần trăm của đợt <%= i + 1 %></div>
+                           <input
+                              class="form-control"
+                              type="phần trăm"
+                              name="phase"
+                              id="list_dot"
+                              value="<%= phases[i].percent %>"
+                           />
+                           <% } %>
+                        </div>
                      </div>
                      <div class="form-group">
                         <h6 for="formFileMultiple" style="padding-top: 10px">Chọn ảnh phòng</h6>
@@ -173,18 +196,31 @@
 </div>
 <script>
    const $ = document.querySelector.bind(document);
+   const $$ = document.querySelectorAll.bind(document);
+   $('.sidebar-menu_upload').classList.add('active');
 
-   function add() {
-      var htmlObj = document.getElementById('show');
-      htmlObj.innerHTML =
-         htmlObj.innerHTML +
-         "<input class ='form-control' type='phần trăm' name='phase' placeholder='Phần trăm của đợt 1' id='list_dot'/> " +
-         "  <input type='button' class='bg-danger p-1 border-0 rounded text-white mt-1 mb-1' value='xóa' onclick=dele() id='buttonDele' />";
-   }
-   function dele() {
+   function dele(value) {
       const deleelemeent = document.getElementById('list_dot');
       const buttonDele = document.getElementById('buttonDele');
       buttonDele.remove();
       deleelemeent.remove();
+   }
+
+   function deleOption() {
+      var htmlObj = $('.show-option');
+      htmlObj.innerHTML = '';
+   }
+
+   function changeFunc(value) {
+      if (value) {
+         deleOption();
+      }
+      var htmlObj = $('.show-option');
+      for (let index = 0; index < Number(value); index++) {
+         htmlObj.innerHTML =
+            htmlObj.innerHTML +
+            `<div> Phần trăm của đợt ${index + 1} </div>` +
+            `<input class ='form-control' type='phần trăm' name='phase' placeholder='% ' id='list_dot'/> `;
+      }
    }
 </script>

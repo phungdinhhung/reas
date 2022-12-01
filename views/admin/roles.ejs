@@ -30,10 +30,11 @@
                   <td class="text-center align-middle"><%= user.fullname %></td>
                   <% if(user.role !== 'admin') { %>
                   <td class="text-center align-middle">
-                     <% if(user.role !== customer) %>
-                     <div>Customer</div>
-                     <div>Manager</div>
-                     <div>Marketing</div>
+                     <select name="role" id="">
+                        <option value="customer">Customer</option>
+                        <option value="manager">Manager</option>
+                        <option value="marketing">Marketing</option>
+                     </select>
                   </td>
                   <% } %>
                </tbody>

@@ -32,11 +32,18 @@
                         <h6 for="">Bãi biển</h6>
                         <input class="form-control" type="" name="beach" placeholder="Bãi biển" id="" />
                      </div>
+                     <div class="form-group mt-2">
+                        <h6 for="">Số nhà</h6>
+                        <input
+                           type="Địa Chỉ"
+                           name="address"
+                           placeholder="Số nhà, tên đường"
+                           id=""
+                           class="form-control"
+                        />
+                     </div>
                   </div>
-                  <div class="form-group mt-2">
-                     <h6 for="">Số nhà</h6>
-                     <input type="Địa Chỉ" name="address" placeholder="Số nhà, tên đường" id="" class="form-control" />
-                  </div>
+
                   <div style="margin-top: 20px">
                      <h4 class="">Thông tin mô tả</h4>
                      <div class="form-group" style="padding-top: 10px">
@@ -93,15 +100,29 @@
                            id=""
                         />
                      </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Phần trăm chính sách chiết khấu thanh toán</h6>
+                        <input
+                           class="form-control"
+                           type="number"
+                           name="percentDiscount"
+                           placeholder="Nhập phần trăm"
+                           value="7"
+                           id=""
+                        />
+                     </div>
+                     <div class="form-group">
+                        <h6 style="padding-top: 10px">Phần trăm các chiết khấu khác</h6>
+                        <input
+                           class="form-control"
+                           type="number"
+                           name="percentOther"
+                           placeholder="Nhập phần trăm chiết khấu khác"
+                           value="5"
+                        />
+                     </div>
                      <div class="form-group" id="show">
-                        <h6 style="padding-top: 10px">% đóng theo đợt</h6>
-                        <!-- <input
-                           class="bg-primary border-0 text-white p-1 rounded mt-1 mb-1"
-                           type="button"
-                           onclick="add()"
-                           value="Thêm đợt"
-                           id="action"
-                        /> -->
+                        <h6 style="padding-top: 10px">Phần trăm đóng theo đợt</h6>
                         <select id="selectBox" onchange="changeFunc(value);">
                            <option class="option" disabled hidden selected>0</option>
                            <option class="option" value="1">1</option>
@@ -125,8 +146,10 @@
                </div>
                <div class="card-footer">
                   <div class="buttons-container form-group">
-                     <input type="button" value="Hủy bỏ" class="btn btn-danger font-size: 20px" />
                      <input type="submit" value="Đăng Tải" class="btn btn-primary font-size: 20px" />
+                     <a href="/dashboard/viewApartment" type="button" class="btn btn-danger font-size: 20px">
+                        Hủy bỏ
+                     </a>
                   </div>
                </div>
             </div>
@@ -159,9 +182,8 @@
       for (let index = 0; index < Number(value); index++) {
          htmlObj.innerHTML =
             htmlObj.innerHTML +
-            `<input class ='form-control' type='phần trăm' name='phase' placeholder='Phần trăm của đợt ${
-               index + 1
-            }' id='list_dot'/> `;
+            `<div> Phần trăm của đợt ${index + 1} </div>` +
+            `<input class ='form-control' type='phần trăm' name='phase' placeholder='% ' id='list_dot'/> `;
       }
    }
 </script>

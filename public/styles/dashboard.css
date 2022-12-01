@@ -15,6 +15,10 @@
    font-family: 'Poppins', sans-serif;
 }
 
+html {
+   font-size: 100%;
+}
+
 .sidebar {
    width: 280px;
    position: fixed;
@@ -554,4 +558,8 @@ td {
 
 .form-control {
    margin-bottom: 20px;
+}
+
+.infor__group {
+   width: 100%;
 }
