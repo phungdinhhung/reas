@@ -27,7 +27,7 @@
                      <th class="text-center align-middle"><%= i+1 %></th>
                      <td class="text-center align-middle"><%= renderApartment[i].region %></td>
                      <td class="text-center align-middle"><%= renderApartment[i].heading%></td>
-                     <td class="text-center align-middle"><%= renderApartment[i].price %></td>
+                     <td class="text-center align-middle"><%= renderApartment[i].price.toLocaleString("en") %></td>
                      <td class="text-center align-middle">
                         <a href="/dashboard/updateApartment/<%= renderApartment[i]._id %>" class="btn btn-primary edit"
                            >Sửa</a

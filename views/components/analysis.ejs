@@ -20,7 +20,7 @@
                   <h1>Bảng Phân Tích</h1>
                   <div class="input-box">
                      <label> Giá Trị Căn Hộ </label>
-                     <input class="" type="number" placeholder="VND" name="price" value="<%= apartment.price%>" />
+                     <input type="number" placeholder="VND" name="price" value="<%= apartment.price%>" />
                   </div>
 
                   <div class="input-box">
@@ -61,7 +61,9 @@
                               <div class="form-group mb-0 d-inline-block"><%= 100 %>%</div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= apartment.price %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= apartment.price.toLocaleString("en") %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -82,12 +84,14 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= discount = apartment.price * percentDiscount / 100 %>
+                                 <% discount = apartment.price * percentDiscount / 100 %> <%=
+                                 Math.ceil(discount).toLocaleString("en") %>
                               </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= vatDis = discount-(discount * 10 / 100) %>
+                                 <% vatDis = discount-(discount * 10 / 100) %> <%=
+                                 Math.ceil(vatDis).toLocaleString("en") %>
                               </div>
                            </td>
                         </tr>
@@ -100,12 +104,13 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= other = vatDis * percentOther / 100 %>
+                                 <% other = vatDis * percentOther / 100 %> <%= Math.ceil(other).toLocaleString("en") %>
                               </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= vatOther = other-(other *10 / 100) %>
+                                 <% vatOther = other-(other *10 / 100) %> <%= Math.ceil(vatOther).toLocaleString("en")
+                                 %>
                               </div>
                            </td>
                         </tr>
@@ -119,7 +124,9 @@
                               </div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= vatSum = vatDis + vatOther %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% vatSum = vatDis + vatOther %> <%= Math.ceil(vatSum).toLocaleString("en") %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -138,13 +145,12 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= newPrice =apartment.price - vatSum %>
+                                 <% newPrice =apartment.price - vatSum %> <%= Math.ceil(newPrice).toLocaleString("en")
+                                 %>
                               </div>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <div class="form-group mb-0 d-inline-block"></div>
-                              </div>
+                              <div class="form-group mb-0 d-inline-block"></div>
                            </td>
                         </tr>
                      </tbody>
@@ -176,7 +182,8 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= sumDeposit = apartment.price * deposit / 100 %>
+                                 <% sumDeposit = apartment.price * deposit / 100 %> <%=
+                                 Math.ceil(sumDeposit).toLocaleString("en") %>
                               </div>
                            </td>
                            <td>
@@ -196,11 +203,14 @@
                               <span> Đợt 1 </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= phase[0].percent %>%</div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= phase[0].percent.toLocaleString("en") %>%
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %>
+                                 <% moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %> <%=
+                                 Math.ceil(moneyOne).toLocaleString("en") %>
                               </div>
                            </td>
                            <td>
@@ -216,13 +226,16 @@
                               <span> Đợt <%= i +1 %> </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= phase[i].percent.toLocaleString("en") %>%
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% if(i == phase.length - 1) {%> <%= money = apartment.price * phase[i].percent / 100
-                                 %> <% } else {%> <%= money = newPrice * phase[i].percent / 100 %> <% } %> <% a += money
-                                 %>
+                                 <% if(i == phase.length - 1) {%> <% money = apartment.price * phase[i].percent / 100 %>
+                                 <%= Math.ceil(money).toLocaleString("en") %> <% } else {%> <% money = newPrice *
+                                 phase[i].percent / 100 %> <%= Math.ceil(money).toLocaleString("en") %> <% } %> <% a +=
+                                 money %>
                               </div>
                            </td>
                            <td>
@@ -242,7 +255,9 @@
                               <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
                            </td>
                            <td colspan="3">
-                              <div class="form-group mb-0 d-inline-block"><%= a + moneyOne + sumDeposit %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% total = a + moneyOne + sumDeposit %> <%= Math.ceil(total).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <% } else { %> <% a = 0, b = 0 %> <% for(let i = 0; i< phase.length; i++) { %>
@@ -258,11 +273,13 @@
                            <td>
                               <% if(phase[i] == phase[0]) {%>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %>
+                                 <% moneyOne = newPrice * phase[0].percent / 100 - sumDeposit %> <%=
+                                 Math.ceil(moneyOne).toLocaleString("en") %>
                               </div>
                               <% } else { %>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= money = apartment.price * phase[i].percent / 100 %> <% a += money %> <% } %>
+                                 <% money = apartment.price * phase[i].percent / 100 %> <% a += money %> <%=
+                                 Math.ceil(money).toLocaleString("en") %> <% } %>
                               </div>
                            </td>
                            <td>
@@ -299,7 +316,8 @@
                            </td>
                            <td colspan="2">
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= customer = (a + moneyOne + sumDeposit) * 30 / 100 %>
+                                 <% customer = (a + moneyOne + sumDeposit) * 30 / 100 %> <%=
+                                 Math.ceil(customer).toLocaleString("en") %>
                               </div>
                            </td>
                         </tr>
@@ -309,7 +327,8 @@
                            </td>
                            <td colspan="2">
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= totalLoan = (a + moneyOne + sumDeposit) - customer %>
+                                 <% totalLoan = (a + moneyOne + sumDeposit) - customer %> <%=
+                                 Math.ceil(totalLoan).toLocaleString("en") %>
                               </div>
                            </td>
                         </tr>
@@ -318,7 +337,9 @@
                               <div class="form-group mb-0 d-inline-block">Tổng tiền</div>
                            </td>
                            <td colspan="2">
-                              <div class="form-group mb-0 d-inline-block"><%=a + moneyOne + sumDeposit %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% total = a + moneyOne + sumDeposit %> <%= Math.ceil(total).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <% } %>
@@ -350,7 +371,9 @@
                               <span> GÍA CHO THUÊ PHÒNG </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= apartment.priceMonth %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <%= apartment.priceMonth.toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr>
@@ -358,7 +381,10 @@
                               <span> QUY ĐỔI VOUCHER </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= apartment.priceMonth * 2 %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% voucherChange = apartment.priceMonth * 2 %> <%=
+                                 Math.ceil(voucherChange).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr>
@@ -367,7 +393,8 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= profit = apartment.priceMonth*(30*full/100) %>
+                                 <% profit = apartment.priceMonth*(30*full/100) %> <%=
+                                 Math.ceil(profit).toLocaleString("en") %>
                               </div>
                            </td>
                         </tr>
@@ -376,7 +403,9 @@
                               <span> CHI PHÍ SỬA CHỮA </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= fix = profit * 3 / 100 %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% fix = profit * 3 / 100 %> <%= Math.ceil(fix).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr>
@@ -384,7 +413,9 @@
                               <span> CHIA SẺ LỢI NHUẬN </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= share = profit * 20 / 100 %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% share = profit * 20 / 100 %> <%= Math.ceil(share).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
 
@@ -393,7 +424,9 @@
                               <span>LỢI NHUẬN THU VỀ/THÁNG (Sau Khi Trừ Chi Phí) </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= month = profit - share - fix %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% month = profit - share - fix %> <%= Math.ceil(month).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr>
@@ -401,7 +434,9 @@
                               <span> LỢI NHUẬN THU VỀ TRÊN NĂM </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= year = month * 12 %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% year = month * 12 %> <%= Math.ceil(year).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr>
@@ -409,7 +444,9 @@
                               <span> LỢI NHUẬN THU VỀ SAU 10 NĂM </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= end = year * 10 %></div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% end = year * 10 %> <%= Math.ceil(end).toLocaleString("en") %>
+                              </div>
                            </td>
                         </tr>
                         <tr></tr>
@@ -439,28 +476,34 @@
                                  <span> <%= i + 1 %> </span>
                               </td>
                               <td>
-                                 <div class="form-group mb-0 d-inline-block"><%= year %></div>
+                                 <div class="form-group mb-0 d-inline-block"><%= year.toLocaleString("en") %></div>
                               </td>
                               <td>
                                  <% if(i == 1) { %>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <%= interest[i] = totalLoan * (6.5/100/2) %>
+                                    <% interest[i] = totalLoan * (6.5/100/2) %> <%=
+                                    Math.ceil(interest[i]).toLocaleString("en") %>
                                  </div>
                                  <% }else if(i==0) { %>
                                  <div class="form-group mb-0 d-inline-block">0</div>
                                  <% } else { %>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <% interest[i] = debt[i-1] * (6.5/100) %> <%= Math.ceil(interest[i]) %>
+                                    <% interest[i] = debt[i-1] * (6.5/100) %> <%=
+                                    Math.ceil(interest[i]).toLocaleString("en") %>
                                  </div>
                                  <%} %>
                               </td>
                               <td>
                                  <% debt[i] = debt[i-1] - (year- interest[i]) %> <% if(i == 0) { %>
-                                 <div class="form-group mb-0 d-inline-block"><%= debt[i] = totalLoan - year %></div>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <% debt[i] = totalLoan - year %> <%= Math.ceil(debt[i]).toLocaleString("en") %>
+                                 </div>
                                  <% } else if(debt[i] < 0){%>
                                  <div class="form-group mb-0 d-inline-block"><%= debt[i] = 0 %></div>
                                  <% } else { %>
-                                 <div class="form-group mb-0 d-inline-block"><%= Math.ceil(debt[i]) %></div>
+                                 <div class="form-group mb-0 d-inline-block">
+                                    <%= Math.ceil(debt[i]).toLocaleString("en") %>
+                                 </div>
 
                                  <% }%>
                               </td>
@@ -470,7 +513,7 @@
                                  <% } else { %>
                                  <div class="form-group mb-0 d-inline-block">
                                     <% earned[i] = year - interest[i] - debt[i-1] + earned[i-1] %> <%=
-                                    Math.ceil(earned[i]) %>
+                                    Math.ceil(earned[i]).toLocaleString("en") %>
                                  </div>
                                  <%} %>
                               </td>

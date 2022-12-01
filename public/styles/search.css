@@ -65,15 +65,25 @@ select {
 .content__description p {
    font-size: 14px;
    font-weight: 400;
-   width: 70%;
-   height: 42px;
    line-height: 20px;
+   width: 700px;
    overflow: hidden;
    display: block;
    display: -webkit-box;
    -webkit-box-orient: vertical;
-   -webkit-line-clamp: 2;
+   -webkit-line-clamp: 3;
+   text-overflow: ellipsis;
 }
+.img-thumbnail {
+   padding: 0.25rem;
+   background-color: #fff;
+   border: 1px solid #dee2e6;
+   border-radius: 0.25rem;
+   max-width: 100%;
+   width: 100%;
+   height: 200px !important;
+}
+
 .favorite__container__card__inner_avatar {
    border-radius: 50%;
    width: 50px;
@@ -98,11 +108,11 @@ select {
 }
 .button_hearth {
    border: 1px solid #969696;
-    padding: 9px 10px 5px 10px;
-    border-radius: 13px;
-    cursor: pointer;
-    width: 110px;
-    height: 45px;
+   padding: 9px 10px 5px 10px;
+   border-radius: 13px;
+   cursor: pointer;
+   width: 110px;
+   height: 45px;
 }
 .button_hearth:hover {
    background: #c82333;
