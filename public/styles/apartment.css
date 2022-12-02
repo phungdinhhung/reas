@@ -525,11 +525,11 @@ a.star.vote-active {
    opacity: 0.8;
 }
 .btn-bxs-heart.open {
-   background-color: rgb(255, 0, 0);
+   background-color: rgb(67, 222, 88);
 }
 .twoBtn button:active {
    cursor: pointer;
-   background-color: rgb(255, 0, 0);
+   background-color: rgb(67, 222, 88);
 }
 .bxs-heart {
    font-size: 20px;

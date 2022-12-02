@@ -17,7 +17,8 @@
    position: relative;
 }
 .input__update-name {
-   width: 30%;
+   width: 40%;
+   border: 1px solid #000;
    height: 29px;
    margin-top: 9px;
    padding-left: 12px;
@@ -28,7 +29,8 @@
    top: -6px;
 }
 .input__update-phone {
-   width: 30%;
+   width: 40%;
+   border: 1px solid #000;
    height: 29px;
    margin-top: 9px;
    padding-left: 12px;
@@ -190,7 +192,6 @@
    margin: 0;
    padding: 0;
 }
-
 .profile__infor-label,
 .profile__infor-item {
    font-size: 16px;
@@ -266,6 +267,7 @@
    width: 50%;
    float: left;
 }
+
 /* modal */
 
 /* The Modal (background) */
@@ -348,6 +350,8 @@ input.input__update {
    margin: 10px;
    padding-top: 5px;
    padding-bottom: 5px;
+   border: 1px solid #000;
+   width: 200px;
 }
 
 .update__avatar {

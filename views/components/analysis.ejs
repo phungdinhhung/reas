@@ -20,7 +20,9 @@
                   <h1>Bảng Phân Tích</h1>
                   <div class="input-box">
                      <label> Giá Trị Căn Hộ </label>
-                     <input type="number" placeholder="VND" name="price" value="<%= apartment.price%>" />
+                     <div class="price">
+                        <input placeholder="VND" name="price" value="<%= apartment.price%>" class="input__price" />
+                     </div>
                   </div>
 
                   <div class="input-box">
@@ -31,7 +33,7 @@
                         <option value="90">90%</option>
                         <option value="vnh">Vay Ngân Hàng</option>
                      </select>
-                     <div class="show-option"></div>
+                     <div id="show-option"></div>
                   </div>
                   <div class="center">
                      <button type="submit" class="btn-success">Kiểm Tra</button>
@@ -263,9 +265,7 @@
                         <% } else { %> <% a = 0, b = 0 %> <% for(let i = 0; i< phase.length; i++) { %>
                         <tr>
                            <td>
-                              <% if((i+1) % 2) { %>
-                              <span> Đợt <%= (i+1) %> </span>
-                              <%}%>
+                              <span> Đợt <%= ((i+1) ) %> </span>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
@@ -282,32 +282,40 @@
                                  Math.ceil(money).toLocaleString("en") %> <% } %>
                               </div>
                            </td>
-                           <td>
+                           <div>
                               <% if(phase[i] == phase[0]) {%>
-                              <div class="form-group mb-0 d-inline-block">
-                                 Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi Đặt cọc)
-                                 <br />(Số tiền thanh toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc)
-                              </div>
+                              <td rowspan="2">
+                                 <div class="form-group mb-0 d-inline-block">
+                                    Ngay khi ký HĐMB (Trong vòng 7 ngày sau khi Đặt cọc)
+                                    <br />(Số tiền thanh toán đã bao gồm thuế GTGT đã trừ tiền đặt cọc)
+                                 </div>
+                              </td>
                               <% } else if(phase[i] == phase[2]) { %>
-                              <div class="form-group mb-0 d-inline-block">
-                                 Nhận bàn giao Villas theo thông báo của CĐT <br />(Số tiền thanh toán đã bao gồm VAT
-                                 của đợt 2 và đợt 3)
-                              </div>
+                              <td rowspan="2">
+                                 <div class="form-group mb-0 d-inline-block">
+                                    Nhận bàn giao Villas theo thông báo của CĐT <br />(Số tiền thanh toán đã bao gồm VAT
+                                    của đợt 2 và đợt 3)
+                                 </div>
+                              </td>
                               <% } else if(phase[i] == phase[4] ) { %>
-                              <div class="form-group mb-0 d-inline-block" style="color: red">
-                                 Trong vòng 15 ngày kể từ ngày CĐT gửi văn bản thông báo bàn giao giấy <br />Giấy Chứng
-                                 Nhận Quyền Sở Hữu Căn Villas (Số tiền thanh toán không bao gồm thuế GTGT) <% } %>
-                              </div>
-                           </td>
-                           <td>
-                              <% if((i+2) % 2 || phase[i] == phase[4]) { %>
-                              <div class="form-group mb-0 d-inline-block" style="color: red">
-                                 Ngân hàng giải ngân (Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 18 tháng)
-                              </div>
-                              <%} else { %>
-                              <div class="form-group mb-0 d-inline-block">Khách hàng thanh toán bằng vốn tự có</div>
-                              <%} %>
-                           </td>
+                              <td>
+                                 <div class="form-group mb-0 d-inline-block" style="color: red">
+                                    Trong vòng 15 ngày kể từ ngày CĐT gửi<br />
+                                    văn bản thông báo bàn giao <br />Giấy Chứng Nhận Quyền Sở Hữu Căn Villas<br />
+                                    (Số tiền thanh toán không bao gồm thuế GTGT)
+                                 </div>
+                              </td>
+                              <% } %>
+                              <td>
+                                 <% if((i+2) % 2 || phase[i] == phase[4]) { %>
+                                 <div class="form-group mb-0 d-inline-block" style="color: red">
+                                    Ngân hàng giải ngân (Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 18 tháng)
+                                 </div>
+                                 <%} else { %>
+                                 <div class="form-group mb-0 d-inline-block">Khách hàng thanh toán bằng vốn tự có</div>
+                                 <%} %>
+                              </td>
+                           </div>
                         </tr>
                         <% } %>
                         <tr>
@@ -530,20 +538,13 @@
    </body>
 </html>
 <script>
-   function deleOption() {
-      var htmlObj = $('.show-option');
-      htmlObj.innerHTML = '';
-   }
    const $ = document.querySelector.bind(document);
    function yearVnh(value) {
-      if (value) {
-         deleOption();
-      }
+      var htmlObj = $('#show-option');
+      htmlObj.innerHTML = '';
       if (value == 'vnh') {
-         var htmlObj = $('.show-option');
          htmlObj.innerHTML =
-            htmlObj.innerHTML +
-            " <select type='number' name='yearVnh'> <option value='' disabled hidden>0</option> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select> ";
+            "<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>";
       }
    }
 </script>
