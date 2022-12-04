@@ -1,0 +1,79 @@
+<!-- CONTENT  -->
+<!-- CONTENT  -->
+<section class="content">
+   <div class="content-header"></div>
+   <div class="content__body">
+      <div class="card">
+         <div class="card-header">
+            <h4>Tạo tài khoản cho người quản lý</h4>
+         </div>
+         <div class="card-body">
+            <form action="create/user" method="post" class="row create__account">
+               <div class="form-group col l-6">
+                  <p>Email</p>
+                  <input
+                     type="email"
+                     id="email"
+                     name="email"
+                     placeholder="mail@example.com"
+                     title="Please enter a valid email"
+                     required=""
+                  />
+               </div>
+               <div class="form-group col l-6">
+                  <p>Mật khẩu</p>
+                  <input
+                     type="password"
+                     class="lock"
+                     name="password"
+                     placeholder="Mật khẩu"
+                     id="password"
+                     required=""
+                  />
+               </div>
+               <div class="form-group col l-6">
+                  <p>Tên đầy đủ</p>
+                  <input
+                     type="text"
+                     id="fullname"
+                     name="fullname"
+                     placeholder="Tên Người Dùng"
+                     title="Please enter your fullname"
+                     required=""
+                  />
+               </div>
+               <div class="form-group col l-6">
+                  <p>Nhập lại mật khẩu</p>
+                  <input
+                     type="password"
+                     class="lock"
+                     name="confirm-password"
+                     placeholder="Nhập lại mật khẩu"
+                     id="confirm-password"
+                     required=""
+                  />
+               </div>
+               <div class="form-group col l-6">
+                  <p>Số điện thoại</p>
+                  <input
+                     type="text"
+                     id="phonenumber"
+                     name="phonenumber"
+                     placeholder="Số điện thoại"
+                     title="Please enter your Phone Number"
+                     required=""
+                  />
+               </div>
+
+               <div class="form-group col l-12">
+                  <button type="submit">Xác nhận</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <script>
+      const $ = document.querySelector.bind(document);
+      $('.sidebar-menu_create').classList.add('active');
+   </script>
+</section>

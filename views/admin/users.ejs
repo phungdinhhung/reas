@@ -19,6 +19,7 @@
                      <th class="text-center align-middle">Email</th>
                      <th class="text-center align-middle">Số điện thoại</th>
                      <th class="text-center align-middle">Tên người dùng</th>
+                     <th class="text-center align-middle">Vai trò</th>
                      <th class="text-center align-middle" class="center">Action</th>
                   </tr>
                </thead>
@@ -28,8 +29,9 @@
                   <td class="text-center align-middle"><%= user.email %></td>
                   <td class="text-center align-middle"><%= user.phonenumber %></td>
                   <td class="text-center align-middle"><%= user.fullname %></td>
+                  <td class="text-center align-middle"><%= user.role %></td>
                   <td class="text-center align-middle">
-                     <% if(user.fullname !== 'Admin') {%>
+                     <% if(user.role !== 'admin') {%>
                      <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
                      <% } %>
                   </td>

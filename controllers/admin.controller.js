@@ -3,6 +3,8 @@ const apartmentModel = require('../models/apartment.model');
 const commentModel = require('../models/comment.model');
 const messageModel = require('../models/message.model');
 const contactModel = require('../models/contact.model');
+const bcrypt = require('bcrypt');
+
 const adminController = {
    // Dashboard Management
    renderdashboardPage: async (req, res) => {
@@ -20,7 +22,7 @@ const adminController = {
       if (req.cookies.user) {
          const userId = req.cookies.user.user_id;
          user = await userModel.findOne({ _id: userId });
-         if (user.role == 'admin') {
+         if (user.role !== 'customer') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/dashboard',
@@ -56,7 +58,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/users',
@@ -92,10 +94,10 @@ const adminController = {
             const users = await userModel.find();
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
-                  content: '../admin/roles',
+                  content: '../admin/create',
                   users,
                   alert: req.flash('success'),
                });
@@ -111,8 +113,37 @@ const adminController = {
    },
    updateRoles: async (req, res) => {
       try {
-         const userId = req.query.id;
-         res.redirect('/dashboard/roles');
+         const salt = await bcrypt.genSalt(10);
+         const hashed = await bcrypt.hash(req.body.password, salt);
+         let fullname = req.body.fullname;
+         let email = req.body.email;
+         let phonenumber = req.body.phonenumber;
+         let password = hashed;
+         userModel
+            .findOne({
+               email: email,
+            })
+            .then((data) => {
+               if (data) {
+                  req.flash('success', 'Email đã sử dụng');
+               }
+            });
+         userModel
+            .create({
+               email: email,
+               fullname: fullname,
+               phonenumber: phonenumber,
+               password: password,
+               role: 'manager',
+            })
+            .then(() => {
+               req.flash('success', 'Tạo tài khoản thành công');
+               res.redirect('/dashboard/users');
+            })
+            .catch((error) => {
+               console.log(error);
+               res.status(500).json('tao tai khoan that bai');
+            });
       } catch (e) {
          console.log(e);
       }
@@ -137,7 +168,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/viewApartment',
@@ -162,7 +193,7 @@ const adminController = {
          const apartment = await apartmentModel.findOne({ _id: apartmentId });
          const phases = apartment.phase;
          user = await userModel.findOne({ _id: userId });
-         if (user.role == 'admin') {
+         if (user.role !== 'customer') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/update',
@@ -223,7 +254,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/upload',
@@ -285,7 +316,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/comment',
@@ -334,7 +365,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/message',
@@ -372,7 +403,7 @@ const adminController = {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
-            if (user.role == 'admin') {
+            if (user.role !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/contact',

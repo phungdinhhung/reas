@@ -1,4 +1,5 @@
 <div class="cards">
+   <%if(user.role == 'admin') {%>
    <a href="/dashboard/users" class="card-single">
       <div>
          <h1><%=numOfUser%></h1>
@@ -8,6 +9,7 @@
          <span class="las la-users"></span>
       </div>
    </a>
+   <% } %>
    <a href="/dashboard/viewApartment" class="card-single">
       <div>
          <h1><%=numOfPost%></h1>
@@ -17,6 +19,7 @@
          <span class="las la-umbrella-beach"></span>
       </div>
    </a>
+
    <a href="/dashboard/comment" class="card-single">
       <div>
          <h1><%= numOfComment%></h1>

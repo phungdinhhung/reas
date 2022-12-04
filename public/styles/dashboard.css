@@ -563,3 +563,14 @@ td {
 .infor__group {
    width: 100%;
 }
+
+.form-group input {
+   border: 1px solid #000;
+}
+.form-group p {
+   margin-bottom: 4px;
+}
+
+.create__account {
+   text-align: center;
+}
