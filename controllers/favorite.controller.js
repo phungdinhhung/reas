@@ -33,30 +33,33 @@ const favoriteList = {
       try {
          const userId = req.cookies.user.user_id;
          const apartmentId = req.params;
-         console.log(userId);
-         console.log(apartmentId);
-         const body = {
-            userId: userId,
-            apartmentId: apartmentId.id,
-         };
-         const newFavorite = new favoriteModel(body);
-         await newFavorite.save();
-         await apartmentModel
-            .updateOne(
-               { _id: apartmentId.id },
-               {
-                  $push: {
-                     listLike: {
-                        $each: [{ userId: userId }],
+         const like = await favoriteModel.findOne({ userId: userId, apartmentId: apartmentId.id });
+         if (like) {
+            req.flash('success', 'Bạn đã yêu thích rồi');
+         } else {
+            const body = {
+               userId: userId,
+               apartmentId: apartmentId.id,
+            };
+            const newFavorite = new favoriteModel(body);
+            await newFavorite.save();
+            await apartmentModel
+               .updateOne(
+                  { _id: apartmentId.id },
+                  {
+                     $push: {
+                        listLike: {
+                           $each: [{ userId: userId }],
+                        },
                      },
                   },
-               },
-            )
+               )
 
-            .then((data, error) => {
-               if (error) console.log('error: ', error);
-               req.flash('success', 'Đã thêm vào danh sách yêu thích');
-            });
+               .then((data, error) => {
+                  if (error) console.log('error: ', error);
+                  req.flash('success', 'Đã thêm vào danh sách yêu thích');
+               });
+         }
       } catch (error) {
          res.status(500).json(error);
          console.log(error);
