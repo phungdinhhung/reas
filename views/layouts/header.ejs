@@ -14,6 +14,9 @@
          <ul class="nav-header">
             <%if(user) { %>
             <li class="nav-header_item"><a class="" href="/">Trang chủ</a></li>
+            <%if(user.role == 'manager' || 'admin') { %>
+            <li class="nav-header_item"><a href="/dashboard">Quản lý</a></li>
+            <% } %>
             <li class="nav-header_item"><a href="/favorite">Danh sách yêu thích</a></li>
             <li class="nav-header_item"><a href="/profile">Thông tin cá nhân</a></li>
             <% } %>

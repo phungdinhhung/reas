@@ -232,14 +232,9 @@ body {
    color: #4d4d4d;
 }
 .icon_hearth {
-   padding: 5px;
-   border: 0.5px solid #a4a4a4;
-   cursor: pointer;
-   border-radius: 4px;
-}
-.icon_hearth:hover {
-   color: white;
-   background-color: red;
+   padding: 6px;
+   border: none;
+   border-radius: 7px;
 }
 .home__apartment-detail {
    display: block;

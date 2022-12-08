@@ -138,6 +138,11 @@
                                     <span class="home__infor-icon_price"
                                        ><%= listRegion1[i].price.toLocaleString("en") %> VNĐ</span
                                     >
+                                    <% for(let j =0 ; j < favorite.length; j++) { %>
+                                       <% if(favorite[j].apartmentId == listRegion1[i]._id) { %>
+                                      <i class="fa-regular fa-heart icon_hearth" style="background-color:rgb(67, 222, 88)"></i>
+                                      <%} %>  
+                                      <% } %>
                                  </div>
                               </div>
                            </div>
@@ -173,7 +178,11 @@
                                     <span class="home__infor-icon_price"
                                        ><%= listRegion2[i].price.toLocaleString("en").toLocaleString("en") %> VNĐ</span
                                     >
-                                    <i class="fa-regular fa-heart icon_hearth"></i>
+                                    <% for(let j =0 ; j < favorite.length; j++) { %>
+                                     <% if(favorite[j].apartmentId == listRegion2[i]._id) { %>
+                                    <i class="fa-regular fa-heart icon_hearth" style="background-color:rgb(67, 222, 88)"></i>
+                                    <%} %>  
+                                    <% } %>
                                  </div>
                               </div>
                            </div>
@@ -209,6 +218,11 @@
                                     <span class="home__infor-icon_price"
                                        ><%= listRegion3[i].price.toLocaleString("en") %> VNĐ</span
                                     >
+                                    <% for(let j =0 ; j < favorite.length; j++) { %>
+                                       <% if(favorite[j].apartmentId == listRegion3[i]._id) { %>
+                                      <i class="fa-regular fa-heart icon_hearth" style="background-color:rgb(67, 222, 88)"></i>
+                                      <%} %>  
+                                      <% } %>
                                  </div>
                               </div>
                            </div>

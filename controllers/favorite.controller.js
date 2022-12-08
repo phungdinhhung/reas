@@ -55,8 +55,7 @@ const favoriteList = {
                   },
                )
 
-               .then((data, error) => {
-                  if (error) console.log('error: ', error);
+               .then(() => {
                   req.flash('success', 'Đã thêm vào danh sách yêu thích');
                });
          }

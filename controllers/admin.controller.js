@@ -26,6 +26,7 @@ const adminController = {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/dashboard',
+               user,
                numOfUser,
                numOfPost,
                numOfComment,

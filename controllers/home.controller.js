@@ -5,10 +5,11 @@ const homeController = {
    getHomePage: async (req, res) => {
       try {
          const user = req.cookies.user;
-
-         let userId = '';
+         let userId,
+            favorite = '';
          if (user) {
             userId = req.cookies.user.user_id;
+            favorite = await favoriteModel.find({ userId: userId });
          }
          const listRegion1 = await apartmentModel.find({
             region: 'Miền Bắc',
@@ -22,6 +23,8 @@ const homeController = {
          res.render('./components/index', {
             title: 'REAS',
             user,
+            userId,
+            favorite,
             listRegion1,
             listRegion2,
             listRegion3,

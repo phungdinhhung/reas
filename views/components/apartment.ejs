@@ -217,27 +217,25 @@
       </script>
       <script>
          const likeApartment = document.getElementById('like');
-         likeApartment.addEventListener('click', () => {
+         likeApartment.addEventListener('click', (req,res) => {
             const apartmentId = likeApartment.getAttribute('data-id');
             $.ajax({
                url: `/favorite/like/${apartmentId}`,
                type: 'POST',
+               
             });
             likeApartment.classList.add('open');
          });
       </script>
 
-      <!-- Latest compiled JavaScript -->
 
       <script>
          function yearVnh(value) {
             var htmlObj = document.getElementById('show-option');
-            var vay = 'vnh';
             if (value) {
                htmlObj.innerHTML = '';
             }
-            console.log(value);
-            if (value == vay) {
+            if (value == 'vnh') {
                htmlObj.innerHTML =
                   " <select type='number' name='yearVnh'> <option value='' disabled hidden>0</option> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select> ";
             }
