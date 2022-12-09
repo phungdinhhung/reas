@@ -6,15 +6,18 @@ const authController = {
    loginUser: async (req, res) => {
       const { email, password } = req.body;
       try {
+         var validPassword = '';
          const user = await userModel.findOne({ email: email });
+         if (user) {
+            validPassword = await bcrypt.compare(password, user.password);
+         }
          if (!user) {
-            return res.status(404).render('../views/layouts/login');
-         }
-         const validPassword = await bcrypt.compare(password, user.password);
-         if (!validPassword) {
-            return res.status(404).render('../views/layouts/login');
-         }
-         if (user && validPassword) {
+            req.flash('fail', 'Email không chính xác');
+            res.redirect('/login');
+         } else if (!validPassword) {
+            req.flash('fail', 'Mật khẩu không đúng');
+            res.redirect('/login');
+         } else if (user && validPassword) {
             const accessToken = jwt.sign(
                {
                   user_id: user._id,

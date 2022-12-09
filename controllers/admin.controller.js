@@ -32,12 +32,15 @@ const adminController = {
                numOfComment,
                numOfMessage,
                numOfContact,
-               alert: req.flash('empty'),
+               alert: req.flash('success'),
+               fail: req.flash('fail'),
+               fail: req.flash('fail'),
             });
          } else {
             res.redirect('/error');
          }
       } else {
+         req.flash('fail', 'bạn chưa đăng nhập');
          res.redirect('/login');
       }
    },
@@ -51,6 +54,7 @@ const adminController = {
          }
 
          const renderUsers = await userModel.find({
+            role: { $not: { $regex: 'admin' } },
             $or: [
                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
                { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
@@ -65,11 +69,13 @@ const adminController = {
                   content: '../admin/users',
                   renderUsers,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
             res.redirect('/login');
          }
       } catch (err) {
@@ -89,7 +95,7 @@ const adminController = {
    },
    //  End Management Users Page
    // Start management Roles Page
-   getRolesPage: async (req, res) => {
+   getCreatePage: async (req, res) => {
       try {
          if (req.cookies.user) {
             const users = await userModel.find();
@@ -101,34 +107,38 @@ const adminController = {
                   content: '../admin/create',
                   users,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
             res.redirect('/login');
          }
       } catch (e) {
          console.log(e);
       }
    },
-   updateRoles: async (req, res) => {
-      try {
-         const salt = await bcrypt.genSalt(10);
-         const hashed = await bcrypt.hash(req.body.password, salt);
-         let fullname = req.body.fullname;
-         let email = req.body.email;
-         let phonenumber = req.body.phonenumber;
+   createUser: async (req, res) => {
+      const salt = await bcrypt.genSalt(10);
+      const hashed = await bcrypt.hash(req.body.password, salt);
+      let fullname = req.body.fullname;
+      let email = req.body.email;
+      let phonenumber = req.body.phonenumber;
+      let checkPassword = req.body.password;
+      let confirmPassword = req.body.confirmPassword;
+      let checkEmail = await userModel.findOne({
+         email: email,
+      });
+      if (checkEmail) {
+         req.flash('fail', 'Email đã sử dụng');
+         res.redirect('/dashboard/create');
+      } else if (checkPassword !== confirmPassword) {
+         req.flash('fail', 'Mật khẩu không trùng khớp');
+         res.redirect('/dashboard/create');
+      } else {
          let password = hashed;
-         userModel
-            .findOne({
-               email: email,
-            })
-            .then((data) => {
-               if (data) {
-                  req.flash('success', 'Email đã sử dụng');
-               }
-            });
          userModel
             .create({
                email: email,
@@ -143,10 +153,9 @@ const adminController = {
             })
             .catch((error) => {
                console.log(error);
-               res.status(500).json('tao tai khoan that bai');
+               req.flash('fail', 'Tạo tài khoản thất bại');
+               res.redirect('/dashboard/create');
             });
-      } catch (e) {
-         console.log(e);
       }
    },
 
@@ -175,11 +184,14 @@ const adminController = {
                   content: '../admin/viewApartment',
                   renderApartment,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
+
             res.redirect('/login');
          }
       } catch (error) {
@@ -201,6 +213,7 @@ const adminController = {
                apartment,
                phases,
                alert: req.flash('success'),
+               fail: req.flash('fail'),
             });
          }
       } catch (error) {
@@ -232,13 +245,15 @@ const adminController = {
             res.redirect('/dashboard/viewApartment');
          }
       } catch (err) {
-         console.log(err);
+         req.flash('fail', 'Cập nhật thất bại');
+         res.redirect('/dashboard/viewApartment');
       }
    },
 
    deleteApartment: async (req, res) => {
-      await apartmentModel
-         .deleteOne({ _id: req.query.id })
+      await apartmentModel.deleteOne({ _id: req.query.id });
+      await commentModel
+         .deleteOne({ apartmentId: req.query.id })
          .then(() => {
             req.flash('success', 'Xóa căn hộ thành công');
             res.redirect('/dashboard/viewApartment');
@@ -260,11 +275,14 @@ const adminController = {
                   title: 'Dashboard Admin',
                   content: '../admin/upload',
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
+
             res.redirect('/login');
          }
       } catch (error) {
@@ -294,8 +312,8 @@ const adminController = {
          req.flash('success', 'Đăng căn hộ thành công');
          res.redirect('/dashboard/viewApartment');
       } catch (error) {
-         console.log(error);
-         res.status(500).json({ msg: error });
+         req.flash('fail', 'Đăng căn hộ thất bại');
+         res.redirect('/dashboard/upload');
       }
    },
    //  End Management Posts Apartment Page
@@ -314,6 +332,8 @@ const adminController = {
                { userName: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
+
+         const apartment = await apartmentModel.find();
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
             user = await userModel.findOne({ _id: userId });
@@ -322,12 +342,16 @@ const adminController = {
                   title: 'Dashboard Admin',
                   content: '../admin/comment',
                   renderComment,
+                  apartment,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
+
             res.redirect('/login');
          }
       } catch (e) {
@@ -372,11 +396,14 @@ const adminController = {
                   content: '../admin/message',
                   message,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
+
             res.redirect('/login');
          }
       } catch (e) {
@@ -410,11 +437,14 @@ const adminController = {
                   content: '../admin/contact',
                   contact,
                   alert: req.flash('success'),
+                  fail: req.flash('fail'),
                });
             } else {
                res.redirect('/error');
             }
          } else {
+            req.flash('fail', 'bạn chưa đăng nhập');
+
             res.redirect('/login');
          }
       } catch (e) {

@@ -27,7 +27,7 @@
 
                   <div class="input-box">
                      <label>Tiến Độ Thanh Toán</label>
-                     <select name="type" class="form-control" onChange="yearVnh(this.value)" id="getYear">
+                     <select name="type" class="form-control" onChange="year(this.value)" id="getYear">
                         <option value="normal">Tiến Độ Thường</option>
                         <option value="70">70%</option>
                         <option value="90">90%</option>
@@ -331,7 +331,7 @@
                         </tr>
                         <tr>
                            <td colspan="3">
-                              <div class="form-group mb-0 d-inline-block">Tổng tiền ngân hàng hỗ trợ</div>
+                              <div class="form-group mb-0 d-inline-block" >Tổng tiền ngân hàng hỗ trợ</div>
                            </td>
                            <td colspan="2">
                               <div class="form-group mb-0 d-inline-block">
@@ -538,13 +538,14 @@
    </body>
 </html>
 <script>
-   const $ = document.querySelector.bind(document);
-   function yearVnh(value) {
-      var htmlObj = $('#show-option');
-      htmlObj.innerHTML = '';
-      if (value == 'vnh') {
-         htmlObj.innerHTML =
-            "<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>";
-      }
-   }
-</script>
+         function year(value) {
+            var htmlObj = document.getElementById('show-option');
+            if (value) {
+               htmlObj.innerHTML = '';
+            }
+            if (value == 'vnh') {
+               htmlObj.innerHTML =
+               `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
+            }
+         }
+      </script>

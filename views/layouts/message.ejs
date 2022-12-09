@@ -5,7 +5,7 @@
    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
+<% if(user) { %>
 <div class="modal-submit">
    <input type="checkbox" id="click" />
    <label for="click" class="button__message">
@@ -18,6 +18,47 @@
          <div class="desc-text">
             Bạn vui lòng điền vào biểu mẫu dưới đây và chúng tôi sẽ liên hệ lại với bạn ngay khi có thể..
          </div>
+
+         <form action="/message" method="POST">
+            <div class="field">
+               <input name="username" type="text" placeholder="Họ và tên " required value="<%=textMessage.fullname%>" />
+            </div>
+            <div class="field">
+               <input name="email" type="email" placeholder="Địa chỉ Email " required value="<%=textMessage.email%>" />
+            </div>
+            <div class="field">
+               <input
+                  name="phonenumber"
+                  type="phone"
+                  placeholder="Số điện thoại "
+                  required
+                  value="<%=textMessage.phonenumber%>"
+               />
+            </div>
+            <div class="field textarea">
+               <textarea name="content" cols="30" rows="10" placeholder="Nội dung liên hệ .." required></textarea>
+            </div>
+            <div class="field">
+               <button type="submit"><i class="bx bx-send"></i>SEND</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+<%} else { %>
+<div class="modal-submit">
+   <input type="checkbox" id="click" />
+   <label for="click" class="button__message">
+      <i class="fab fa-facebook-messenger"></i>
+      <i class="fas fa-times"></i>
+   </label>
+   <div class="wrapper">
+      <div class="head-text">Liên hệ với chúng tôi !</div>
+      <div class="chat-box">
+         <div class="desc-text">
+            Bạn vui lòng điền vào biểu mẫu dưới đây và chúng tôi sẽ liên hệ lại với bạn ngay khi có thể..
+         </div>
+
          <form action="/message" method="POST">
             <div class="field">
                <input name="username" type="text" placeholder="Họ và tên " required />
@@ -38,3 +79,4 @@
       </div>
    </div>
 </div>
+<% } %>

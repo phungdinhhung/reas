@@ -24,6 +24,7 @@ const favoriteList = {
             listFavorite,
             user,
             alert: req.flash('success'),
+            fail: req.flash('fail'),
          });
       } catch (e) {
          console.log(e);

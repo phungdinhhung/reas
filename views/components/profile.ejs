@@ -158,11 +158,27 @@
       <div class="alert__success">
          <i class="las la-check-circle"></i>
          <div class="alert__content">
-            <p class="success__first">Thành Công!</p>
-            <p class="success__second"><%= alert%></p>
+            <div class="success__first">
+               <p>Thành Công!</p>
+            </div>
+            <div class="success__second">
+               <p><%= alert%></p>
+            </div>
          </div>
       </div>
-      <% } %> <%- include('../layouts/message') %>
+      <% } %> <% if (fail.length > 0) { %>
+      <div class="alert__fail">
+         <i class="las la-times-circle"></i>
+         <div class="alert__content">
+            <div class="fail__first">
+               <p>Thất bại!</p>
+            </div>
+            <div class="fail__second">
+               <p><%= fail%></p>
+            </div>
+         </div>
+      </div>
+      <% } %>
       <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
       <script type="text/javascript">
          jQuery(document).ready(function ($) {

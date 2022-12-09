@@ -18,7 +18,8 @@
                   <tr>
                      <th class="text-center align-middle">STT</th>
                      <th class="text-center align-middle text-nowrap">Tên người dùng</th>
-                     <th class="text-center align-middle">Nội dung bình luận</th>
+                     <th class="text-center align-middle text-nowrap">Căn hộ bình luận</th>
+                     <th class="text-center align-middle">Nội dung</th>
                      <th class="text-center align-middle">Thời gian</th>
                      <th class="text-center align-middle">Action</th>
                   </tr>
@@ -28,6 +29,13 @@
                <tbody>
                   <th class="text-center align-middle"><%= index +1 %></th>
                   <td class="text-center align-middle text-nowrap"><%= user.userName %></td>
+                  <% for(let i = 0; i< apartment.length; i++) { %>
+                     <% if(user.apartmentId == apartment[i]._id) { %>
+                        <th class="text-center align-middle text-nowrap"><%=apartment[i].heading%></th>
+
+                     <%} %>
+                     <%} %>
+
                   <td class="text-center align-middle"><%= user.content %></td>
                   <td class="text-center align-middle text-nowrap">
                      <%= user.createdAt.toLocaleTimeString() %><br /><%= user.createdAt.toLocaleDateString() %>

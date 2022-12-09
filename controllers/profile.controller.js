@@ -6,10 +6,11 @@ const profileController = {
       try {
          let userId = req.cookies.user.user_id;
          const userData = await userModel.findById({ _id: userId });
-         res.status(200).render('components/profile', {
+         res.render('components/profile', {
             title: 'Profile',
             user: userData,
             alert: req.flash('success'),
+            fail: req.flash('fail'),
          });
       } catch (e) {
          console.log(e);

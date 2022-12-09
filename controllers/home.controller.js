@@ -6,10 +6,12 @@ const homeController = {
       try {
          const user = req.cookies.user;
          let userId,
+            textMessage,
             favorite = '';
          if (user) {
             userId = req.cookies.user.user_id;
             favorite = await favoriteModel.find({ userId: userId });
+            textMessage = await userModel.findOne({ _id: userId });
          }
          const listRegion1 = await apartmentModel.find({
             region: 'Miền Bắc',
@@ -24,11 +26,13 @@ const homeController = {
             title: 'REAS',
             user,
             userId,
+            textMessage,
             favorite,
             listRegion1,
             listRegion2,
             listRegion3,
             alert: req.flash('sucess'),
+            fail: req.flash('fail'),
          });
       } catch (e) {
          console.log(e);

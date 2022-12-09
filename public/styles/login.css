@@ -1,6 +1,6 @@
 * {
-   margin: auto;
-   padding: auto;
+   margin: 0;
+   padding: 0;
    box-sizing: border-box;
 }
 
@@ -14,7 +14,73 @@ html {
    height: 100vh;
    text-rendering: optimizeLegibility;
 }
+.alert__content {
+   line-height: 5px;
+}
+.alert__success {
+   position: fixed;
+   display: flex;
+   top: 7px;
+   right: 21px;
+   height: 70px;
+   width: 300px;
+   background-color: #3bdc56;
+   border-radius: 14px;
+   color: white;
+   z-index: 1000;
+   box-shadow: 7px 6px 14px #888888;
+}
+.alert__success i {
+   font-size: 48px;
+   text-align: center;
+   padding-top: 11px;
+   width: 24%;
+   height: 100%;
+}
+.alert__content .success__first {
+   padding-top: 13px;
+   font-size: 18px;
+   font-weight: 600;
+   margin-bottom: 0;
+}
 
+.alert__content .success__second {
+   padding-top: 9px;
+   font-size: 16px;
+   font-weight: 500;
+}
+.alert__fail {
+   position: fixed;
+   display: flex;
+   top: 7px;
+   right: 21px;
+   height: 70px;
+   width: 300px;
+   background-color: #dc3b3b;
+   border-radius: 14px;
+   color: white;
+   z-index: 1000;
+   box-shadow: 7px 6px 14px #888888;
+}
+.alert__fail i {
+   font-size: 48px;
+   text-align: center;
+   padding-top: 11px;
+   width: 24%;
+   height: 100%;
+}
+.alert__content .fail__first {
+   padding-top: 13px;
+   font-size: 18px;
+   font-weight: 600;
+   margin-bottom: 0;
+}
+
+.alert__content .fail__second {
+   padding-top: 9px;
+   font-size: 16px;
+   font-weight: 500;
+}
 .main h1 {
    height: 100px;
    padding-top: 30px;
@@ -26,6 +92,7 @@ html {
 .content-main {
    width: 70%;
    display: flex;
+   margin: auto;
 }
 
 .content-left {

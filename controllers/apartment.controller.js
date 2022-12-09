@@ -51,7 +51,8 @@ const apartmentController = {
             req.flash('success', 'Yêu cầu tư vấn căn hộ');
             res.redirect(`/detail/${apartmentId}`);
          } else {
-            res.redirect('/login');
+            req.flash('fail', 'Bạn cần phải đăng nhập');
+            res.redirect(`/detail/${apartmentId}`);
          }
       } catch (e) {
          console.log(e);

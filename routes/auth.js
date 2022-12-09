@@ -1,7 +1,7 @@
 const authController = require('../controllers/auth.controller');
 const router = require('express').Router();
 router.get('/', async (req, res) => {
-   return res.render('../views/layouts/login', { errors: '' });
+   res.render('../views/layouts/login', { title: 'Login page', alert: req.flash('success'), fail: req.flash('fail') });
 });
 router.post('/', authController.loginUser);
 

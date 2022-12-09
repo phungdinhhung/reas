@@ -8,12 +8,12 @@ const resultOfSearch = async (req, res, next) => {
    if (region !== '' && price === '' && acreage === '') {
       listApartment = await apartmentModel.find({ region: region });
    } else if (price !== '' && region === '' && acreage === '') {
-      listApartment = await apartmentModel.find({ price: { $lt: price } });
+      listApartment = await apartmentModel.find({ price: { $lte: price } });
    } else if (acreage !== '' && region === '' && price === '') {
-      listApartment = await apartmentModel.find({ acreage: { $lt: acreage } });
+      listApartment = await apartmentModel.find({ acreage: { $lte: acreage } });
    } else if (acreage !== '' && region !== '' && price !== '') {
       listApartment = await apartmentModel.find({
-         $and: [{ acreage: { $lt: acreage } }, { price: { $lt: price } }, { region: region }],
+         $and: [{ acreage: { $lte: acreage } }, { price: { $lte: price } }, { region: region }],
       });
    }
    res.status(200).render('components/search', {
@@ -21,6 +21,8 @@ const resultOfSearch = async (req, res, next) => {
       listApartment,
       user,
       alert: req.flash('success'),
+      fail: req.flash('fail'),
+      
    });
 };
 module.exports = {

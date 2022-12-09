@@ -15,7 +15,7 @@ const analysisController = {
          if (price >= apartment.price && price <= max) {
             apartment.price = price;
          } else {
-            req.flash('success', 'Giá không hợp lệ');
+            req.flash('fail', 'Giá không hợp lệ');
             res.redirect(`/detail/${apartmentRender}`);
          }
 
@@ -51,6 +51,7 @@ const analysisController = {
             debt,
             earned,
             alert: req.flash('success'),
+            fail: req.flash('fail')
          });
       } catch (e) {
          console.log(e);

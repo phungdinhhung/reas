@@ -22,8 +22,8 @@ router.get('/', adminController.renderdashboardPage);
 router.get('/users', adminController.getAllUsers);
 router.get('/deleteUser', adminController.deleteUsers);
 
-router.get('/create', adminController.getRolesPage);
-router.post('/create/user', adminController.updateRoles);
+router.get('/create', adminController.getCreatePage);
+router.post('/create/user', adminController.createUser);
 
 router.get('/viewApartment', adminController.getAllPosts);
 router.get('/updateApartment/:id', adminController.updateApartment);

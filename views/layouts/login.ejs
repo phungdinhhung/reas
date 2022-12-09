@@ -10,8 +10,37 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      />
    </head>
    <body>
+      <% if (alert.length > 0) { %>
+      <div class="alert__success">
+         <i class="las la-check-circle"></i>
+         <div class="alert__content">
+            <div class="success__first">
+               <p>Thành Công!</p>
+            </div>
+            <div class="success__second">
+               <p><%= alert%></p>
+            </div>
+         </div>
+      </div>
+      <% } %> <% if (fail.length > 0) { %>
+      <div class="alert__fail">
+         <i class="las la-times-circle"></i>
+         <div class="alert__content">
+            <div class="fail__first">
+               <p>Thất bại!</p>
+            </div>
+            <div class="fail__second">
+               <p><%= fail%></p>
+            </div>
+         </div>
+      </div>
+      <% } %>
       <div class="main">
          <h1 class="title">Resort Real Estate Analysis</h1>
          <div class="content-main">
@@ -45,31 +74,11 @@
                      <button type="submit" class="login" value="Login">Đăng nhập</button>
                   </div>
                </form>
-
-               <button class="f-pass js-forget-pass">Quên mật khẩu?</button>
                <div class="content-footer">
                   Bạn chưa có tài khoản? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> ở
                   đây
                </div>
             </div>
-         </div>
-      </div>
-
-      <div class="modal-fpass">
-         <div class="modal-header">
-            <h4>Lấy lại mật khẩu</h4>
-            <i class="fa-solid fa-xmark closeModal"></i>
-         </div>
-         <div class="modal-body">
-            <div class="email-verificaion">
-               <i class="fa-regular fa-envelope"></i>
-               <input type="text" placeholder="email@example / Pnumber" />
-            </div>
-
-            <button class="btn-getpass">Lấy lại mật khẩu</button>
-         </div>
-         <div class="modal-footer">
-            Chưa là thành viên? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> tại đây
          </div>
       </div>
 
