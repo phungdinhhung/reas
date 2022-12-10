@@ -212,6 +212,7 @@ p.agileits2 {
    background-color: #fff;
    display: none;
    animation: modalFacein ease 0.5s;
+   margin: 0;
 }
 .open {
    display: block;
@@ -506,4 +507,24 @@ p.agileits2 {
       font-size: 13px;
       padding: 0 15px 15px;
    }
+}
+.unpassword {
+   display: flex;
+   margin-left: 80px;
+   text-align: center;
+   align-items: center;
+}
+.unpassword span {
+   color: #fff;
+   font-size: 16px;
+}
+#btnPassword {
+   border: 1px solid #000;
+   height: 20px;
+   width: 20px;
+   margin-right: 16px;
+   border-radius: 10px;
+}
+#btnPassword:hover {
+   opacity: 0.8;
 }

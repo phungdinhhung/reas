@@ -74,6 +74,7 @@
                      <button type="submit" class="login" value="Login">Đăng nhập</button>
                   </div>
                </form>
+               <button class="f-pass js-forget-pass">Quên mật khẩu?</button>
                <div class="content-footer">
                   Bạn chưa có tài khoản? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> ở
                   đây
@@ -81,7 +82,26 @@
             </div>
          </div>
       </div>
+      <div class="modal-fpass">
+         <div class="modal-header">
+            <h4>Lấy lại mật khẩu</h4>
+            <i class="fa-solid fa-xmark closeModal"></i>
+         </div>
+         <div class="modal-body">
+            <form action="/forget" method="post">
 
+               <div class="email-verificaion">
+                  <i class="fa-regular fa-envelope"></i>
+                  <input type="email" name="email" placeholder="email@example" />
+               </div>
+               
+               <input type="submit" class="btn-getpass"></input>
+            </form>
+            </div>
+         <div class="modal-footer">
+            Chưa là thành viên? <a href="/register" class="js__show-register-popup re__link-pr">Đăng ký</a> tại đây
+         </div>
+      </div>
       <script>
          const forgetBtn = document.querySelector('.js-forget-pass');
          const modal = document.querySelector('.modal-fpass');

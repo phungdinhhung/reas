@@ -1,5 +1,6 @@
 const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 
 const registerController = {
    renderRegisterPage: (req, res) => {
@@ -26,28 +27,68 @@ const registerController = {
          res.redirect('/register');
       } else if (checkPassword !== confirmPassword) {
          req.flash('fail', 'Mật khẩu không trùng khớp');
-         res.redirect('/register');   
-      } else{
+         res.redirect('/register');
+      } else {
          let password = hashed;
-         userModel
-            .create({
-               email: email,
-               fullname: fullname,
-               phonenumber: phonenumber,
-               password: password,
-            })
-
-            .then(() => {
-               req.flash('success', 'Tạo tài khoản thành công');
-               res.redirect('/login');
-            })
-
-            .catch((error) => {
-               console.log(error);
-               req.flash('fail', 'Tạo tài khoản thất bại');
-               res.redirect('/register');
-            });
+         const userNew = new userModel({
+            email: email,
+            fullname: fullname,
+            phonenumber: phonenumber,
+            password: password,
+         });
+         const userData = await userNew.save();
+         if (userData) {
+            sendVerifyMail(req.body.fullname, req.body.email, userData._id);
+            req.flash('success', 'Vui lòng xác nhận Email');
+            res.redirect('/login');
+         } else {
+            req.flash('fail', 'Tạo tài khoản thất bại');
+            res.redirect('/register');
+         }
       }
    },
+
+   verifyMail: async (req, res) => {
+      try {
+         await userModel.updateOne({ _id: req.query.id }, { $set: { is_varified: 1 } });
+         res.redirect('/verify');
+      } catch (e) {
+         console.log(e.message);
+      }
+   },
+};
+const sendVerifyMail = async (name, email, user_id) => {
+   try {
+      const transporter = nodemailer.createTransport({
+         host: 'smtp.gmail.com',
+         port: 587,
+         secure: false,
+         requireTLS: true,
+         auth: {
+            user: process.env.EMAILUSER,
+            pass: process.env.EMAILPASSWORD,
+         },
+      });
+      const mailOptions = {
+         from: process.env.EMAILUSER,
+         to: email,
+         subject: 'Xác minh tài khoản REAS',
+         html:
+            '<p>Xin chào ' +
+            name +
+            ', vui lòng nhấn <a href="http://localhost:5000/register/verify?id=' +
+            user_id +
+            '">vào đây</a> để xác minh tài khoản REAS. </p>',
+      };
+      transporter.sendMail(mailOptions, function (err, info) {
+         if (err) {
+            console.log(err);
+         } else {
+            console.log('Email has been sent:- ', info.response);
+         }
+      });
+   } catch (e) {
+      console.log(e.message);
+   }
 };
 module.exports = registerController;

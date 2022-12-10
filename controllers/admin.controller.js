@@ -8,13 +8,16 @@ const bcrypt = require('bcrypt');
 const adminController = {
    // Dashboard Management
    renderdashboardPage: async (req, res) => {
-      const renderUsers = await userModel.find();
+      const renderUsers = await userModel.find({
+         role: { $not: { $regex: 'admin' } },
+         is_varified: { $eq: 1 },
+      });
       const post = await apartmentModel.find();
       const comment = await commentModel.find();
       const message = await messageModel.find();
       const contact = await contactModel.find();
       // const contact = await contactModel.find();
-      const numOfUser = renderUsers.length - 1;
+      const numOfUser = renderUsers.length;
       const numOfPost = post.length;
       const numOfComment = comment.length;
       const numOfMessage = message.length;
@@ -33,7 +36,6 @@ const adminController = {
                numOfMessage,
                numOfContact,
                alert: req.flash('success'),
-               fail: req.flash('fail'),
                fail: req.flash('fail'),
             });
          } else {
@@ -55,6 +57,7 @@ const adminController = {
 
          const renderUsers = await userModel.find({
             role: { $not: { $regex: 'admin' } },
+            is_varified: { $eq: 1 },
             $or: [
                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
                { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
@@ -146,6 +149,7 @@ const adminController = {
                phonenumber: phonenumber,
                password: password,
                role: 'manager',
+               is_varified: 1,
             })
             .then(() => {
                req.flash('success', 'Tạo tài khoản thành công');
@@ -253,7 +257,7 @@ const adminController = {
    deleteApartment: async (req, res) => {
       await apartmentModel.deleteOne({ _id: req.query.id });
       await commentModel
-         .deleteOne({ apartmentId: req.query.id })
+         .deleteMany({ apartmentId: req.query.id })
          .then(() => {
             req.flash('success', 'Xóa căn hộ thành công');
             res.redirect('/dashboard/viewApartment');
@@ -332,7 +336,6 @@ const adminController = {
                { userName: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
-
          const apartment = await apartmentModel.find();
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;

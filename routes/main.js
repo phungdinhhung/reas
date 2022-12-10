@@ -11,6 +11,8 @@ const analysisRouter = require('./analysis');
 const searchRouter = require('./search');
 const messageRouter = require('./message');
 const errorRouter = require('./error');
+const verifyRouter = require('./verify');
+const forgetRouter = require('./forget');
 function route(app) {
    app.use('/', homeRouter);
    app.use('/search', searchRouter);
@@ -31,6 +33,8 @@ function route(app) {
    app.use('/favorite', favoriteRouter);
 
    app.use('/message', messageRouter);
+   app.use('/verify', verifyRouter);
+   app.use('/forget', forgetRouter);
 }
 
 module.exports = route;

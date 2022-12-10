@@ -40,7 +40,6 @@ const analysisController = {
          }
 
          const phase = apartment.phase;
-         console.log(type);
          res.render('../views/components/analysis', {
             apartment,
             user,
@@ -51,7 +50,7 @@ const analysisController = {
             debt,
             earned,
             alert: req.flash('success'),
-            fail: req.flash('fail')
+            fail: req.flash('fail'),
          });
       } catch (e) {
          console.log(e);

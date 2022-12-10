@@ -21,10 +21,9 @@
                         <th class="text-center align-middle" class="col-span" colspan="2">Action</th>
                      </tr>
                   </thead>
-
-                  <% for(let i = 0; i < renderApartment.length; i++) {%>
+                  <% index = 1 %> <% for(let i = renderApartment.length - 1; i >= 0; i--) {%>
                   <tbody>
-                     <th class="text-center align-middle"><%= i+1 %></th>
+                     <th class="text-center align-middle"><%= index++ %></th>
                      <td class="text-center align-middle"><%= renderApartment[i].region %></td>
                      <td class="text-center align-middle"><%= renderApartment[i].heading%></td>
                      <td class="text-center align-middle"><%= renderApartment[i].price.toLocaleString("en") %></td>

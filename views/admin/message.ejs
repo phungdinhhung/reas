@@ -24,10 +24,9 @@
                      <th class="text-center align-middle">Action</th>
                   </tr>
                </thead>
-
-               <% for(let i = 0; i < message.length; i++) {%>
+               <% index = 1 %> <% for(let i = message.length - 1; i >= 0; i--) {%>
                <tbody>
-                  <th class="text-center align-middle"><%= i+1 %></th>
+                  <th class="text-center align-middle"><%= index++ %></th>
                   <td class="text-center align-middle"><%= message[i].email %></td>
                   <td class="text-center align-middle"><%= message[i].phonenumber %></td>
                   <td class="text-center align-middle"><%= message[i].username %></td>

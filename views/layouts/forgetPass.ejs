@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Reset Password</title>
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+      <link rel="stylesheet" href="/styles/login.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+      />
+   </head>
+   <body>
+      <% if (alert.length > 0) { %>
+      <div class="alert__success">
+         <i class="las la-check-circle"></i>
+         <div class="alert__content">
+            <div class="success__first">
+               <p>Thành Công!</p>
+            </div>
+            <div class="success__second">
+               <p><%= alert%></p>
+            </div>
+         </div>
+      </div>
+      <% } %> <% if (fail.length > 0) { %>
+      <div class="alert__fail">
+         <i class="las la-times-circle"></i>
+         <div class="alert__content">
+            <div class="fail__first">
+               <p>Thất bại!</p>
+            </div>
+            <div class="fail__second">
+               <p><%= fail%></p>
+            </div>
+         </div>
+      </div>
+      <% } %>
+      <div class="main">
+         <h1 class="title">Resort Real Estate Analysis</h1>
+         <div class="content-main">
+            <div class="content-left">
+               <h2 class="agileits1">Resort Real Estate Analysis</h2>
+               <p class="agileits2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="content-right">
+               <h4 style="color: #fff">Nhập mật khẩu mới</h4>
+               <form action="/login/password" method="post">
+                  <input type="hidden" name="user_id" value="<%=user_id %>" />
+                  <div class="form-group">
+                     <input
+                        type="password"
+                        name="password"
+                        placeholder="Mật khẩu mới"
+                        id="inPassword"
+                        pattern=".{6,30}"
+                        required
+                        title="6 to 30 characters"
+                     />
+                  </div>
+                  <div class="unpassword">
+                     <input type="checkbox" id="btnPassword" />
+                     <span>Hiện mật khẩu</span>
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" class="login">Xác nhận</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <script>
+         const ipnElement = document.querySelector('#inPassword');
+         const btnElement = document.querySelector('#btnPassword');
+
+         // step 2
+         btnElement.addEventListener('click', function () {
+            // step 3
+            const currentType = ipnElement.getAttribute('type');
+            // step 4
+            ipnElement.setAttribute('type', currentType === 'password' ? 'text' : 'password');
+         });
+      </script>
+   </body>
+</html>

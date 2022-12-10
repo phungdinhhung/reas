@@ -146,6 +146,7 @@
                   </div>
 
                   <div id="comment" class="NDtab-items" style="display: none">
+                     <% if(user) { %>
                      <div class="write">
                         <form action="/comment/post/<%=apartment.id%>" method="POST">
                            <input
@@ -159,8 +160,7 @@
                            </button>
                         </form>
                      </div>
-
-                     <%for(let i = 0; i < listComment.length; i++) { %>
+                     <%} %> <%for(let i = listComment.length - 1; i >= 0; i--) { %>
                      <div class="commented">
                         <img class="commented-img" src="<%= listComment[i].avatar %>" alt="" />
                         <div class="content">
@@ -217,17 +217,15 @@
       </script>
       <script>
          const likeApartment = document.getElementById('like');
-         likeApartment.addEventListener('click', (req,res) => {
+         likeApartment.addEventListener('click', (req, res) => {
             const apartmentId = likeApartment.getAttribute('data-id');
             $.ajax({
                url: `/favorite/like/${apartmentId}`,
                type: 'POST',
-               
             });
             likeApartment.classList.add('open');
          });
       </script>
-
 
       <script>
          function year(value) {
@@ -236,8 +234,7 @@
                htmlObj.innerHTML = '';
             }
             if (value == 'vnh') {
-               htmlObj.innerHTML =
-               `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
+               htmlObj.innerHTML = `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
             }
          }
       </script>

@@ -24,27 +24,26 @@
                      <th class="text-center align-middle">Action</th>
                   </tr>
                </thead>
-
-               <% renderComment.forEach((user, index) => { %>
+               <% let index = 1 %> <% for(let i = renderComment.length - 1; i >= 0; i--) { %>
                <tbody>
-                  <th class="text-center align-middle"><%= index +1 %></th>
-                  <td class="text-center align-middle text-nowrap"><%= user.userName %></td>
-                  <% for(let i = 0; i< apartment.length; i++) { %>
-                     <% if(user.apartmentId == apartment[i]._id) { %>
-                        <th class="text-center align-middle text-nowrap"><%=apartment[i].heading%></th>
+                  <th class="text-center align-middle"><%= index++ %></th>
+                  <td class="text-center align-middle text-nowrap"><%= renderComment[i].userName %></td>
+                  <% for(let j = 0; j< apartment.length; j++) { %> <% if(renderComment[i].apartmentId ==
+                  apartment[j]._id) { %>
+                  <th class="text-center align-middle text-nowrap"><%=apartment[j].heading%></th>
 
-                     <%} %>
-                     <%} %>
+                  <%} %> <%} %>
 
-                  <td class="text-center align-middle"><%= user.content %></td>
+                  <td class="text-center align-middle"><%= renderComment[i].content %></td>
                   <td class="text-center align-middle text-nowrap">
-                     <%= user.createdAt.toLocaleTimeString() %><br /><%= user.createdAt.toLocaleDateString() %>
+                     <%= renderComment[i].createdAt.toLocaleTimeString() %><br /><%=
+                     renderComment[i].createdAt.toLocaleDateString() %>
                   </td>
                   <td class="text-center align-middle">
-                     <a href="/dashboard/deletecmt?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
+                     <a href="/dashboard/deletecmt?id=<%= renderComment[i]._id %>" class="btn btn-danger">Xóa</a>
                   </td>
                </tbody>
-               <% }) %>
+               <% } %>
             </table>
          </div>
       </div>

@@ -9,11 +9,11 @@ const apartmentController = {
          const user = req.cookies.user;
          const apartmentId = req.params;
          const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
-         const userInfor = await userModel.findOne({ _id: apartment.userId });
          const listComment = await commentModel.find({ apartmentId: apartmentId.id });
          let userId;
          if (user) {
             userId = req.cookies.user.user_id;
+            textMessage = await userModel.findOne({ _id: userId });
          }
          const like = await favoriteModel.findOne({ userId: userId, apartmentId: apartmentId.id });
          let isLike = false;
@@ -23,8 +23,8 @@ const apartmentController = {
          res.status(200).render('../views/components/apartment', {
             apartment,
             user,
-            userInfor,
             listComment,
+            textMessage,
             alert: req.flash('success'),
             fail: req.flash('fail'),
             isLike,
