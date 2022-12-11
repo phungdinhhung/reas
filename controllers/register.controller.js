@@ -51,7 +51,8 @@ const registerController = {
    verifyMail: async (req, res) => {
       try {
          await userModel.updateOne({ _id: req.query.id }, { $set: { is_varified: 1 } });
-         res.redirect('/verify');
+         req.flash('success', 'Xác minh hoàn tất');
+         res.redirect('/login');
       } catch (e) {
          console.log(e.message);
       }

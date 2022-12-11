@@ -14,9 +14,11 @@ html {
    height: 100vh;
    text-rendering: optimizeLegibility;
 }
+
 .alert__content {
    line-height: 5px;
 }
+
 .alert__success {
    position: fixed;
    display: flex;
@@ -30,6 +32,7 @@ html {
    z-index: 1000;
    box-shadow: 7px 6px 14px #888888;
 }
+
 .alert__success i {
    font-size: 48px;
    text-align: center;
@@ -37,6 +40,7 @@ html {
    width: 24%;
    height: 100%;
 }
+
 .alert__content .success__first {
    padding-top: 13px;
    font-size: 18px;
@@ -49,6 +53,7 @@ html {
    font-size: 16px;
    font-weight: 500;
 }
+
 .alert__fail {
    position: fixed;
    display: flex;
@@ -62,6 +67,7 @@ html {
    z-index: 1000;
    box-shadow: 7px 6px 14px #888888;
 }
+
 .alert__fail i {
    font-size: 48px;
    text-align: center;
@@ -69,6 +75,7 @@ html {
    width: 24%;
    height: 100%;
 }
+
 .alert__content .fail__first {
    padding-top: 13px;
    font-size: 18px;
@@ -81,6 +88,7 @@ html {
    font-size: 16px;
    font-weight: 500;
 }
+
 .main h1 {
    height: 100px;
    padding-top: 30px;
@@ -101,6 +109,7 @@ html {
    background: url(../images/3.jpg) no-repeat center;
    height: 555px;
 }
+
 h2.agileits1 {
    font-weight: 300;
    text-align: center;
@@ -109,14 +118,15 @@ h2.agileits1 {
    padding: 200px 0 15px;
    color: white;
 }
+
 p.agileits2 {
    font-weight: 300;
-
    text-align: center;
    align-items: center;
    margin: auto;
    color: white;
 }
+
 .content-right {
    width: 50%;
    float: left;
@@ -128,6 +138,7 @@ p.agileits2 {
    max-height: 555px;
    height: 555px;
 }
+
 .form-group input {
    width: 75%;
    height: 45px;
@@ -140,10 +151,10 @@ p.agileits2 {
 .f-pass {
    color: white;
    background-color: #000;
-
    margin: 20px 0 20px 0;
    cursor: pointer;
 }
+
 .f-pass:hover {
    color: #3399ff;
 }
@@ -156,9 +167,11 @@ p.agileits2 {
    border: 2px solid;
    border-radius: 15px;
 }
+
 .login:hover {
    opacity: 0.8;
 }
+
 .text-footer {
    margin-top: 10px;
    font-size: 16px;
@@ -182,10 +195,12 @@ p.agileits2 {
    background: #fff;
    text-decoration: none;
 }
+
 .social-agileinfo i {
    padding: 8px 10px;
    color: #000;
 }
+
 .social-agileinfo li:hover {
    color: #333;
    opacity: 0.9;
@@ -198,54 +213,77 @@ p.agileits2 {
 }
 
 /* ----------------------MODAL ----------*/
+
 .modal-fpass {
    position: fixed;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
+   top: 130px;
+   left: 500px;
+   bottom: 200px;
+   right: 500px;
    z-index: 1050;
    width: 30%;
-   height: 56%;
+   height: 60%;
    overflow: hidden;
    outline: 0;
-   background-color: #fff;
+   background-color: #f8f9fa;
    display: none;
    animation: modalFacein ease 0.5s;
    margin: 0;
 }
+
 .open {
    display: block;
 }
+
 .modal-header {
-   background-color: #3399ff;
+   background-color: #151c24;
    color: white;
    padding: 0;
+   text-align: center;
 }
+
+.email-verificaion {
+   text-align: center;
+   left: 200px;
+}
+
 .modal-header h4 {
    margin-top: 5px;
 }
+
 .modal-header i {
    font-size: 20px;
    margin: 0;
    padding: 10px;
 }
+
 .modal-header i:hover {
    cursor: pointer;
 }
+
 .modal-body {
-   margin: 0 auto;
+   margin: auto;
+   top: 20px;
+   right: auto;
+   left: auto;
 }
+
+.email-verificaion11 {
+   width: 100%;
+   display: flex;
+}
+
 .email-verificaion {
-   margin-top: 20px;
-   margin-bottom: 20px;
+   margin: 20px auto;
    max-width: 70%;
-   width: 300px;
+   justify-content: center;
 }
+
 .email-verificaion i {
    position: absolute;
    transform: translate(25px, 15px);
 }
+
 .email-verificaion input {
    border: none;
    margin: 5px 16px;
@@ -253,14 +291,16 @@ p.agileits2 {
    padding-top: 5px;
    padding-right: 5px;
    padding-bottom: 5px;
-   border: 1px solid rgba(0, 0, 0, 0.3);
+   border: 1px solid rgba(22, 48, 179, 0.3);
    border-radius: 8px;
    width: 280px;
 }
+
 .capcha {
    margin-top: 20px;
    max-width: 65%;
 }
+
 .capcha input {
    width: 50%;
    padding-left: 5px;
@@ -273,21 +313,25 @@ p.agileits2 {
 }
 
 .btn-getpass {
-   background-color: #3399ff;
+   background-color: #2d3742;
    color: #fff;
-   margin-top: 50px;
-   margin-left: 65px;
-   width: 70%;
+   margin-top: 10px;
+   margin-left: 80px;
+   width: 66%;
    height: 35px;
    border: none;
-   border-radius: 10px;
+   border-radius: 50px;
+   justify-content: center;
 }
+
 .btn-getpass:hover {
    opacity: 0.8;
 }
+
 .capcha label {
    margin-left: 20px;
 }
+
 .modal-footer {
    max-width: 61%;
    margin: 30px auto 0 auto;
@@ -303,10 +347,13 @@ p.agileits2 {
       transform: translateY(0);
    }
 }
+
 /* --------------------END MODAL---------------- */
 
 /*--------------------*/
+
 /* 05. Responsive CSS */
+
 /*--------------------*/
 
 @media (max-width: 1600px) {
@@ -375,7 +422,6 @@ p.agileits2 {
       line-height: 30px;
       padding: 0 10px;
    }
-
    /*-- agileits --*/
 }
 
@@ -508,16 +554,19 @@ p.agileits2 {
       padding: 0 15px 15px;
    }
 }
+
 .unpassword {
    display: flex;
    margin-left: 80px;
    text-align: center;
    align-items: center;
 }
+
 .unpassword span {
    color: #fff;
    font-size: 16px;
 }
+
 #btnPassword {
    border: 1px solid #000;
    height: 20px;
@@ -525,6 +574,7 @@ p.agileits2 {
    margin-right: 16px;
    border-radius: 10px;
 }
+
 #btnPassword:hover {
    opacity: 0.8;
 }
