@@ -1,6 +1,7 @@
 const apartmentModel = require('../models/apartment.model');
 const userModel = require('../models/user.model');
 const favoriteModel = require('../models/favorite.model');
+const roleModel = require('../models/role.model');
 const homeController = {
    getHomePage: async (req, res) => {
       try {
@@ -12,6 +13,7 @@ const homeController = {
             userId = req.cookies.user.user_id;
             favorite = await favoriteModel.find({ userId: userId });
             textMessage = await userModel.findOne({ _id: userId });
+            role = await roleModel.findOne({ userId: userId });
          }
          const listRegion1 = await apartmentModel.find({
             region: 'Miền Bắc',
@@ -25,7 +27,7 @@ const homeController = {
          res.render('./components/index', {
             title: 'REAS',
             user,
-            userId,
+            role,
             textMessage,
             favorite,
             listRegion1,

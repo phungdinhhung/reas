@@ -358,3 +358,8 @@ input.input__update {
 }
 .profile__form-update-avt {
 }
+
+.modal--content,
+.modal--content2 {
+   border-radius: 30px;
+}

@@ -67,7 +67,7 @@ const apartment = new mongoose.Schema(
          type: Object,
          default: '',
       },
-      priceMonth: {
+      rentalRate: {
          type: Number,
          default: 0,
       },

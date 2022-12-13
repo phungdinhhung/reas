@@ -18,6 +18,9 @@
                         <th class="text-center align-middle">Miền</th>
                         <th class="text-center align-middle">Tên căn hộ</th>
                         <th class="text-center align-middle">Giá căn hộ</th>
+                        <% if(role.name == 'admin') { %>
+                        <th class="text-center align-middle">Người đăng</th>
+                        <% }%>
                         <th class="text-center align-middle" class="col-span" colspan="2">Action</th>
                      </tr>
                   </thead>
@@ -27,11 +30,19 @@
                      <td class="text-center align-middle"><%= renderApartment[i].region %></td>
                      <td class="text-center align-middle"><%= renderApartment[i].heading%></td>
                      <td class="text-center align-middle"><%= renderApartment[i].price.toLocaleString("en") %></td>
+                     <% if(role.name == 'admin') { %> <% for(let j = 0; j < userUpload.length; j++) { %> <%
+                     if(renderApartment[i].userId == userUpload[j]._id) { %>
+                     <td class="text-center align-middle"><%=userUpload[j].fullname %></td>
+                     <% } %> <% } %> <% }%>
+
                      <td class="text-center align-middle">
                         <a href="/dashboard/updateApartment/<%= renderApartment[i]._id %>" class="btn btn-primary edit"
                            >Sửa</a
                         >
+                        <% if(role.name == 'admin') { %>
                         <a href="/dashboard/delete?id=<%= renderApartment[i]._id %>" class="btn btn-danger">Xóa</a>
+
+                        <% } %>
                      </td>
                   </tbody>
                   <% } %>

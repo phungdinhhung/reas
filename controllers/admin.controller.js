@@ -3,13 +3,13 @@ const apartmentModel = require('../models/apartment.model');
 const commentModel = require('../models/comment.model');
 const messageModel = require('../models/message.model');
 const contactModel = require('../models/contact.model');
+const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 
 const adminController = {
    // Dashboard Management
    renderdashboardPage: async (req, res) => {
       const renderUsers = await userModel.find({
-         role: { $not: { $regex: 'admin' } },
          is_varified: { $eq: 1 },
       });
       const post = await apartmentModel.find();
@@ -17,19 +17,19 @@ const adminController = {
       const message = await messageModel.find();
       const contact = await contactModel.find();
       // const contact = await contactModel.find();
-      const numOfUser = renderUsers.length;
+      const numOfUser = renderUsers.length - 1;
       const numOfPost = post.length;
       const numOfComment = comment.length;
       const numOfMessage = message.length;
       const numOfContact = contact.length;
       if (req.cookies.user) {
          const userId = req.cookies.user.user_id;
-         user = await userModel.findOne({ _id: userId });
-         if (user.role !== 'customer') {
+         const role = await roleModel.findOne({ userId: userId });
+         if (role.name !== 'customer') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/dashboard',
-               user,
+               role,
                numOfUser,
                numOfPost,
                numOfComment,
@@ -54,9 +54,10 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
+         const renderRoles = await roleModel.find({});
 
          const renderUsers = await userModel.find({
-            role: { $not: { $regex: 'admin' } },
+            email: { $not: { $regex: 'admin' } },
             is_varified: { $eq: 1 },
             $or: [
                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
@@ -65,12 +66,13 @@ const adminController = {
          });
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name == 'admin') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/users',
                   renderUsers,
+                  renderRoles,
                   alert: req.flash('success'),
                   fail: req.flash('fail'),
                });
@@ -103,8 +105,8 @@ const adminController = {
          if (req.cookies.user) {
             const users = await userModel.find();
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/create',
@@ -148,10 +150,15 @@ const adminController = {
                fullname: fullname,
                phonenumber: phonenumber,
                password: password,
-               role: 'manager',
                is_varified: 1,
             })
-            .then(() => {
+            .then((data) => {
+               const roleNew = {
+                  userId: data._id.valueOf(),
+                  name: 'manager',
+               };
+               const roleSave = new roleModel(roleNew);
+               roleSave.save();
                req.flash('success', 'Tạo tài khoản thành công');
                res.redirect('/dashboard/users');
             })
@@ -172,7 +179,7 @@ const adminController = {
          if (req.query.search) {
             search = req.query.search;
          }
-
+         const userUpload = await userModel.find();
          const renderApartment = await apartmentModel.find({
             $or: [
                { region: { $regex: '.*' + search + '.*', $options: 'i' } },
@@ -181,12 +188,13 @@ const adminController = {
          });
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/viewApartment',
                   renderApartment,
+                  userUpload,
                   alert: req.flash('success'),
                   fail: req.flash('fail'),
                });
@@ -209,8 +217,8 @@ const adminController = {
 
          const apartment = await apartmentModel.findOne({ _id: apartmentId });
          const phases = apartment.phase;
-         user = await userModel.findOne({ _id: userId });
-         if (user.role !== 'customer') {
+         role = await roleModel.findOne({ userId: userId });
+         if (role.name !== 'customer') {
             res.render('admin.layouts/cover', {
                title: 'Dashboard Admin',
                content: '../admin/update',
@@ -273,8 +281,8 @@ const adminController = {
       try {
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/upload',
@@ -339,8 +347,8 @@ const adminController = {
          const apartment = await apartmentModel.find();
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/comment',
@@ -392,8 +400,8 @@ const adminController = {
 
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/message',
@@ -433,8 +441,8 @@ const adminController = {
 
          if (req.cookies.user) {
             const userId = req.cookies.user.user_id;
-            user = await userModel.findOne({ _id: userId });
-            if (user.role !== 'customer') {
+            role = await roleModel.findOne({ userId: userId });
+            if (role.name !== 'customer') {
                res.render('admin.layouts/cover', {
                   title: 'Dashboard Admin',
                   content: '../admin/contact',

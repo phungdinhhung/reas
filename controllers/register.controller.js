@@ -1,4 +1,5 @@
 const userModel = require('../models/user.model');
+const roleModel = require('../models/role.model');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 
@@ -37,6 +38,12 @@ const registerController = {
             password: password,
          });
          const userData = await userNew.save();
+         const roleNew = {
+            userId: userData._id.valueOf(),
+            name: 'customer',
+         };
+         const roleSave = new roleModel(roleNew);
+         roleSave.save();
          if (userData) {
             sendVerifyMail(req.body.fullname, req.body.email, userData._id);
             req.flash('success', 'Vui lòng xác nhận Email');

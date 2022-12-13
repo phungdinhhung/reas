@@ -3,6 +3,7 @@ const commentModel = require('../models/comment.model');
 const apartmentModel = require('../models/apartment.model');
 const contactModel = require('../models/contact.model');
 const favoriteModel = require('../models/favorite.model');
+const roleModel = require('../models/role.model');
 const apartmentController = {
    renderApartmentPage: async (req, res) => {
       try {
@@ -10,9 +11,11 @@ const apartmentController = {
          const apartmentId = req.params;
          const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
          const listComment = await commentModel.find({ apartmentId: apartmentId.id });
-         let userId;
+         let userId, textMessage;
+
          if (user) {
             userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
             textMessage = await userModel.findOne({ _id: userId });
          }
          const like = await favoriteModel.findOne({ userId: userId, apartmentId: apartmentId.id });
@@ -23,6 +26,7 @@ const apartmentController = {
          res.status(200).render('../views/components/apartment', {
             apartment,
             user,
+            role,
             listComment,
             textMessage,
             alert: req.flash('success'),

@@ -23,20 +23,21 @@
                      <th class="text-center align-middle" class="center">Action</th>
                   </tr>
                </thead>
-               <% renderUsers.forEach((user, index) => { %>
+               <% for(let i = 0; i < renderUsers.length; i++) { %>
                <tbody>
-                  <th class="text-center align-middle"><%= index +1 %></th>
-                  <td class="text-center align-middle"><%= user.email %></td>
-                  <td class="text-center align-middle"><%= user.phonenumber %></td>
-                  <td class="text-center align-middle"><%= user.fullname %></td>
-                  <td class="text-center align-middle"><%= user.role %></td>
+                  <th class="text-center align-middle"><%= i +1 %></th>
+                  <td class="text-center align-middle"><%= renderUsers[i].email %></td>
+                  <td class="text-center align-middle"><%= renderUsers[i].phonenumber %></td>
+                  <td class="text-center align-middle"><%= renderUsers[i].fullname %></td>
+                  <%for(let j = 0; j < renderRoles.length; j++) { %> <% if(renderRoles[j].userId == renderUsers[i]._id )
+                  { %>
+                  <td class="text-center align-middle"><%= renderRoles[j].name %></td>
+                  <% } %> <%} %>
                   <td class="text-center align-middle">
-                     <% if(user.role !== 'admin') {%>
-                     <a href="/dashboard/deleteUser?id=<%= user._id %>" class="btn btn-danger">Xóa</a>
-                     <% } %>
+                     <a href="/dashboard/deleteUser?id=<%= renderUsers[i]._id %>" class="btn btn-danger">Xóa</a>
                   </td>
                </tbody>
-               <% })%>
+               <% }%>
             </table>
          </div>
       </div>

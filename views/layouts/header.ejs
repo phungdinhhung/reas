@@ -14,7 +14,7 @@
          <ul class="nav-header">
             <%if(user) { %>
             <li class="nav-header_item"><a class="" href="/">Trang chủ</a></li>
-            <%if(user.role == 'manager' || 'admin') { %>
+            <%if(role.name !== 'customer') { %>
             <li class="nav-header_item"><a href="/dashboard">Quản lý</a></li>
             <% } %>
             <li class="nav-header_item"><a href="/favorite">Danh sách yêu thích</a></li>
@@ -45,20 +45,19 @@
       </div>
    </div>
 </div>
-<% } %>
-<% if (fail.length > 0) { %>
-   <div class="alert__fail">
-      <i class="las la-times-circle"></i>
-      <div class="alert__content">
-         <div class="fail__first">
-            <p>Thất bại!</p>
-         </div>
-         <div class="fail__second">
-            <p><%= fail%></p>
-         </div>
+<% } %> <% if (fail.length > 0) { %>
+<div class="alert__fail">
+   <i class="las la-times-circle"></i>
+   <div class="alert__content">
+      <div class="fail__first">
+         <p>Thất bại!</p>
+      </div>
+      <div class="fail__second">
+         <p><%= fail%></p>
       </div>
    </div>
-   <% } %>
+</div>
+<% } %>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <!-- <script type="text/javascript">
    jQuery(document).ready(function ($) {

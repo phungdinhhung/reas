@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const random = require('randomstring');
 const nodemailer = require('nodemailer');
+const roleModel = require('../models/role.model');
 
 const authController = {
    loginUser: async (req, res) => {
@@ -58,8 +59,8 @@ const authController = {
                   httpOnly: true,
                   sameSite: 'strict',
                });
-
-               if (user.role == 'customer') {
+               role = await roleModel.findOne({ userId: user.id });
+               if (role.name == 'customer') {
                   res.redirect('/');
                } else {
                   res.redirect('/dashboard');

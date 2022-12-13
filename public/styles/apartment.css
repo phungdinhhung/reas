@@ -687,3 +687,23 @@ th {
    font-weight: 600;
    font-size: 15px;
 }
+
+.btn-delete {
+   float: right;
+   /* margin-top: -55px; */
+   margin-right: 16px;
+   min-width: 100px;
+   height: 40px;
+   padding: 0 15px;
+   background: red;
+   border-radius: 3px;
+   font-size: 14px;
+   color: #fff;
+   transition: all 0.2s ease-out, color 0.2s ease-out;
+   border: 0;
+   font-weight: bold;
+}
+.btn-delete:hover {
+   cursor: pointer;
+   opacity: 0.8;
+}

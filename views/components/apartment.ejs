@@ -160,7 +160,9 @@
                            </button>
                         </form>
                      </div>
-                     <%} %> <%for(let i = listComment.length - 1; i >= 0; i--) { %>
+                     <%} else {%>
+                     <h1>Bạn cần đăng nhập để bình luận</h1>
+                     <% } %> <%for(let i = listComment.length - 1; i >= 0; i--) { %>
                      <div class="commented">
                         <img class="commented-img" src="<%= listComment[i].avatar %>" alt="" />
                         <div class="content">
@@ -172,6 +174,11 @@
                                     listComment[i].createdAt.toLocaleDateString() %>
                                  </p>
                               </label>
+                              <%if(textMessage.id === listComment[i].userId) {%>
+                              <form action="/comment/delete/<%=apartment.id%>/<%=listComment[i].id%>" method="POST">
+                                 <button type="submit" class="btn-delete">Xóa</button>
+                              </form>
+                              <%}%>
                            </div>
                            <div class="commented-comment"><%= listComment[i].content %></div>
                         </div>

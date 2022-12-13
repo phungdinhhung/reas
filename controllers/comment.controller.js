@@ -25,7 +25,17 @@ const commentController = {
          res.redirect(`/detail/${apartmentId}`);
       } catch (e) {
          console.log(e);
-         res.status(500).json(e);
+      }
+   },
+   deleteComment: async (req, res) => {
+      try {
+         const commentId = req.params.id;
+         await commentModel.deleteOne({ _id: commentId });
+         const apartmentId = req.params.apartmentId;
+         req.flash('success', 'Đã xóa bình luận');
+         res.redirect(`/detail/${apartmentId}`);
+      } catch (e) {
+         console.log(e);
       }
    },
 };

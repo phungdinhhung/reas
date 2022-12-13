@@ -331,7 +331,7 @@
                         </tr>
                         <tr>
                            <td colspan="3">
-                              <div class="form-group mb-0 d-inline-block" >Tổng tiền ngân hàng hỗ trợ</div>
+                              <div class="form-group mb-0 d-inline-block">Tổng tiền ngân hàng hỗ trợ</div>
                            </td>
                            <td colspan="2">
                               <div class="form-group mb-0 d-inline-block">
@@ -380,7 +380,7 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= apartment.priceMonth.toLocaleString("en") %>
+                                 <%= apartment.rentalRate.toLocaleString("en") %>
                               </div>
                            </td>
                         </tr>
@@ -390,7 +390,7 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% voucherChange = apartment.priceMonth * 2 %> <%=
+                                 <% voucherChange = apartment.rentalRate * 2 %> <%=
                                  Math.ceil(voucherChange).toLocaleString("en") %>
                               </div>
                            </td>
@@ -401,7 +401,7 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% profit = apartment.priceMonth*(30*full/100) %> <%=
+                                 <% profit = apartment.rentalRate*(30*full/100) %> <%=
                                  Math.ceil(profit).toLocaleString("en") %>
                               </div>
                            </td>
@@ -538,14 +538,13 @@
    </body>
 </html>
 <script>
-         function year(value) {
-            var htmlObj = document.getElementById('show-option');
-            if (value) {
-               htmlObj.innerHTML = '';
-            }
-            if (value == 'vnh') {
-               htmlObj.innerHTML =
-               `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
-            }
-         }
-      </script>
+   function year(value) {
+      var htmlObj = document.getElementById('show-option');
+      if (value) {
+         htmlObj.innerHTML = '';
+      }
+      if (value == 'vnh') {
+         htmlObj.innerHTML = `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
+      }
+   }
+</script>
