@@ -71,11 +71,31 @@ const apartment = new mongoose.Schema(
          type: Number,
          default: 0,
       },
+      fullRoom: {
+         type: Number,
+         default: 0,
+      },
       percentDiscount: {
          type: Number,
          default: 0,
       },
       percentOther: {
+         type: Number,
+         default: 0,
+      },
+      percentDiscount70: {
+         type: Number,
+         default: 0,
+      },
+      percentOther70: {
+         type: Number,
+         default: 0,
+      },
+      percentDiscount90: {
+         type: Number,
+         default: 0,
+      },
+      percentOther90: {
          type: Number,
          default: 0,
       },
