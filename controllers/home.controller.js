@@ -8,6 +8,7 @@ const homeController = {
          const user = req.cookies.user;
          let userId,
             textMessage,
+            role,
             favorite = '';
          if (user) {
             userId = req.cookies.user.user_id;

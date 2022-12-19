@@ -11,7 +11,7 @@ const apartmentController = {
          const apartmentId = req.params;
          const apartment = await apartmentModel.findOne({ _id: apartmentId.id });
          const listComment = await commentModel.find({ apartmentId: apartmentId.id });
-         let userId, textMessage;
+         let userId, textMessage, role;
 
          if (user) {
             userId = req.cookies.user.user_id;
