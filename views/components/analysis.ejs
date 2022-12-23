@@ -79,9 +79,10 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <% if(type == '70') { %> <%= percentDiscount = 10 %>% <% } else if(type == '90') { %>
-                                 <%= percentDiscount = 12 %>% <% } else if(type=='vnh'){ %> <%= percentDiscount = 0 %>%
-                                 <% }else { %> <%= percentDiscount = 7 %>% <% } %>
+                                 <% if(type == '70') { %> <%= percentDiscount = apartment.percentDiscount70 %>% <% }
+                                 else if(type == '90') { %> <%= percentDiscount = apartment.percentDiscount90 %>% <% }
+                                 else if(type=='vnh'){ %> <%= percentDiscount = 0 %>% <% }else { %> <%= percentDiscount
+                                 = apartment.percentDiscount %>% <% } %>
                               </div>
                            </td>
                            <td>
@@ -102,7 +103,12 @@
                               <span> CÁC CHIẾT KHẤU KHÁC </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= percentOther = 5 %>%</div>
+                              <div class="form-group mb-0 d-inline-block">
+                                 <% if(type == '70') { %> <%= percentOther = apartment.percentOther70 %>% <% } else
+                                 if(type == '90') { %> <%= percentOther = apartment.percentOther90 %>% <% } else
+                                 if(type=='vnh'){ %> <%= percentOther = 0 %>% <% }else { %> <%= percentOther =
+                                 apartment.percentOther %>% <% } %>
+                              </div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -229,7 +235,7 @@
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
-                                 <%= phase[i].percent.toLocaleString("en") %>%
+                                 <%= phase[i].percent %>%
                               </div>
                            </td>
                            <td>

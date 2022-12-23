@@ -156,7 +156,7 @@ const sendResetMail = async (name, email, token) => {
             name +
             ', vui lòng nhấn <a href="http://localhost:5000/login/password?token=' +
             token +
-            '">vào đây</a> để lấy mã. </p>',
+            '">vào đây</a> để đổi mật khẩu mới. </p>',
       };
       transporter.sendMail(mailOptions, function (err, info) {
          if (err) {

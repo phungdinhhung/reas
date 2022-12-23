@@ -244,13 +244,14 @@ const adminController = {
             phases.push({ percent: phase[i], moneyPhase: (apartment.price * phase[i]) / 100 });
          }
          apartment.phase = phases;
-
          let files = req.files;
-         let images = [];
-         for (let i = 0; i < files.length; i++) {
-            images.push({ url: files[i].path });
+         if (files.length !== 0) {
+            let images = [];
+            for (let i = 0; i < files.length; i++) {
+               images.push({ url: files[i].path });
+            }
+            apartment.images = images;
          }
-         apartment.images = images;
          const update = await apartmentModel.updateOne({ _id: apartmentId }, apartment);
          if (update) {
             req.flash('success', 'Cập nhật thành công');

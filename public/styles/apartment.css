@@ -153,8 +153,11 @@ body {
    display: block;
 }
 .tab-text {
+   margin: 0 auto;
    padding: 15px;
    font-size: 17px;
+   width: 80%;
+   text-align: justify;
 }
 .tab-ui {
    border-radius: 10px;

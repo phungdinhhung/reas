@@ -39,10 +39,7 @@
                         <a href="/dashboard/updateApartment/<%= renderApartment[i]._id %>" class="btn btn-primary edit"
                            >Sửa</a
                         >
-                        <% if(role.name == 'admin') { %>
                         <a href="/dashboard/delete?id=<%= renderApartment[i]._id %>" class="btn btn-danger">Xóa</a>
-
-                        <% } %>
                      </td>
                   </tbody>
                   <% } %>
