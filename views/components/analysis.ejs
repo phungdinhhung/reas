@@ -51,7 +51,7 @@
                            <th>DANH MỤC</th>
                            <th>ĐƠN VỊ (%)</th>
                            <th>ĐƠN VỊ (vnd)</th>
-                           <th>THUẾ</th>
+                           <th>GỒM VAT</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -144,7 +144,7 @@
                         </tr>
                         <tr>
                            <td>
-                              <span> TỔNG GIÁ TRỊ CHIẾT KHẤU </span>
+                              <span> TỔNG GIÁ TRỊ SAU CHIẾT KHẤU </span>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -234,9 +234,7 @@
                               <span> Đợt <%= i +1 %> </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block">
-                                 <%= phase[i].percent %>%
-                              </div>
+                              <div class="form-group mb-0 d-inline-block"><%= phase[i].percent %>%</div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">

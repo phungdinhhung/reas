@@ -1,9 +1,15 @@
 const apartmentModel = require('../models/apartment.model');
+const roleModel = require('../models/role.model');
 
 const analysisController = {
    getAnalysisPage: async (req, res) => {
       try {
          const user = req.cookies.user;
+         let userId, role;
+         if (user) {
+            userId = req.cookies.user.user_id;
+            role = await roleModel.findOne({ userId: userId });
+         }
          const apartmentId = req.params;
          const apartmentRender = req.params.id;
          const { price, yearVnh } = req.body;
@@ -22,13 +28,13 @@ const analysisController = {
          const { type } = req.body;
          let change = [];
          if (type.includes('70')) {
-            change.push({ percent: 70, moneyPhase: (apartment.price * 70) / 100 });
-            change.push({ percent: 25, moneyPhase: (apartment.price * 25) / 100 });
-            change.push({ percent: 5, moneyPhase: (apartment.price * 5) / 100 });
+            change.push({ percent: 70 });
+            change.push({ percent: 25 });
+            change.push({ percent: 5 });
             apartment.phase = change;
          } else if (type.includes('90')) {
-            change.push({ percent: 95, moneyPhase: (apartment.price * 95) / 100 });
-            change.push({ percent: 5, moneyPhase: (apartment.price * 5) / 100 });
+            change.push({ percent: 90 });
+            change.push({ percent: 10 });
             apartment.phase = change;
          } else if (type.includes('vnh')) {
             change.push({ percent: 20 });
@@ -49,6 +55,7 @@ const analysisController = {
             interest,
             debt,
             earned,
+            role,
             alert: req.flash('success'),
             fail: req.flash('fail'),
          });

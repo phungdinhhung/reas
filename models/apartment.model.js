@@ -4,10 +4,6 @@ const phases = new mongoose.Schema({
       type: Number,
       default: '',
    },
-   moneyPhase: {
-      type: Number,
-      dafault: '',
-   },
 });
 const image = new mongoose.Schema({
    url: {

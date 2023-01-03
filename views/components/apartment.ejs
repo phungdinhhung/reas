@@ -73,7 +73,9 @@
                            <p>
                               Giá -
                               <i style="color: yellow" class="bx bxs-dollar-circle"></i>
-                              <label class="profile-text text-lable" for=""> <%= apartment.price %></label>
+                              <label class="profile-text text-lable" for="">
+                                 <%= apartment.price.toLocaleString("en") %></label
+                              >
                            </p>
                            <p>
                               Diện tích -
@@ -174,11 +176,11 @@
                                     listComment[i].createdAt.toLocaleDateString() %>
                                  </p>
                               </label>
-                              <%if(textMessage.id === listComment[i].userId) {%>
+                              <%if(user) { %> <%if(textMessage.id === listComment[i].userId) {%>
                               <form action="/comment/delete/<%=apartment.id%>/<%=listComment[i].id%>" method="POST">
                                  <button type="submit" class="btn-delete">Xóa</button>
                               </form>
-                              <%}%>
+                              <%} %> <%}%>
                            </div>
                            <div class="commented-comment"><%= listComment[i].content %></div>
                         </div>

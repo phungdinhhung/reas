@@ -1,14 +1,16 @@
 const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
-
+const roleModel = require('../models/role.model');
 const profileController = {
    userInformation: async (req, res) => {
       try {
          let userId = req.cookies.user.user_id;
+         role = await roleModel.findOne({ userId: userId });
          const userData = await userModel.findById({ _id: userId });
          res.render('components/profile', {
             title: 'Profile',
             user: userData,
+            role,
             alert: req.flash('success'),
             fail: req.flash('fail'),
          });

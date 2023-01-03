@@ -241,7 +241,7 @@ const adminController = {
          let phase = req.body.phase;
          let phases = [];
          for (let i = 0; i < phase.length; i++) {
-            phases.push({ percent: phase[i], moneyPhase: (apartment.price * phase[i]) / 100 });
+            phases.push({ percent: phase[i] });
          }
          apartment.phase = phases;
          let files = req.files;
@@ -309,7 +309,7 @@ const adminController = {
          let phase = req.body.phase;
          let phases = [];
          for (let i = 0; i < phase.length; i++) {
-            phases.push({ percent: phase[i], moneyPhase: (apartment.price * phase[i]) / 100 });
+            phases.push({ percent: phase[i] });
          }
          apartment.phase = phases;
 

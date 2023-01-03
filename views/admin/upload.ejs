@@ -87,7 +87,7 @@
                                     type="number"
                                     name="price"
                                     placeholder="Nhập giá (đơn vị: VNĐ)"
-                                    id="price"
+                                    id=""
                                     value=""
                                  />
                               </div>
@@ -96,6 +96,7 @@
                               <div class="form-group">
                                  <h6 style="padding-top: 10px">Diện tích căn hộ</h6>
                                  <input
+                                    type="number"
                                     class="form-control"
                                     type="Nhập diện tích"
                                     name="acreage"
@@ -254,7 +255,6 @@
    const $ = document.querySelector.bind(document);
    const $$ = document.querySelectorAll.bind(document);
    $('.sidebar-menu_upload').classList.add('active');
-
    function dele(value) {
       const deleelemeent = document.getElementById('list_dot');
       const buttonDele = document.getElementById('buttonDele');

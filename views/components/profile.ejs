@@ -35,7 +35,13 @@
                            <input type="file" name="file" class="profile__form-control" id="customFile" />
                         </div>
                         <div class="profile__card-footer update__avatar">
-                           <button class="profile__btn-update-avt btn-outline-success" type="submit">Cập nhật</button>
+                           <button
+                              class="profile__btn-update-avt btn-outline-success"
+                              type="submit"
+                              style="height: 35px"
+                           >
+                              Cập nhật
+                           </button>
                         </div>
                      </form>
                   </div>
@@ -89,7 +95,7 @@
                                              class="input__update-name"
                                           />
                                           <input
-                                             type="text"
+                                             type="number"
                                              name="phonenumber"
                                              value="<%=user.phonenumber%>"
                                              placeholder="Nhập Số điện thoại"
@@ -154,37 +160,6 @@
             </div>
          </div>
       </div>
-      <% if (alert.length > 0) { %>
-      <div class="alert__success">
-         <i class="las la-check-circle"></i>
-         <div class="alert__content">
-            <div class="success__first">
-               <p>Thành Công!</p>
-            </div>
-            <div class="success__second">
-               <p><%= alert%></p>
-            </div>
-         </div>
-      </div>
-      <% } %> <% if (fail.length > 0) { %>
-      <div class="alert__fail">
-         <i class="las la-times-circle"></i>
-         <div class="alert__content">
-            <div class="fail__first">
-               <p>Thất bại!</p>
-            </div>
-            <div class="fail__second">
-               <p><%= fail%></p>
-            </div>
-         </div>
-      </div>
-      <% } %>
-      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-      <script type="text/javascript">
-         jQuery(document).ready(function ($) {
-            $('.alert__success').delay(3000).fadeOut('slow');
-         });
-      </script>
       <script>
          // Get the modal
          var modal = document.getElementById('myModal');
