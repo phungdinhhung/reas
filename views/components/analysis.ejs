@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="/styles/analysis.css" />
       <link rel="stylesheet" href="/styles/base.css" />
-      <title>Document</title>
+      <title>Analysis Apartment</title>
    </head>
    <body>
       <%- include('../layouts/header') %>
@@ -186,7 +186,8 @@
                               <span> Đặt cọc </span>
                            </td>
                            <td>
-                              <div class="form-group mb-0 d-inline-block"><%= deposit = 2.5 %>%</div>
+                              <% deposit = 2.5 %>
+                              <div class="form-group mb-0 d-inline-block"></div>
                            </td>
                            <td>
                               <div class="form-group mb-0 d-inline-block">
@@ -493,14 +494,14 @@
                               <td>
                                  <% if(i == 1) { %>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <% interest[i] = totalLoan * (6.5/100/2) %> <%=
+                                    <% interest[i] = totalLoan * (inputInterest/100/2) %> <%=
                                     Math.ceil(interest[i]).toLocaleString("en") %>
                                  </div>
                                  <% }else if(i==0) { %>
                                  <div class="form-group mb-0 d-inline-block">0</div>
                                  <% } else { %>
                                  <div class="form-group mb-0 d-inline-block">
-                                    <% interest[i] = debt[i-1] * (6.5/100) %> <%=
+                                    <% interest[i] = debt[i-1] * (inputInterest/100) %> <%=
                                     Math.ceil(interest[i]).toLocaleString("en") %>
                                  </div>
                                  <%} %>
@@ -548,7 +549,7 @@
          htmlObj.innerHTML = '';
       }
       if (value == 'vnh') {
-         htmlObj.innerHTML = `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select>`;
+         htmlObj.innerHTML = `<select type='number' name='yearVnh'> <option value='5'>5 năm</option> <option value='6'>6 năm</option> <option value='7'>7 năm</option> <option value='8'>8 năm</option> <option value='9'>9 năm</option> <option value='10' selected>10 năm</option> <option value='11'>11 năm</option> <option value='12'>12 năm</option> <option value='13'>13 năm</option> <option value='14'>14 năm</option> <option value='15'>15 năm</option> </select> <p>Lãi suất ngân hàng</p><input type="number" placeholder="%" name="inputInterest" min="1" max="20" step="0.1" class="inputInterest" >`;
       }
    }
 </script>

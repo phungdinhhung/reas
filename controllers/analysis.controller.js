@@ -12,7 +12,7 @@ const analysisController = {
          }
          const apartmentId = req.params;
          const apartmentRender = req.params.id;
-         const { price, yearVnh } = req.body;
+         const { price, yearVnh, inputInterest } = req.body;
          const interest = [];
          const debt = [];
          const earned = [];
@@ -56,6 +56,7 @@ const analysisController = {
             debt,
             earned,
             role,
+            inputInterest,
             alert: req.flash('success'),
             fail: req.flash('fail'),
          });

@@ -561,12 +561,6 @@ a.star.vote-active {
    justify-content: center;
    align-items: center;
 }
-.input-box input {
-   font-size: 16px;
-   font-weight: 600;
-   margin-top: 10px;
-   margin-left: 110px;
-}
 .input-box output {
    /* padding: 15px 100px; */
    width: 100%;
@@ -687,7 +681,10 @@ th {
 }
 .input-box-outputPrice {
    font-weight: 600;
-   font-size: 15px;
+   font-size: 16px;
+   font-weight: 600;
+   margin-top: 10px;
+   margin-left: 110px;
 }
 
 .btn-delete {
@@ -708,4 +705,21 @@ th {
 .btn-delete:hover {
    cursor: pointer;
    opacity: 0.8;
+}
+
+#show-option {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+}
+#show-option p {
+   font-size: 17px;
+   margin-bottom: 7px;
+}
+.inputInterest {
+   border: 1px solid #000;
+   height: 30px;
+   border-radius: 10px;
+   width: 75px;
+   padding-left: 7px;
 }
