@@ -27,6 +27,7 @@
                                  placeholder="Thành phố"
                                  value="<%= apartment.city %>"
                                  class="form-control"
+                                 required
                               />
                            </div>
                            <div class="form-group mt-2 mr-3 ml-3" id="select-district">
@@ -37,6 +38,7 @@
                                  name="district"
                                  placeholder="Quận/Huyện"
                                  value="<%= apartment.district %>"
+                                 required
                               />
                            </div>
                            <div class="form-group mt-2 ml-3" id="select-ward">
@@ -47,6 +49,7 @@
                                  name="ward"
                                  placeholder="Phường/Xã"
                                  value="<%= apartment.ward %>"
+                                 required
                               />
                            </div>
                         </div>
@@ -56,7 +59,7 @@
                      <div class="col-md-9 d-flex">
                         <div class="form-group mt-2 mr-3" id="select-beach">
                            <h6 for="">Bãi biển</h6>
-                           <input class="form-control" type="" name="beach" placeholder="Bãi biển" value="<%= apartment.beach %>" />
+                           <input class="form-control" type="" name="beach" placeholder="Bãi biển" value="<%= apartment.beach %>" required/>
                         </div>
                         <div class="form-group mt-2 ml-3 mr-3">
                            <h6 for="">Số nhà</h6>
@@ -80,6 +83,7 @@
                            name="heading"
                            placeholder="Tiêu đề ngắn gọn, dễ hiểu, không dài quá 100 kí tự."
                            value="<%= apartment.heading %>"
+                           required
                         />
                      </div>
                      <div class="form-group" style="padding-top: 10px">
@@ -92,6 +96,8 @@
                            rows="10"
                            cols="80"
                            style="font-size: 14px; border: 1px solid black; padding: 10px"
+                           minlength="150"
+                           maxlength="5000"
                         >
 <%= apartment.description %></textarea
                         >
@@ -109,6 +115,7 @@
                                     placeholder="Nhập giá (đơn vị: VNĐ)"
                                     id="price"
                                     value="<%= apartment.price %>"
+                                    required
                                  />
                               </div>
                            </div>
@@ -121,6 +128,7 @@
                                     name="acreage"
                                     placeholder="Nhập diện tích (m&sup2)"
                                     value="<%= apartment.acreage %>"
+                                    required
                                  />
                               </div>
                            </div>
@@ -133,6 +141,7 @@
                                     name="rentalRate"
                                     placeholder="Nhập giá cho thuê"
                                     value="<%= apartment.rentalRate %>"
+                                    required
                                  />
                               </div>
                            </div>
@@ -146,6 +155,7 @@
                            name="fullRoom"
                            placeholder="Nhập phần trăm full phòng"
                            value="<%= apartment.fullRoom %>"
+                           required
                         />
                      </div>
                      <div class="row">
@@ -159,6 +169,7 @@
                                     name="percentDiscount"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentDiscount %>"
+                                    required
                                  />
                               </div>
                            </div>
@@ -171,6 +182,7 @@
                                     name="percentOther"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentOther %>"
+                                    required
 
                                  />
                               </div>
@@ -189,7 +201,7 @@
                                     name="percentDiscount70"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentDiscount70 %>"
-
+                                    required
                                  />
                               </div>
                            </div>
@@ -202,7 +214,7 @@
                                     name="percentOther70"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentOther70 %>"
-
+                                    required
                                  />
                               </div>
                            </div>
@@ -220,7 +232,7 @@
                                     name="percentDiscount90"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentDiscount90 %>"
-
+                                    required
                                  />
                               </div>
                            </div>
@@ -233,7 +245,7 @@
                                     name="percentOther90"
                                     placeholder="Nhập phần trăm"
                                     value="<%= apartment.percentOther90 %>"
-
+                                    required
                                  />
                               </div>
                            </div>
@@ -264,6 +276,7 @@
                               name="phase"
                               id="list_dot"
                               value="<%= phases[i].percent %>"
+                              required
                            />
                            <% } %>
                         </div>

@@ -62,6 +62,7 @@ const adminController = {
             $or: [
                { email: { $regex: '.*' + search + '.*', $options: 'i' } },
                { phonenumber: { $regex: '.*' + search + '.*', $options: 'i' } },
+               { fullname: { $regex: '.*' + search + '.*', $options: 'i' } },
             ],
          });
          if (req.cookies.user) {
@@ -88,8 +89,11 @@ const adminController = {
       }
    },
    deleteUsers: async (req, res) => {
-      await userModel
-         .deleteOne({ _id: req.query.id })
+      const userId = req.query.id;
+      const role = await roleModel.findOne({ userId: userId });
+      await userModel.deleteOne({ _id: userId });
+      await roleModel
+         .deleteOne({ _id: role })
          .then(() => {
             req.flash('success', 'Xóa người dùng thành công');
             res.redirect('/dashboard/users');
@@ -308,6 +312,7 @@ const adminController = {
          apartment.userId = req.cookies.user.user_id;
          let phase = req.body.phase;
          let phases = [];
+
          for (let i = 0; i < phase.length; i++) {
             phases.push({ percent: phase[i] });
          }

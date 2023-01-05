@@ -20,15 +20,36 @@
                         <div class="col-md-12 d-flex">
                            <div class="form-group mt-2 mr-3" id="select-city">
                               <h6 for="">Thành phố</h6>
-                              <input type="Thành phố" name="city" placeholder="Thành phố" id="" class="form-control" />
+                              <input
+                                 type="text"
+                                 name="city"
+                                 placeholder="Thành phố"
+                                 id=""
+                                 class="form-control"
+                                 required
+                              />
                            </div>
                            <div class="form-group mt-2 mr-3 ml-3" id="select-district">
                               <h6 for="">Quận / Huyện</h6>
-                              <input class="form-control" type="" name="district" placeholder="Quận/Huyện" id="" />
+                              <input
+                                 class="form-control"
+                                 type="text"
+                                 name="district"
+                                 placeholder="Quận/Huyện"
+                                 id=""
+                                 required
+                              />
                            </div>
                            <div class="form-group mt-2 ml-3" id="select-ward">
                               <h6 for="">Phường / Xã</h6>
-                              <input class="form-control" type="" name="ward" placeholder="Phường/Xã" id="" />
+                              <input
+                                 class="form-control"
+                                 type="text"
+                                 name="ward"
+                                 placeholder="Phường/Xã"
+                                 id=""
+                                 required
+                              />
                            </div>
                         </div>
                      </div>
@@ -36,7 +57,7 @@
                         <div class="col-md-9 d-flex">
                            <div class="form-group mt-2 mr-3" id="select-beach">
                               <h6 for="">Bãi biển</h6>
-                              <input class="form-control" type="" name="beach" placeholder="Bãi biển" id="" />
+                              <input class="form-control" type="" name="beach" placeholder="Bãi biển" id="" required />
                            </div>
                            <div class="form-group mt-2 ml-3 mr-3">
                               <h6 for="">Số nhà</h6>
@@ -62,6 +83,7 @@
                            name="heading"
                            placeholder="Tiêu đề ngắn gọn, dễ hiểu, không dài quá 100 kí tự."
                            id=""
+                           required
                         />
                      </div>
                      <div class="form-group" style="padding-top: 10px">
@@ -75,6 +97,8 @@
                            rows="10"
                            cols="80"
                            style="font-size: 14px; border: 1px solid black; padding: 10px"
+                           minlength="150"
+                           maxlength="5000"
                         ></textarea>
                      </div>
                      <div class="row">
@@ -89,6 +113,7 @@
                                     placeholder="Nhập giá (đơn vị: VNĐ)"
                                     id=""
                                     value=""
+                                    required
                                  />
                               </div>
                            </div>
@@ -102,6 +127,7 @@
                                     name="acreage"
                                     placeholder="Nhập diện tích (m&sup2)"
                                     id=""
+                                    required
                                  />
                               </div>
                            </div>
@@ -114,6 +140,7 @@
                                     name="rentalRate"
                                     placeholder="Nhập giá cho thuê"
                                     id=""
+                                    required
                                  />
                               </div>
                            </div>
@@ -127,6 +154,7 @@
                            name="fullRoom"
                            placeholder="Nhập phần trăm full phòng"
                            id=""
+                           required
                         />
                      </div>
 
@@ -139,6 +167,7 @@
                                     class="form-control"
                                     type="number"
                                     name="percentDiscount"
+                                    required
                                     placeholder="Nhập phần trăm"
                                  />
                               </div>
@@ -151,6 +180,7 @@
                                     type="number"
                                     name="percentOther"
                                     placeholder="Nhập phần trăm"
+                                    required
                                  />
                               </div>
                            </div>
@@ -167,6 +197,7 @@
                                     type="number"
                                     name="percentDiscount70"
                                     placeholder="Nhập phần trăm"
+                                    required
                                  />
                               </div>
                            </div>
@@ -178,6 +209,7 @@
                                     type="number"
                                     name="percentOther70"
                                     placeholder="Nhập phần trăm"
+                                    required
                                  />
                               </div>
                            </div>
@@ -194,6 +226,7 @@
                                     type="number"
                                     name="percentDiscount90"
                                     placeholder="Nhập phần trăm"
+                                    required
                                  />
                               </div>
                            </div>
@@ -205,6 +238,7 @@
                                     type="number"
                                     name="percentOther90"
                                     placeholder="Nhập phần trăm"
+                                    required
                                  />
                               </div>
                            </div>
@@ -234,7 +268,7 @@
                      </div>
                      <div class="form-group">
                         <h6 for="formFileMultiple" style="padding-top: 10px">Chọn ảnh phòng</h6>
-                        <input class="form-control" name="files" type="file" id="formFileMultiple" multiple />
+                        <input class="form-control" name="files" type="file" id="formFileMultiple" multiple required />
                      </div>
                   </div>
                </div>
@@ -276,7 +310,7 @@
          htmlObj.innerHTML =
             htmlObj.innerHTML +
             `<div > Phần trăm của đợt ${index + 1} </div>` +
-            `<input class ='form-control' type='phần trăm' name='phase' placeholder='% ' id='list_dot'/> `;
+            `<input class ='form-control' type='number' name='phase' placeholder='% ' id='list_dot' required/> `;
       }
    }
 </script>

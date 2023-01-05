@@ -8,7 +8,6 @@ const messageController = {
 
          const newMessage = new messageModel(message);
          await newMessage.save();
-         req.flash('success', 'Bạn đã gửi thành công');
          res.redirect('/');
       } catch (e) {
          res.status(500).json('gui that bai');
